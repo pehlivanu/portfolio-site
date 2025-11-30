@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import IDELayout from "@/components/layout/IDELayout";
 import { NavigationProvider } from "@/context/NavigationContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -29,9 +30,11 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-ide-bg text-ide-text overflow-hidden`}
       >
-        <NavigationProvider>
-          <IDELayout>{children}</IDELayout>
-        </NavigationProvider>
+        <ThemeProvider>
+          <NavigationProvider>
+            <IDELayout>{children}</IDELayout>
+          </NavigationProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

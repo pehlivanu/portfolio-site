@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { ChevronRight, ChevronDown, FileCode, FileJson, FileType } from 'lucide-react';
+import { ChevronDown, FileCode, FileJson, FileType } from 'lucide-react';
 import { useNavigation } from '@/context/NavigationContext';
 import clsx from 'clsx';
 

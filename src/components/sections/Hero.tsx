@@ -31,17 +31,17 @@ export default function Hero() {
             <span className="font-mono text-sm">~/developer/portfolio</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-4">
-            Liviu <span className="text-ide-accent">.dev</span>
+            Liviu <span className="text-ide-accent">.io</span><span className="text-orange-400 font-semibold text-xl max-w-lg leading-relaxed">nesi</span>
           </h1>
           <p className="text-xl text-ide-text max-w-lg leading-relaxed">
             Transitioning from robust <span className="text-orange-400 font-semibold">Java EE</span> architectures 
-            to the dynamic world of <span className="text-blue-400 font-semibold">Next.js</span> and modern web development.
+            to the dynamic world of <span className="text-blue-400 font-semibold">Spring Boot</span> paired to performant UI frameworks and AI-accelerated prototyping. 
           </p>
         </motion.div>
 
         <div className="flex gap-4">
           <button className="px-6 py-3 bg-ide-accent hover:bg-blue-600 text-white rounded-md font-medium transition-colors flex items-center gap-2">
-            <Code size={18} /> View Projects
+            <Code size={18} /> Projects, not just code
           </button>
           <button className="px-6 py-3 border border-ide-border hover:bg-ide-activity-bar text-ide-text rounded-md font-medium transition-colors">
             Contact Me
@@ -86,7 +86,7 @@ export default function Hero() {
                     <span className="text-orange-400">public class</span> <span className="text-yellow-300">LegacyBackendApplication</span> {'{'}{'\n\n'}
                     {'    '}<span className="text-orange-400">public static void</span> <span className="text-blue-300">main</span>(String[] args) {'{'}{'\n'}
                     {'        '}SpringApplication.run(LegacyBackendApplication.class, args);{'\n'}
-                    {'        '}System.out.println(<span className="text-green-300">"Java EE Enterprise Logic Initialized..."</span>);{'\n'}
+                    {'        '}System.out.println(<span className="text-green-300">&quot;Java EE Enterprise Logic Initialized...&quot;</span>);{'\n'}
                     {'    '}{'}'}{'\n'}
                     {'}'}
                   </code>
@@ -101,11 +101,11 @@ export default function Hero() {
                   className="text-gray-300"
                 >
                   <code>
-                    <span className="text-purple-400">import</span> {'{'} NextApiRequest, NextApiResponse {'}'} <span className="text-purple-400">from</span> <span className="text-green-300">'next'</span>;{'\n\n'}
+                    <span className="text-purple-400">import</span> {'{'} NextApiRequest, NextApiResponse {'}'} <span className="text-purple-400">from</span> <span className="text-green-300">&apos;next&apos;</span>;{'\n\n'}
                     <span className="text-purple-400">export default function</span> <span className="text-blue-300">handler</span>(req: NextApiRequest, res: NextApiResponse) {'{'}{'\n'}
                     {'  '}res.status(<span className="text-orange-300">200</span>).json({'{'} {'\n'}
-                    {'    '}message: <span className="text-green-300">'Vibe Coding Initialized 🚀'</span>, {'\n'}
-                    {'    '}stack: <span className="text-green-300">'Next.js 16 + Tailwind'</span> {'\n'}
+                    {'    '}message: <span className="text-green-300">&apos;Vibe Coding Initialized 🚀&apos;</span>, {'\n'}
+                    {'    '}stack: <span className="text-green-300">&apos;Next.js 16 + Tailwind&apos;</span> {'\n'}
                     {'  '}{'}'});{'\n'}
                     {'}'}
                   </code>

@@ -4,28 +4,56 @@
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
 
-  --color-ide-bg: #1e1e1e;
-  --color-ide-activity-bar: #333333;
-  --color-ide-sidebar: #252526;
-  --color-ide-title-bar: #3c3c3c;
-  --color-ide-status-bar: #007acc;
-  --color-ide-tab-active: #1e1e1e;
-  --color-ide-tab-inactive: #2d2d2d;
-  --color-ide-border: #454545;
-  --color-ide-text: #cccccc;
-  --color-ide-text-active: #ffffff;
-  --color-ide-accent: #007acc;
-}
-
-:root {
-  /* Fallback or usage in non-tailwind contexts if needed */
+  --color-ide-bg: var(--ide-bg);
+  --color-ide-activity-bar: var(--ide-activity-bar);
+  --color-ide-sidebar: var(--ide-sidebar);
+  --color-ide-title-bar: var(--ide-title-bar);
+  --color-ide-status-bar: var(--ide-status-bar);
+  --color-ide-tab-active: var(--ide-tab-active);
+  --color-ide-tab-inactive: var(--ide-tab-inactive);
+  --color-ide-border: var(--ide-border);
+  --color-ide-text: var(--ide-text);
+  --color-ide-text-active: var(--ide-text-active);
+  --color-ide-accent: var(--ide-accent);
 }
 
 @layer base {
+  :root {
+    /* Dark Theme (Default / VS Code Dark) */
+    --ide-bg: #1e1e1e;
+    --ide-activity-bar: #333333;
+    --ide-sidebar: #252526;
+    --ide-title-bar: #3c3c3c;
+    --ide-status-bar: #007acc;
+    --ide-tab-active: #1e1e1e;
+    --ide-tab-inactive: #2d2d2d;
+    --ide-border: #454545;
+    --ide-text: #cccccc;
+    --ide-text-active: #ffffff;
+    --ide-accent: #007acc;
+  }
+
+  .light-theme {
+    /* Light Theme (VS Code Light) */
+    --ide-bg: #ffffff;
+    --ide-activity-bar: #2c2c2c; /* Keep dark sidebar for contrast or make it light? VS Code light has light sidebar usually. Let's try a hybrid or true light. */
+    --ide-activity-bar: #f3f3f3;
+    --ide-sidebar: #f3f3f3;
+    --ide-title-bar: #dddddd;
+    --ide-status-bar: #007acc;
+    --ide-tab-active: #ffffff;
+    --ide-tab-inactive: #ececec;
+    --ide-border: #e4e4e4;
+    --ide-text: #333333;
+    --ide-text-active: #000000;
+    --ide-accent: #007acc;
+  }
+
   body {
-    background-color: var(--color-ide-bg);
-    color: var(--color-ide-text);
+    background-color: var(--ide-bg);
+    color: var(--ide-text);
     font-family: var(--font-sans), system-ui, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
   }
 }
 
