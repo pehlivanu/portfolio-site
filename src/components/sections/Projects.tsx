@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Folder, Github, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import { projects } from '@/data/mockData';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
+import Highlight from '@/components/ui/Highlight';
 
 export default function Projects() {
   useScrollSpy('projects');
@@ -77,13 +78,13 @@ export default function Projects() {
               </div>
             </div>
             
-            <h3 className="text-xl font-bold text-ide-text-active mb-2">{project.title}</h3>
+            <h3 className="text-xl font-bold text-ide-text-active mb-2"><Highlight text={project.title} /></h3>
             <p className="text-ide-text mb-4 flex-1">{project.description}</p>
             
             <div className="flex flex-wrap gap-2 mt-auto">
               {project.tech.map((t) => (
                 <span key={t} className="text-xs font-mono text-ide-text opacity-80">
-                  {t}
+                  <Highlight text={t} />
                 </span>
               ))}
             </div>

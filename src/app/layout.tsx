@@ -4,6 +4,7 @@ import "./globals.css";
 import IDELayout from "@/components/layout/IDELayout";
 import { NavigationProvider } from "@/context/NavigationContext";
 import { ThemeProvider } from "@/context/ThemeContext";
+import { SearchProvider } from "@/context/SearchContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -31,9 +32,11 @@ export default function RootLayout({
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-ide-bg text-ide-text overflow-hidden`}
       >
         <ThemeProvider>
-          <NavigationProvider>
-            <IDELayout>{children}</IDELayout>
-          </NavigationProvider>
+          <SearchProvider>
+            <NavigationProvider>
+              <IDELayout>{children}</IDELayout>
+            </NavigationProvider>
+          </SearchProvider>
         </ThemeProvider>
       </body>
     </html>

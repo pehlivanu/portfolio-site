@@ -6,6 +6,7 @@ import { Calendar, Rocket, Briefcase, Code, GraduationCap } from 'lucide-react';
 import { experience } from '@/data/mockData';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import ReactMarkdown from 'react-markdown';
+import Highlight from '@/components/ui/Highlight';
 
 const getIconByType = (type: string) => {
   switch (type) {
@@ -72,7 +73,7 @@ export default function Experience() {
 
               <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
                 <h3 className="text-xl font-bold text-ide-text-active group-hover:text-ide-accent transition-colors">
-                  {job.role} <span className="text-ide-accent">@ {job.company}</span>
+                  <Highlight text={job.role} /> <span className="text-ide-accent">@ <Highlight text={job.company} /></span>
                 </h3>
                 <div className="flex items-center gap-2 text-sm text-ide-text opacity-80 font-mono">
                   <Calendar size={14} />
@@ -96,7 +97,7 @@ export default function Experience() {
               <div className="flex flex-wrap gap-2">
                 {job.tech.map((tech) => (
                   <span key={tech} className="px-3 py-1 text-xs font-medium rounded-full bg-ide-activity-bar text-ide-accent border border-ide-border hover:bg-ide-accent/10 transition-colors cursor-default">
-                    {tech}
+                    <Highlight text={tech} />
                   </span>
                 ))}
               </div>

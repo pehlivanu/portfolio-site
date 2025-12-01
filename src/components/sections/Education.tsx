@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { GraduationCap } from 'lucide-react';
 import { education } from '@/data/mockData';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
+import Highlight from '@/components/ui/Highlight';
 
 export default function Education() {
   useScrollSpy('education');
@@ -30,8 +31,8 @@ export default function Education() {
               <GraduationCap size={24} />
             </div>
             <div>
-              <h3 className="text-xl font-bold text-ide-text-active">{edu.school}</h3>
-              <p className="text-ide-text text-lg">{edu.degree}</p>
+              <h3 className="text-xl font-bold text-ide-text-active"><Highlight text={edu.school} /></h3>
+              <p className="text-ide-text text-lg"><Highlight text={edu.degree} /></p>
               <p className="text-sm text-gray-500 font-mono mt-1 mb-2">{edu.year}</p>
               {/* @ts-ignore */}
               {edu.description && (
