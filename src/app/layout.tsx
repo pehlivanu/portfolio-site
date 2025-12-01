@@ -5,6 +5,7 @@ import IDELayout from "@/components/layout/IDELayout";
 import { NavigationProvider } from "@/context/NavigationContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { SearchProvider } from "@/context/SearchContext";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -35,6 +36,7 @@ export default function RootLayout({
           <SearchProvider>
             <NavigationProvider>
               <IDELayout>{children}</IDELayout>
+              <Analytics />
             </NavigationProvider>
           </SearchProvider>
         </ThemeProvider>
