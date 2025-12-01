@@ -7,8 +7,8 @@ import { useTheme } from '@/context/ThemeContext';
 import Link from 'next/link';
 
 interface SidebarProps {
-  activeView: 'explorer' | 'search' | 'github' | null;
-  setActiveView: (view: 'explorer' | 'search' | 'github' | null) => void;
+  activeView: 'explorer' | 'search' | 'github' | 'linkedin' | null;
+  setActiveView: (view: 'explorer' | 'search' | 'github' | 'linkedin' | null) => void;
 }
 
 export default function Sidebar({ activeView, setActiveView }: SidebarProps) {
@@ -38,19 +38,18 @@ export default function Sidebar({ activeView, setActiveView }: SidebarProps) {
         >
           <Github size={24} strokeWidth={1.5} />
         </div>
-        <div className="p-2 cursor-pointer text-ide-text hover:text-ide-text-active opacity-70 hover:opacity-100" title="Run">
-          <Play size={24} strokeWidth={1.5} />
+        <div 
+          className={`p-2 cursor-pointer ${activeView === 'linkedin' ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-70 hover:opacity-100'}`}
+          title="LinkedIn Profile"
+          onClick={() => setActiveView(activeView === 'linkedin' ? null : 'linkedin')}
+        >
+          <Linkedin size={24} strokeWidth={1.5} />
         </div>
         <div className="p-2 cursor-pointer text-ide-text hover:text-ide-text-active opacity-70 hover:opacity-100" title="Extensions">
           <LayoutGrid size={24} strokeWidth={1.5} />
         </div>
       </div>
       <div className="flex flex-col gap-4">
-        <Link href="https://www.linkedin.com/in/liviuionesi" target="_blank" rel="noopener noreferrer">
-          <div className="p-2 cursor-pointer text-ide-text hover:text-ide-text-active opacity-70 hover:opacity-100" title="LinkedIn Profile">
-            <Linkedin size={24} strokeWidth={1.5} />
-          </div>
-        </Link>
         <div 
           className="p-2 cursor-pointer text-ide-text hover:text-ide-text-active opacity-70 hover:opacity-100" 
           onClick={toggleTheme}

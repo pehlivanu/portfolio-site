@@ -6,10 +6,11 @@ import Sidebar from './Sidebar';
 import Explorer from './Explorer';
 import Search from './Search';
 import GitHubStats from './GitHubStats';
+import LinkedInStats from './LinkedInStats';
 import Tabs from './Tabs';
 
 export default function IDELayout({ children }: { children: React.ReactNode }) {
-  const [activeSidebarView, setActiveSidebarView] = useState<'explorer' | 'search' | 'github' | null>('explorer');
+  const [activeSidebarView, setActiveSidebarView] = useState<'explorer' | 'search' | 'github' | 'linkedin' | null>('explorer');
 
   return (
     <div className="flex flex-col h-screen w-full bg-ide-bg text-ide-text overflow-hidden">
@@ -19,6 +20,7 @@ export default function IDELayout({ children }: { children: React.ReactNode }) {
         {activeSidebarView === 'explorer' && <Explorer />}
         {activeSidebarView === 'search' && <Search />}
         {activeSidebarView === 'github' && <GitHubStats />}
+        {activeSidebarView === 'linkedin' && <LinkedInStats />}
         <div className="flex flex-col flex-1 min-w-0 bg-ide-bg">
           <Tabs />
           <main className="flex-1 overflow-y-auto p-0 scrollbar-hide relative">
