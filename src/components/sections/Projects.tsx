@@ -31,10 +31,10 @@ export default function Projects() {
         <div className="h-[1px] bg-ide-border flex-1 ml-4"></div>
         
         <div className="flex gap-2">
-          <button onClick={() => scroll('left')} className="p-2 bg-ide-activity-bar rounded hover:bg-ide-border transition-colors">
+          <button onClick={() => scroll('left')} aria-label="Scroll left" className="p-2 bg-ide-activity-bar rounded hover:bg-ide-border transition-colors">
             <ChevronLeft size={20} />
           </button>
-          <button onClick={() => scroll('right')} className="p-2 bg-ide-activity-bar rounded hover:bg-ide-border transition-colors">
+          <button onClick={() => scroll('right')} aria-label="Scroll right" className="p-2 bg-ide-activity-bar rounded hover:bg-ide-border transition-colors">
             <ChevronRight size={20} />
           </button>
         </div>
@@ -61,17 +61,17 @@ export default function Projects() {
                 style={{ animationDelay: `${index * 1}s` }}
               />
               <div className="flex gap-3">
-                <a href={project.link} target="_blank" rel="noopener noreferrer" title="View Code">
+                <a href={project.link} target="_blank" rel="noopener noreferrer" title="View Code" aria-label="View Code">
                   <Github 
                     size={20} 
-                    className="text-ide-text opacity-70 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
+                    className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
                     style={{ animationDelay: `${index * 1}s` }}
                   />
                 </a>
-                <a href={project.link} target="_blank" rel="noopener noreferrer" title="Live Demo">
+                <a href={project.link} target="_blank" rel="noopener noreferrer" title="Live Demo" aria-label="Live Demo">
                   <ExternalLink 
                     size={20} 
-                    className="text-ide-text opacity-70 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
+                    className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
                     style={{ animationDelay: `${index * 1}s` }}
                   />
                 </a>
