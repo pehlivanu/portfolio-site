@@ -14,7 +14,7 @@ export default function StatusBar() {
       case 'experience':
         return 'Java';
       case 'education':
-        return 'JSON';
+        return 'TypeScript';
       case 'projects':
         return 'JSON';
       case 'contact':
@@ -25,7 +25,7 @@ export default function StatusBar() {
   };
 
   return (
-    <div className="h-8 bg-ide-status-bar flex items-center justify-between px-3 text-xs text-ide-status-bar-foreground select-none z-30 border-t border-ide-border">
+    <div className="h-8 bg-ide-status-bar hidden md:flex items-center justify-between px-3 text-xs text-ide-status-bar-foreground select-none z-30 border-t border-ide-border">
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-1 hover:bg-ide-status-bar-hover px-1 rounded cursor-pointer transition-colors">
           <GitBranch size={12} />

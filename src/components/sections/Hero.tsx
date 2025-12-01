@@ -22,8 +22,8 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="min-h-[80vh] flex flex-col xl:flex-row items-center justify-center p-8 gap-12 max-w-7xl mx-auto w-full">
-      <div className="flex-1 space-y-6">
+    <section id="hero" className="min-h-[80vh] flex flex-wrap items-center justify-center p-8 gap-12 max-w-7xl mx-auto w-full">
+      <div className="flex-1 min-w-[340px] md:min-w-[600px] space-y-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -57,7 +57,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="flex-1 w-full max-w-xl">
+      <div className="flex-1 w-full max-w-xl min-w-[340px] md:min-w-[500px]">
         <div className="rounded-lg overflow-hidden border border-ide-border bg-ide-bg shadow-2xl">
           <div className="flex items-center justify-between px-4 py-2 bg-ide-sidebar border-b border-ide-border">
             <div className="flex items-center gap-2">

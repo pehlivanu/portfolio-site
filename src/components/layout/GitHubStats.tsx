@@ -43,7 +43,7 @@ export default function GitHubStats() {
   if (!profile) return null;
 
   return (
-    <div className="w-80 bg-ide-sidebar flex flex-col h-full border-r border-ide-border/30 hidden md:flex overflow-y-auto">
+    <div className="w-full md:w-80 bg-ide-sidebar flex flex-col h-full border-r border-ide-border/30 flex overflow-y-auto">
       <div className="p-3 text-xs font-bold text-ide-text tracking-wider uppercase border-b border-ide-border/30">
         GitHub Profile
       </div>

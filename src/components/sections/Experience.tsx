@@ -48,7 +48,7 @@ export default function Experience() {
         <div className="h-[1px] bg-ide-border flex-1 ml-4"></div>
       </div>
 
-      <div className="relative border-l-2 border-ide-border ml-3 md:ml-6 space-y-16">
+      <div className="relative md:border-l-2 md:border-ide-border ml-0 md:ml-6 space-y-8 md:space-y-16">
         {experience.map((job, index) => (
           <motion.div 
             key={job.id}
@@ -56,10 +56,10 @@ export default function Experience() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.2 }}
-            className="relative pl-10 md:pl-16"
+            className="relative pl-0 md:pl-16"
           >
             {/* Timeline Icon */}
-            <div className={`absolute -left-[19px] top-0 w-10 h-10 rounded-full flex items-center justify-center border-4 border-ide-bg z-10 ${getIconBackground(job.type || '')}`}>
+            <div className={`hidden md:flex absolute -left-[19px] top-0 w-10 h-10 rounded-full items-center justify-center border-4 border-ide-bg z-10 ${getIconBackground(job.type || '')}`}>
               {getIconByType(job.type || '')}
             </div>
             

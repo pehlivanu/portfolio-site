@@ -8,30 +8,58 @@ import { useNavigation } from '@/context/NavigationContext';
 import Link from 'next/link';
 
 interface SidebarProps {
-  activeView: 'explorer' | 'search' | 'github' | 'linkedin' | null;
-  setActiveView: (view: 'explorer' | 'search' | 'github' | 'linkedin' | null) => void;
+  activeView: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | null;
+  setActiveView: (view: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | null) => void;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
-export default function Sidebar({ activeView, setActiveView }: SidebarProps) {
+export default function Sidebar({ activeView, setActiveView, isOpen = false, onClose }: SidebarProps) {
   const { theme, toggleTheme } = useTheme();
   const { isContactVisible, setContactVisible, scrollToSection } = useNavigation();
 
   const handleContactClick = () => {
-    if (isContactVisible) {
-      setContactVisible(false);
+    const isMobile = window.innerWidth < 768;
+    
+    if (isMobile) {
+      setActiveView(activeView === 'contact' ? null : 'contact');
+      if (onClose) onClose();
     } else {
-      scrollToSection('contact');
+      if (isContactVisible) {
+        setContactVisible(false);
+      } else {
+        scrollToSection('contact');
+      }
     }
   };
 
+  const handleViewClick = (view: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact') => {
+    setActiveView(activeView === view ? null : view);
+    if (onClose) onClose();
+  };
+
   return (
-    <div className="w-12 bg-ide-activity-bar flex flex-col items-center py-2 justify-between h-full border-r border-ide-border/30 z-20">
+    <>
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          onClick={onClose}
+        />
+      )}
+      
+      {/* Sidebar */}
+      <div className={`
+        w-12 bg-ide-activity-bar flex flex-col items-center py-2 justify-between h-full border-r border-ide-border/30 z-50
+        fixed md:relative top-0 left-0 transition-transform duration-300 ease-in-out
+        ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
+      `}>
       <div className="flex flex-col gap-4">
         <button 
           className={`p-2 cursor-pointer ${activeView === 'explorer' ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
           title="Explorer"
           aria-label="Explorer"
-          onClick={() => setActiveView(activeView === 'explorer' ? null : 'explorer')}
+          onClick={() => handleViewClick('explorer')}
         >
           <Files size={24} strokeWidth={1.5} />
         </button>
@@ -39,7 +67,7 @@ export default function Sidebar({ activeView, setActiveView }: SidebarProps) {
           className={`p-2 cursor-pointer ${activeView === 'search' ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
           title="Search"
           aria-label="Search"
-          onClick={() => setActiveView(activeView === 'search' ? null : 'search')}
+          onClick={() => handleViewClick('search')}
         >
           <Search size={24} strokeWidth={1.5} />
         </button>
@@ -47,7 +75,7 @@ export default function Sidebar({ activeView, setActiveView }: SidebarProps) {
           className={`p-2 cursor-pointer ${activeView === 'github' ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
           title="GitHub Stats"
           aria-label="GitHub Stats"
-          onClick={() => setActiveView(activeView === 'github' ? null : 'github')}
+          onClick={() => handleViewClick('github')}
         >
           <Github size={24} strokeWidth={1.5} />
         </button>
@@ -55,12 +83,12 @@ export default function Sidebar({ activeView, setActiveView }: SidebarProps) {
           className={`p-2 cursor-pointer ${activeView === 'linkedin' ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
           title="LinkedIn Profile"
           aria-label="LinkedIn Profile"
-          onClick={() => setActiveView(activeView === 'linkedin' ? null : 'linkedin')}
+          onClick={() => handleViewClick('linkedin')}
         >
           <Linkedin size={24} strokeWidth={1.5} />
         </button>
         <button 
-          className={`p-2 cursor-pointer ${isContactVisible ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
+          className={`p-2 cursor-pointer ${isContactVisible || activeView === 'contact' ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
           title="Contact Me"
           aria-label="Contact Me"
           onClick={handleContactClick}
@@ -86,5 +114,6 @@ export default function Sidebar({ activeView, setActiveView }: SidebarProps) {
         </button>
       </div>
     </div>
+    </>
   );
 }

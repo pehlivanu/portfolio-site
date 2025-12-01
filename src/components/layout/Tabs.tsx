@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { X, FileCode, FileJson, FileType } from 'lucide-react';
+import { X, FileCode, FileJson, FileType, Mail } from 'lucide-react';
 import { useNavigation } from '@/context/NavigationContext';
 import clsx from 'clsx';
 
@@ -47,6 +47,14 @@ export default function Tabs() {
       >
         <FileJson size={14} className="text-green-400 mr-2" />
         <span className="text-sm mr-2">Projects.json</span>
+        <X size={14} className="opacity-0 group-hover:opacity-100 hover:bg-ide-activity-bar rounded" />
+      </div>
+      <div 
+        className={getTabClass('contact')}
+        onClick={() => scrollToSection('contact')}
+      >
+        <Mail size={14} className="text-red-400 mr-2" />
+        <span className="text-sm mr-2">Contact.tsx</span>
         <X size={14} className="opacity-0 group-hover:opacity-100 hover:bg-ide-activity-bar rounded" />
       </div>
     </div>
