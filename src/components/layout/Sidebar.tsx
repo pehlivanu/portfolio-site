@@ -7,8 +7,8 @@ import { useTheme } from '@/context/ThemeContext';
 import Link from 'next/link';
 
 interface SidebarProps {
-  activeView: 'explorer' | 'search' | null;
-  setActiveView: (view: 'explorer' | 'search' | null) => void;
+  activeView: 'explorer' | 'search' | 'github' | null;
+  setActiveView: (view: 'explorer' | 'search' | 'github' | null) => void;
 }
 
 export default function Sidebar({ activeView, setActiveView }: SidebarProps) {
@@ -31,11 +31,13 @@ export default function Sidebar({ activeView, setActiveView }: SidebarProps) {
         >
           <Search size={24} strokeWidth={1.5} />
         </div>
-        <Link href="https://github.com/pehlivanu" target="_blank" rel="noopener noreferrer">
-          <div className="p-2 cursor-pointer text-ide-text hover:text-ide-text-active opacity-70 hover:opacity-100" title="GitHub Profile">
-            <Github size={24} strokeWidth={1.5} />
-          </div>
-        </Link>
+        <div 
+          className={`p-2 cursor-pointer ${activeView === 'github' ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-70 hover:opacity-100'}`}
+          title="GitHub Stats"
+          onClick={() => setActiveView(activeView === 'github' ? null : 'github')}
+        >
+          <Github size={24} strokeWidth={1.5} />
+        </div>
         <div className="p-2 cursor-pointer text-ide-text hover:text-ide-text-active opacity-70 hover:opacity-100" title="Run">
           <Play size={24} strokeWidth={1.5} />
         </div>

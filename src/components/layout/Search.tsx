@@ -59,7 +59,7 @@ export default function Search() {
   }, [searchTerm]);
 
   return (
-    <div className="w-60 bg-ide-sidebar flex flex-col h-full border-r border-ide-border/30 hidden md:flex">
+    <div className="w-80 bg-ide-sidebar flex flex-col h-full border-r border-ide-border/30 hidden md:flex">
       <div className="p-3 text-xs font-bold text-ide-text tracking-wider uppercase">Search</div>
       
       <div className="px-3 mb-4">
