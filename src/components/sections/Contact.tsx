@@ -1,12 +1,60 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, Send, AlertCircle, Check, X, MapPin, Globe, Car, Train } from 'lucide-react';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
+import { useNavigation } from '@/context/NavigationContext';
 
 export default function Contact() {
   useScrollSpy('contact');
+  const { isContactVisible, setContactVisible } = useNavigation();
+  const sectionRef = React.useRef<HTMLElement>(null);
+  
+  useEffect(() => {
+    if (!isContactVisible || !sectionRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // Only hide if we are scrolling away (it was visible, now it's not)
+        // We check if it's NOT intersecting
+        if (!entry.isIntersecting) {
+           // We need a small delay or check to ensure we didn't just open it
+           // But since we scroll to it immediately after opening, it should be fine.
+           // However, if the user opens it and it's already off-screen (unlikely with scrollIntoView), it might close.
+           // The main issue is that scrollIntoView takes time.
+           // Let's rely on the fact that we scroll to it.
+           
+           // Actually, simpler logic: if it leaves the viewport, hide it.
+           // But we need to make sure it doesn't hide immediately upon mounting if it's slightly off.
+           // IntersectionObserver fires initially.
+        }
+      },
+      { threshold: 0.1 } 
+    );
+    
+    // We actually want to detect when it *leaves* the viewport.
+    // So we track if it has *entered* first?
+    let hasEntered = false;
+
+    const scrollObserver = new IntersectionObserver(
+        ([entry]) => {
+            if (entry.isIntersecting) {
+                hasEntered = true;
+            } else if (hasEntered) {
+                // It was visible, now it's gone. Hide it.
+                setContactVisible(false);
+            }
+        },
+        { threshold: 0 } // Trigger as soon as one pixel is visible/invisible
+    );
+
+    scrollObserver.observe(sectionRef.current);
+
+    return () => {
+        if (sectionRef.current) scrollObserver.unobserve(sectionRef.current);
+    };
+  }, [isContactVisible, setContactVisible]);
   
   const [formData, setFormData] = useState({
     name: '',
@@ -180,7 +228,17 @@ ${formData.message}
   };
 
   return (
-    <section id="contact" className="py-20 px-8 max-w-4xl mx-auto">
+    <AnimatePresence>
+      {isContactVisible && (
+        <motion.section 
+            id="contact" 
+            ref={sectionRef}
+            initial={{ opacity: 0, height: 0, overflow: 'hidden' }}
+            animate={{ opacity: 1, height: 'auto', overflow: 'visible' }}
+            exit={{ opacity: 0, height: 0, overflow: 'hidden' }}
+            transition={{ duration: 0.5 }}
+            className="py-20 px-8 max-w-4xl mx-auto"
+        >
       <div className="flex items-center gap-2 mb-12">
         <span className="text-ide-accent font-mono text-xl">05.</span>
         <h2 className="text-3xl font-bold text-ide-text-active">Contact Me</h2>
@@ -426,6 +484,8 @@ ${formData.message}
           </div>
         </motion.div>
       </div>
-    </section>
+        </motion.section>
+      )}
+    </AnimatePresence>
   );
 }

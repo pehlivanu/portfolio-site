@@ -4,6 +4,7 @@ import React from 'react';
 import { Files, Search, Play, LayoutGrid, Settings, Github, Linkedin, Sun, Moon } from 'lucide-react';
 
 import { useTheme } from '@/context/ThemeContext';
+import { useNavigation } from '@/context/NavigationContext';
 import Link from 'next/link';
 
 interface SidebarProps {
@@ -13,6 +14,15 @@ interface SidebarProps {
 
 export default function Sidebar({ activeView, setActiveView }: SidebarProps) {
   const { theme, toggleTheme } = useTheme();
+  const { isContactVisible, setContactVisible, scrollToSection } = useNavigation();
+
+  const handleContactClick = () => {
+    if (isContactVisible) {
+      setContactVisible(false);
+    } else {
+      scrollToSection('contact');
+    }
+  };
 
   return (
     <div className="w-12 bg-ide-activity-bar flex flex-col items-center py-2 justify-between h-full border-r border-ide-border/30 z-20">
@@ -45,7 +55,11 @@ export default function Sidebar({ activeView, setActiveView }: SidebarProps) {
         >
           <Linkedin size={24} strokeWidth={1.5} />
         </div>
-        <div className="p-2 cursor-pointer text-ide-text hover:text-ide-text-active opacity-70 hover:opacity-100" title="Extensions">
+        <div 
+          className={`p-2 cursor-pointer ${isContactVisible ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-70 hover:opacity-100'}`}
+          title="Contact Me"
+          onClick={handleContactClick}
+        >
           <LayoutGrid size={24} strokeWidth={1.5} />
         </div>
       </div>

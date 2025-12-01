@@ -4,12 +4,14 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Terminal, Code, Coffee, Zap } from 'lucide-react';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
+import { useNavigation } from '@/context/NavigationContext';
 import { hero } from '@/data/mockData';
 
 // ... (keep existing code strings)
 
 export default function Hero() {
   useScrollSpy('hero');
+  const { scrollToSection } = useNavigation();
   const [isJava, setIsJava] = useState(true);
 
   useEffect(() => {
@@ -41,13 +43,13 @@ export default function Hero() {
 
         <div className="flex gap-4">
           <button 
-            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => scrollToSection('projects')}
             className="px-6 py-3 bg-ide-accent hover:bg-blue-600 text-white rounded-md font-medium transition-colors flex items-center gap-2"
           >
             <Code size={18} /> {hero.ctaPrimary}
           </button>
           <button 
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => scrollToSection('contact')}
             className="px-6 py-3 border border-ide-border hover:bg-ide-activity-bar text-ide-text rounded-md font-medium transition-colors"
           >
             {hero.ctaSecondary}

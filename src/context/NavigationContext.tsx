@@ -8,23 +8,37 @@ interface NavigationContextType {
   activeSection: Section;
   setActiveSection: (section: Section) => void;
   scrollToSection: (section: Section) => void;
+  isContactVisible: boolean;
+  setContactVisible: (visible: boolean) => void;
 }
 
 const NavigationContext = createContext<NavigationContextType | undefined>(undefined);
 
 export function NavigationProvider({ children }: { children: ReactNode }) {
   const [activeSection, setActiveSection] = useState<Section>('hero');
+  const [isContactVisible, setContactVisible] = useState(false);
 
   const scrollToSection = (section: Section) => {
-    setActiveSection(section);
-    const element = document.getElementById(section);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (section === 'contact') {
+      setContactVisible(true);
+      // Small delay to allow render before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(section);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      setActiveSection(section);
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
   return (
-    <NavigationContext.Provider value={{ activeSection, setActiveSection, scrollToSection }}>
+    <NavigationContext.Provider value={{ activeSection, setActiveSection, scrollToSection, isContactVisible, setContactVisible }}>
       {children}
     </NavigationContext.Provider>
   );
