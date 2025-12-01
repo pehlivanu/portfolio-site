@@ -4,6 +4,8 @@ import Education from "@/components/sections/Education";
 import Projects from "@/components/sections/Projects";
 import Contact from "@/components/sections/Contact";
 
+import Footer from "@/components/layout/Footer";
+
 export default function Home() {
   return (
     <div className="min-h-full pb-20">
@@ -12,10 +14,8 @@ export default function Home() {
       <Education />
       <Projects />
       <Contact />
-      
-      <footer className="py-8 text-center text-ide-text opacity-50 text-sm font-mono">
-        <p>Built with Next.js 16 & Tailwind CSS</p>
-      </footer>
+  
+      <Footer />
     </div>
   );
 }

@@ -10,6 +10,10 @@ interface NavigationContextType {
   scrollToSection: (section: Section) => void;
   isContactVisible: boolean;
   setContactVisible: (visible: boolean) => void;
+  contactStatus: 'pending' | 'sent';
+  setContactStatus: (status: 'pending' | 'sent') => void;
+  zoomLevel: number;
+  setZoomLevel: (level: number) => void;
 }
 
 const NavigationContext = createContext<NavigationContextType | undefined>(undefined);
@@ -17,6 +21,8 @@ const NavigationContext = createContext<NavigationContextType | undefined>(undef
 export function NavigationProvider({ children }: { children: ReactNode }) {
   const [activeSection, setActiveSection] = useState<Section>('hero');
   const [isContactVisible, setContactVisible] = useState(false);
+  const [contactStatus, setContactStatus] = useState<'pending' | 'sent'>('pending');
+  const [zoomLevel, setZoomLevel] = useState(100);
 
   const scrollToSection = (section: Section) => {
     if (section === 'contact') {
@@ -38,7 +44,7 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <NavigationContext.Provider value={{ activeSection, setActiveSection, scrollToSection, isContactVisible, setContactVisible }}>
+    <NavigationContext.Provider value={{ activeSection, setActiveSection, scrollToSection, isContactVisible, setContactVisible, contactStatus, setContactStatus, zoomLevel, setZoomLevel }}>
       {children}
     </NavigationContext.Provider>
   );

@@ -10,7 +10,7 @@ export default function TitleBar() {
         <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
       </div>
       <div className="text-sm text-ide-text opacity-80 font-sans">
-        Antigravity IDE - portfolio-site
+        portfolio - Antigravity - liviuionesi.dev
       </div>
       <div className="flex items-center gap-2 opacity-0 sm:opacity-100">
          {/* Windows-like controls just for show if needed, or just empty */}

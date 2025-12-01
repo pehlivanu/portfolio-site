@@ -13,7 +13,7 @@ export function useScrollSpy(sectionId: 'hero' | 'experience' | 'education' | 'p
           }
         });
       },
-      { threshold: 0.5 }
+      { rootMargin: '-50% 0px -50% 0px', threshold: 0 }
     );
 
     const element = document.getElementById(sectionId);

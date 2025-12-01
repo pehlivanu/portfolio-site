@@ -8,7 +8,7 @@ import { useNavigation } from '@/context/NavigationContext';
 
 export default function Contact() {
   useScrollSpy('contact');
-  const { isContactVisible, setContactVisible } = useNavigation();
+  const { isContactVisible, setContactVisible, setContactStatus } = useNavigation();
   const sectionRef = React.useRef<HTMLElement>(null);
   
   useEffect(() => {
@@ -225,6 +225,7 @@ ${formData.message}
     localStorage.setItem('contactCooldown', cooldownTime.toString());
     setCooldown(600);
     setSubmitted(true);
+    setContactStatus('sent');
   };
 
   return (
