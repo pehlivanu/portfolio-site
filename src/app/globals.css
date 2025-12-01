@@ -15,6 +15,12 @@
   --color-ide-text: var(--ide-text);
   --color-ide-text-active: var(--ide-text-active);
   --color-ide-accent: var(--ide-accent);
+  --color-ide-card-bg: var(--ide-card-bg);
+  --color-ide-glow-primary: var(--ide-glow-primary);
+  --color-ide-glow-secondary: var(--ide-glow-secondary);
+  --color-ide-hover-bg: var(--ide-hover-bg);
+  --color-ide-selection-bg: var(--ide-selection-bg);
+  --color-ide-selection-text: var(--ide-selection-text);
 }
 
 @layer base {
@@ -31,12 +37,17 @@
     --ide-text: #cccccc;
     --ide-text-active: #ffffff;
     --ide-accent: #007acc;
+    --ide-card-bg: #252526;
+    --ide-glow-primary: rgba(97, 218, 251, 0.8);
+    --ide-glow-secondary: rgba(255, 255, 255, 0.6);
+    --ide-hover-bg: #2a2d2e;
+    --ide-selection-bg: #37373d;
+    --ide-selection-text: #ffffff;
   }
 
   .light-theme {
     /* Light Theme (VS Code Light) */
     --ide-bg: #ffffff;
-    --ide-activity-bar: #2c2c2c; /* Keep dark sidebar for contrast or make it light? VS Code light has light sidebar usually. Let's try a hybrid or true light. */
     --ide-activity-bar: #f3f3f3;
     --ide-sidebar: #f3f3f3;
     --ide-title-bar: #dddddd;
@@ -47,6 +58,12 @@
     --ide-text: #333333;
     --ide-text-active: #000000;
     --ide-accent: #007acc;
+    --ide-card-bg: transparent;
+    --ide-glow-primary: rgba(0, 122, 204, 0.8);
+    --ide-glow-secondary: rgba(0, 0, 0, 0.4);
+    --ide-hover-bg: #e8e8e8;
+    --ide-selection-bg: #e4e6f1;
+    --ide-selection-text: #000000;
   }
 
   body {
@@ -64,5 +81,16 @@
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+  
+  @keyframes pulse-glow {
+    0% { filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0)); }
+    5% { filter: drop-shadow(0 0 20px var(--ide-glow-primary)) drop-shadow(0 0 10px var(--ide-glow-secondary)); }
+    10% { filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0)); }
+    100% { filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0)); }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 10s infinite ease-in-out;
   }
 }

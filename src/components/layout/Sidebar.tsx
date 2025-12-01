@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Files, Search, Play, LayoutGrid, Settings, Github, Linkedin, Sun, Moon } from 'lucide-react';
+
 import { useTheme } from '@/context/ThemeContext';
 import Link from 'next/link';
 

@@ -10,7 +10,7 @@ export default function Explorer() {
 
   const getFileClass = (section: string) => clsx(
     "flex items-center px-2 py-1 cursor-pointer text-ide-text group transition-colors",
-    activeSection === section ? "bg-[#37373d] text-white" : "hover:bg-[#2a2d2e]"
+    activeSection === section ? "bg-ide-selection-bg text-ide-selection-text" : "hover:bg-ide-hover-bg"
   );
 
   return (
@@ -18,13 +18,13 @@ export default function Explorer() {
       <div className="p-3 text-xs font-bold text-ide-text tracking-wider uppercase">Explorer</div>
       
       <div className="flex flex-col">
-        <div className="flex items-center px-1 py-1 cursor-pointer hover:bg-[#2a2d2e] text-ide-text">
+        <div className="flex items-center px-1 py-1 cursor-pointer hover:bg-ide-hover-bg text-ide-text">
           <ChevronDown size={16} />
           <span className="ml-1 text-sm font-bold">PORTFOLIO</span>
         </div>
         
         <div className="flex flex-col ml-4">
-          <div className="flex items-center px-2 py-1 cursor-pointer hover:bg-[#2a2d2e] text-ide-text">
+          <div className="flex items-center px-2 py-1 cursor-pointer hover:bg-ide-hover-bg text-ide-text">
             <ChevronDown size={16} />
             <span className="ml-1 text-sm">src</span>
           </div>
@@ -35,28 +35,28 @@ export default function Explorer() {
                onClick={() => scrollToSection('hero')}
              >
                <FileCode size={14} className="text-yellow-400" />
-               <span className="ml-2 text-sm group-hover:text-white">Hero.tsx</span>
+               <span className="ml-2 text-sm group-hover:text-ide-text-active">Hero.tsx</span>
              </div>
              <div 
                className={getFileClass('experience')}
                onClick={() => scrollToSection('experience')}
              >
                <FileCode size={14} className="text-orange-400" />
-               <span className="ml-2 text-sm group-hover:text-white">Experience.java</span>
+               <span className="ml-2 text-sm group-hover:text-ide-text-active">Experience.java</span>
              </div>
              <div 
                className={getFileClass('education')}
                onClick={() => scrollToSection('education')}
              >
                <FileType size={14} className="text-blue-400" />
-               <span className="ml-2 text-sm group-hover:text-white">Education.tsx</span>
+               <span className="ml-2 text-sm group-hover:text-ide-text-active">Education.tsx</span>
              </div>
              <div 
                className={getFileClass('projects')}
                onClick={() => scrollToSection('projects')}
              >
                <FileJson size={14} className="text-green-400" />
-               <span className="ml-2 text-sm group-hover:text-white">Projects.json</span>
+               <span className="ml-2 text-sm group-hover:text-ide-text-active">Projects.json</span>
              </div>
           </div>
         </div>

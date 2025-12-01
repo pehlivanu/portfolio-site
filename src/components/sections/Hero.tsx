@@ -19,7 +19,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="min-h-[80vh] flex flex-col md:flex-row items-center justify-center p-8 gap-12">
+    <section id="hero" className="min-h-[80vh] flex flex-col xl:flex-row items-center justify-center p-8 gap-12 max-w-7xl mx-auto w-full">
       <div className="flex-1 space-y-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -30,8 +30,8 @@ export default function Hero() {
             <Terminal size={20} />
             <span className="font-mono text-sm">~/developer/portfolio</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-4">
-            Liviu <span className="text-ide-accent">.io</span><span className="text-orange-400 font-semibold text-xl max-w-lg leading-relaxed">nesi</span>
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-ide-text-active mb-4">
+            Liviu <span className="text-ide-accent">.io</span><span className="text-orange-400 font-semibold text-xl max-w-lg leading-relaxed">NESI</span>
           </h1>
           <p className="text-xl text-ide-text max-w-lg leading-relaxed">
             Transitioning from robust <span className="text-orange-400 font-semibold">Java EE</span> architectures 
@@ -40,7 +40,10 @@ export default function Hero() {
         </motion.div>
 
         <div className="flex gap-4">
-          <button className="px-6 py-3 bg-ide-accent hover:bg-blue-600 text-white rounded-md font-medium transition-colors flex items-center gap-2">
+          <button 
+            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+            className="px-6 py-3 bg-ide-accent hover:bg-blue-600 text-white rounded-md font-medium transition-colors flex items-center gap-2"
+          >
             <Code size={18} /> Projects, not just code
           </button>
           <button className="px-6 py-3 border border-ide-border hover:bg-ide-activity-bar text-ide-text rounded-md font-medium transition-colors">
@@ -50,15 +53,15 @@ export default function Hero() {
       </div>
 
       <div className="flex-1 w-full max-w-xl">
-        <div className="rounded-lg overflow-hidden border border-ide-border bg-[#1e1e1e] shadow-2xl">
-          <div className="flex items-center justify-between px-4 py-2 bg-[#252526] border-b border-ide-border">
+        <div className="rounded-lg overflow-hidden border border-ide-border bg-ide-bg shadow-2xl">
+          <div className="flex items-center justify-between px-4 py-2 bg-ide-sidebar border-b border-ide-border">
             <div className="flex items-center gap-2">
               <div className="flex items-center gap-1.5">
                 <div className="w-3 h-3 rounded-full bg-red-500" />
                 <div className="w-3 h-3 rounded-full bg-yellow-500" />
                 <div className="w-3 h-3 rounded-full bg-green-500" />
               </div>
-              <span className="ml-3 text-xs text-gray-400 font-mono">
+              <span className="ml-3 text-xs text-ide-text opacity-70 font-mono">
                 {isJava ? 'LegacyBackendApplication.java' : 'api/vibe-coding.ts'}
               </span>
             </div>
@@ -76,10 +79,10 @@ export default function Hero() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
                   transition={{ duration: 0.3 }}
-                  className="text-gray-300"
+                  className="text-ide-text"
                 >
                   <code>
-                    <span className="text-orange-400">package</span> com.liviu.portfolio;{'\n\n'}
+                    <span className="text-orange-400">package</span> dev.portfolio;{'\n\n'}
                     <span className="text-orange-400">import</span> org.springframework.boot.SpringApplication;{'\n'}
                     <span className="text-orange-400">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;{'\n\n'}
                     <span className="text-yellow-400">@SpringBootApplication</span>{'\n'}
@@ -98,7 +101,7 @@ export default function Hero() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
                   transition={{ duration: 0.3 }}
-                  className="text-gray-300"
+                  className="text-ide-text"
                 >
                   <code>
                     <span className="text-purple-400">import</span> {'{'} NextApiRequest, NextApiResponse {'}'} <span className="text-purple-400">from</span> <span className="text-green-300">&apos;next&apos;</span>;{'\n\n'}
