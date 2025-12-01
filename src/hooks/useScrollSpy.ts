@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigation } from '@/context/NavigationContext';
 
-export function useScrollSpy(sectionId: 'hero' | 'experience' | 'education' | 'projects') {
+export function useScrollSpy(sectionId: 'hero' | 'experience' | 'education' | 'projects' | 'contact') {
   const { setActiveSection } = useNavigation();
 
   useEffect(() => {

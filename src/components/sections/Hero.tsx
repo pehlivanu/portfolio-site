@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Terminal, Code, Coffee, Zap } from 'lucide-react';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
+import { hero } from '@/data/mockData';
 
 // ... (keep existing code strings)
 
@@ -28,14 +29,13 @@ export default function Hero() {
         >
           <div className="flex items-center gap-2 text-ide-accent mb-2">
             <Terminal size={20} />
-            <span className="font-mono text-sm">~/developer/portfolio</span>
+            <span className="font-mono text-sm">{hero.greeting}</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-ide-text-active mb-4">
-            Liviu <span className="text-ide-accent">.io</span><span className="text-orange-400 font-semibold text-xl max-w-lg leading-relaxed">NESI</span>
+            {hero.name} <span className="text-ide-accent">{hero.suffix}</span><span className="text-orange-400 font-semibold text-xl max-w-lg leading-relaxed">{hero.lastName}</span>
           </h1>
           <p className="text-xl text-ide-text max-w-lg leading-relaxed">
-            Transitioning from robust <span className="text-orange-400 font-semibold">Java EE</span> architectures 
-            to the dynamic world of <span className="text-blue-400 font-semibold">Spring Boot</span> paired to performant UI frameworks and AI-accelerated prototyping. 
+            {hero.description}
           </p>
         </motion.div>
 
@@ -44,10 +44,13 @@ export default function Hero() {
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             className="px-6 py-3 bg-ide-accent hover:bg-blue-600 text-white rounded-md font-medium transition-colors flex items-center gap-2"
           >
-            <Code size={18} /> Projects, not just code
+            <Code size={18} /> {hero.ctaPrimary}
           </button>
-          <button className="px-6 py-3 border border-ide-border hover:bg-ide-activity-bar text-ide-text rounded-md font-medium transition-colors">
-            Contact Me
+          <button 
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="px-6 py-3 border border-ide-border hover:bg-ide-activity-bar text-ide-text rounded-md font-medium transition-colors"
+          >
+            {hero.ctaSecondary}
           </button>
         </div>
       </div>

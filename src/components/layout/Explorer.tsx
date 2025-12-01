@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { ChevronDown, FileCode, FileJson, FileType } from 'lucide-react';
+import { ChevronDown, FileCode, FileJson, FileType, Mail } from 'lucide-react';
 import { useNavigation } from '@/context/NavigationContext';
 import clsx from 'clsx';
 
@@ -57,6 +57,13 @@ export default function Explorer() {
              >
                <FileJson size={14} className="text-green-400" />
                <span className="ml-2 text-sm group-hover:text-ide-text-active">Projects.json</span>
+             </div>
+             <div 
+               className={getFileClass('contact')}
+               onClick={() => scrollToSection('contact')}
+             >
+               <Mail size={14} className="text-red-400" />
+               <span className="ml-2 text-sm group-hover:text-ide-text-active">Contact.tsx</span>
              </div>
           </div>
         </div>

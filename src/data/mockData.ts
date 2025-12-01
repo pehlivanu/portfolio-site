@@ -110,3 +110,13 @@ export const projects = [
     link: "https://filmpire-ten.vercel.app/",
   },
 ];
+
+export const hero = {
+  greeting: "~/developer/portfolio",
+  name: "Liviu",
+  suffix: ".io",
+  lastName: "NESI",
+  description: "Transitioning from robust Java EE architectures to the dynamic world of Spring Boot paired to performant UI frameworks and AI-accelerated prototyping.",
+  ctaPrimary: "Projects, not just code",
+  ctaSecondary: "Contact Me"
+};
