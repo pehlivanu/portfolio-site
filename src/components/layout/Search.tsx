@@ -6,7 +6,7 @@ import { useSearch } from '@/context/SearchContext';
 import { experience, education, projects } from '@/data/mockData';
 import { useNavigation } from '@/context/NavigationContext';
 
-export default function Search() {
+export default function Search({ onClose, isMobile }: { onClose?: () => void, isMobile?: boolean }) {
   const { searchTerm, setSearchTerm } = useSearch();
   const { scrollToSection } = useNavigation();
   interface SearchResult {
@@ -19,6 +19,7 @@ export default function Search() {
   const [results, setResults] = useState<SearchResult[]>([]);
 
   useEffect(() => {
+    // ... (existing useEffect)
     if (!searchTerm) {
       setResults([]);
       return;
@@ -58,9 +59,21 @@ export default function Search() {
     setResults(newResults);
   }, [searchTerm]);
 
+  const handleResultClick = (section: string) => {
+    scrollToSection(section as any);
+    if (isMobile && onClose) {
+      onClose();
+    }
+  };
+
   return (
     <div className="w-full md:w-80 bg-ide-sidebar flex flex-col h-full border-r border-ide-border/30 flex">
-      <div className="p-3 text-xs font-bold text-ide-text tracking-wider uppercase">Search</div>
+      <div className="p-3 text-xs font-bold text-ide-text tracking-wider uppercase flex justify-between items-center">
+        <span>Search</span>
+        <button onClick={onClose} className="md:hidden text-ide-text hover:text-ide-text-active">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+        </button>
+      </div>
       
       <div className="px-3 mb-4">
         <div className="relative">
@@ -86,7 +99,7 @@ export default function Search() {
             <div 
               key={idx}
               className="px-4 py-2 hover:bg-ide-hover-bg cursor-pointer group"
-              onClick={() => scrollToSection(result.section as any)}
+              onClick={() => handleResultClick(result.section)}
             >
               <div className="text-sm text-ide-text group-hover:text-ide-text-active font-medium truncate">
                 {result.title}

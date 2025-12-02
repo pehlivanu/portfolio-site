@@ -3,7 +3,7 @@
 import React from 'react';
 import { Linkedin, MapPin, Users, Briefcase, Award, ExternalLink } from 'lucide-react';
 
-export default function LinkedInStats() {
+export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
   // Mock data since LinkedIn API requires complex auth
   const profile = {
     name: "Liviu Ionesi",
@@ -17,8 +17,11 @@ export default function LinkedInStats() {
 
   return (
     <div className="w-full md:w-80 bg-ide-sidebar flex flex-col h-full border-r border-ide-border/30 flex overflow-y-auto">
-      <div className="p-3 text-xs font-bold text-ide-text tracking-wider uppercase border-b border-ide-border/30">
-        LinkedIn Profile
+      <div className="p-3 text-xs font-bold text-ide-text tracking-wider uppercase border-b border-ide-border/30 flex justify-between items-center">
+        <span>LinkedIn Profile</span>
+        <button onClick={onClose} className="md:hidden text-ide-text hover:text-ide-text-active">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+        </button>
       </div>
       
       <div className="p-6 flex flex-col items-center text-center">

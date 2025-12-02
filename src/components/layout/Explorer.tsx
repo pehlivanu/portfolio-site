@@ -5,8 +5,15 @@ import { ChevronDown, FileCode, FileJson, FileType, Mail } from 'lucide-react';
 import { useNavigation } from '@/context/NavigationContext';
 import clsx from 'clsx';
 
-export default function Explorer() {
+export default function Explorer({ onClose, isMobile }: { onClose?: () => void, isMobile?: boolean }) {
   const { activeSection, scrollToSection } = useNavigation();
+
+  const handleItemClick = (section: any) => {
+    scrollToSection(section);
+    if (isMobile && onClose) {
+      onClose();
+    }
+  };
 
   const getFileClass = (section: string) => clsx(
     "flex items-center px-2 py-1 cursor-pointer text-ide-text group transition-colors",
@@ -15,7 +22,12 @@ export default function Explorer() {
 
   return (
     <div className="w-full md:w-80 bg-ide-sidebar flex flex-col h-full border-r border-ide-border/30 flex">
-      <div className="p-3 text-xs font-bold text-ide-text tracking-wider uppercase">Explorer</div>
+      <div className="p-3 text-xs font-bold text-ide-text tracking-wider uppercase flex justify-between items-center">
+        <span>Explorer</span>
+        <button onClick={onClose} className="md:hidden text-ide-text hover:text-ide-text-active">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+        </button>
+      </div>
       
       <div className="flex flex-col">
         <div className="flex items-center px-1 py-1 cursor-pointer hover:bg-ide-hover-bg text-ide-text">
@@ -32,35 +44,35 @@ export default function Explorer() {
           <div className="flex flex-col ml-4">
              <div 
                className={getFileClass('hero')}
-               onClick={() => scrollToSection('hero')}
+               onClick={() => handleItemClick('hero')}
              >
                <FileCode size={14} className="text-yellow-400" />
                <span className="ml-2 text-sm group-hover:text-ide-text-active">Hero.tsx</span>
              </div>
              <div 
                className={getFileClass('experience')}
-               onClick={() => scrollToSection('experience')}
+               onClick={() => handleItemClick('experience')}
              >
                <FileCode size={14} className="text-orange-400" />
                <span className="ml-2 text-sm group-hover:text-ide-text-active">Experience.java</span>
              </div>
              <div 
                className={getFileClass('education')}
-               onClick={() => scrollToSection('education')}
+               onClick={() => handleItemClick('education')}
              >
                <FileType size={14} className="text-blue-400" />
                <span className="ml-2 text-sm group-hover:text-ide-text-active">Education.tsx</span>
              </div>
              <div 
                className={getFileClass('projects')}
-               onClick={() => scrollToSection('projects')}
+               onClick={() => handleItemClick('projects')}
              >
                <FileJson size={14} className="text-green-400" />
                <span className="ml-2 text-sm group-hover:text-ide-text-active">Projects.json</span>
              </div>
              <div 
                className={getFileClass('contact')}
-               onClick={() => scrollToSection('contact')}
+               onClick={() => handleItemClick('contact')}
              >
                <Mail size={14} className="text-red-400" />
                <span className="ml-2 text-sm group-hover:text-ide-text-active">Contact.tsx</span>

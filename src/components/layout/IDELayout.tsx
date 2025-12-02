@@ -14,7 +14,15 @@ import { useNavigation } from '@/context/NavigationContext';
 export default function IDELayout({ children }: { children: React.ReactNode }) {
   const [activeSidebarView, setActiveSidebarView] = useState<'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | null>('explorer');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { zoomLevel, setZoomLevel } = useNavigation();
+  const { zoomLevel, setZoomLevel, isContactVisible, setContactVisible } = useNavigation();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     // ... existing useEffect code ...
@@ -36,8 +44,24 @@ export default function IDELayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="h-screen w-screen overflow-hidden bg-ide-bg">
-      <div className="flex flex-col h-full w-full bg-ide-bg text-ide-text overflow-hidden">
-        <TitleBar onMenuClick={() => setIsMobileMenuOpen(true)} />
+      <div className="flex flex-col h-full w-full bg-ide-bg text-ide-text overflow-hidden relative">
+        
+        {/* Mobile Floating Menu Button - Only show when no sidebar view is active */}
+        {!activeSidebarView && (
+          <button 
+            onClick={() => setIsMobileMenuOpen(true)}
+            className="md:hidden fixed top-4 left-4 z-50 p-2 bg-ide-activity-bar rounded-md shadow-lg border border-ide-border text-ide-text hover:text-ide-text-active"
+            aria-label="Toggle Menu"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          </button>
+        )}
+
+        {/* TitleBar - Hidden on Mobile */}
+        <div className="hidden md:block">
+          <TitleBar onMenuClick={() => setIsMobileMenuOpen(true)} />
+        </div>
+
         <div className="flex flex-1 overflow-hidden relative">
           <Sidebar 
             activeView={activeSidebarView} 
@@ -45,25 +69,59 @@ export default function IDELayout({ children }: { children: React.ReactNode }) {
             isOpen={isMobileMenuOpen}
             onClose={() => setIsMobileMenuOpen(false)}
           />
-          <div className="flex flex-col flex-1 min-w-0 overflow-hidden">
+          
+          {/* Main Content Area */}
+          <div className="flex flex-col flex-1 min-w-0 overflow-hidden transition-all duration-300 ease-in-out">
             <div className="flex flex-1 overflow-hidden">
-              {activeSidebarView === 'explorer' && <Explorer />}
-              {activeSidebarView === 'search' && <Search />}
-              {activeSidebarView === 'github' && <GitHubStats />}
-              {activeSidebarView === 'linkedin' && <LinkedInStats />}
-              {activeSidebarView === 'contact' && <ContactPanel />}
+              {activeSidebarView === 'explorer' && <Explorer onClose={() => setActiveSidebarView(null)} isMobile={isMobile} />}
+              {activeSidebarView === 'search' && <Search onClose={() => setActiveSidebarView(null)} isMobile={isMobile} />}
+              {activeSidebarView === 'github' && <GitHubStats onClose={() => setActiveSidebarView(null)} />}
+              {activeSidebarView === 'linkedin' && <LinkedInStats onClose={() => setActiveSidebarView(null)} />}
+              {/* ContactPanel removed from left sidebar views */}
+              
               <div className={`flex-col flex-1 min-w-0 bg-ide-bg ${activeSidebarView ? 'hidden md:flex' : 'flex'}`}>
                 <Tabs />
                 <main className="flex-1 overflow-y-auto p-0 scrollbar-hide relative">
-                  {/* Line numbers column could go here if we want to be super detailed, but maybe overkill for the whole page */}
                   <div className="h-full w-full">
                     {children}
                   </div>
                 </main>
               </div>
+
+              {/* Right Sidebar (Contact Me / Agent View) */}
+              <div 
+                className={`
+                  fixed inset-y-0 right-0 z-40 bg-ide-sidebar border-l border-ide-border shadow-xl 
+                  transition-all duration-300 ease-in-out transform
+                  ${isContactVisible ? 'translate-x-0' : 'translate-x-full'}
+                  md:relative md:translate-x-0 md:shadow-none md:inset-auto
+                  ${isContactVisible ? 'w-full md:w-[450px]' : 'w-0 border-none'}
+                `}
+              >
+                <div className="h-full w-full overflow-hidden flex flex-col">
+                   {isContactVisible && (
+                     <>
+                       <div className="flex items-center justify-between p-3 border-b border-ide-border/30 bg-ide-title-bar">
+                          <span className="text-xs font-bold text-ide-text tracking-wider uppercase">Contact Me</span>
+                          <button 
+                            onClick={() => setContactVisible(false)}
+                            className="text-ide-text hover:text-ide-text-active"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+                          </button>
+                       </div>
+                       <div className="flex-1 overflow-y-auto">
+                         <ContactPanel />
+                       </div>
+                     </>
+                   )}
+                </div>
+              </div>
+
             </div>
             <StatusBar />
           </div>
+
         </div>
       </div>
     </div>

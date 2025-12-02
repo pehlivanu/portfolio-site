@@ -19,17 +19,10 @@ export default function Sidebar({ activeView, setActiveView, isOpen = false, onC
   const { isContactVisible, setContactVisible, scrollToSection } = useNavigation();
 
   const handleContactClick = () => {
-    const isMobile = window.innerWidth < 768;
-    
-    if (isMobile) {
-      setActiveView(activeView === 'contact' ? null : 'contact');
-      if (onClose) onClose();
-    } else {
-      if (isContactVisible) {
-        setContactVisible(false);
-      } else {
-        scrollToSection('contact');
-      }
+    // Toggle the right sidebar (Antigravity Agent View)
+    setContactVisible(!isContactVisible);
+    if (onClose && window.innerWidth < 768) {
+       onClose();
     }
   };
 
@@ -88,7 +81,7 @@ export default function Sidebar({ activeView, setActiveView, isOpen = false, onC
           <Linkedin size={24} strokeWidth={1.5} />
         </button>
         <button 
-          className={`p-2 cursor-pointer ${isContactVisible || activeView === 'contact' ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
+          className={`p-2 cursor-pointer ${isContactVisible ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
           title="Contact Me"
           aria-label="Contact Me"
           onClick={handleContactClick}
