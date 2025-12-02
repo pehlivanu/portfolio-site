@@ -7,7 +7,7 @@ type Section = 'hero' | 'experience' | 'education' | 'projects' | 'contact';
 interface NavigationContextType {
   activeSection: Section;
   setActiveSection: (section: Section) => void;
-  scrollToSection: (section: Section) => void;
+  scrollToSection: (section: Section, itemId?: string) => void;
   isContactVisible: boolean;
   setContactVisible: (visible: boolean) => void;
   contactStatus: 'pending' | 'sent';
@@ -24,7 +24,7 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
   const [contactStatus, setContactStatus] = useState<'pending' | 'sent'>('pending');
   const [zoomLevel, setZoomLevel] = useState(100);
 
-  const scrollToSection = (section: Section) => {
+  const scrollToSection = (section: Section, itemId?: string) => {
     if (section === 'contact') {
       setContactVisible(true);
       // Small delay to allow render before scrolling
@@ -36,10 +36,21 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
       }, 100);
     } else {
       setActiveSection(section);
-      const element = document.getElementById(section);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      // Small delay to ensure section is active/rendered
+      setTimeout(() => {
+        if (itemId) {
+          const element = document.getElementById(itemId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+          }
+        }
+        
+        const element = document.getElementById(section);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
     }
   };
 

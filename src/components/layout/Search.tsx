@@ -7,19 +7,19 @@ import { experience, education, projects } from '@/data/mockData';
 import { useNavigation } from '@/context/NavigationContext';
 
 export default function Search({ onClose, isMobile }: { onClose?: () => void, isMobile?: boolean }) {
-  const { searchTerm, setSearchTerm } = useSearch();
+  const { searchTerm, setSearchTerm, setActiveMatch } = useSearch();
   const { scrollToSection } = useNavigation();
   interface SearchResult {
     type: string;
     title: string;
     subtitle: string;
     section: string;
+    id: string;
   }
 
   const [results, setResults] = useState<SearchResult[]>([]);
 
   useEffect(() => {
-    // ... (existing useEffect)
     if (!searchTerm) {
       setResults([]);
       return;
@@ -34,7 +34,13 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
           job.company.toLowerCase().includes(term) || 
           job.description.toLowerCase().includes(term) ||
           job.tech.some(t => t.toLowerCase().includes(term))) {
-        newResults.push({ type: 'experience', title: job.role, subtitle: job.company, section: 'experience' });
+        newResults.push({ 
+          type: 'experience', 
+          title: job.role, 
+          subtitle: job.company, 
+          section: 'experience',
+          id: `experience-${job.id}`
+        });
       }
     });
 
@@ -43,7 +49,13 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
       if (project.title.toLowerCase().includes(term) || 
           project.description.toLowerCase().includes(term) ||
           project.tech.some(t => t.toLowerCase().includes(term))) {
-        newResults.push({ type: 'project', title: project.title, subtitle: 'Project', section: 'projects' });
+        newResults.push({ 
+          type: 'project', 
+          title: project.title, 
+          subtitle: 'Project', 
+          section: 'projects',
+          id: `projects-${project.id}`
+        });
       }
     });
 
@@ -52,15 +64,22 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
       if (edu.degree.toLowerCase().includes(term) || 
           edu.school.toLowerCase().includes(term) ||
           edu.description?.toLowerCase().includes(term)) {
-        newResults.push({ type: 'education', title: edu.degree, subtitle: edu.school, section: 'education' });
+        newResults.push({ 
+          type: 'education', 
+          title: edu.degree, 
+          subtitle: edu.school, 
+          section: 'education',
+          id: `education-${edu.id}`
+        });
       }
     });
 
     setResults(newResults);
   }, [searchTerm]);
 
-  const handleResultClick = (section: string) => {
-    scrollToSection(section as any);
+  const handleResultClick = (result: SearchResult) => {
+    setActiveMatch({ section: result.section, id: result.id });
+    scrollToSection(result.section as any, result.id);
     if (isMobile && onClose) {
       onClose();
     }
@@ -99,7 +118,7 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
             <div 
               key={idx}
               className="px-4 py-2 hover:bg-ide-hover-bg cursor-pointer group"
-              onClick={() => handleResultClick(result.section)}
+              onClick={() => handleResultClick(result)}
             >
               <div className="text-sm text-ide-text group-hover:text-ide-text-active font-medium truncate">
                 {result.title}

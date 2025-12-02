@@ -7,8 +7,11 @@ import { projects } from '@/data/mockData';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import Highlight from '@/components/ui/Highlight';
 
+import { useSearch } from '@/context/SearchContext';
+
 export default function Projects() {
   useScrollSpy('projects');
+  const { activeMatch } = useSearch();
   const scrollRef = useRef<HTMLDivElement>(null);
   
   // Create a triplicated list for infinite scrolling illusion
@@ -25,7 +28,7 @@ export default function Projects() {
 
   const handleScroll = () => {
     if (scrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      const { scrollLeft, scrollWidth } = scrollRef.current;
       const oneSetWidth = scrollWidth / 3;
       
       // If we've scrolled past the second set (to the right), jump back to the start of the second set
@@ -50,9 +53,10 @@ export default function Projects() {
       }
     }
   };
-
+  
   return (
     <section id="projects" className="py-20 px-8 max-w-6xl mx-auto">
+      {/* ... (header) */}
       <div className="flex items-center gap-2 mb-12">
         <span className="text-ide-accent font-mono text-xl">04.</span>
         <h2 className="text-3xl font-bold text-ide-text-active">Projects</h2>
@@ -74,51 +78,59 @@ export default function Projects() {
         className="flex gap-6 overflow-x-auto pb-8 scrollbar-hide snap-x snap-mandatory"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        {extendedProjects.map((project, index) => (
-          <motion.div
-            key={`${project.id}-${index}`}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="min-w-[300px] md:min-w-[350px] bg-ide-card-bg p-6 rounded-lg border border-ide-border hover:border-ide-accent/50 transition-all hover:-translate-y-1 snap-start flex flex-col"
-          >
-            <div className="flex justify-between items-start mb-4">
-              <Folder 
-                size={40} 
-                className="text-ide-accent animate-pulse-glow" 
-                style={{ animationDelay: `${(index % projects.length) * 1}s` }}
-              />
-              <div className="flex gap-3">
-                <a href={project.link} target="_blank" rel="noopener noreferrer" title="View Code" aria-label="View Code">
-                  <Github 
-                    size={20} 
-                    className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
-                    style={{ animationDelay: `${(index % projects.length) * 1}s` }}
-                  />
-                </a>
-                <a href={project.link} target="_blank" rel="noopener noreferrer" title="Live Demo" aria-label="Live Demo">
-                  <ExternalLink 
-                    size={20} 
-                    className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
-                    style={{ animationDelay: `${(index % projects.length) * 1}s` }}
-                  />
-                </a>
+        {extendedProjects.map((project, index) => {
+           // Only assign ID to the middle set to ensure unique IDs for scrolling
+           const isMiddleSet = index >= projects.length && index < 2 * projects.length;
+           const domId = isMiddleSet ? `projects-${project.id}` : undefined;
+           const isActive = activeMatch?.id === `projects-${project.id}`;
+
+           return (
+            <motion.div
+              key={`${project.id}-${index}`}
+              id={domId}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className={`min-w-[300px] md:min-w-[350px] bg-ide-card-bg p-6 rounded-lg border border-ide-border hover:border-ide-accent/50 transition-all hover:-translate-y-1 snap-start flex flex-col ${isActive ? 'bg-orange-500/10 border-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.2)]' : ''}`}
+            >
+              <div className="flex justify-between items-start mb-4">
+                <Folder 
+                  size={40} 
+                  className="text-ide-accent animate-pulse-glow" 
+                  style={{ animationDelay: `${(index % projects.length) * 1}s` }}
+                />
+                <div className="flex gap-3">
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" title="View Code" aria-label="View Code">
+                    <Github 
+                      size={20} 
+                      className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
+                      style={{ animationDelay: `${(index % projects.length) * 1}s` }}
+                    />
+                  </a>
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" title="Live Demo" aria-label="Live Demo">
+                    <ExternalLink 
+                      size={20} 
+                      className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
+                      style={{ animationDelay: `${(index % projects.length) * 1}s` }}
+                    />
+                  </a>
+                </div>
               </div>
-            </div>
-            
-            <h3 className="text-xl font-bold text-ide-text-active mb-2"><Highlight text={project.title} /></h3>
-            <p className="text-ide-text mb-4 flex-1">{project.description}</p>
-            
-            <div className="flex flex-wrap gap-2 mt-auto">
-              {project.tech.map((t) => (
-                <span key={t} className="text-xs font-mono text-ide-text opacity-80">
-                  <Highlight text={t} />
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        ))}
+              
+              <h3 className="text-xl font-bold text-ide-text-active mb-2"><Highlight text={project.title} /></h3>
+              <p className="text-ide-text mb-4 flex-1">{project.description}</p>
+              
+              <div className="flex flex-wrap gap-2 mt-auto">
+                {project.tech.map((t) => (
+                  <span key={t} className="text-xs font-mono text-ide-text opacity-80">
+                    <Highlight text={t} />
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );
