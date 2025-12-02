@@ -1,0 +1,57 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - generic [ref=e4]:
+      - button "Toggle Menu" [ref=e6]:
+        - img [ref=e7]
+      - generic [ref=e12]: portfolio - Antigravity - liviuionesi.dev
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]:
+          - button "Explorer" [ref=e16] [cursor=pointer]:
+            - img [ref=e17]
+          - button "Search" [ref=e21] [cursor=pointer]:
+            - img [ref=e22]
+          - button "GitHub Stats" [ref=e25] [cursor=pointer]:
+            - img [ref=e26]
+          - button "LinkedIn Profile" [ref=e29] [cursor=pointer]:
+            - img [ref=e30]
+          - button "Contact Me" [ref=e34] [cursor=pointer]:
+            - img [ref=e35]
+        - generic [ref=e40]:
+          - button "Switch to Light Theme" [ref=e41] [cursor=pointer]:
+            - img [ref=e42]
+          - button "Settings" [ref=e48] [cursor=pointer]:
+            - img [ref=e49]
+      - generic [ref=e54]:
+        - generic [ref=e55]: Explorer
+        - generic [ref=e56]:
+          - generic [ref=e57] [cursor=pointer]:
+            - img [ref=e58]
+            - generic [ref=e60]: PORTFOLIO
+          - generic [ref=e61]:
+            - generic [ref=e62] [cursor=pointer]:
+              - img [ref=e63]
+              - generic [ref=e65]: src
+            - generic [ref=e66]:
+              - generic [ref=e67] [cursor=pointer]:
+                - img [ref=e68]
+                - generic [ref=e73]: Hero.tsx
+              - generic [ref=e74] [cursor=pointer]:
+                - img [ref=e75]
+                - generic [ref=e80]: Experience.java
+              - generic [ref=e81] [cursor=pointer]:
+                - img [ref=e82]
+                - generic [ref=e86]: Education.tsx
+              - generic [ref=e87] [cursor=pointer]:
+                - img [ref=e88]
+                - generic [ref=e93]: Projects.json
+              - generic [ref=e94] [cursor=pointer]:
+                - img [ref=e95]
+                - generic [ref=e98]: Contact.tsx
+  - button "Open Next.js Dev Tools" [ref=e104] [cursor=pointer]:
+    - img [ref=e105]
+  - alert [ref=e108]
+```

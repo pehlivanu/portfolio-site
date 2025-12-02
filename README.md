@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Antigravity IDE Portfolio
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38B2AC?style=flat-square&logo=tailwind-css)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-12-purple?style=flat-square&logo=framer)
+![Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=flat-square&logo=vercel)
 
-First, run the development server:
+A highly interactive, professional portfolio website designed to mimic the [**Antigravity IDE**](https://antigravity.google/) (Google's internal advanced coding environment). Built with the latest web technologies, it serves as a showcase of modern frontend development best practices, featuring a fully responsive design, immersive animations, and a unique "Developer Experience" (DX) for visitors.
+
+**Live Demo:** [liviuionesi.vercel.app](https://liviuionesi.vercel.app)
+
+---
+
+## ✨ Key Features
+
+- **🎨 Antigravity IDE Aesthetic**: A faithful recreation of the powerful Antigravity UI, including:
+    - **Activity Bar**: Functional sidebar with navigation and external links.
+    - **Explorer Panel**: File-tree navigation for project sections.
+    - **Editor Area**: The main content area where "files" (sections) are displayed.
+    - **Status Bar**: Real-time context awareness (Git branch, language, cursor position).
+    - **Command Palette**: Fully functional search/command bar (accessible via UI).
+- **📱 Fully Responsive**: Optimized for all devices. Mobile users get a native-app-like experience with specialized drawers and touch interactions.
+- **⚡ High Performance**: Built on Next.js 15 App Router for server-side rendering and blazing fast load times.
+- **🎭 Immersive Animations**: Powered by Framer Motion for smooth transitions, scroll-linked animations, and interactive hover effects.
+- **🛠️ Best Practices**:
+    - **Type Safety**: Strict TypeScript implementation.
+    - **Modern Styling**: Tailwind CSS v4 for utility-first, maintainable styling.
+    - **Component Architecture**: Modular, reusable components with clear separation of concerns.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Deployment**: [Vercel](https://vercel.com/)
+
+## 📂 Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+src/
+├── app/                  # Next.js App Router pages and layouts
+│   ├── layout.tsx        # Root layout (HTML/Body structure)
+│   ├── page.tsx          # Main entry point (Home page)
+│   └── globals.css       # Global styles and Tailwind directives
+├── components/           # Reusable UI components
+│   ├── layout/           # Structural components (Sidebar, TitleBar, Footer, etc.)
+│   ├── sections/         # Page sections (Hero, Experience, Projects, Contact)
+│   └── ui/               # Generic UI elements (Buttons, Inputs, Cards)
+├── context/              # React Context providers (Navigation, Theme)
+├── data/                 # Static data files (Projects, Experience)
+└── hooks/                # Custom React hooks (useScrollSpy, etc.)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js 18+ installed.
+- npm or yarn or pnpm.
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/yourusername/portfolio-site.git
+    cd portfolio-site
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # or
+    yarn install
+    # or
+    pnpm install
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
 
-## Deploy on Vercel
+4.  **Open your browser:**
+    Navigate to [http://localhost:3000](http://localhost:3000) to see the application running.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 💎 Commercial Use
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is a premium template intended for sale.
+- **Source Code**: Private / Commercial.
+- **License**: Single-use or Multi-use commercial license (depending on purchase).
+- **Resale**: Redistribution of the source code is strictly prohibited.
+
+## 🎨 Customization
+
+This template is designed to be easily customizable for your portfolio needs.
+
+-   **Theme Colors**: Edit `src/app/globals.css` to modify the CSS variables.
+-   **Content**: Update `src/data/` files to change the portfolio content.
+

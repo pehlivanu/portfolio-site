@@ -21,7 +21,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Liviu | Full Stack Developer",
-  description: "Java EE to Next.js Transition - Developer Portfolio",
+  description: "From Java EE &m JSP to Spring Boot Next.js Transition - Developer Portfolio",
 };
 
 export default function RootLayout({
