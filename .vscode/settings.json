@@ -1,0 +1,14 @@
+{
+  "files.exclude": {
+    "**/*.log": true,
+    "**/*.txt": true,
+    "**/*.tsbuildinfo": true,
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.hg": true,
+    "**/.svn": true,
+    "**/CVS": true,
+    "**/next-env.d.ts": true,
+    "**/node_modules": false
+  }
+}

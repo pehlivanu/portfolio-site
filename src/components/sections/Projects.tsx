@@ -101,20 +101,24 @@ export default function Projects() {
                   style={{ animationDelay: `${(index % projects.length) * 1}s` }}
                 />
                 <div className="flex gap-3">
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" title="View Code" aria-label="View Code">
-                    <Github 
-                      size={20} 
-                      className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
-                      style={{ animationDelay: `${(index % projects.length) * 1}s` }}
-                    />
-                  </a>
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" title="Live Demo" aria-label="Live Demo">
-                    <ExternalLink 
-                      size={20} 
-                      className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
-                      style={{ animationDelay: `${(index % projects.length) * 1}s` }}
-                    />
-                  </a>
+                  {project.githubUrl && (
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" title="View Code" aria-label="View Code">
+                      <Github 
+                        size={20} 
+                        className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
+                        style={{ animationDelay: `${(index % projects.length) * 1}s` }}
+                      />
+                    </a>
+                  )}
+                  {project.deployUrl && (
+                    <a href={project.deployUrl} target="_blank" rel="noopener noreferrer" title="Live Demo" aria-label="Live Demo">
+                      <ExternalLink 
+                        size={20} 
+                        className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
+                        style={{ animationDelay: `${(index % projects.length) * 1}s` }}
+                      />
+                    </a>
+                  )}
                 </div>
               </div>
               

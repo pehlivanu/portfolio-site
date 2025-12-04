@@ -141,7 +141,7 @@ export default function ContactForm() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (submitted) return;
 
@@ -164,13 +164,39 @@ Message:
 ${formData.message}
     `;
 
-    window.location.href = `mailto:pehlivanu@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    const cooldownTime = Date.now() + 10 * 60 * 1000; // 10 minutes
-    localStorage.setItem('contactCooldown', cooldownTime.toString());
-    setCooldown(600);
-    setSubmitted(true);
-    setContactStatus('sent');
+    console.log('[ContactForm] Sending email via API');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          purpose: formData.purpose,
+          location: formData.location,
+          address: (formData.location === 'onsite' || formData.location === 'hybrid') ? formData.address : 'N/A',
+          technologies: technologies,
+          message: formData.message
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
+      const cooldownTime = Date.now() + 10 * 60 * 1000; // 10 minutes
+      localStorage.setItem('contactCooldown', cooldownTime.toString());
+      setCooldown(600);
+      setSubmitted(true);
+      setContactStatus('sent');
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Failed to send message. Please try again later or contact me directly via email.');
+    }
   };
 
   return (
