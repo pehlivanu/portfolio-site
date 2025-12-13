@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { Github, MapPin, Clock, Book, GitCommit, Users } from 'lucide-react';
+import { Github, Clock, Book, GitCommit, Users } from 'lucide-react';
 
 interface GitHubProfile {
   login: string;
@@ -78,10 +78,7 @@ export default function GitHubStats({ onClose }: { onClose?: () => void }) {
         </p>
         
         <div className="w-full space-y-4">
-          <div className="flex items-center gap-3 text-sm text-ide-text">
-            <MapPin size={16} className="text-ide-accent" />
-            <span>{profile.location || 'Remote'}</span>
-          </div>
+
           
           <div className="flex items-center gap-3 text-sm text-ide-text">
             <Clock size={16} className="text-ide-accent" />

@@ -88,17 +88,15 @@ export default function Projects() {
                 {/* Tech Stack Metadata Style */}
                 <div className="mt-auto pt-4 border-t border-ide-border/30">
                      <div className="font-mono text-xs text-ide-text opacity-80 flex flex-col gap-2">
-                        <div className="flex items-start gap-2">
-                            <Code size={14} className="mt-0.5 text-ide-accent shrink-0" />
+                        <div className="flex flex-wrap items-center gap-1">
+                            <Code size={14} className="mr-1 text-ide-accent shrink-0" />
                              <span className="text-ide-keyword opacity-70">stack=</span>
                              <span className="text-ide-text-active opacity-80">[</span>
-                             <div className="flex flex-wrap gap-1">
-                                 {project.tech.map((t, i) => (
-                                     <span key={t} className="hover:text-ide-text-active transition-colors">
-                                         "{t}"{i < project.tech.length - 1 ? ',' : ''}
-                                     </span>
-                                 ))}
-                             </div>
+                             {project.tech.map((t, i) => (
+                                 <span key={t} className="hover:text-ide-text-active transition-colors">
+                                     "{t}"{i < project.tech.length - 1 ? ',' : ''}
+                                 </span>
+                             ))}
                              <span className="text-ide-text-active opacity-80">]</span>
                         </div>
                      </div>

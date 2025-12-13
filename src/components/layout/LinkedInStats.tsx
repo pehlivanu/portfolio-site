@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Linkedin, MapPin, Users, Briefcase, Award, ExternalLink } from 'lucide-react';
+import { Linkedin, Users, Briefcase, Award, ExternalLink } from 'lucide-react';
 
 export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
   // Mock data since LinkedIn API requires complex auth
@@ -50,10 +50,7 @@ export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
         </a>
         
         <div className="w-full space-y-4">
-          <div className="flex items-center gap-3 text-sm text-ide-text">
-            <MapPin size={16} className="text-ide-accent" />
-            <span>{profile.location}</span>
-          </div>
+
           
           <div className="flex items-center gap-3 text-sm text-ide-text">
             <Users size={16} className="text-ide-accent" />
