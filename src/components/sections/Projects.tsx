@@ -1,136 +1,109 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Folder, Github, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Folder, Github, ExternalLink, Code, Leaf, Triangle, Atom } from 'lucide-react';
 import { projects } from '@/data/mockData';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
-import Highlight from '@/components/ui/Highlight';
-
 import { useSearch } from '@/context/SearchContext';
+
+const getProjectIcon = (tech: string[]) => {
+  if (tech.some(t => t.includes('Spring Boot'))) return <Leaf size={40} className="text-green-500" />;
+  if (tech.some(t => t.includes('Next.js'))) return <Triangle size={40} className="text-white invert rotate-180" />; // Triangle for Vercel/Next.js vibe
+  if (tech.some(t => t.includes('React'))) return <Atom size={40} className="text-blue-400" />;
+  return <Folder size={40} className="text-ide-accent" />;
+};
 
 export default function Projects() {
   useScrollSpy('projects');
   const { activeMatch } = useSearch();
-  const scrollRef = useRef<HTMLDivElement>(null);
-  
-  // Create a triplicated list for infinite scrolling illusion
-  const extendedProjects = [...projects, ...projects, ...projects];
 
-  // Initialize scroll position to the middle set
-  React.useEffect(() => {
-    if (scrollRef.current) {
-      const scrollWidth = scrollRef.current.scrollWidth;
-      const oneSetWidth = scrollWidth / 3;
-      scrollRef.current.scrollLeft = oneSetWidth;
-    }
-  }, []);
-
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const { scrollLeft, scrollWidth } = scrollRef.current;
-      const oneSetWidth = scrollWidth / 3;
-      
-      // If we've scrolled past the second set (to the right), jump back to the start of the second set
-      if (scrollLeft >= oneSetWidth * 2) {
-        scrollRef.current.scrollLeft = scrollLeft - oneSetWidth;
-      } 
-      // If we've scrolled into the first set (to the left), jump forward to the second set
-      else if (scrollLeft <= 0) {
-        scrollRef.current.scrollLeft = scrollLeft + oneSetWidth;
-      }
-    }
-  };
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const { current } = scrollRef;
-      const scrollAmount = 350 + 24; // card width + gap
-      if (direction === 'left') {
-        current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      } else {
-        current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      }
-    }
-  };
-  
   return (
     <section id="projects" className="py-20 px-8 max-w-6xl mx-auto">
-      {/* ... (header) */}
       <div className="flex items-center gap-2 mb-12">
         <span className="text-ide-accent font-mono text-xl">04.</span>
         <h2 className="text-3xl font-bold text-ide-text-active">Projects</h2>
         <div className="h-[1px] bg-ide-border flex-1 ml-4"></div>
-        
-        <div className="flex gap-2">
-          <button onClick={() => scroll('left')} aria-label="Scroll left" className="p-2 bg-ide-activity-bar rounded hover:bg-ide-border transition-colors">
-            <ChevronLeft size={20} />
-          </button>
-          <button onClick={() => scroll('right')} aria-label="Scroll right" className="p-2 bg-ide-activity-bar rounded hover:bg-ide-border transition-colors">
-            <ChevronRight size={20} />
-          </button>
-        </div>
       </div>
 
-      <div 
-        ref={scrollRef}
-        onScroll={handleScroll}
-        className="flex gap-6 overflow-x-auto pb-8 scrollbar-hide snap-x snap-mandatory"
-        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-      >
-        {extendedProjects.map((project, index) => {
-           // Only assign ID to the middle set to ensure unique IDs for scrolling
-           const isMiddleSet = index >= projects.length && index < 2 * projects.length;
-           const domId = isMiddleSet ? `projects-${project.id}` : undefined;
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        {projects.map((project, index) => {
            const isActive = activeMatch?.id === `projects-${project.id}`;
-
            return (
             <motion.div
-              key={`${project.id}-${index}`}
-              id={domId}
-              initial={{ opacity: 0, scale: 0.9 }}
+              key={project.id}
+              id={`projects-${project.id}`}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className={`min-w-[300px] md:min-w-[350px] bg-ide-card-bg p-6 rounded-lg border border-ide-border hover:border-ide-accent/50 transition-all hover:-translate-y-1 snap-start flex flex-col ${isActive ? 'bg-orange-500/10 border-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.2)]' : ''}`}
+              transition={{ delay: index * 0.1 }}
+              className={`relative group bg-ide-card-bg rounded-lg border border-ide-border hover:border-ide-accent/50 transition-all hover:-translate-y-1 flex flex-col ${isActive ? 'bg-orange-500/10 border-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.2)]' : ''}`}
             >
-              <div className="flex justify-between items-start mb-4">
-                <Folder 
-                  size={40} 
-                  className="text-ide-accent animate-pulse-glow" 
-                  style={{ animationDelay: `${(index % projects.length) * 1}s` }}
-                />
-                <div className="flex gap-3">
-                  {project.githubUrl && (
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" title="View Code" aria-label="View Code">
-                      <Github 
-                        size={20} 
-                        className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
-                        style={{ animationDelay: `${(index % projects.length) * 1}s` }}
-                      />
-                    </a>
-                  )}
-                  {project.deployUrl && (
-                    <a href={project.deployUrl} target="_blank" rel="noopener noreferrer" title="Live Demo" aria-label="Live Demo">
-                      <ExternalLink 
-                        size={20} 
-                        className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
-                        style={{ animationDelay: `${(index % projects.length) * 1}s` }}
-                      />
-                    </a>
-                  )}
+               {/* Top Gradient Line to match Experience card colorfulness */}
+               <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500 opacity-50`} />
+
+              <div className="p-6 flex flex-col h-full">
+                {/* Header: Project Icon + Links */}
+                <div className="flex justify-between items-start mb-6">
+                    <div className="p-2 bg-ide-bg/50 rounded-lg border border-ide-border/50">
+                        {getProjectIcon(project.tech)}
+                    </div>
+                    
+                    <div className="flex gap-3">
+                      {project.githubUrl && (
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" title="View Code" aria-label="View Code">
+                          <Github 
+                            size={20} 
+                            className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
+                            style={{ animationDelay: `${index * 1}s` }}
+                          />
+                        </a>
+                      )}
+                      {project.deployUrl && (
+                        <a href={project.deployUrl} target="_blank" rel="noopener noreferrer" title="Live Demo" aria-label="Live Demo">
+                          <ExternalLink 
+                            size={20} 
+                            className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
+                            style={{ animationDelay: `${index * 1}s` }}
+                          />
+                        </a>
+                      )}
+                    </div>
                 </div>
-              </div>
-              
-              <h3 className="text-xl font-bold text-ide-text-active mb-2"><Highlight text={project.title} /></h3>
-              <p className="text-ide-text mb-4 flex-1">{project.description}</p>
-              
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {project.tech.map((t) => (
-                  <span key={t} className="text-xs font-mono text-ide-text opacity-80">
-                    <Highlight text={t} />
-                  </span>
-                ))}
+
+                {/* Title in Tag Style */}
+                <div className="mb-4">
+                     <h3 className="text-xl font-mono font-bold text-ide-text-active transition-colors flex flex-wrap items-center gap-1">
+                        <span className="text-gray-500 opacity-100 font-bold">&lt;</span>
+                        <span className="text-blue-400">{project.title}</span>
+                        <span className="text-gray-500 opacity-100 font-bold">/&gt;</span>
+                     </h3>
+                </div>
+
+                {/* Description */}
+                <div className="text-ide-text mb-6 text-sm leading-relaxed flex-1 font-mono">
+                   <p className="opacity-90">{project.description}</p>
+                </div>
+
+                {/* Tech Stack Metadata Style */}
+                <div className="mt-auto pt-4 border-t border-ide-border/30">
+                     <div className="font-mono text-xs text-ide-text opacity-80 flex flex-col gap-2">
+                        <div className="flex items-start gap-2">
+                            <Code size={14} className="mt-0.5 text-ide-accent shrink-0" />
+                             <span className="text-ide-keyword opacity-70">stack=</span>
+                             <span className="text-ide-text-active opacity-80">[</span>
+                             <div className="flex flex-wrap gap-1">
+                                 {project.tech.map((t, i) => (
+                                     <span key={t} className="hover:text-ide-text-active transition-colors">
+                                         "{t}"{i < project.tech.length - 1 ? ',' : ''}
+                                     </span>
+                                 ))}
+                             </div>
+                             <span className="text-ide-text-active opacity-80">]</span>
+                        </div>
+                     </div>
+                </div>
+
               </div>
             </motion.div>
           );
