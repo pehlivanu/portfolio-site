@@ -1,0 +1,783 @@
+{
+  "certifications": [
+    {
+      "Name": "Oracle Certified Professional, Java SE 6 Programmer",
+      "Url": "",
+      "Authority": "Oracle",
+      "Started On": "Oct 2014",
+      "Finished On": "",
+      "License Number": "235801852OCPJSE6P"
+    },
+    {
+      "Name": "Oracle Certified Expert Java EE 6 Web Components Developer",
+      "Url": "",
+      "Authority": "Oracle",
+      "Started On": "Feb 2014",
+      "Finished On": "",
+      "License Number": "235801852OCEJEE6WCD"
+    },
+    {
+      "Name": "Pega 7.1 Certified System Architect",
+      "Url": "https://pdn.pega.com/pega-academy/verify-certification?fname=Liviu-Lucian&lname=Ionesi",
+      "Authority": "Pegasystems",
+      "Started On": "Nov 2016",
+      "Finished On": "",
+      "License Number": ""
+    },
+    {
+      "Name": "Office 365: SharePoint-Anwendungsf\u00e4lle",
+      "Url": "https://www.linkedin.com/learning/certificates/3cdd7f64d48e703d01fcaf763c08653f8acaf259bbc47694b982afd85c900d17?trk=backfilled_certificate",
+      "Authority": "LinkedIn",
+      "Started On": "Jan 2018",
+      "Finished On": "",
+      "License Number": ""
+    },
+    {
+      "Name": "SharePoint 2016: No-Code Workflows",
+      "Url": "https://www.linkedin.com/learning/certificates/ead8ccb18966e04d259e7d941fc5a5545298ec64a36d1a7288173715b97ab4ca?trk=backfilled_certificate",
+      "Authority": "LinkedIn",
+      "Started On": "Jan 2018",
+      "Finished On": "",
+      "License Number": ""
+    },
+    {
+      "Name": "Office 365: Provision Office 365",
+      "Url": "https://www.linkedin.com/learning/certificates/7379e283ca1fc3588424cbabd0e3b599e27e7d93f6ce1d0a9308ef989cfb5b81?trk=backfilled_certificate",
+      "Authority": "LinkedIn",
+      "Started On": "Jan 2018",
+      "Finished On": "",
+      "License Number": ""
+    },
+    {
+      "Name": "SharePoint Workflow Automation: Nintex",
+      "Url": "https://www.linkedin.com/learning/certificates/ffd37b8b8a275e9d6a4f12d6c830d12d1528c7725ca61e7622a956851ab6e50f?trk=backfilled_certificate",
+      "Authority": "LinkedIn",
+      "Started On": "Mar 2018",
+      "Finished On": "",
+      "License Number": ""
+    },
+    {
+      "Name": "SharePoint Framework for Developers:  1 Understanding the Toolchain",
+      "Url": "https://www.linkedin.com/learning/certificates/3a09144906599f781d8031343468a8ac7ad1263c86056b403c20195a84e5f6ef?trk=backfilled_certificate",
+      "Authority": "LinkedIn",
+      "Started On": "May 2018",
+      "Finished On": "",
+      "License Number": ""
+    },
+    {
+      "Name": "SharePoint Framework for Developers: 2 Authoring and Debugging Solutions",
+      "Url": "https://www.linkedin.com/learning/certificates/9bcd47a426e45846a92e796825a78beb8a6055e76394c5eca88fba444bcae592?trk=backfilled_certificate",
+      "Authority": "LinkedIn",
+      "Started On": "May 2018",
+      "Finished On": "",
+      "License Number": ""
+    },
+    {
+      "Name": "Spring Boot Microservices and Spring Cloud",
+      "Url": "http://ude.my/UC-70ca993d-e60a-436f-8673-739a57fe54da",
+      "Authority": "Udemy",
+      "Started On": "Jun 2020",
+      "Finished On": "",
+      "License Number": "UC-70ca993d-e60a-436f-8673-739a57fe54da"
+    },
+    {
+      "Name": "Docker - Hands on for Java Developers",
+      "Url": "http://ude.my/UC-9bad5529-80ba-4140-b311-78653c61896a",
+      "Authority": "Udemy",
+      "Started On": "Jun 2020",
+      "Finished On": "",
+      "License Number": "UC-9bad5529-80ba-4140-b311-78653c61896a"
+    },
+    {
+      "Name": " Algorithmic Trading: Backtest, Optimize & Automate in Python",
+      "Url": "http://ude.my/UC-ccd68749-8202-42ce-8979-06eeb233d049",
+      "Authority": "Udemy",
+      "Started On": "Sep 2021",
+      "Finished On": "",
+      "License Number": "UC-ccd68749-8202-42ce-8979-06eeb233d049"
+    },
+    {
+      "Name": "Docker for the Absolute Beginner - Hands On - DevOps",
+      "Url": "https://dat.udemy.com/certificate/UC-274e9a5b-f47d-4c96-87db-82384c0c5ae0/",
+      "Authority": "Udemy",
+      "Started On": "Mar 2022",
+      "Finished On": "",
+      "License Number": "UC-274e9a5b-f47d-4c96-87db-82384c0c5ae0"
+    },
+    {
+      "Name": "Run Your Trading Robot on a VPS or Raspberry Pi 24/7",
+      "Url": "https://www.udemy.com/certificate/UC-ff48d6a0-190e-40f1-a86b-5806d9e7d84a/",
+      "Authority": "Udemy",
+      "Started On": "Mar 2022",
+      "Finished On": "",
+      "License Number": "UC-ff48d6a0-190e-40f1-a86b-5806d9e7d84a"
+    },
+    {
+      "Name": "The Complete Web Developer in 2022: Zero to Mastery",
+      "Url": "ude.my/UC-cb39c746-f694-4b6e-9e24-1d202bbab30a",
+      "Authority": "Udemy",
+      "Started On": "Jul 2022",
+      "Finished On": "",
+      "License Number": "UC-cb39c746-f694-4b6e-9e24-1d202bbab30a"
+    },
+    {
+      "Name": "Mockito: Next-Level Java Unit Testing",
+      "Url": "ude.my/UC-f9ae1c6f-e4aa-49b3-b710-9086b0d7b42a",
+      "Authority": "Udemy",
+      "Started On": "Oct 2022",
+      "Finished On": "",
+      "License Number": "UC-f9ae1c6f-e4aa-49b3-b710-9086b0d7b42a"
+    },
+    {
+      "Name": "Practical Java Unit Testing with JUnit 5",
+      "Url": "https://www.udemy.com/certificate/UC-6fceb82e-15e7-4fbc-9246-ae54fd1d3725",
+      "Authority": "Udemy",
+      "Started On": "Oct 2022",
+      "Finished On": "",
+      "License Number": "UC-6fceb82e-15e7-4fbc-9246-ae54fd1d3725"
+    },
+    {
+      "Name": "MongoDB with Java Spring Boot & Spring Framework",
+      "Url": "https://www.udemy.com/certificate/UC-56806314-f91f-439a-b2e6-6fd66b16a337/",
+      "Authority": "Udemy",
+      "Started On": "Mar 2023",
+      "Finished On": "",
+      "License Number": "UC-56806314-f91f-439a-b2e6-6fd66b16a337"
+    },
+    {
+      "Name": "Next.js & React - The Complete Guide",
+      "Url": "https://www.udemy.com/certificate/UC-0247d1fc-46ff-4a03-9532-fde91d61d80a/",
+      "Authority": "Udemy",
+      "Started On": "Jun 2023",
+      "Finished On": "",
+      "License Number": "UC-0247d1fc-46ff-4a03-9532-fde91d61d80a"
+    },
+    {
+      "Name": "Software Architecture: REST API Design - The Complete Guide",
+      "Url": "https://www.udemy.com/certificate/UC-6275413d-cccf-432b-a957-c5451373dcef/",
+      "Authority": "Udemy",
+      "Started On": "Sep 2023",
+      "Finished On": "",
+      "License Number": "UC-6275413d-cccf-432b-a957-c5451373dcef"
+    },
+    {
+      "Name": "The Complete Guide to Becoming a Software Architect",
+      "Url": "https://www.udemy.com/certificate/UC-5a84800c-8893-4d20-97ec-fa513267d795/",
+      "Authority": "Udemy",
+      "Started On": "Oct 2023",
+      "Finished On": "",
+      "License Number": "UC-5a84800c-8893-4d20-97ec-fa513267d795/"
+    },
+    {
+      "Name": "OpenAPI: Beginner to Guru",
+      "Url": "www.udemy.com/UC-cfa711a1-2983-413b-bb22-02a6c3810888",
+      "Authority": "Udemy",
+      "Started On": "Oct 2023",
+      "Finished On": "",
+      "License Number": "UC-cfa711a1-2983-413b-bb22-02a6c3810888"
+    },
+    {
+      "Name": "Microservices Architecture - The Complete Guide",
+      "Url": "https://www.udemy.com/certificate/UC-52b76175-4ab7-464f-9117-baf905ac24c2/",
+      "Authority": "Udemy",
+      "Started On": "Oct 2023",
+      "Finished On": "",
+      "License Number": "UC-52b76175-4ab7-464f-9117-baf905ac24c2"
+    },
+    {
+      "Name": "Azure DevOps Fundamentals for Beginners",
+      "Url": "https://www.udemy.com/certificate/UC-1ced9814-91c6-4ebc-b656-af2fbeeba0f9/",
+      "Authority": "Udemy",
+      "Started On": "Nov 2023",
+      "Finished On": "",
+      "License Number": "UC-1ced9814-91c6-4ebc-b656-af2fbeeba0f9"
+    }
+  ],
+  "courses": [
+    {
+      "Name": "Cisco CCNA Exploration: Network Fundamentals",
+      "Number": ""
+    },
+    {
+      "Name": "Cisco CCNA Exploration: Routing Protocols and Concepts",
+      "Number": ""
+    },
+    {
+      "Name": "Windows-Desktop-Applications with the Windows Presentation Foundation (WPF) 4.5",
+      "Number": ""
+    },
+    {
+      "Name": "Cisco CCNA Exploration: LAN Switching and Wireless",
+      "Number": ""
+    },
+    {
+      "Name": "Cisco CCNA Exploration: Accessing the WAN",
+      "Number": ""
+    },
+    {
+      "Name": "Udacity: How to use Git and Github",
+      "Number": ""
+    },
+    {
+      "Name": "Udacity: Intro to HTML and CSS",
+      "Number": ""
+    },
+    {
+      "Name": "Udacity: Responsive Web Design Fundamentals",
+      "Number": ""
+    },
+    {
+      "Name": "Udacity: Responsive Images",
+      "Number": ""
+    },
+    {
+      "Name": "Project Management Fundamentals",
+      "Number": ""
+    }
+  ],
+  "education": [
+    {
+      "School Name": "Staatliche Akademie f\u00fcr Datenverarbeitung B\u00f6blingen",
+      "Start Date": "2011",
+      "End Date": "2014",
+      "Notes": "Cisco CCNA Exploration Modules 1 and 2, Programming in C, or assembly language applied on Intel 8085, OO-Programming in Java, followed by Mathematics and Electrical engineering, are the most interesting courses available in the first year at the ADV.   The second year involves finding an internship at a company that the ADV board agrees. In order to pass this second year, a thesis describing your role in developing a company project must be written. My thesis named \"Alpine Curve Editor\" was graded with maximum score 1.0.  IT Project Management, Software Modelling Techniques (UML, GRASP rules, design patterns), Distributed Systems with Java, Database Development with SQL and Java JDBC, Robot-Programming, Operating Systems (Linux), Industrial Management and Regulation and Control are the skills I developed in the 2013-2014 year of study at ADV. This alongside Cisco CCNA Exploration Modules 3 and 4.",
+      "Degree Name": "Training as a certified computer specialist",
+      "Activities": ""
+    },
+    {
+      "School Name": "West University of Timisoara",
+      "Start Date": "2009",
+      "End Date": "2011",
+      "Notes": "",
+      "Degree Name": "Master's degree",
+      "Activities": ""
+    },
+    {
+      "School Name": "West University of Timisoara",
+      "Start Date": "2006",
+      "End Date": "2009",
+      "Notes": "",
+      "Degree Name": "Bachelor's degree",
+      "Activities": ""
+    },
+    {
+      "School Name": "National College of Computer Science \"Spiru Haret\", Suceava",
+      "Start Date": "2002",
+      "End Date": "2006",
+      "Notes": "",
+      "Degree Name": "Baccalaureat Diploma",
+      "Activities": ""
+    }
+  ],
+  "languages": [
+    {
+      "Name": "English",
+      "Proficiency": "Full professional proficiency"
+    },
+    {
+      "Name": "German",
+      "Proficiency": "Full professional proficiency"
+    },
+    {
+      "Name": "French",
+      "Proficiency": "Elementary proficiency"
+    },
+    {
+      "Name": "Romanian",
+      "Proficiency": "Native or bilingual proficiency"
+    }
+  ],
+  "learning": [
+    {
+      "Content Title": "HTML Essential Training (2017)",
+      "Content Description": "HTML is the programming language that powers the web. And like any language, once you master it, you can begin to create your own content, whether that's simple websites or complex web applications. This course provides an in-depth look at the essentials: the syntax of HTML and best practices for writing and editing your code. Senior staff author James Williamson reviews the structure of a typical HTML document, and shows how to section pages and format your content with HTML. Plus, learn how to create links and lists, and find out how HTML works with CSS and JavaScript to create rich, engaging user experiences. So open a text editor, watch these videos, and begin learning to author HTML the right way.",
+      "Content Type": "Course",
+      "Content Last Watched Date (if viewed)": "2018-02-05 09:11 UTC",
+      "Content Completed At (if completed)": "2018-02-05 07:49 UTC",
+      "Content Saved": "false",
+      "Notes taken on videos (if taken)": "N/A",
+      "": ""
+    },
+    {
+      "Content Title": "SharePoint Workflow Automation: Nintex",
+      "Content Description": "Make more of your repeat processes run automatically by leveraging the workflow capabilities of SharePoint. Admins and power users can readily learn and adopt the Nintex plugin as a solution for creating workflows, without having to write code. This course explores how to use Nintex, including how to automate an approval workflow, add workflow actions, monitor workflows, and design drag-and-drop forms.",
+      "Content Type": "Course",
+      "Content Last Watched Date (if viewed)": "2018-03-02 17:07 UTC",
+      "Content Completed At (if completed)": "2018-03-03 15:18 UTC",
+      "Content Saved": "false",
+      "Notes taken on videos (if taken)": "N/A",
+      "": ""
+    },
+    {
+      "Content Title": "Improving Your Listening Skills (2018)",
+      "Content Description": "Just as public speaking is a skill that you can hone through practice, good listeners aren't in possession of a special, unattainable gift\u2014careful listening is a skill that you can learn. In this course, join career expert Dorie Clark as she helps uncover why it's hard to listen well, and how to develop the mindset of a good listener. She also provides multiple listening strategies to help you manage when you're the one not being listened to, how to keep yourself from interrupting, and how to listen to what's not being said. In addition, she explains how to let others know that they've been heard, and how to listen when someone is annoying.",
+      "Content Type": "Course",
+      "Content Last Watched Date (if viewed)": "2018-02-18 21:29 UTC",
+      "Content Completed At (if completed)": "2018-02-18 21:25 UTC",
+      "Content Saved": "false",
+      "Notes taken on videos (if taken)": "N/A",
+      "": ""
+    },
+    {
+      "Content Title": "SharePoint Framework for Developers:  1 Understanding the Toolchain",
+      "Content Description": "SharePoint Framework (SPFx) allows developers to extend SharePoint Online and SharePoint on premises, via web parts or extensions. Before diving into SPFx, you need to master the toolchain\u2014technologies such as Node.js, npm, Gulp, TypeScript, webpack, Yeoman, Sass, and more. Instructor Sahil Malik uses this introductory course to explore the toolchain. He shows how to write basic Node.js code; bundle images, CSS, and apps with webpack; use Yeoman generators; and integrate TypeScript and Sass. Developers who are already familiar with these tools can jump to the end of the course, where Sahil shows how to set up a complete SPFx development environment.",
+      "Content Type": "Course",
+      "Content Last Watched Date (if viewed)": "2018-05-28 09:06 UTC",
+      "Content Completed At (if completed)": "2018-05-28 08:25 UTC",
+      "Content Saved": "true",
+      "Notes taken on videos (if taken)": "N/A",
+      "": ""
+    },
+    {
+      "Content Title": "Web Development Foundations: Full-Stack vs Front-End",
+      "Content Description": "Do you want to become a web developer? Nowadays, web development isn't one job. There is a range of technologies and career options to explore. The core responsibilities are split two ways\u2014between front-end developers who specialize in websites and applications and back-end developers who work with servers and databases\u2014but you can also become a full-stack developer who oversees all aspects of a project. This course provides an overview of the different jobs available in web development, the tools and frameworks to focus on, and the skills each job entails. Senior staff author Ray Villalobos also provides tips on finding training, getting hired, and maximizing your earning potential in this lucrative and exciting field.",
+      "Content Type": "Course",
+      "Content Last Watched Date (if viewed)": "2018-01-25 07:11 UTC",
+      "Content Completed At (if completed)": "2018-01-25 07:10 UTC",
+      "Content Saved": "false",
+      "Notes taken on videos (if taken)": "N/A",
+      "": ""
+    },
+    {
+      "Content Title": "Web Programming Foundations",
+      "Content Description": "<div><a href=\"https://www.linkedin.com/newsletters/6780173704283475968?trk=lil-course-description\" target=\"_blank\" class=\"artdeco-button artdeco-button--1\">View Morten's LinkedIn Newsletter</a></div><p>To be an effective web programmer, you have to understand what happens when you enter a URL or click on a link. Under every webpage lies the markup\u2014JavaScript, HTML, and CSS\u2014and the hierarchy that controls display\u2014the Document Object Model (DOM). Then there is the server that hosts the files, the browser that renders them, the metadata, and the mobile experience to consider. Explore what happens below the surface, and learn how to write better code. This course provides a deep dive into the world wide web, and the underlying structures you need to understand to build robust applications and websites that are efficient and easy to maintain. Learn how HTML documents provide the foundation for CSS and JavaScript, and see how to layer presentation and interactions on top. Learn how different code editors and browsers interact with web content, enabling editing, programming, and display. Discover why accessibility is so important to keeping the web open and available to all users, and what workflow works best for web programming. Instructor Morten Rand-Hendriksen keeps the lessons fun and fast-paced, so it's easy for almost anyone\u2014web programmers, web designers, and even web publishers\u2014to follow along.</p>",
+      "Content Type": "Course",
+      "Content Last Watched Date (if viewed)": "2018-02-26 15:49 UTC",
+      "Content Completed At (if completed)": "2018-02-26 15:36 UTC",
+      "Content Saved": "false",
+      "Notes taken on videos (if taken)": "N/A",
+      "": ""
+    },
+    {
+      "Content Title": "Office 365: Provision Office 365 (Office 365/Microsoft 365)",
+      "Content Description": "Learning about provisioning Microsoft Office 365 is a critical first step to working with Office 365. Seasoned network admins as well as those considering a move to Office 365 should know about provisioning: configuring key resources and settings, including tenants, custom domains, and pilots. In addition, these skills are tested on the MCP/MCSA exam 70-346 (Managing Office 365 Identities and Requirements), comprising 15% of the test.<br><br> \r\n\r\nThis course helps you prepare for exam 70-346, and master some of the most common administrative tasks involved in setting up Office 365. Instructor Brian Culp demonstrates how to configure tenants and updates, define admin roles, specify custom domains for Office 365 deployments, and plan a pilot with pilot users and usage cases. This is an ideal course for anyone tasked with administering an Office 365 environment, and is a valuable exam prep course for those wishing to become Microsoft certified.",
+      "Content Type": "Course",
+      "Content Last Watched Date (if viewed)": "2018-01-22 13:20 UTC",
+      "Content Completed At (if completed)": "2018-01-22 13:16 UTC",
+      "Content Saved": "true",
+      "Notes taken on videos (if taken)": "N/A",
+      "": ""
+    },
+    {
+      "Content Title": "Office 365: SharePoint-Anwendungsf\u00e4lle (Microsoft 365)",
+      "Content Description": "Die SharePoint-Berater Dirk Diestelhorst und Karsten Ulferts zeigen Ihnen in diesem Video-Training, wie Sie SharePoint-L\u00f6sungen in der Praxis auf unterschiedliche Weise aufbauen. Ausgehend von der Kundenanforderungen wird die Vorgehensweise erl\u00e4utert und Schritt f\u00fcr Schritt praktisch umgesetzt. Als Beispiele dienen eine Vertragsverwaltung und eine Kundenverwaltung, die verschiedene SharePoint-Funktionen kombinieren und damit Ihre Vorstellungskraft bzgl. SharePoint-L\u00f6sungen inspirieren sollen.<br><br>\nHINWEIS: Microsoft hat Office 365 im April 2020 in Microsoft 365 umbenannt.",
+      "Content Type": "Course",
+      "Content Last Watched Date (if viewed)": "2018-01-12 10:25 UTC",
+      "Content Completed At (if completed)": "2018-01-10 15:35 UTC",
+      "Content Saved": "true",
+      "Notes taken on videos (if taken)": "N/A",
+      "": ""
+    },
+    {
+      "Content Title": "JavaScript Essential Training (2017)",
+      "Content Description": "JavaScript is a scripting language of the web. As the web evolves from a static to a dynamic environment, technology focus is shifting from static markup and styling\u2014frequently handled by content management systems or automated scripts\u2014to dynamic interfaces and advanced interaction. Once seen as optional, JavaScript is now becoming an integral part of the web, infusing every layer with its script.\n<br><br>Through practical examples and mini-projects, this course helps you build your understanding of JavaScript piece by piece, from core principles like variables, data types, conditionals, and functions through advanced topics including loops, closures, and DOM scripting. Along the way, you will also be introduced to some ES6 and the basics of JavaScript libraries.",
+      "Content Type": "Course",
+      "Content Last Watched Date (if viewed)": "2018-02-15 13:57 UTC",
+      "Content Completed At (if completed)": "2018-02-15 13:45 UTC",
+      "Content Saved": "false",
+      "Notes taken on videos (if taken)": "N/A",
+      "": ""
+    },
+    {
+      "Content Title": "SharePoint 2016: No-Code Workflows",
+      "Content Description": "This course demonstrates how to use PowerApps and Microsoft Flow to efficiently create mobile apps and custom workflows without needing to write a single line of code. In this course, SharePoint expert Gini Courter explains how to create a custom list in SharePoint 2016, and then how to use PowerApps to build an application. She explains how to fine-tune your app, showing how to modify the layout, format text, brand your app, and add conditional formatting. Then, she switches to Flow to show how to create a custom workflow that responds to the data entered in the app. Plus, Gini shares how to view the results of your workflow by opening your app on a mobile device and entering a record.",
+      "Content Type": "Course",
+      "Content Last Watched Date (if viewed)": "2018-01-15 15:09 UTC",
+      "Content Completed At (if completed)": "2018-01-15 15:04 UTC",
+      "Content Saved": "true",
+      "Notes taken on videos (if taken)": "N/A",
+      "": ""
+    },
+    {
+      "Content Title": "SharePoint Framework for Developers: 2 Authoring and Debugging Solutions",
+      "Content Description": "SharePoint Framework (SPFx) allows developers to extend SharePoint Online and SharePoint on premises, via web parts or extensions. This course shows you how to write those web parts and extensions using SPFx. It also demonstrates how to create application and field customizers and list view command sets. Instructor Sahil Malik shows how to write client-side web parts and extensions, and how to debug your SPFx projects. Plus, learn how to leverage third-party and Office 365 content delivery networks (CDNs) for SPFx deployment.",
+      "Content Type": "Course",
+      "Content Last Watched Date (if viewed)": "2024-04-18 07:11 UTC",
+      "Content Completed At (if completed)": "2018-05-29 12:17 UTC",
+      "Content Saved": "true",
+      "Notes taken on videos (if taken)": "N/A",
+      "": ""
+    }
+  ],
+  "positions": [
+    {
+      "Company Name": "DAT Group",
+      "Title": "Senior Software Developer",
+      "Description": "At DAT, I am involved in rewriting the Java EE backend and Javascript web applications using a modern technology stack.\n\nKey Achievements:\n*   Architecture: Led the transition from SOA to RESTful microservices architecture using Spring Boot.\n*   Modernization: Championed the adoption of JUnit 5, Testcontainers, OpenRewrite, and OpenAPI.\n*   DevOps: Improved deployment frequency from 6 releases/year to Continuous Delivery.\n*   Leadership: Advocated for Monorepo structures and Java Modules; promoted \"Unified Dashboard\" philosophy.\n*   Mentorship: Conducted workshops on REST API design, API-first development, and modern frontend frameworks (React).",
+      "Location": "Ostfildern, Baden-W\u00fcrttemberg, Germany",
+      "Started On": "Sep 2020",
+      "Finished On": ""
+    },
+    {
+      "Company Name": "evia",
+      "Title": "Software Developer",
+      "Description": "Software Developer.\n\nKey Projects:\n*   Insurance (2016-2017): Maintained and developed critical Java EE applications on WebSphere (JSP, iText), ensuring stability for high-value business processes.\n*   Microsoft Delivery (2018): Built company intranet and automated onboarding using SharePoint, Microsoft Flow, and Forms.\n*   Modernization (2018-2020): Migrated modules to microservices (Micronaut/Java EE 8) and Angular 7; implemented CI/CD pipelines.",
+      "Location": "Stuttgart Area, Germany",
+      "Started On": "Feb 2016",
+      "Finished On": "Aug 2020"
+    },
+    {
+      "Company Name": "PRODYNA AG",
+      "Title": "Junior Software Developer",
+      "Description": "Junior Software Developer.\n\nFocus: Liferay Portal development, Java EE 6, MySQL, and frontend integration (AlloyUI, Bootstrap).",
+      "Location": "Stuttgart Area, Germany",
+      "Started On": "Nov 2014",
+      "Finished On": "Jan 2016"
+    },
+    {
+      "Company Name": "Alpine Electronics R&D Europe GmbH",
+      "Title": "Software Developer Internship",
+      "Description": "Software Developer Internship.\n\nFocus: Test Automation Tools (C#, WPF), MVVM pattern implementation, and increasing UI performance for automotive testing frameworks.",
+      "Location": "Stuttgart, Germany",
+      "Started On": "Sep 2012",
+      "Finished On": "Aug 2014"
+    }
+  ],
+  "profile": {
+    "First Name": "Liviu",
+    "Last Name": "Ionesi",
+    "Maiden Name": "",
+    "Address": "",
+    "Birth Date": "Sep 30",
+    "Headline": "Senior Fullstack Developer & Software Architect | 13+ Years Exp. | AI-Native Workflow | Java, Spring Boot, React, Next.js | Cloud & DevOps (Azure, Jenkins) | Enterprise Modernization Specialist",
+    "Summary": "Senior Fullstack Developer and aspiring Software Architect with over 13 years of experience in the Fintech and Automotive sectors. I specialize in \"Enterprise Vibe Coding\"\u2014modernizing legacy systems with an AI-Native workflow that accelerates development, documentation, and refactoring.\n\nCore Value Proposition:\n*   Modernization Expert: Proven track record of migrating SOA/Monoliths to Microservices (Spring Boot) and RESTful architectures.\n*   AI-Native Developer: Leveraging AI tools for efficient code maintenance, refactoring, and quality assurance.\n*   DevOps Champion: Transformed deployment cycles from 6 releases/year to Continuous Delivery using Jenkins, Docker, and Azure DevOps.\n*   Tech Stack: Java EE, Spring Boot, React, Next.js, TypeScript, SQL/NoSQL.\n\nI bridge the gap between robust enterprise requirements and modern, agile development practices, always driven by curiosity and a commitment to quality (TDD, Clean Code).",
+    "Industry": "IT Services and IT Consulting",
+    "Zip Code": "73230",
+    "Geo Location": "Kirchheim unter Teck, Baden-W\u00fcrttemberg, Germany",
+    "Twitter Handles": "",
+    "Websites": "[PORTFOLIO:https://github.com/pehlivanu]",
+    "Instant Messengers": ""
+  },
+  "projects": [
+    {
+      "Title": "Java AWT Image Viewer",
+      "Description": "Used technologies: Java SE, Java AWT. I developed this app during my first year at the ADV Academy. ImageViewer is a Java AWT Application designed to slide show all the photo files starting from a root folder.   Java AWT is far from the possibilities of today frameworks. Things are complicated, the community does not support this technology anymore, most of the functionality needs to be implemented at a low level. But for a rookie, AWT is a good practice. ",
+      "Url": "",
+      "Started On": "May 2012",
+      "Finished On": "Jun 2012"
+    },
+    {
+      "Title": "Scrolling text on the Intel 8085 ECB",
+      "Description": "Used technologies: Intel 8085 Assembly Language.  I developed this app during my first year at the ADV Academy. I have to mention that I was the only one in my class to take the bull by the horns, as my colleagues all wrote essays related to the theme Introduction to Hardware and Software.   This assembly program displays a message on the Siemens ECB board using the direct processor instructions. This board is controlled by a Intel 8085 processor.",
+      "Url": "https://en.wikipedia.org/wiki/Intel_8085",
+      "Started On": "Jun 2012",
+      "Finished On": "Jun 2012"
+    },
+    {
+      "Title": "Alps Blue HF2 Bluetooth Board",
+      "Description": "Used technologies: .Net 4.0, C#, WPF, Design Patterns Programming concepts: ModelView-ViewModel, data binding, thread-safe collections.  The Bluetooth driver module an the corresponding user interface were developed during my internship at Alpine Electronics. The BT-driver is designed to operate an Alps Bluetooth Board for testing Bluetooth capabilities of the head units produced by Alpine. The user interface is built using  WPF and Model View- ViewModel design pattern. The communication bus is the serial (COM) port. This driver tool can simulate a Bluetooth phone connection to another Bluetooth device. It pairs and connects to the Hands free audio gateway service and it can perform incoming and outgoing phone calls.  Managing the list of found BT devices required using of a customized thread safe collection. The .NET 4.0 added BlockingCollection for this sensitive problem. ",
+      "Url": "",
+      "Started On": "Sep 2012",
+      "Finished On": "Nov 2012"
+    },
+    {
+      "Title": "Alpine Curve Editor",
+      "Description": "Used technologies: .Net 4.0, C#, WPF, UML, Software Architecture and Design Patterns. I developed this app during my internship at Alpine Electronics.    I programmed  an abstraction layer that allows to represent voltage curves, some of the filter classes, also reorganized  the format classes on business layer side. I fully realized the presentation layer.  Being the theme of my thesis, covering the second year of study at the ADV Academy, this project got very complex. I had the opportunity to learn how to do things right, starting from planning a software concept that assures integration with other Alpine Projects in one internal testing framework. I learned about Independent Platform Modelling and built many Class diagrams and Use case diagrams for this software module.   This software tool enables the visualization, filtering and editing of a voltage curve. These voltage curve originally are data collections polled with measurement devices. They need to be adapted for the limitations of the power supplies.   Filtering means reducing the thousands of entries in the original file, to a few tens of points written in a manufacturer specific format. A voltage curve can also be defined by the user as a mathematical function.  Implemented functions of this tool: - displaying curves ramp-wise or step-wise, comparing to the originally loaded curve and showing/ hiding the individual points for each curve - zooming and panning for the curve chart - curve filtering, also independently for desired curve parts - manual points editing - undo/ redo of  the changes  - printing a curve - opening and saving curve files with different formats  Some of the design patterns implemented for this tool are the Singleton, the Composite, the Template Method and at last but the most important the Model-View-VievModel.    The thesis documenting this project is written in German and it was evaluated with the note 1.0 by the assigned ADV teacher.  ",
+      "Url": "",
+      "Started On": "Nov 2012",
+      "Finished On": "May 2013"
+    },
+    {
+      "Title": "Kikusui PAX 35-30, PBX 20-20 and PBZ 20-20 programmable power supplies",
+      "Description": "Used technologies: .NET 4.0, C# and WPF.  A programmable power supply can output a voltage curve that varies over time. A voltage curve can simulate special conditions like engine start at very low temperature. Any system integration test bench  needs one or more power supplies. A test bench reproduces a car environment and is used to test various electronic components before they are used in the production lines.   I developed this app during my internship at Alpine Electronics. Serial COM port communication is needed to control the power supplies. The Japanese Alpine branch sent us two devices from the manufacturer Kikusui, the  PAX 35-30 and PBX 20-20. I programmed the driver for PBZ 20-20 and Flavin D'Souza tested it in Japan.   I programed also the UI for all the power supplies modules used at Alpine. ",
+      "Url": "http://www.kikusui.co.jp/en/product/detail.php?IdFamily=0007",
+      "Started On": "Nov 2012",
+      "Finished On": ""
+    },
+    {
+      "Title": "Process Observer for ATAT 2.0",
+      "Description": "Used technologies: C# and .Net 4.0, design patterns Programming concepts:  delegates, Windows registry reading   ATAT 2.0 is able to watch processes/services started on local or remote system. If some program is started via ATAT 2.0, the process observer checks if the process is still running.  If a process crashes, the process observer can start the specific process again. If available, the process starts with the last configuration (test bench layout or project settings), if the process is not restart-able (remote system access restrictions) a notification is send to the class using this process/service so the test can be stopped or test cases can be skipped.  An option how often the specific process is checked is also implemented. ",
+      "Url": "",
+      "Started On": "Apr 2013",
+      "Finished On": "May 2013"
+    },
+    {
+      "Title": "Conversion tool from .CSV format to Excel",
+      "Description": "Used technologies: .Net 4.0, C#, WPF and ModelView-ViewModel design pattern. I developed this tool during my internship at Alpine Electronics R&D Europe. A sleek design and simplicity are the ideas I was guided after into writing this tool. The user can drag and drop a file in the  .csv format (Comma separated values) over the application window. The tool extracts the data values in the file and creates an Excel Workbook. This  workbook contains Excel Worksheets created with a template file.  And these worksheets use the data from the .csv file to fill some fields.  Equally important is the abstraction layer I designed, that allows Alpine SW Engineers to the conversion tool for any conversion from .csv to MS Excel.       ",
+      "Url": "",
+      "Started On": "May 2013",
+      "Finished On": ""
+    },
+    {
+      "Title": "ELV Sup 2 RDS Signal Generator",
+      "Description": "Used technologies: .Net 4.0, C#, WPF, UML, design patterns  I developed this app during my internship at Alpine Electronics R&D Europe.  The RDS Signal Generator is a device driver designed to operate an ELV Sup 2 RDS module for testing radio capabilities of the cars head units. The communication bus is again the serial (COM) port.  The user interface is built using  WPF and Model View-ViewModel design pattern. I implemented a better looking user interface as the original software delivered with the module. ",
+      "Url": "http://www.elv.de/hq-stereo-ukw-pruefgenerator-sup2-komplettbausatz-mit-gehaeuse-ohne-netzteil.html",
+      "Started On": "Jul 2013",
+      "Finished On": ""
+    },
+    {
+      "Title": "Design of presentation layer with WPF for Alpine Test Automation Tool 2.0 modules",
+      "Description": "As I stared my internship at Alpine, I had no knowledge about C# or WPF (Windows Presentation Foundation). I wrote code in C# from the second week at Alpine and learned WPF alone, as my colleagues were as inexperienced as I were. We worked a UI prototype for testing the SW Modules.   After six months, I was trusted with the user interface redesign, from the first prototype. I had to separate the business layer from the presentation layer using the WPF adapted variant of MVC, the ModelView-ViewModel design pattern. So, I wrote proper ViewModels using complex data binding from user interface to the business layer, for almost every device or tool in the Alpine Test Automation Framework. I also redesigned the use interfaces and became very good at editing XML based views.   The modules I reworked are listed here: - Measurement device (multimeter) - MOST and CAN bus devices used for communication inside the car data networks. Used .NET 4.0 Parallel Tasks that make a good use of the processors multi-threading and optimized for the working with tread safe BlockingCollection. - Webcam driver for taking snapshots a filming videos at different resolutions and frames per second rates. It works on the integrated as well as USB connected webcam models  - Audio measurement device is a driver for audio boards that interpolates and displays in a chart the input audio signal, using some scaling and threshold options - Climate chamber used for temperature/humidity tests - GPIB device is a driver for a communication device using the GPIB protocol - Radio signal generator used to radio tests of the Head Units - CD changer robot used to test the integrity of a large CD/DVD collection, where a robot changes the CDs from a Dacal DC-300 automated CD library. - Relay board, a device that is ideal for switching appliances, control switches, valves, lighting and much more. This board makes possible to remote devices over COM port, even not programmable devices.     ",
+      "Url": "",
+      "Started On": "Jan 2013",
+      "Finished On": "May 2013"
+    },
+    {
+      "Title": "Code maintenance in Alpine Test Automation Tool 2.0",
+      "Description": "The Alpine test automation Tool 2.0 is a large framework. Many programmers write code and all have different styles. To maintain a unitary coding style the Alpine System Integration team uses StyleCop.  StyleCop is an open source static code analysis tool from Microsoft that checks C# code for conformance to StyleCop's recommended coding styles and a subset of Microsoft's .NET Framework Design Guidelines. The rules are classified into the following categories:      Documentation     Layout     Maintainability     Naming     Ordering     Readability     Spacing  I always maintained my code and committed StyleCop-ed code.I also repaired warnings for code written by my colleagues and repaired tens of thousands of warnings. This helped me write organized code and document classes with a lot of ease.  ",
+      "Url": "",
+      "Started On": "Sep 2012",
+      "Finished On": "Aug 2014"
+    },
+    {
+      "Title": "Tablet Robot Interface Control = TRIC",
+      "Description": "Used technologies: Java Android SDK, communication over Java Sockets. TRIC is an Android Application that can be used to control an Mitsubishi RV3SB industrial Robot. This robot has a 6 axis moving arm and it's level of precision and control allows it to be programmed to literally write on paper.   The RV3SB can be operated via it's console, or from a PC over an Ethernet connection. We developed the Android App, that allows a tablet to communicate with the PC over W-LAN and to remotely control the robot. We used Android SDK and Eclipse to write this App and started writing code in January 2014. I reworked the TRIC App to work on smartphones.   ",
+      "Url": "",
+      "Started On": "Jan 2014",
+      "Finished On": "May 2014"
+    },
+    {
+      "Title": "Arbitrage betting bot",
+      "Description": "One insomniac burning idea that needed to be tested was to program automated sport betting software, that can collect data from more bookers and identify potential winning using arbitrage.  Arbitrage means you bet all the outcomes of an event and you make profit using quotes differences between two bookers.   I started writing a C# business layer with WPF user interface. Getting the quotes is already done via parsing XML online documents that some bookers are live updating. Identifying the profit generating bets means solving some linear equations using the quotes.  This software project is now under development.    ",
+      "Url": "https://www.youtube.com/watch?v=UXxVaczSz6E",
+      "Started On": "May 2014",
+      "Finished On": "Jun 2014"
+    },
+    {
+      "Title": "Stopwatch Tool",
+      "Description": "Used technologies: .Net 5.0, C#, WPF, design patterns, UML modelling. A important part of any testing framework is the possibility to time test phases using a stopwatch tool.  .NET offers a Stopwatch class, but the usage needed to be eased. I wrote a wrapper class for the .NET Stopwatch that is integrated in the ATAT 2.0 framework. Interacting with this module is permitted through a WPF application, that I also designed using MVVM design pattern and remotely with the help of code reflection. The stopwatch can start, stop, reset and record the timing. A countdown functionality is also implemented.  With this project I got to learn writing unit tests with the NUnit framework, the C# alternative to JUnit, a skill to use in any software development activity.   ",
+      "Url": "",
+      "Started On": "Sep 2013",
+      "Finished On": ""
+    },
+    {
+      "Title": "Reflection of ATAT 2.0 components",
+      "Description": "Used technologies: .Net 5.0, C#, WPF, Design Patterns A lot of the ATAT 2.0 software modules have no dedicated user interface. The framework is designed to be used by people with no programming experience. These modules can be instantiated and their functionality can be invoked remotely, or over the user interface. This is realized using the .NET concept of reflection.   My role was to design a graphical mode of displaying the methods using  their attribute descriptions. An extremely complex data binding was needed in the presentation layer, only possible with the ModelView-ViewModel architectural design pattern. Also a very elaborate reflection mastering was needed to extract the desired information from the classes. ",
+      "Url": "",
+      "Started On": "Jun 2013",
+      "Finished On": "Aug 2013"
+    }
+  ],
+  
+  "recommendations_received": [
+    {
+      "First Name": "Ciprian",
+      "Last Name": "Spiridon",
+      "Company": "Mumzworld.com",
+      "Job Title": "CTPO",
+      "Text": "Liviu is one of the smartest, most dedicated people I've ever met. We have studied together from 2002 to 2006 at the National College of Computer Science \"Spiru Haret\".   Liviu always impressed everyone with his math and engineering skills. His attention to detail is second to none and he's one of the most driven people I've ever met.  I highly recommend Liviu (his work and education do that as well). I would hire him in a heart beat!",
+      "Creation Date": "01/14/16, 02:44 PM",
+      "Status": "VISIBLE"
+    },
+    {
+      "First Name": "Flavin",
+      "Last Name": "D'Souza",
+      "Company": "Alpine Electronics R&D Europe GmbH",
+      "Job Title": "System Integration Engineer",
+      "Text": "Liviu is a very knowledgeable and diligent software developer. His experience with C# programming was very useful for the current project. He is a quick learner and is always ready to find a solution to any problem thrown his way. I would like to wish him all the best for a successful career ahead.",
+      "Creation Date": "07/07/14, 07:50 AM",
+      "Status": "VISIBLE"
+    },
+    {
+      "First Name": "Oana Alexandra",
+      "Last Name": "CIOBANU",
+      "Company": "Safran",
+      "Job Title": "Ing\u00e9nieur",
+      "Text": "Being colleagues during the Bachelor period from 2006 through 2009 we worked together on many projects. I got to know Liviu and especially remark his skills in IT and C programming. I am pleased to recommend Liviu as a patient, hard worker and also exigent person.",
+      "Creation Date": "06/19/14, 06:31 PM",
+      "Status": "VISIBLE"
+    },
+    {
+      "First Name": "Teodor",
+      "Last Name": "Loghin",
+      "Company": "Land of Web",
+      "Job Title": "Co-Founder",
+      "Text": "Liviu was one of the smartest colleagues that I had during high school. Creative, ambitious, with an innate and constant desire to be smarter and with a great sense of humor, Liviu constantly impressed me with his math and programming skills. I would highly recommend him for any position, as he naturally rises to the occasion when presented with something he is passionate about.",
+      "Creation Date": "07/18/13, 01:02 PM",
+      "Status": "VISIBLE"
+    }
+  ],
+  "registration": [
+    {
+      "Registered At": "7/2/13, 1:29 PM",
+      "Registration Ip": "77.3.172.57",
+      "Subscription Types": ""
+    }
+  ],
+  "rich_media": [
+    {
+      "Date/Time": "You uploaded a photo on October 23, 2023 at 12:50 PM (GMT)",
+      "Media Description": " -",
+      "Media Link": "https://media.licdn.com/dms/image/v2/D4E2DAQGC36mKYon7SQ/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1698065433576?e=1764421200&v=beta&t=zpqnfzBgQwbdsurAqFTEGtimYDdy-xBmwD5VsHQcBU8"
+    },
+    {
+      "Date/Time": "You uploaded a profile background photo on October 19, 2023 at 9:40 PM (GMT)",
+      "Media Description": " -",
+      "Media Link": "https://media.licdn.com/dms/image/v2/D4E04AQFUrZTuhLPODA/profile-originalbackgroundimage-shrink_396_1584/profile-originalbackgroundimage-shrink_396_1584/0/1697751624955?e=1765411200&v=beta&t=5a6yHCPZYUMpSJtJfhmNLggHGxOXYIWrPaPt-qOzIyg"
+    },
+    {
+      "Date/Time": "You uploaded a profile background photo on October 19, 2023 at 9:40 PM (GMT)",
+      "Media Description": " -",
+      "Media Link": "https://media.licdn.com/dms/image/v2/D4E16AQFVUBIaK9z8pA/profile-displaybackgroundimage-shrink_200_800/profile-displaybackgroundimage-shrink_200_800/0/1697751626187?e=1765411200&v=beta&t=QRP62rOMeAwJVHiA7nsv2nk7ZaMzCYktxeT-7qC5Q0Y"
+    },
+    {
+      "Date/Time": "You uploaded a document on October 17, 2023 at 10:17 AM (GMT)",
+      "Media Description": " -",
+      "Media Link": "https://media.licdn.com/dms/document/media/v2/D4E2DAQHFLiHSKMxWNQ/profile-treasury-document-pdf-analyzed/profile-treasury-document-pdf-analyzed/0/1697537879702?e=1764421200&v=beta&t=fDLLQhOPVJLahPXya4KI2k_yCWFUxFHvu0MWFqnKE6E"
+    },
+    {
+      "Date/Time": "You uploaded a profile photo on January 5, 2021 at 7:18 AM (GMT)",
+      "Media Description": " -",
+      "Media Link": "https://media.licdn.com/dms/image/v2/C4D03AQEVkrB3a2nJ3w/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1609831118337?e=1765411200&v=beta&t=hH5bNFyKvlUwbyMMiZd4M6n2Eg6WsRjzkKT8kXa4BzY"
+    },
+    {
+      "Date/Time": "You uploaded a photo on March 20, 2020 at 2:58 AM (GMT)",
+      "Media Description": " -",
+      "Media Link": "https://media.licdn.com/dms/image/v2/C5622AQE6bq-u81lTHg/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1584673081108?e=1765411200&v=beta&t=DDhyN9XXE_qB6JJ6aIW9A7fmzDA15tvdLjrNGSHv4-g"
+    },
+    {
+      "Date/Time": "You uploaded a photo on March 14, 2020 at 9:20 PM (GMT)",
+      "Media Description": " -",
+      "Media Link": "https://media.licdn.com/dms/image/v2/C5622AQEWqa0AjaFAmA/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1584220820346?e=1765411200&v=beta&t=blu9_-TsX7i1PHRmKE8PVjwwabxcMwJyRZZrfrB48vQ"
+    },
+    {
+      "Date/Time": "You uploaded a photo on March 4, 2020 at 10:40 PM (GMT)",
+      "Media Description": " -",
+      "Media Link": "https://media.licdn.com/dms/image/v2/C5622AQGLD_bj-PvkOw/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1583361624107?e=1765411200&v=beta&t=RVC6O3MKbxMmbN0Dx5JnvC_SeWbzOO1rJzytdydpw9c"
+    },
+    {
+      "Date/Time": "You uploaded a photo on February 12, 2020 at 10:35 AM (GMT)",
+      "Media Description": " -",
+      "Media Link": "https://media.licdn.com/dms/image/v2/C562DAQFAnStt9EM8MQ/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1598147280716?e=1764421200&v=beta&t=1SQ06RALWXujyYSsuKeiK0yi_uoAtj5hqEPxGUXaNEc"
+    },
+    {
+      "Date/Time": "You uploaded a profile photo on September 21, 2018 at 1:33 PM (GMT)",
+      "Media Description": " -",
+      "Media Link": "https://media.licdn.com/dms/image/v2/C4D04AQFyBAV1rqGEaQ/profile-originalphoto-shrink_900_1200/profile-originalphoto-shrink_900_1200/0/1537536814892?e=1765411200&v=beta&t=WXiWZUEUFMFDHACgGbFzc90XHWyb6v0URLvrX-hCEPA"
+    }
+  ],
+  "skills": [
+    {
+      "Name": "Azure DevOps Services"
+    },
+    {
+      "Name": "Microservices"
+    },
+    {
+      "Name": "SOAP"
+    },
+    {
+      "Name": "Project Management"
+    },
+    {
+      "Name": "Python (Programming Language)"
+    },
+    {
+      "Name": "Service-Oriented Architecture (SOA)"
+    },
+    {
+      "Name": "Microsoft Azure"
+    },
+    {
+      "Name": "IntelliJ IDEA"
+    },
+    {
+      "Name": "Gradle"
+    },
+    {
+      "Name": "Maven"
+    },
+    {
+      "Name": "Jenkins"
+    },
+    {
+      "Name": "Docker"
+    },
+    {
+      "Name": "SharePoint"
+    },
+    {
+      "Name": "IT Consulting"
+    },
+    {
+      "Name": "Product Development"
+    },
+    {
+      "Name": "Agile Software Development"
+    },
+    {
+      "Name": "Backend"
+    },
+    {
+      "Name": "NoSQL"
+    },
+    {
+      "Name": "Software Architecture"
+    },
+    {
+      "Name": "REST APIs"
+    },
+    {
+      "Name": "Unit Testing"
+    },
+    {
+      "Name": "JUnit"
+    },
+    {
+      "Name": "Next.js"
+    },
+    {
+      "Name": "React.js"
+    },
+    {
+      "Name": "MongoDB"
+    },
+    {
+      "Name": "Spring Boot"
+    },
+    {
+      "Name": "Java EE"
+    },
+    {
+      "Name": "Office 365"
+    },
+    {
+      "Name": "Web Development"
+    },
+    {
+      "Name": "Design Patterns"
+    },
+    {
+      "Name": "Network Administration"
+    },
+    {
+      "Name": "HTML"
+    },
+    {
+      "Name": "JavaScript"
+    },
+    {
+      "Name": "CSS"
+    },
+    {
+      "Name": "C#"
+    },
+    {
+      "Name": "WPF"
+    },
+    {
+      "Name": "SQL"
+    },
+    {
+      "Name": "Android SDK"
+    },
+    {
+      "Name": "Git"
+    },
+    {
+      "Name": "Subversion"
+    },
+    {
+      "Name": "JIRA"
+    },
+    {
+      "Name": "Liferay"
+    },
+    {
+      "Name": "Pega PRPC"
+    },
+    {
+      "Name": "Java"
+    }
+  ]
+}

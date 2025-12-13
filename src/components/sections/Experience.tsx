@@ -2,11 +2,12 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Rocket, Briefcase, Code, GraduationCap } from 'lucide-react';
+import { Calendar, Rocket, Briefcase, Code, GraduationCap, Users, MapPin, Building, Globe, ExternalLink } from 'lucide-react';
 import { experience } from '@/data/mockData';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import ReactMarkdown from 'react-markdown';
 import Highlight from '@/components/ui/Highlight';
+import { useSearch } from '@/context/SearchContext';
 
 const getIconByType = (type: string) => {
   switch (type) {
@@ -38,9 +39,15 @@ const getIconBackground = (type: string) => {
   }
 };
 
-import { useSearch } from '@/context/SearchContext';
-
-// ... (imports)
+const getRoleColor = (type: string) => {
+  switch (type) {
+    case 'senior': return 'text-purple-400';
+    case 'mid': return 'text-blue-400';
+    case 'junior': return 'text-green-400';
+    case 'intern': return 'text-orange-400';
+    default: return 'text-blue-400';
+  }
+};
 
 export default function Experience() {
   useScrollSpy('experience');
@@ -48,7 +55,6 @@ export default function Experience() {
 
   return (
     <section id="experience" className="py-20 px-8 max-w-4xl mx-auto">
-      {/* ... (header) */}
       <div className="flex items-center gap-2 mb-12">
         <span className="text-ide-accent font-mono text-xl">02.</span>
         <h2 className="text-3xl font-bold text-ide-text-active">Work Experience</h2>
@@ -58,6 +64,8 @@ export default function Experience() {
       <div className="relative md:border-l-2 md:border-ide-border ml-0 md:ml-6 space-y-8 md:space-y-16">
         {experience.map((job, index) => {
           const isActive = activeMatch?.id === `experience-${job.id}`;
+          const roleColor = getRoleColor(job.type || '');
+          
           return (
             <motion.div 
               key={job.id}
@@ -74,7 +82,6 @@ export default function Experience() {
               </div>
               
               <div className="bg-ide-card-bg p-6 rounded-lg border border-ide-border hover:border-ide-accent/50 transition-colors group relative overflow-hidden">
-                {/* ... (card content) */}
                 {/* Subtle gradient overlay based on role type */}
                 <div className={`absolute top-0 left-0 w-1 h-full opacity-50 ${
                     job.type === 'senior' ? 'bg-purple-500' : 
@@ -82,17 +89,96 @@ export default function Experience() {
                     job.type === 'junior' ? 'bg-green-500' : 'bg-orange-500'
                 }`} />
 
-                <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
-                  <h3 className="text-xl font-bold text-ide-text-active group-hover:text-ide-accent transition-colors">
-                    <Highlight text={job.role} /> <span className="text-ide-accent">@ <Highlight text={job.company} /></span>
-                  </h3>
-                  <div className="flex items-center gap-2 text-sm text-ide-text opacity-80 font-mono">
-                    <Calendar size={14} />
-                    {job.period}
+                <div className="flex flex-col mb-6">
+                  {/* Row 1: Role (Tag Style) */}
+                  <div className="flex flex-col mb-2">
+                      <h3 className="text-xl md:text-2xl font-mono font-bold text-ide-text-active transition-colors flex flex-wrap items-center gap-1">
+                        <span className="text-gray-500 opacity-100 font-bold">&lt;</span>
+                        <span className={`${roleColor}`}>{job.role}</span>
+                        <span className="text-gray-500 opacity-100 font-bold">/&gt;</span>
+                      </h3>
+                  </div>
+
+
+
+                  {/* Row 2: Company and Details (Grid Layout) */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm pl-4 font-mono">
+                      {/* 1. Company Name */}
+                      <a 
+                        href={job.websiteUrl || '#'} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="flex items-center gap-1 text-ide-text hover:text-ide-accent transition-colors group/link w-full truncate"
+                      >
+                          <Briefcase size={12} className="mr-1 shrink-0 opacity-60"/>
+                          <span className="text-ide-keyword opacity-70">company=</span>
+                          <span className="group-hover/link:underline decoration-ide-accent underline-offset-4 truncate">"{job.company}"</span>
+                          <ExternalLink size={10} className="opacity-0 group-hover/link:opacity-100 transition-opacity ml-1 shrink-0" />
+                      </a>
+
+                      {/* 2. Duration */}
+                      <span className="flex items-center gap-1 opacity-60 hover:text-ide-text transition-colors cursor-default" title="Period">
+                          <Calendar size={12} className="mr-1 shrink-0"/>
+                          <span className="text-ide-keyword opacity-70">time=</span>"{job.period}"
+                      </span>
+                      
+                      {/* 3. Industry */}
+                      {job.industry && (
+                        <span className="flex items-center gap-1 opacity-60 hover:text-ide-text transition-colors cursor-default" title="Industry">
+                           <Building size={12} className="mr-1 shrink-0"/>
+                           <span className="text-ide-keyword opacity-70">type=</span>"{job.industry}"
+                        </span>
+                      )}
+
+                      {/* 4. Location */}
+                       {job.locationType && (
+                        <span className="flex items-center gap-1 opacity-60 hover:text-ide-text transition-colors cursor-default" title="Location">
+                           <MapPin size={12} className="mr-1 shrink-0"/>
+                           <span className="text-ide-keyword opacity-70">location=</span>"{job.locationType}"
+                        </span>
+                      )}
+
+                      {/* 5. Size */}
+                      {job.companySize && (
+                        <span className="flex items-center gap-1 opacity-60 hover:text-ide-text transition-colors cursor-default" title="Company Size">
+                          <Users size={12} className="mr-1 shrink-0"/>
+                          <span className="text-ide-keyword opacity-70">size=</span>"{job.companySize}"
+                        </span>
+                      )}
+
+
+                      {/* 6. Dual Study (if applicable) */}
+                      {job.dualStudy && (
+                        <button 
+                          onClick={() => {
+                            const educationElement = document.getElementById('education-1');
+                            if (educationElement) {
+                              educationElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                              // Optional: Add a temporary highlight effect
+                              educationElement.classList.add('ring-2', 'ring-ide-accent');
+                              setTimeout(() => educationElement.classList.remove('ring-2', 'ring-ide-accent'), 2000);
+                            }
+                          }}
+                          className="flex items-center gap-1 opacity-60 hover:opacity-100 hover:text-ide-accent transition-all cursor-pointer group/edu focus:outline-none focus:ring-1 focus:ring-ide-accent rounded px-1 -ml-1" 
+                          title="Click to view Education details"
+                        >
+                          <GraduationCap size={12} className="mr-1 shrink-0 group-hover/edu:scale-110 transition-transform"/>
+                          <span className="text-ide-keyword opacity-70 group-hover/edu:text-ide-accent">education=</span>
+                          <span className="group-hover/edu:underline decoration-ide-accent underline-offset-4">"{job.dualStudy}"</span>
+                          <ExternalLink size={10} className="opacity-0 group-hover/edu:opacity-100 transition-opacity ml-1 shrink-0" />
+                        </button>
+                      )}
                   </div>
                 </div>
                 
                 <div className="text-ide-text mb-6 leading-relaxed text-sm">
+                  {/* Summary Section */}
+                  {job.summary && (
+                    <div className="mb-6 text-base md:text-lg text-ide-text-active italic font-medium px-4 py-3 bg-ide-activity-bar/30 rounded-lg">
+                      {job.summary}
+                    </div>
+                  )}
+
                   <ReactMarkdown
                     components={{
                       p: ({node, ...props}: any) => <p className="mb-4 last:mb-0" {...props} />,

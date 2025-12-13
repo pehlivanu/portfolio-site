@@ -4,62 +4,70 @@ export const experience = [
     type: "senior",
     role: "Senior Software Developer",
     company: "DAT Group",
+    companySize: "501-1,000 employees",
+    industry: "Automotive Software",
+    locationType: "Remote / Hybrid",
+    websiteUrl: "https://www.dat.eu",
     period: "Sep 2020 - Present",
-    description: `
-Spearheading the modernization of enterprise systems and pioneering AI-assisted development workflows.
-
-*   **Legacy Maintenance & Modernization**: Maintained critical legacy systems (**Java EE SOA**, **Oracle SQL**, **JavaScript**) while progressively developing modern replacement services.
-*   **Engineering Excellence**: Designed and implemented a flagship microservice recognized as the **"best documented, tested, and architected"** service in the company's history, setting a new standard for development quality.
-*   **Architectural Analysis**: Analyzed the existing custom gateway implementation, identifying it as an architectural anti-pattern. Proposed a transition to standard **Spring Cloud** components to eliminate latency and complexity.
-*   **Quality Assurance Champion**: Acted as the primary advocate for code quality. Resolved thousands of **SonarQube** issues and enforced strict **IntelliJ inspections**, significantly reducing technical debt.
-    `,
-    tech: ["Java 17+", "Spring Boot", "PrimeReact", "TypeScript", "Docker", "Azure", "Oracle SQL"],
+    summary: `Driving the modernization of the "SilverDAT" ecosystem, the industry standard for automotive data and claims management.`,
+    description: `*   **Architectural Innovation**: Shifted engineering strategy to fully **leverage the Spring Boot ecosystem** instead of maintaining complex "framework-agnostic" anti-patterns. Introduced **OpenRewrite** and **Renovate** for automated maintenance, and standardized on **JUnit 5 & MockMvc**. Promoted **Contract-First** development for parallel FE/BE work. Achieved **Continuous Delivery** for new projects, while optimizing the quarterly feature release cycle for legacy software.
+*   **Engineering Excellence**: Advocated for **Monorepo** structures and **Java Modules** to organize legacy code, while promoting a "Unified Dashboard" approach over micro-frontends to ensure integrated testing and cohesion.
+*   **API Management**: Advocated for standardizing public API management using **OpenAPI**, ensuring clear contracts and easier integration for partners.
+*   **Frontend Revamp**: Rebuilt legacy JS applications using **React and TypeScript**, delivering a modern, responsive user experience for our clients.
+*   **AI-Enhanced Modernization**: Leveraged AI tools to document, refactor, and optimize critical legacy Java EE components, while debugging and testing within **IntelliJ IDEA**.
+*   **DevOps Integration**: Standardized local development using **Docker Compose** and **Testcontainers**, while advocating for standard **Kubernetes** backend deployments and **Vercel** for frontend.`,
+    tech: ["Java 17+", "Spring Boot", "Spring Cloud", "React", "TypeScript", "Docker", "Kubernetes", "OpenRewrite", "Renovate", "JUnit 5", "MockMvc"],
   },
   {
     id: 2,
     type: "mid",
-    role: "Software Developer",
-    company: "evia",
+    role: "Mid Software Developer",
+    company: "evia solutions GmbH",
+    companySize: "51-200 employees",
+    industry: "IT Services & Consulting",
+    locationType: "On-site",
+    websiteUrl: "https://www.evia.de",
     period: "Feb 2016 - Aug 2020",
-    description: `
-Delivered critical software solutions for the insurance and fintech sectors, focusing on stability and process automation.
-
-*   **Microservices Adoption**: Pioneered the transition of legacy modules to microservice architectures using **Micronaut** and **Docker**, enhancing system scalability.
-*   **Enterprise Java**: Maintained and expanded complex **Java EE** applications running on IBM WebSphere, ensuring high availability for insurance clients.
-*   **Process Automation**: Developed custom intranet solutions and automated business workflows using **Microsoft SharePoint** and Power Automate.
-*   **Agile Delivery**: Collaborated in cross-functional agile teams to deliver incremental value, utilizing Jira and Confluence for transparent project management.
-    `,
-    tech: ["Java EE", "Micronaut", "Angular", "SharePoint", "SQL", "IBM WebSphere"],
+    summary: `Delivered critical digital solutions for the Insurance and Automotive sectors.`,
+    description: `*   **Legacy System Scaling**: Maintained and developed core **WebSphere Java EE (JSP)** applications. This critical work provided the stable revenue stream that supported the company's hyper-growth from 16 to 200+ employees.
+*   **Backend Development**: Developed high-performance integration services for major **Banking** clients using **Java EE** and **Micronaut**, collaborating with external frontend teams for seamless B2B data exchange.
+*   **Microsoft Solutions Implementation**: Served as the primary developer for the new "Microsoft Delivery" unit. Implemented enterprise intranets and process automation using **SharePoint** and **Microsoft Flow**, translating strategic requirements into functional automated workflows.
+*   **Frontend Expertise & Certifications**: Got certified in BPM as **Pega CSA** and started my Microsoft certification path with frontend certification for **HTML5, CSS3, and JavaScript**. Applied this knowledge to maintain and enhance various web interfaces.`,
+    tech: ["Java EE", "Micronaut", "WebSphere", "SharePoint", "Microsoft Flow", "Pega CSA", "HTML5/CSS3/JS"],
   },
   {
     id: 3,
     type: "junior",
-    role: "Junior Software Developer & Consultant",
+    role: "Junior Software Developer",
     company: "PRODYNA AG",
+    companySize: "201-500 employees",
+    industry: "IT Consulting",
+    locationType: "On-site / Travel",
+    websiteUrl: "https://www.prodyna.com",
     period: "Nov 2014 - Jan 2016",
-    description: `
-Provided expert technical consultancy for enterprise portal solutions, bridging the gap between business requirements and technical implementation.
-
-*   **Portal Development**: Engineered custom enterprise portals using **Liferay** and Java EE, tailoring solutions to specific client needs.
-*   **Full Stack Implementation**: Developed end-to-end features using Java for backend logic and HTML/CSS/JavaScript for frontend customization.
-*   **Quality Assurance**: Integrated **SonarQube** into the build process to maintain high code quality and reduce technical debt from the start.
-    `,
-    tech: ["Java EE", "Liferay", "MySQL", "JavaScript", "Jenkins", "Scrum"],
+    summary: `Provided expert IT consultancy for enterprise portals.`,
+    description: `*   **Enterprise Portals**: Developed and deployed complex **Liferay** portal solutions for large-scale clients, utilizing **Java EE**, **MySQL**, and **AlloyUI**.
+*   **Agile Delivery**: Collaborated in SCRUM teams to deliver high-quality software increments, utilizing **Jira** and **Confluence** for transparent project tracking.
+*   **Quality Assurance**: Integrated **SonarQube** into the build process to ensure code quality and maintainability from day one.
+*   **Certifications Achieved**: Validated core expertise by earning **Oracle Certified Professional Java Programmer (OCPJP)** and **Oracle Certified Expert Web Component Developer (OCE WCD)**.`,
+    tech: ["Java EE", "Liferay", "MySQL", "AlloyUI", "SonarQube", "OCPJP", "OCE WCD"],
   },
   {
     id: 4,
     type: "intern",
-    role: "Software Developer (Dual Studies)",
+    role: "Internship in Software Development",
     company: "Alpine Electronics R&D Europe",
+    companySize: "1,000+ employees",
+    industry: "Automotive Electronics",
+    locationType: "On-site",
+    websiteUrl: "https://www.alpine.de/",
+    dualStudy: "ADV Böblingen",
     period: "Sep 2012 - Aug 2014",
-    description: `
-Completed a rigorous Dual Studies program combining academic excellence with hands-on automotive software engineering.
-
-*   **Test Automation**: Designed and built modular test automation frameworks for automotive infotainment systems using **C#** and **WPF**.
-*   **UI Engineering**: Developed complex desktop user interfaces implementing the **MVVM** pattern for real-time data visualization and device control.
-*   **Thesis Excellence**: Authored a top-grade thesis on software architecture and design patterns, documenting the development of critical testing tools.
-    `,
-    tech: ["C#", ".NET", "WPF", "UML", "Design Patterns", "Automotive"],
+    summary: `Engineered critical test automation tools for next-gen automotive infotainment systems.`,
+    description: `*   **Framework Development**: Designed and implemented the "Alpine Curve Editor" and other modules for the **Alpine Test Automation Tool**. Refactored the entire frontend using **MVC** pattern, rearranged the UI prototype, and significantly improved software quality using **StyleCop**.
+*   **Innovation**: Developed a "Tablet Robot Interface Control" (TRIC) app using **Android SDK**, enabling remote control of industrial robots for touch-screen testing.
+*   **Thesis Excellence**: Awarded top grade (1.0) for the thesis on "Alpine Curve Editor", recognizing the architectural robustness and utility of the tool.`,
+    tech: ["C#", ".NET", "WPF", "MVC", "StyleCop", "Android SDK"],
   },
 ];
 
@@ -127,7 +135,7 @@ export const hero = {
   name: "Liviu",
   suffix: ".io",
   lastName: "IONESI",
-  description: "Transitioning from robust Java EE architectures to the dynamic world of Spring Boot paired to performant UI frameworks and AI-accelerated prototyping.",
+  description: "Senior Fullstack Architect & Engineer | Enterprise Vibe Coder. Building the digital backbone of the Automotive and Fintech industries. Pioneering a new standard in software delivery by fusing enterprise-grade rigor with the speed of AI-integrated IDEs.",
   ctaPrimary: "Projects, not just code",
   ctaSecondary: "Contact Me"
 };
