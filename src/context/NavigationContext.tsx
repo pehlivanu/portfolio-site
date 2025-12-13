@@ -8,8 +8,9 @@ interface NavigationContextType {
   activeSection: Section;
   setActiveSection: (section: Section) => void;
   scrollToSection: (section: Section, itemId?: string) => void;
-  isContactVisible: boolean;
-  setContactVisible: (visible: boolean) => void;
+  activeRightPanel: 'contact' | 'bio' | null;
+  openRightPanel: (view: 'contact' | 'bio') => void;
+  closeRightPanel: () => void;
   contactStatus: 'pending' | 'sent';
   setContactStatus: (status: 'pending' | 'sent') => void;
   zoomLevel: number;
@@ -20,13 +21,16 @@ const NavigationContext = createContext<NavigationContextType | undefined>(undef
 
 export function NavigationProvider({ children }: { children: ReactNode }) {
   const [activeSection, setActiveSection] = useState<Section>('about');
-  const [isContactVisible, setContactVisible] = useState(false);
+  const [activeRightPanel, setActiveRightPanel] = useState<'contact' | 'bio' | null>(null);
   const [contactStatus, setContactStatus] = useState<'pending' | 'sent'>('pending');
   const [zoomLevel, setZoomLevel] = useState(100);
 
+  const openRightPanel = (view: 'contact' | 'bio') => setActiveRightPanel(view);
+  const closeRightPanel = () => setActiveRightPanel(null);
+
   const scrollToSection = (section: Section, itemId?: string) => {
     if (section === 'contact') {
-      setContactVisible(true);
+      openRightPanel('contact');
       // Small delay to allow render before scrolling
       setTimeout(() => {
         const element = document.getElementById(section);
@@ -55,7 +59,18 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <NavigationContext.Provider value={{ activeSection, setActiveSection, scrollToSection, isContactVisible, setContactVisible, contactStatus, setContactStatus, zoomLevel, setZoomLevel }}>
+    <NavigationContext.Provider value={{ 
+      activeSection, 
+      setActiveSection, 
+      scrollToSection, 
+      activeRightPanel, 
+      openRightPanel, 
+      closeRightPanel,
+      contactStatus, 
+      setContactStatus, 
+      zoomLevel, 
+      setZoomLevel 
+    }}>
       {children}
     </NavigationContext.Provider>
   );

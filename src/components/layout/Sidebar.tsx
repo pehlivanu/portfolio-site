@@ -16,11 +16,14 @@ interface SidebarProps {
 
 export default function Sidebar({ activeView, setActiveView, isOpen = false, onClose }: SidebarProps) {
   const { theme, toggleTheme } = useTheme();
-  const { isContactVisible, setContactVisible, scrollToSection } = useNavigation();
+  const { activeRightPanel, openRightPanel, closeRightPanel, scrollToSection } = useNavigation();
 
   const handleContactClick = () => {
-    // Toggle the right sidebar (Antigravity Agent View)
-    setContactVisible(!isContactVisible);
+    if (activeRightPanel === 'contact') {
+      closeRightPanel();
+    } else {
+      openRightPanel('contact');
+    }
     if (onClose && window.innerWidth < 768) {
        onClose();
     }
@@ -81,7 +84,7 @@ export default function Sidebar({ activeView, setActiveView, isOpen = false, onC
           <Linkedin size={24} strokeWidth={1.5} />
         </button>
         <button 
-          className={`p-2 cursor-pointer ${isContactVisible ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
+          className={`p-2 cursor-pointer ${activeRightPanel === 'contact' ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
           title="Contact Me"
           aria-label="Contact Me"
           onClick={handleContactClick}

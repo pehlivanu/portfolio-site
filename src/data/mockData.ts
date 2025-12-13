@@ -162,12 +162,37 @@ export const projects = [
   },
 ];
 
+
+export const linkedInProfile = {
+  name: "Liviu Ionesi",
+  headline: "Full Stack Developer | Java | Spring Boot | Next.js",
+  location: "Kirchheim unter Teck, Germany",
+  connections: "500+",
+  about: "Building the digital backbone of the Automotive and Fintech industries. With over 13 years of experience engineering high-performance distributed systems, I specialize in modernizing legacy architectures and delivering scalable, cloud-native solutions.",
+  fullBio: `### **Building the digital backbone of the Automotive and Fintech industries.**
+
+With over 13 years of experience engineering high-performance distributed systems, I specialize in modernizing legacy architectures and delivering scalable, cloud-native solutions. My journey has taken me from developing critical test automation frameworks for **Alpine Electronics** to innovating in the digital transformation of automotive data platforms at **DAT Group**.
+
+I bridge the gap between complex backend logic and intuitive frontend experiences. My expertise lies in:
+
+  * **Architectural Modernization and Performance**: Advocating for the migration of monolithic **Java EE** systems to **Microservices** (Spring Boot, Azure) and best practices in frontend (Next.js), significantly improving system resilience and scalability.
+  * **Full-Stack Excellence**: Crafting responsive, user-centric interfaces with **React, Next.js, and TypeScript**, backed by robust **Java 21** APIs.
+  * **DevOps & Quality Culture**: Championing **TDD**, and a "Set and Forget" CI/CD automation philosophy (Azure, GitHub Actions, Vercel), mentoring teams to adopt **"Clean Code"** principles.
+  * **Enterprise Vibe Coding**: Pioneering a new standard in software delivery by fusing enterprise-grade rigor (Epics, Stories, TDD, CI/CD) with the speed of AI-integrated IDEs (**Cursor, Windsurf, Antigravity**). I apply this not just to greenfield projects, but to modernize, document, and refactor complex legacy EE monoliths, ensuring continuous improvement and technical debt reduction.
+
+---
+*Currently seeking Remote or Hybrid opportunities where I can leverage my architectural insight and AI-enhanced workflow to solve complex engineering challenges.*`,
+  avatarUrl: "/images/linkedin-profile.png",
+  skills: ["Java", "Spring Boot", "Spring Cloud", "React", "Next.js", "Azure", "Docker", "Kubernetes", "SQL/NoSQL", "IntelliJ IDEA", "AI Tools (Cursor, Windsurf, Antigravity, MCP)"]
+};
+
 export const about = {
   greeting: "~/developer/portfolio",
   name: "Liviu",
   suffix: ".io",
   lastName: "IONESI",
   description: "Senior Fullstack Architect & Engineer | Enterprise Vibe Coder. Building the digital backbone of the Automotive and Fintech industries. Pioneering a new standard in software delivery by fusing enterprise-grade rigor with the speed of AI-integrated IDEs.",
+  fullBio: linkedInProfile.fullBio,
   ctaPrimary: "Projects, not just code",
   ctaSecondary: "Contact Me"
 };

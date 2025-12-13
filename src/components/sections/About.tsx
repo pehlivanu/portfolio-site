@@ -7,11 +7,11 @@ import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useNavigation } from '@/context/NavigationContext';
 import { about } from '@/data/mockData';
 
-// ... (keep existing code strings)
+
 
 export default function About() {
   useScrollSpy('about');
-  const { scrollToSection } = useNavigation();
+  const { scrollToSection, openRightPanel } = useNavigation();
   const [isJava, setIsJava] = useState(true);
 
   useEffect(() => {
@@ -25,39 +25,46 @@ export default function About() {
     <section id="about" className="min-h-[80vh] flex flex-wrap items-center justify-center p-8 gap-12 max-w-7xl mx-auto w-full">
       <div className="flex-1 min-w-[340px] md:min-w-[600px] space-y-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center gap-2 text-ide-accent mb-2">
+            <div className="flex items-center gap-2 text-ide-accent mb-2">
             <Terminal size={20} />
             <span className="font-mono text-sm">{about.greeting}</span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-ide-text-active mb-4">
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-ide-text-active mb-4">
             {about.name} <span className="text-ide-accent">{about.suffix}</span><span className="text-orange-400 font-semibold text-xl max-w-lg leading-relaxed">{about.lastName}</span>
-          </h1>
-          <p className="text-xl text-ide-text max-w-lg leading-relaxed">
+            </h1>
+            <div className="text-xl text-ide-text max-w-lg leading-relaxed">
             {about.description}
-          </p>
+            <button 
+                onClick={() => openRightPanel('bio')}
+                className="text-ide-accent hover:underline ml-2 font-medium text-base inline-flex items-center gap-1"
+            >
+                Start Reading...
+            </button>
+            </div>
         </motion.div>
 
         <div className="flex gap-4">
-          <button 
+            <button 
             onClick={() => scrollToSection('projects')}
             className="px-6 py-3 bg-ide-accent hover:bg-blue-600 text-white rounded-md font-medium transition-colors flex items-center gap-2"
-          >
+            >
             <Code size={18} /> {about.ctaPrimary}
-          </button>
-          <button 
+            </button>
+            <button 
             onClick={() => scrollToSection('contact')}
             className="px-6 py-3 border border-ide-border hover:bg-ide-activity-bar text-ide-text rounded-md font-medium transition-colors"
-          >
+            >
             {about.ctaSecondary}
-          </button>
+            </button>
         </div>
       </div>
 
       <div className="flex-1 w-full max-w-xl min-w-[340px] md:min-w-[500px]">
+        {/* ... (keep Right Side content same) */}
         <div className="rounded-lg overflow-hidden border border-ide-border bg-ide-bg shadow-2xl">
           <div className="flex items-center justify-between px-4 py-2 bg-ide-sidebar border-b border-ide-border">
             <div className="flex items-center gap-2">

@@ -14,8 +14,12 @@ import { useNavigation } from '@/context/NavigationContext';
 export default function IDELayout({ children }: { children: React.ReactNode }) {
   const [activeSidebarView, setActiveSidebarView] = useState<'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | null>('explorer');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { zoomLevel, setZoomLevel, isContactVisible, setContactVisible } = useNavigation();
+  const { zoomLevel, setZoomLevel, activeRightPanel, closeRightPanel } = useNavigation();
   const [isMobile, setIsMobile] = useState(false);
+  // Import needs to be top level, adding it here for context:
+  // import { linkedInProfile } from '@/data/mockData';
+  // import ReactMarkdown from 'react-markdown';
+  // We need to add these imports at the top of the file.
 
   useEffect(() => {
     const checkMobile = () => {
@@ -94,30 +98,44 @@ export default function IDELayout({ children }: { children: React.ReactNode }) {
                 </main>
               </div>
 
-              {/* Right Sidebar (Contact Me / Agent View) */}
+              {/* Right Sidebar (Generic: Contact Me / Bio) */}
               <div 
                 className={`
                   fixed inset-y-0 right-0 z-40 bg-ide-sidebar border-l border-ide-border shadow-xl 
                   transition-all duration-300 ease-in-out transform
-                  ${isContactVisible ? 'translate-x-0' : 'translate-x-full'}
+                  ${activeRightPanel ? 'translate-x-0' : 'translate-x-full'}
                   md:relative md:translate-x-0 md:shadow-none md:inset-auto
-                  ${isContactVisible ? 'w-full md:w-[450px]' : 'w-0 border-none'}
+                  ${activeRightPanel ? 'w-full md:w-[450px]' : 'w-0 border-none'}
                 `}
               >
                 <div className="h-full w-full overflow-hidden flex flex-col">
-                   {isContactVisible && (
+                   {activeRightPanel && (
                      <>
-                       <div className="flex items-center justify-between p-3 border-b border-ide-border/30 bg-ide-title-bar">
-                          <span className="text-xs font-bold text-ide-text tracking-wider uppercase">Contact Me</span>
+                       {/* Header - Height 36px (h-9) to match Tabs and Left Sidebar Header */}
+                       <div className="h-9 flex items-center justify-between px-3 bg-ide-sidebar border-b border-ide-border/30">
+                          <span className="text-xs font-bold text-ide-text tracking-wider uppercase">
+                            {activeRightPanel === 'contact' ? 'Contact Me' : 'Biography'}
+                          </span>
                           <button 
-                            onClick={() => setContactVisible(false)}
-                            className="text-ide-text hover:text-ide-text-active"
+                            onClick={closeRightPanel}
+                            className="text-ide-text hover:text-ide-text-active p-1 hover:bg-ide-activity-bar rounded"
                           >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
                           </button>
                        </div>
-                       <div className="flex-1 overflow-y-auto">
-                         <ContactPanel />
+                       
+                       <div className="flex-1 overflow-y-auto bg-ide-sidebar">
+                         {activeRightPanel === 'contact' ? (
+                           <ContactPanel />
+                         ) : (
+                           <div className="p-6 prose prose-invert max-w-none text-sm">
+                              {/* We need to dynamically import these component to avoid circular Deps or just inline the content. 
+                                  Better to render children or specific component. 
+                                  For now I am inlining the Bio render logic here or checking how to access profile data 
+                              */}
+                              <BioPanel />
+                           </div>
+                         )}
                        </div>
                      </>
                    )}
@@ -131,5 +149,27 @@ export default function IDELayout({ children }: { children: React.ReactNode }) {
         </div>
       </div>
     </div>
+  );
+}
+
+// Helper Component for Bio
+import { linkedInProfile } from '@/data/mockData';
+import ReactMarkdown from 'react-markdown';
+
+function BioPanel() {
+  return (
+    <ReactMarkdown
+        components={{
+            h3: ({node, ...props}) => <h3 className="text-lg font-bold text-ide-text-active mt-8 mb-6 leading-relaxed" {...props} />,
+            p: ({node, ...props}) => <p className="text-ide-text mb-4 leading-relaxed" {...props} />,
+            ul: ({node, ...props}) => <ul className="list-disc pl-5 mb-4 text-ide-text space-y-2" {...props} />,
+            li: ({node, ...props}) => <li className="pl-1 leading-relaxed" {...props} />,
+            strong: ({node, ...props}) => <strong className="text-ide-text-active font-semibold" {...props} />,
+            hr: ({node, ...props}) => <hr className="border-ide-border my-8" {...props} />,
+            em: ({node, ...props}) => <em className="text-ide-text opacity-90 italic block mt-4" {...props} />,
+        }}
+    >
+        {linkedInProfile.fullBio}
+    </ReactMarkdown>
   );
 }

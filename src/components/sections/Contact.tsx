@@ -9,33 +9,21 @@ import ContactForm from './ContactForm';
 
 export default function Contact() {
   useScrollSpy('contact');
-  const { isContactVisible, setContactVisible } = useNavigation();
+  const { activeRightPanel, closeRightPanel } = useNavigation();
   const sectionRef = React.useRef<HTMLElement>(null);
   
   useEffect(() => {
-    if (!isContactVisible || !sectionRef.current) return;
+    if (activeRightPanel !== 'contact' || !sectionRef.current) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // Only hide if we are scrolling away (it was visible, now it's not)
-        // We check if it's NOT intersecting
         if (!entry.isIntersecting) {
-           // We need a small delay or check to ensure we didn't just open it
-           // But since we scroll to it immediately after opening, it should be fine.
-           // However, if the user opens it and it's already off-screen (unlikely with scrollIntoView), it might close.
-           // The main issue is that scrollIntoView takes time.
-           // Let's rely on the fact that we scroll to it.
-           
-           // Actually, simpler logic: if it leaves the viewport, hide it.
-           // But we need to make sure it doesn't hide immediately upon mounting if it's slightly off.
-           // IntersectionObserver fires initially.
+           // Logic for when it leaves viewport
         }
       },
       { threshold: 0.1 } 
     );
     
-    // We actually want to detect when it *leaves* the viewport.
-    // So we track if it has *entered* first?
     let hasEntered = false;
 
     const scrollObserver = new IntersectionObserver(
@@ -44,10 +32,10 @@ export default function Contact() {
                 hasEntered = true;
             } else if (hasEntered) {
                 // It was visible, now it's gone. Hide it.
-                setContactVisible(false);
+                closeRightPanel();
             }
         },
-        { threshold: 0 } // Trigger as soon as one pixel is visible/invisible
+        { threshold: 0 } 
     );
 
     scrollObserver.observe(sectionRef.current);
@@ -55,11 +43,11 @@ export default function Contact() {
     return () => {
         if (sectionRef.current) scrollObserver.unobserve(sectionRef.current);
     };
-  }, [isContactVisible, setContactVisible]);
+  }, [activeRightPanel, closeRightPanel]);
   
   return (
     <AnimatePresence>
-      {isContactVisible && (
+      {activeRightPanel === 'contact' && (
         <motion.section 
             id="contact" 
             ref={sectionRef}
