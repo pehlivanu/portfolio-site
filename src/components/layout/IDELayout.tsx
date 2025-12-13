@@ -154,10 +154,13 @@ export default function IDELayout({ children }: { children: React.ReactNode }) {
 }
 
 // Helper Component for Bio
-import { linkedInProfile } from '@/data/mockData';
 import ReactMarkdown from 'react-markdown';
+import { useLanguage } from '@/context/LanguageContext';
 
 function BioPanel() {
+  const { data } = useLanguage();
+  const { linkedInProfile } = data;
+
   return (
     <ReactMarkdown
         components={{

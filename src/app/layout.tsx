@@ -3,11 +3,12 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import IDELayout from "@/components/layout/IDELayout";
 import { NavigationProvider } from "@/context/NavigationContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { SearchProvider } from "@/context/SearchContext";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { WebVitals } from "@/components/performance/WebVitals";
+import WebVitals from "@/components/performance/WebVitals";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -35,14 +36,16 @@ export default function RootLayout({
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-ide-bg text-ide-text overflow-hidden`}
       >
         <ThemeProvider>
-          <SearchProvider>
-            <NavigationProvider>
-              <IDELayout>{children}</IDELayout>
-              <Analytics />
-              <SpeedInsights />
-              <WebVitals />
-            </NavigationProvider>
-          </SearchProvider>
+          <LanguageProvider>
+            <SearchProvider>
+              <NavigationProvider>
+                <IDELayout>{children}</IDELayout>
+                <Analytics />
+                <SpeedInsights />
+                <WebVitals />
+              </NavigationProvider>
+            </SearchProvider>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -5,14 +5,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Terminal, Code, Coffee, Zap } from 'lucide-react';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useNavigation } from '@/context/NavigationContext';
-import { about } from '@/data/mockData';
+import { useLanguage } from '@/context/LanguageContext';
 import Highlight from '@/components/ui/Highlight';
 
 
 
 export default function About() {
   useScrollSpy('about');
-  const { scrollToSection, openRightPanel } = useNavigation();
+  const { openRightPanel, scrollToSection } = useNavigation();
+  const { data, t } = useLanguage();
+  const { about } = data;
   const [isJava, setIsJava] = useState(true);
 
   useEffect(() => {

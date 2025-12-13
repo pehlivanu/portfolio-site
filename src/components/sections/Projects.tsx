@@ -6,6 +6,7 @@ import { Folder, Github, ExternalLink, Code, Leaf, Triangle, Atom } from 'lucide
 import { projects } from '@/data/mockData';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useSearch } from '@/context/SearchContext';
+import { useLanguage } from '@/context/LanguageContext';
 import Highlight from '@/components/ui/Highlight';
 
 const getProjectIcon = (tech: string[]) => {
@@ -17,6 +18,8 @@ const getProjectIcon = (tech: string[]) => {
 
 export default function Projects() {
   useScrollSpy('projects');
+  const { data } = useLanguage();
+  const { projects } = data;
   const { activeMatch } = useSearch();
 
   return (

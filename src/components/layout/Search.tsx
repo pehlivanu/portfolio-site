@@ -3,12 +3,14 @@
 import React, { useState, useEffect } from 'react';
 import { Search as SearchIcon, ChevronRight, ChevronDown, X } from 'lucide-react';
 import { useSearch } from '@/context/SearchContext';
-import { experience, education, projects, about } from '@/data/mockData';
+import { useLanguage } from '@/context/LanguageContext';
 import { useNavigation } from '@/context/NavigationContext';
 
 export default function Search({ onClose, isMobile }: { onClose?: () => void, isMobile?: boolean }) {
-  const { searchTerm, setSearchTerm, setActiveMatch } = useSearch();
+  const { searchTerm, setSearchTerm, activeMatch, setActiveMatch } = useSearch();
   const { scrollToSection } = useNavigation();
+  const { data, t } = useLanguage();
+  const { experience, education, projects, about } = data;
   interface SearchResult {
     type: string;
     title: string;
@@ -90,12 +92,12 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
     }
 
     // Search Contact
-    const contactText = "Get In Touch Whether you have a question, a project proposal, or just want to say hi, I'll try my best to get back to you!";
+    const contactText = t('contactIntro');
     if (contactText.toLowerCase().includes(term)) {
       newResults.push({
         type: 'contact',
         title: 'Contact',
-        subtitle: 'Get In Touch',
+        subtitle: t('getInTouch'),
         section: 'contact',
         id: 'contact'
       });

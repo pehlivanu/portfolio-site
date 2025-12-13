@@ -1,10 +1,11 @@
 "use client";
 
 import React from 'react';
-import { Files, Search, Play, LayoutGrid, Settings, Github, Linkedin, Sun, Moon } from 'lucide-react';
+import { Files, Search, Play, LayoutGrid, Settings, Github, Linkedin, Sun, Moon, Globe } from 'lucide-react';
 
 import { useTheme } from '@/context/ThemeContext';
 import { useNavigation } from '@/context/NavigationContext';
+import { useLanguage, Language } from '@/context/LanguageContext';
 import Link from 'next/link';
 
 interface SidebarProps {
@@ -17,6 +18,7 @@ interface SidebarProps {
 export default function Sidebar({ activeView, setActiveView, isOpen = false, onClose }: SidebarProps) {
   const { theme, toggleTheme } = useTheme();
   const { activeRightPanel, openRightPanel, closeRightPanel, scrollToSection } = useNavigation();
+  const { language, setLanguage } = useLanguage();
 
   const handleContactClick = () => {
     if (activeRightPanel === 'contact') {
@@ -32,6 +34,12 @@ export default function Sidebar({ activeView, setActiveView, isOpen = false, onC
   const handleViewClick = (view: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact') => {
     setActiveView(activeView === view ? null : view);
     if (onClose) onClose();
+  };
+
+  const toggleLanguage = () => {
+    const langs: Language[] = ['en', 'de', 'ro', 'fr'];
+    const nextIndex = (langs.indexOf(language) + 1) % langs.length;
+    setLanguage(langs[nextIndex]);
   };
 
   return (
@@ -93,6 +101,15 @@ export default function Sidebar({ activeView, setActiveView, isOpen = false, onC
         </button>
       </div>
       <div className="flex flex-col gap-4">
+        <button 
+          className="p-2 cursor-pointer text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100 relative" 
+          onClick={toggleLanguage}
+          title={`Switch Language (Current: ${language.toUpperCase()})`}
+          aria-label="Switch Language"
+        >
+          <Globe size={24} strokeWidth={1.5} />
+          <span className="absolute bottom-0 right-0 text-[10px] font-bold bg-ide-bg rounded px-0.5 leading-none shadow-sm">{language.toUpperCase()}</span>
+        </button>
         <button 
           className="p-2 cursor-pointer text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100" 
           onClick={toggleTheme}
