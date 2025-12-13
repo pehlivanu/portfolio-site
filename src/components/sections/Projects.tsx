@@ -45,7 +45,7 @@ export default function Projects() {
               <div className="p-6 flex flex-col h-full">
                 {/* Header: Project Icon + Links */}
                 <div className="flex justify-between items-start mb-6">
-                    <div className="p-2 bg-ide-bg/50 rounded-lg border border-ide-border/50">
+                    <div className="p-2 bg-ide-bg rounded-lg border border-ide-border/50">
                         {getProjectIcon(project.tech)}
                     </div>
                     
@@ -75,29 +75,33 @@ export default function Projects() {
                 <div className="mb-4">
                      <h3 className="text-xl font-mono font-bold text-ide-text-active transition-colors flex flex-wrap items-center gap-1">
                         <span className="text-gray-500 opacity-100 font-bold">&lt;</span>
-                        <span className="text-blue-400">{project.title}</span>
+                        <span className="text-blue-400 [.light-theme_&]:text-blue-700">{project.title}</span>
                         <span className="text-gray-500 opacity-100 font-bold">/&gt;</span>
                      </h3>
                 </div>
 
                 {/* Description */}
-                <div className="text-ide-text mb-6 text-sm leading-relaxed flex-1 font-mono">
-                   <p className="opacity-90">{project.description}</p>
+                <div className="text-ide-text mb-6 text-sm leading-relaxed flex-1 font-mono bg-ide-bg p-4 rounded-md border border-ide-border/50">
+                   <p className="text-ide-text/90">{project.description}</p>
                 </div>
 
                 {/* Tech Stack Metadata Style */}
-                <div className="mt-auto pt-4 border-t border-ide-border/30">
-                     <div className="font-mono text-xs text-ide-text opacity-80 flex flex-col gap-2">
+                <div className="mt-6 pt-4 border-t border-ide-border/50">
+                     <div className="font-mono text-xs text-ide-text flex flex-col gap-2 bg-ide-bg p-3 rounded-md border border-ide-border/50">
+                        {/* Stack: Styled as an array */}
                         <div className="flex flex-wrap items-center gap-1">
                             <Code size={14} className="mr-1 text-ide-accent shrink-0" />
-                             <span className="text-ide-keyword opacity-70">stack=</span>
-                             <span className="text-ide-text-active opacity-80">[</span>
+                             <span className="text-ide-keyword">stack=</span>
+                             <span className="text-ide-text-active">[</span>
                              {project.tech.map((t, i) => (
-                                 <span key={t} className="hover:text-ide-text-active transition-colors">
-                                     "{t}"{i < project.tech.length - 1 ? ',' : ''}
+                                 <span key={t}>
+                                     <span className="hover:text-ide-text-active transition-colors">
+                                         "{t}"
+                                     </span>
+                                     {i < project.tech.length - 1 && <span className="text-ide-text-active">, </span>}
                                  </span>
                              ))}
-                             <span className="text-ide-text-active opacity-80">]</span>
+                             <span className="text-ide-text-active">]</span>
                         </div>
                      </div>
                 </div>

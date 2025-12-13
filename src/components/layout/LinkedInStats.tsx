@@ -31,7 +31,7 @@ export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
         </div>
         
         <h2 className="text-xl font-bold text-ide-text-active mb-1">{profile.name}</h2>
-        <p className="text-xs text-ide-text opacity-80 mb-4 max-w-[200px]">{profile.headline}</p>
+        <p className="text-xs text-ide-text mb-4 max-w-[200px]">{profile.headline}</p>
         
         <a 
           href="https://www.linkedin.com/in/liviuionesi"
@@ -55,7 +55,7 @@ export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
             <h3 className="text-xs font-bold text-ide-text uppercase mb-2 flex items-center gap-2">
               <Briefcase size={14} /> About
             </h3>
-            <p className="text-sm text-ide-text opacity-80 leading-relaxed line-clamp-4">
+            <p className="text-sm text-ide-text leading-relaxed line-clamp-4">
               {profile.about}
             </p>
             <button 
@@ -79,14 +79,32 @@ export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
 
           <div className="mt-6 w-full">
             <h3 className="text-xs font-bold text-ide-text uppercase mb-3 text-left">Certifications</h3>
-            <div className="space-y-2">
-              <div className="bg-ide-bg p-2 rounded border border-ide-border flex items-center gap-3 text-left">
-                <Award size={20} className="text-yellow-500 shrink-0" />
-                <div>
-                  <div className="text-sm font-bold text-ide-text-active">Java SE 8 Programmer</div>
-                  <div className="text-xs text-gray-500">Oracle</div>
-                </div>
-              </div>
+            <div className="space-y-2 max-h-60 overflow-y-auto pr-1 custom-scrollbar">
+              {profile.certifications?.map((cert, index) => {
+                 const isClickable = !!cert.url;
+                 const Wrapper = isClickable ? 'a' : 'div';
+                 const wrapperProps = isClickable ? {
+                    href: cert.url,
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                    className: "bg-ide-bg p-2 rounded border border-ide-border flex items-center gap-3 text-left hover:border-ide-accent/50 hover:bg-ide-activity-bar/30 transition-all cursor-pointer group block"
+                 } : {
+                    className: "bg-ide-bg p-2 rounded border border-ide-border flex items-center gap-3 text-left hover:border-ide-accent/50 transition-colors cursor-default"
+                 };
+
+                 return (
+                    <Wrapper key={index} {...wrapperProps}>
+                      <Award size={20} className="text-yellow-500 [.light-theme_&]:text-yellow-700 shrink-0 group-hover:scale-110 transition-transform" />
+                      <div className="min-w-0 flex-1">
+                        <div className="text-sm font-bold text-ide-text-active truncate" title={cert.name}>
+                            {cert.name}
+                        </div>
+                        <div className="text-xs text-gray-500 [.light-theme_&]:text-gray-600">{cert.authority}</div>
+                      </div>
+                      {isClickable && <ExternalLink size={14} className="text-ide-text opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />}
+                    </Wrapper>
+                 );
+              })}
             </div>
           </div>
         </div>

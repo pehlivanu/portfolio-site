@@ -39,11 +39,11 @@ const getIconBackground = (type: string) => {
 
 const getRoleColor = (type: string) => {
   switch (type) {
-    case 'dual-study': return 'text-blue-400';
-    case 'master': return 'text-purple-400';
-    case 'bachelor': return 'text-green-400';
-    case 'high-school': return 'text-orange-400';
-    default: return 'text-blue-400';
+    case 'dual-study': return 'text-blue-400 [.light-theme_&]:text-blue-700';
+    case 'master': return 'text-purple-400 [.light-theme_&]:text-purple-700';
+    case 'bachelor': return 'text-green-400 [.light-theme_&]:text-green-700';
+    case 'high-school': return 'text-orange-400 [.light-theme_&]:text-orange-700';
+    default: return 'text-blue-400 [.light-theme_&]:text-blue-700';
   }
 };
 
@@ -88,8 +88,8 @@ const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm pl-4 font-mono">
               {/* 1. Institution */}
               <div className="flex items-center gap-1 text-ide-text transition-colors w-full truncate">
-                  <School size={12} className="mr-1 shrink-0 opacity-60"/>
-                  <span className="text-ide-keyword opacity-70">institution=</span>
+                  <School size={12} className="mr-1 shrink-0 text-ide-text/50"/>
+                  <span className="text-ide-keyword">institution=</span>
                   {edu.url ? (
                     <a 
                       href={edu.url}
@@ -105,23 +105,23 @@ const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
               </div>
 
                {/* 2. Degree Name */}
-               <div className="flex items-center gap-1 text-ide-text transition-colors w-full truncate">
-                  <Award size={12} className="mr-1 shrink-0 opacity-60"/>
-                  <span className="text-ide-keyword opacity-70">degree=</span>
-                  <span className="truncate">"{edu.degree}"</span>
+                <div className="flex items-center gap-1 text-ide-text transition-colors w-full truncate">
+                   <Award size={12} className="mr-1 shrink-0 text-ide-text/50"/>
+                   <span className="text-ide-keyword">degree=</span>
+                   <span className="truncate">"{edu.degree}"</span>
               </div>
 
                {/* 3. Duration */}
-               <span className="flex items-center gap-1 opacity-60 hover:text-ide-text transition-colors cursor-default" title="Period">
-                  <Calendar size={12} className="mr-1 shrink-0"/>
-                  <span className="text-ide-keyword opacity-70">year=</span>"{edu.year}"
+                <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Period">
+                   <Calendar size={12} className="mr-1 shrink-0 text-ide-text/50"/>
+                   <span className="text-ide-keyword">year=</span>"{edu.year}"
               </span>
 
               {/* 4. Location */}
-              {edu.location && (
-                <span className="flex items-center gap-1 opacity-60 hover:text-ide-text transition-colors cursor-default" title="Location">
-                   <MapPin size={12} className="mr-1 shrink-0"/>
-                   <span className="text-ide-keyword opacity-70">location=</span>"{edu.location}"
+               {edu.location && (
+                 <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Location">
+                    <MapPin size={12} className="mr-1 shrink-0 text-ide-text/50"/>
+                    <span className="text-ide-keyword">location=</span>"{edu.location}"
                 </span>
               )}
           </div>
@@ -130,7 +130,7 @@ const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
         <div className="text-ide-text mb-0 leading-relaxed text-sm">
              {/* Summary Section - Always Visible */}
              {edu.summary && (
-                <div className="text-base md:text-lg text-ide-text-active italic font-medium px-4 py-3 bg-ide-activity-bar/30 rounded-lg border-l-2 border-ide-accent/20">
+                <div className="text-base md:text-lg text-ide-text-active italic font-medium px-4 py-3 bg-ide-bg rounded-lg border-l-2 border-ide-accent/20">
                   {edu.summary}
                 </div>
               )}

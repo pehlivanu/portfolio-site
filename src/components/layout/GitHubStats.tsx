@@ -39,7 +39,7 @@ export default function GitHubStats({ onClose }: { onClose?: () => void }) {
   }, []);
 
   if (loading) return <div className="p-8 text-ide-text text-center">Loading GitHub Profile...</div>;
-  if (error) return <div className="p-8 text-red-400 text-center">{error}</div>;
+  if (error) return <div className="p-8 text-red-400 [.light-theme_&]:text-red-600 text-center">{error}</div>;
   if (!profile) return null;
 
   return (
@@ -87,15 +87,15 @@ export default function GitHubStats({ onClose }: { onClose?: () => void }) {
           
           <div className="grid grid-cols-2 gap-3 mt-6">
             <div className="bg-ide-bg p-3 rounded-lg border border-ide-border text-center">
-              <Book size={20} className="mx-auto mb-2 text-blue-400" />
+              <Book size={20} className="mx-auto mb-2 text-blue-400 [.light-theme_&]:text-blue-700" />
               <div className="text-xl font-bold text-ide-text-active">{profile.public_repos}</div>
-              <div className="text-xs text-gray-500">Repositories</div>
+              <div className="text-xs text-gray-500 [.light-theme_&]:text-gray-600">Repositories</div>
             </div>
             
             <div className="bg-ide-bg p-3 rounded-lg border border-ide-border text-center">
-              <GitCommit size={20} className="mx-auto mb-2 text-green-400" />
+              <GitCommit size={20} className="mx-auto mb-2 text-green-400 [.light-theme_&]:text-green-700" />
               <div className="text-xl font-bold text-ide-text-active">235</div>
-              <div className="text-xs text-gray-500">Contributions (Last Year)</div>
+              <div className="text-xs text-gray-500 [.light-theme_&]:text-gray-600">Contributions (Last Year)</div>
             </div>
           </div>
         </div>

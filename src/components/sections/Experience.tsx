@@ -41,11 +41,11 @@ const getIconBackground = (type: string) => {
 
 const getRoleColor = (type: string) => {
   switch (type) {
-    case 'senior': return 'text-purple-400';
-    case 'mid': return 'text-blue-400';
-    case 'junior': return 'text-green-400';
-    case 'intern': return 'text-orange-400';
-    default: return 'text-blue-400';
+    case 'senior': return 'text-purple-400 [.light-theme_&]:text-purple-700';
+    case 'mid': return 'text-blue-400 [.light-theme_&]:text-blue-700';
+    case 'junior': return 'text-green-400 [.light-theme_&]:text-green-700';
+    case 'intern': return 'text-orange-400 [.light-theme_&]:text-orange-700';
+    default: return 'text-blue-400 [.light-theme_&]:text-blue-700';
   }
 };
 
@@ -97,39 +97,39 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
                 rel="noopener noreferrer" 
                 className="flex items-center gap-1 text-ide-text hover:text-ide-accent transition-colors group/link w-full truncate"
               >
-                  <Briefcase size={12} className="mr-1 shrink-0 opacity-60"/>
-                  <span className="text-ide-keyword opacity-70">company=</span>
+                  <Briefcase size={12} className="mr-1 shrink-0 text-ide-text/50"/>
+                  <span className="text-ide-keyword">company=</span>
                   <span className="group-hover/link:underline decoration-ide-accent underline-offset-4 truncate">"{job.company}"</span>
                   <ExternalLink size={10} className="opacity-0 group-hover/link:opacity-100 transition-opacity ml-1 shrink-0" />
               </a>
 
               {/* 2. Duration */}
-              <span className="flex items-center gap-1 opacity-60 hover:text-ide-text transition-colors cursor-default" title="Period">
-                  <Calendar size={12} className="mr-1 shrink-0"/>
-                  <span className="text-ide-keyword opacity-70">time=</span>"{job.period}"
+              <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Period">
+                  <Calendar size={12} className="mr-1 shrink-0 text-ide-text/50"/>
+                  <span className="text-ide-keyword">time=</span>"{job.period}"
               </span>
               
               {/* 3. Industry */}
               {job.industry && (
-                <span className="flex items-center gap-1 opacity-60 hover:text-ide-text transition-colors cursor-default" title="Industry">
-                   <Building size={12} className="mr-1 shrink-0"/>
-                   <span className="text-ide-keyword opacity-70">type=</span>"{job.industry}"
+                <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Industry">
+                   <Building size={12} className="mr-1 shrink-0 text-ide-text/50"/>
+                   <span className="text-ide-keyword">type=</span>"{job.industry}"
                 </span>
               )}
 
               {/* 4. Location */}
                {job.locationType && (
-                <span className="flex items-center gap-1 opacity-60 hover:text-ide-text transition-colors cursor-default" title="Location">
-                   <MapPin size={12} className="mr-1 shrink-0"/>
-                   <span className="text-ide-keyword opacity-70">location=</span>"{job.locationType}"
+                <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Location">
+                   <MapPin size={12} className="mr-1 shrink-0 text-ide-text/50"/>
+                   <span className="text-ide-keyword">location=</span>"{job.locationType}"
                 </span>
               )}
 
               {/* 5. Size */}
               {job.companySize && (
-                <span className="flex items-center gap-1 opacity-60 hover:text-ide-text transition-colors cursor-default" title="Company Size">
-                  <Users size={12} className="mr-1 shrink-0"/>
-                  <span className="text-ide-keyword opacity-70">size=</span>"{job.companySize}"
+                <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Company Size">
+                  <Users size={12} className="mr-1 shrink-0 text-ide-text/50"/>
+                  <span className="text-ide-keyword">size=</span>"{job.companySize}"
                 </span>
               )}
 
@@ -146,11 +146,11 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
                       setTimeout(() => educationElement.classList.remove('ring-2', 'ring-ide-accent'), 2000);
                     }
                   }}
-                  className="flex items-center gap-1 opacity-60 hover:opacity-100 hover:text-ide-accent transition-all cursor-pointer group/edu focus:outline-none focus:ring-1 focus:ring-ide-accent rounded px-1 -ml-1" 
+                  className="flex items-center gap-1 text-ide-text/90 hover:opacity-100 hover:text-ide-accent transition-all cursor-pointer group/edu focus:outline-none focus:ring-1 focus:ring-ide-accent rounded px-1 -ml-1" 
                   title="Click to view Education details"
                 >
-                  <GraduationCap size={12} className="mr-1 shrink-0 group-hover/edu:scale-110 transition-transform"/>
-                  <span className="text-ide-keyword opacity-70 group-hover/edu:text-ide-accent">education=</span>
+                  <GraduationCap size={12} className="mr-1 shrink-0 group-hover/edu:scale-110 transition-transform text-ide-text/50"/>
+                  <span className="text-ide-keyword group-hover/edu:text-ide-accent">education=</span>
                   <span className="group-hover/edu:underline decoration-ide-accent underline-offset-4">"{job.dualStudy}"</span>
                   <ExternalLink size={10} className="opacity-0 group-hover/edu:opacity-100 transition-opacity ml-1 shrink-0" />
                 </button>
@@ -161,7 +161,7 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
         <div className="text-ide-text mb-2 leading-relaxed text-sm">
           {/* Summary Section - Always Visible */}
           {job.summary && (
-            <div className="mb-4 text-base md:text-lg text-ide-text-active italic font-medium px-4 py-3 bg-ide-activity-bar/30 rounded-lg border-l-2 border-ide-accent/20">
+            <div className="mb-4 text-base md:text-lg text-ide-text-active italic font-medium px-4 py-3 bg-ide-bg rounded-lg border-l-2 border-ide-accent/20">
               {job.summary}
             </div>
           )}
@@ -192,7 +192,7 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
                       {/* Tech Stack */}
                       <div className="flex flex-wrap gap-2 mt-6 pt-4 border-t border-ide-border/30">
                         {job.tech.map((tech: string) => (
-                          <span key={tech} className="px-3 py-1 text-xs font-medium rounded-full bg-ide-activity-bar text-ide-accent border border-ide-border hover:bg-ide-accent/10 transition-colors cursor-default">
+                          <span key={tech} className="px-3 py-1 text-xs font-medium rounded-full bg-ide-bg text-ide-accent border border-ide-border hover:bg-ide-accent/10 transition-colors cursor-default">
                             <Highlight text={tech} />
                           </span>
                         ))}

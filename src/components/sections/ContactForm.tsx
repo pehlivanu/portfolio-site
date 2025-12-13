@@ -335,7 +335,7 @@ ${formData.message}
                     />
                     {isCheckingLocation && <div className="text-xs text-ide-text mt-1">Checking distance...</div>}
                     {addressError && (
-                      <div className="text-red-400 text-xs flex items-center gap-1 mt-1">
+                      <div className="text-red-400 [.light-theme_&]:text-red-600 text-xs flex items-center gap-1 mt-1">
                           <AlertCircle size={12} /> {addressError}
                       </div>
                     )}
@@ -368,7 +368,7 @@ ${formData.message}
                 />
               </div>
               {techError && (
-                <div className="text-red-400 text-xs flex items-center gap-1 mt-1">
+                <div className="text-red-400 [.light-theme_&]:text-red-600 text-xs flex items-center gap-1 mt-1">
                   <AlertCircle size={12} /> {techError}
                 </div>
               )}
@@ -377,7 +377,7 @@ ${formData.message}
         )}
 
         {formData.purpose === 'buy_template' && (
-          <div className="bg-blue-500/10 border border-blue-500/30 p-3 rounded text-sm text-blue-200">
+          <div className="bg-blue-500/10 border border-blue-500/30 p-3 rounded text-sm text-blue-200 [.light-theme_&]:text-blue-800">
             This template is designed to easily import your LinkedIn data. I'll send you the setup instructions!
           </div>
         )}
@@ -401,9 +401,9 @@ ${formData.message}
             className="bg-ide-bg/50 border border-green-500/30 p-8 rounded-lg text-center"
           >
             <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Check size={32} className="text-green-400" />
+              <Check size={32} className="text-green-400 [.light-theme_&]:text-green-600" />
             </div>
-            <h3 className="text-2xl font-bold text-white mb-2">Thank you!</h3>
+            <h3 className="text-2xl font-bold text-ide-text-active mb-2">Thank you!</h3>
             {cooldown > 0 ? (
               <p className="text-sm text-ide-text/50 font-mono">
                 You can send another message in {Math.floor(cooldown / 60)}:{(cooldown % 60).toString().padStart(2, '0')}

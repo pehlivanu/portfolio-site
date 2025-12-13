@@ -94,14 +94,14 @@ export default function About() {
                   className="text-ide-text"
                 >
                   <code>
-                    <span className="text-orange-400">package</span> dev.portfolio;{'\n\n'}
-                    <span className="text-orange-400">import</span> org.springframework.boot.SpringApplication;{'\n'}
-                    <span className="text-orange-400">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;{'\n\n'}
-                    <span className="text-yellow-400">@SpringBootApplication</span>{'\n'}
-                    <span className="text-orange-400">public class</span> <span className="text-yellow-300">LegacyBackendApplication</span> {'{'}{'\n\n'}
-                    {'    '}<span className="text-orange-400">public static void</span> <span className="text-blue-300">main</span>(String[] args) {'{'}{'\n'}
+                    <span className="text-orange-400 [.light-theme_&]:text-orange-700">package</span> dev.portfolio;{'\n\n'}
+                    <span className="text-orange-400 [.light-theme_&]:text-orange-700">import</span> org.springframework.boot.SpringApplication;{'\n'}
+                    <span className="text-orange-400 [.light-theme_&]:text-orange-700">import</span> org.springframework.boot.autoconfigure.SpringBootApplication;{'\n\n'}
+                    <span className="text-yellow-400 [.light-theme_&]:text-yellow-700">@SpringBootApplication</span>{'\n'}
+                    <span className="text-orange-400 [.light-theme_&]:text-orange-700">public class</span> <span className="text-yellow-300 [.light-theme_&]:text-yellow-700">LegacyBackendApplication</span> {'{'}{'\n\n'}
+                    {'    '}<span className="text-orange-400 [.light-theme_&]:text-orange-700">public static void</span> <span className="text-blue-300 [.light-theme_&]:text-blue-700">main</span>(String[] args) {'{'}{'\n'}
                     {'        '}SpringApplication.run(LegacyBackendApplication.class, args);{'\n'}
-                    {'        '}System.out.println(<span className="text-green-300">&quot;Java EE Enterprise Logic Initialized...&quot;</span>);{'\n'}
+                    {'        '}System.out.println(<span className="text-green-300 [.light-theme_&]:text-green-700">&quot;Java EE Enterprise Logic Initialized...&quot;</span>);{'\n'}
                     {'    '}{'}'}{'\n'}
                     {'}'}
                   </code>
@@ -116,11 +116,11 @@ export default function About() {
                   className="text-ide-text"
                 >
                   <code>
-                    <span className="text-purple-400">import</span> {'{'} NextApiRequest, NextApiResponse {'}'} <span className="text-purple-400">from</span> <span className="text-green-300">&apos;next&apos;</span>;{'\n\n'}
-                    <span className="text-purple-400">export default function</span> <span className="text-blue-300">handler</span>(req: NextApiRequest, res: NextApiResponse) {'{'}{'\n'}
-                    {'  '}res.status(<span className="text-orange-300">200</span>).json({'{'} {'\n'}
-                    {'    '}message: <span className="text-green-300">&apos;Vibe Coding Initialized 🚀&apos;</span>, {'\n'}
-                    {'    '}stack: <span className="text-green-300">&apos;Next.js 16 + Tailwind&apos;</span> {'\n'}
+                    <span className="text-purple-400 [.light-theme_&]:text-purple-700">import</span> {'{'} NextApiRequest, NextApiResponse {'}'} <span className="text-purple-400 [.light-theme_&]:text-purple-700">from</span> <span className="text-green-300 [.light-theme_&]:text-green-700">&apos;next&apos;</span>;{'\n\n'}
+                    <span className="text-purple-400 [.light-theme_&]:text-purple-700">export default function</span> <span className="text-blue-300 [.light-theme_&]:text-blue-700">handler</span>(req: NextApiRequest, res: NextApiResponse) {'{'}{'\n'}
+                    {'  '}res.status(<span className="text-orange-300 [.light-theme_&]:text-orange-700">200</span>).json({'{'} {'\n'}
+                    {'    '}message: <span className="text-green-300 [.light-theme_&]:text-green-700">&apos;Vibe Coding Initialized 🚀&apos;</span>, {'\n'}
+                    {'    '}stack: <span className="text-green-300 [.light-theme_&]:text-green-700">&apos;Next.js 16 + Tailwind&apos;</span> {'\n'}
                     {'  '}{'}'});{'\n'}
                     {'}'}
                   </code>

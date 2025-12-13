@@ -62,7 +62,7 @@
     --ide-text: #333333;
     --ide-text-active: #000000;
     --ide-accent: #007acc;
-    --ide-card-bg: transparent;
+    --ide-card-bg: #f3f3f3;
     --ide-glow-primary: rgba(0, 122, 204, 0.8);
     --ide-glow-secondary: rgba(0, 0, 0, 0.4);
     --ide-hover-bg: #e8e8e8;
