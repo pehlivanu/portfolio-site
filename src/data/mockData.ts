@@ -130,7 +130,7 @@ export const projects = [
   },
 ];
 
-export const hero = {
+export const about = {
   greeting: "~/developer/portfolio",
   name: "Liviu",
   suffix: ".io",

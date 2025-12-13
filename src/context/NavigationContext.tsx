@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-type Section = 'hero' | 'experience' | 'education' | 'projects' | 'contact';
+type Section = 'about' | 'experience' | 'education' | 'projects' | 'contact';
 
 interface NavigationContextType {
   activeSection: Section;
@@ -19,7 +19,7 @@ interface NavigationContextType {
 const NavigationContext = createContext<NavigationContextType | undefined>(undefined);
 
 export function NavigationProvider({ children }: { children: ReactNode }) {
-  const [activeSection, setActiveSection] = useState<Section>('hero');
+  const [activeSection, setActiveSection] = useState<Section>('about');
   const [isContactVisible, setContactVisible] = useState(false);
   const [contactStatus, setContactStatus] = useState<'pending' | 'sent'>('pending');
   const [zoomLevel, setZoomLevel] = useState(100);

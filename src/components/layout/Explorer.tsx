@@ -43,11 +43,11 @@ export default function Explorer({ onClose, isMobile }: { onClose?: () => void, 
           
           <div className="flex flex-col ml-4">
              <div 
-               className={getFileClass('hero')}
-               onClick={() => handleItemClick('hero')}
+               className={getFileClass('about')}
+               onClick={() => handleItemClick('about')}
              >
                <FileCode size={14} className="text-yellow-400" />
-               <span className="ml-2 text-sm group-hover:text-ide-text-active">Hero.tsx</span>
+               <span className="ml-2 text-sm group-hover:text-ide-text-active">About.tsx</span>
              </div>
              <div 
                className={getFileClass('experience')}

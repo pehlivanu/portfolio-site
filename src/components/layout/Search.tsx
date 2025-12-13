@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Search as SearchIcon, ChevronRight, ChevronDown } from 'lucide-react';
+import { Search as SearchIcon, ChevronRight, ChevronDown, X } from 'lucide-react';
 import { useSearch } from '@/context/SearchContext';
 import { experience, education, projects } from '@/data/mockData';
 import { useNavigation } from '@/context/NavigationContext';
@@ -101,9 +101,18 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search (Ctrl+Shift+F)"
-            className="w-full bg-ide-bg border border-ide-border focus:border-ide-accent text-ide-text text-sm px-2 py-1 outline-none placeholder:text-gray-500"
+            className="w-full bg-ide-bg border border-ide-border focus:border-ide-accent text-ide-text text-sm px-2 py-1 pr-8 outline-none placeholder:text-gray-500"
             autoFocus
           />
+          {searchTerm && (
+            <button
+              onClick={() => setSearchTerm('')}
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-ide-text transition-colors"
+              title="Clear Search"
+            >
+              <X size={14} />
+            </button>
+          )}
         </div>
       </div>
 

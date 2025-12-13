@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Terminal, Code, Coffee, Zap } from 'lucide-react';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useNavigation } from '@/context/NavigationContext';
-import { hero } from '@/data/mockData';
+import { about } from '@/data/mockData';
 
 // ... (keep existing code strings)
 
-export default function Hero() {
-  useScrollSpy('hero');
+export default function About() {
+  useScrollSpy('about');
   const { scrollToSection } = useNavigation();
   const [isJava, setIsJava] = useState(true);
 
@@ -22,7 +22,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="hero" className="min-h-[80vh] flex flex-wrap items-center justify-center p-8 gap-12 max-w-7xl mx-auto w-full">
+    <section id="about" className="min-h-[80vh] flex flex-wrap items-center justify-center p-8 gap-12 max-w-7xl mx-auto w-full">
       <div className="flex-1 min-w-[340px] md:min-w-[600px] space-y-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -31,13 +31,13 @@ export default function Hero() {
         >
           <div className="flex items-center gap-2 text-ide-accent mb-2">
             <Terminal size={20} />
-            <span className="font-mono text-sm">{hero.greeting}</span>
+            <span className="font-mono text-sm">{about.greeting}</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-ide-text-active mb-4">
-            {hero.name} <span className="text-ide-accent">{hero.suffix}</span><span className="text-orange-400 font-semibold text-xl max-w-lg leading-relaxed">{hero.lastName}</span>
+            {about.name} <span className="text-ide-accent">{about.suffix}</span><span className="text-orange-400 font-semibold text-xl max-w-lg leading-relaxed">{about.lastName}</span>
           </h1>
           <p className="text-xl text-ide-text max-w-lg leading-relaxed">
-            {hero.description}
+            {about.description}
           </p>
         </motion.div>
 
@@ -46,13 +46,13 @@ export default function Hero() {
             onClick={() => scrollToSection('projects')}
             className="px-6 py-3 bg-ide-accent hover:bg-blue-600 text-white rounded-md font-medium transition-colors flex items-center gap-2"
           >
-            <Code size={18} /> {hero.ctaPrimary}
+            <Code size={18} /> {about.ctaPrimary}
           </button>
           <button 
             onClick={() => scrollToSection('contact')}
             className="px-6 py-3 border border-ide-border hover:bg-ide-activity-bar text-ide-text rounded-md font-medium transition-colors"
           >
-            {hero.ctaSecondary}
+            {about.ctaSecondary}
           </button>
         </div>
       </div>

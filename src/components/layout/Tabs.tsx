@@ -18,11 +18,11 @@ export default function Tabs() {
   return (
     <div className="flex bg-ide-title-bar h-9 overflow-x-auto scrollbar-hide">
       <div 
-        className={getTabClass('hero')}
-        onClick={() => scrollToSection('hero')}
+        className={getTabClass('about')}
+        onClick={() => scrollToSection('about')}
       >
         <FileCode size={14} className="text-yellow-400 mr-2" />
-        <span className="text-sm mr-2">Hero.tsx</span>
+        <span className="text-sm mr-2">About.tsx</span>
         <X size={14} className="opacity-0 group-hover:opacity-100 hover:bg-ide-activity-bar rounded" />
       </div>
       <div 
