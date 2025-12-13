@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, AlertCircle, Check, X, MapPin, Globe, Car, Train } from 'lucide-react';
 import { useNavigation } from '@/context/NavigationContext';
+import Highlight from '@/components/ui/Highlight';
 
 export default function ContactForm() {
   const { setContactStatus } = useNavigation();
@@ -203,10 +204,10 @@ ${formData.message}
     <>
       <div className="mb-6">
         <h3 className="text-xl font-bold text-ide-text-active group-hover:text-ide-accent transition-colors mb-2">
-          Get In Touch
+          <Highlight text="Get In Touch" />
         </h3>
         <p className="text-ide-text text-sm leading-relaxed">
-          Whether you have a question, a project proposal, or just want to say hi, I'll try my best to get back to you!
+          <Highlight text="Whether you have a question, a project proposal, or just want to say hi, I'll try my best to get back to you!" />
         </p>
       </div>
 

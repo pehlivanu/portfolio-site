@@ -122,7 +122,7 @@ export const hero = {
   greeting: "~/developer/portfolio",
   name: "Liviu",
   suffix: ".io",
-  lastName: "IONESI",
+  lastName: "NESI",
   description: "Übergang von robusten Java EE-Architekturen in die dynamische Welt von Spring Boot, gepaart mit leistungsstarken UI-Frameworks und KI-beschleunigtem Prototyping.",
   ctaPrimary: "Projekte",
   ctaSecondary: "Kontakt"

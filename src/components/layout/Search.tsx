@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Search as SearchIcon, ChevronRight, ChevronDown, X } from 'lucide-react';
 import { useSearch } from '@/context/SearchContext';
-import { experience, education, projects } from '@/data/mockData';
+import { experience, education, projects, about } from '@/data/mockData';
 import { useNavigation } from '@/context/NavigationContext';
 
 export default function Search({ onClose, isMobile }: { onClose?: () => void, isMobile?: boolean }) {
@@ -22,6 +22,7 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
   useEffect(() => {
     if (!searchTerm) {
       setResults([]);
+      setActiveMatch(null); // Clear active match when search is cleared
       return;
     }
 
@@ -74,8 +75,43 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
       }
     });
 
+    // Search About
+    if (about.name.toLowerCase().includes(term) || 
+        about.lastName.toLowerCase().includes(term) || 
+        about.description.toLowerCase().includes(term) ||
+        about.greeting.toLowerCase().includes(term)) {
+      newResults.push({
+        type: 'about',
+        title: 'About Me',
+        subtitle: about.description.substring(0, 30) + '...',
+        section: 'about',
+        id: 'about'
+      });
+    }
+
+    // Search Contact
+    const contactText = "Get In Touch Whether you have a question, a project proposal, or just want to say hi, I'll try my best to get back to you!";
+    if (contactText.toLowerCase().includes(term)) {
+      newResults.push({
+        type: 'contact',
+        title: 'Contact',
+        subtitle: 'Get In Touch',
+        section: 'contact',
+        id: 'contact'
+      });
+    }
+
     setResults(newResults);
-  }, [searchTerm]);
+  }, [searchTerm, setActiveMatch]);
+
+  // Clear selection when component unmounts or closes if needed, 
+  // but the requirement is just "when we clear the search text ... or close the search component"
+  // so handling it in handleCloseWrapper is better.
+
+  const handleClose = () => {
+    setActiveMatch(null);
+    if (onClose) onClose();
+  };
 
   const handleResultClick = (result: SearchResult) => {
     setActiveMatch({ section: result.section, id: result.id });
@@ -85,11 +121,33 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
     }
   };
 
+  // Helper to highlight text
+  const HighlightMatch = ({ text, term }: { text: string, term: string }) => {
+    if (!term.trim()) return <>{text}</>;
+    
+    // Create a regex to split by the term, capturing it to preserve case
+    const parts = text.split(new RegExp(`(${term})`, 'gi'));
+    
+    return (
+      <>
+        {parts.map((part, i) => (
+          part.toLowerCase() === term.toLowerCase() ? (
+            <span key={i} className="bg-ide-accent/20 text-ide-accent font-semibold px-0.5 rounded-sm">
+              {part}
+            </span>
+          ) : (
+            <span key={i}>{part}</span>
+          )
+        ))}
+      </>
+    );
+  };
+
   return (
     <div className="w-full md:w-80 bg-ide-sidebar flex flex-col h-full border-r border-ide-border/30 flex">
       <div className="p-3 text-xs font-bold text-ide-text tracking-wider uppercase flex justify-between items-center">
         <span>Search</span>
-        <button onClick={onClose} className="md:hidden text-ide-text hover:text-ide-text-active">
+        <button onClick={handleClose} className="md:hidden text-ide-text hover:text-ide-text-active">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
         </button>
       </div>
@@ -106,7 +164,10 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
           />
           {searchTerm && (
             <button
-              onClick={() => setSearchTerm('')}
+              onClick={() => {
+                setSearchTerm('');
+                setActiveMatch(null); 
+              }}
               className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-ide-text transition-colors"
               title="Clear Search"
             >
@@ -130,10 +191,10 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
               onClick={() => handleResultClick(result)}
             >
               <div className="text-sm text-ide-text group-hover:text-ide-text-active font-medium truncate">
-                {result.title}
+                <HighlightMatch text={result.title} term={searchTerm} />
               </div>
               <div className="text-xs text-gray-500 truncate">
-                {result.subtitle}
+                <HighlightMatch text={result.subtitle} term={searchTerm} />
               </div>
             </div>
           ))}

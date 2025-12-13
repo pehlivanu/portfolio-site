@@ -10,6 +10,7 @@ import ContactPanel from './ContactPanel';
 import Tabs from './Tabs';
 import StatusBar from './StatusBar';
 import { useNavigation } from '@/context/NavigationContext';
+import Highlight from '@/components/ui/Highlight';
 
 export default function IDELayout({ children }: { children: React.ReactNode }) {
   const [activeSidebarView, setActiveSidebarView] = useState<'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | null>('explorer');
@@ -160,13 +161,33 @@ function BioPanel() {
   return (
     <ReactMarkdown
         components={{
-            h3: ({node, ...props}) => <h3 className="text-lg font-bold text-ide-text-active mt-8 mb-6 leading-relaxed" {...props} />,
-            p: ({node, ...props}) => <p className="text-ide-text mb-4 leading-relaxed" {...props} />,
+            h3: ({node, children, ...props}) => (
+                <h3 className="text-lg font-bold text-ide-text-active mt-8 mb-6 leading-relaxed" {...props}>
+                    {React.Children.map(children, child => typeof child === 'string' ? <Highlight text={child} /> : child)}
+                </h3>
+            ),
+            p: ({node, children, ...props}) => (
+                <p className="text-ide-text mb-4 leading-relaxed" {...props}>
+                    {React.Children.map(children, child => typeof child === 'string' ? <Highlight text={child} /> : child)}
+                </p>
+            ),
             ul: ({node, ...props}) => <ul className="list-disc pl-5 mb-4 text-ide-text space-y-2" {...props} />,
-            li: ({node, ...props}) => <li className="pl-1 leading-relaxed" {...props} />,
-            strong: ({node, ...props}) => <strong className="text-ide-text-active font-semibold" {...props} />,
+            li: ({node, children, ...props}) => (
+                <li className="pl-1 leading-relaxed" {...props}>
+                    {React.Children.map(children, child => typeof child === 'string' ? <Highlight text={child} /> : child)}
+                </li>
+            ),
+            strong: ({node, children, ...props}) => (
+                <strong className="text-ide-text-active font-semibold" {...props}>
+                    {React.Children.map(children, child => typeof child === 'string' ? <Highlight text={child} /> : child)}
+                </strong>
+            ),
             hr: ({node, ...props}) => <hr className="border-ide-border my-8" {...props} />,
-            em: ({node, ...props}) => <em className="text-ide-text opacity-90 italic block mt-4" {...props} />,
+            em: ({node, children, ...props}) => (
+                <em className="text-ide-text opacity-90 italic block mt-4" {...props}>
+                    {React.Children.map(children, child => typeof child === 'string' ? <Highlight text={child} /> : child)}
+                </em>
+            ),
         }}
     >
         {linkedInProfile.fullBio}

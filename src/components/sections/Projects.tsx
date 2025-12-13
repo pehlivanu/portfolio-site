@@ -6,6 +6,7 @@ import { Folder, Github, ExternalLink, Code, Leaf, Triangle, Atom } from 'lucide
 import { projects } from '@/data/mockData';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useSearch } from '@/context/SearchContext';
+import Highlight from '@/components/ui/Highlight';
 
 const getProjectIcon = (tech: string[]) => {
   if (tech.some(t => t.includes('Spring Boot'))) return <Leaf size={40} className="text-green-500" />;
@@ -75,14 +76,14 @@ export default function Projects() {
                 <div className="mb-4">
                      <h3 className="text-xl font-mono font-bold text-ide-text-active transition-colors flex flex-wrap items-center gap-1">
                         <span className="text-gray-500 opacity-100 font-bold">&lt;</span>
-                        <span className="text-blue-400 [.light-theme_&]:text-blue-700">{project.title}</span>
+                        <span className="text-blue-400 [.light-theme_&]:text-blue-700"><Highlight text={project.title} /></span>
                         <span className="text-gray-500 opacity-100 font-bold">/&gt;</span>
                      </h3>
                 </div>
 
                 {/* Description */}
                 <div className="text-ide-text mb-6 text-sm leading-relaxed flex-1 font-mono bg-ide-bg p-4 rounded-md border border-ide-border/50">
-                   <p className="text-ide-text/90">{project.description}</p>
+                   <p className="text-ide-text/90"><Highlight text={project.description} /></p>
                 </div>
 
                 {/* Tech Stack Metadata Style */}
@@ -96,7 +97,7 @@ export default function Projects() {
                              {project.tech.map((t, i) => (
                                  <span key={t}>
                                      <span className="hover:text-ide-text-active transition-colors">
-                                         "{t}"
+                                         "<Highlight text={t} />"
                                      </span>
                                      {i < project.tech.length - 1 && <span className="text-ide-text-active">, </span>}
                                  </span>

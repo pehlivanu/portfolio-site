@@ -6,6 +6,7 @@ import { Terminal, Code, Coffee, Zap } from 'lucide-react';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useNavigation } from '@/context/NavigationContext';
 import { about } from '@/data/mockData';
+import Highlight from '@/components/ui/Highlight';
 
 
 
@@ -31,13 +32,13 @@ export default function About() {
         >
             <div className="flex items-center gap-2 text-ide-accent mb-2">
             <Terminal size={20} />
-            <span className="font-mono text-sm">{about.greeting}</span>
+            <span className="font-mono text-sm"><Highlight text={about.greeting} /></span>
             </div>
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-ide-text-active mb-4">
-            {about.name} <span className="text-ide-accent">{about.suffix}</span><span className="text-orange-400 font-semibold text-xl max-w-lg leading-relaxed">{about.lastName}</span>
+            <Highlight text={about.name} /> <span className="text-ide-accent"><Highlight text={about.suffix} /></span><span className="text-orange-400 font-semibold text-xl max-w-lg leading-relaxed"><Highlight text={about.lastName} /></span>
             </h1>
             <div className="text-xl text-ide-text max-w-lg leading-relaxed">
-            {about.description}
+            <Highlight text={about.description} />
             <button 
                 onClick={() => openRightPanel('bio')}
                 className="text-ide-accent hover:underline ml-2 font-medium text-base inline-flex items-center gap-1"

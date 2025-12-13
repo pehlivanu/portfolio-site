@@ -6,6 +6,7 @@ import { GraduationCap, Award, BookOpen, School, Calendar, MapPin, Code } from '
 import { education } from '@/data/mockData';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useSearch } from '@/context/SearchContext';
+import Highlight from '@/components/ui/Highlight';
 
 const getIconByType = (type: string) => {
   switch (type) {
@@ -79,7 +80,7 @@ const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
            <div className="flex flex-col mb-2">
               <h3 className="text-xl md:text-2xl font-mono font-bold text-ide-text-active transition-colors flex flex-wrap items-center gap-1">
                 <span className="text-gray-500 opacity-100 font-bold">&lt;</span>
-                <span className={`${roleColor}`}>{tagContent}</span>
+                <span className={`${roleColor}`}><Highlight text={tagContent} /></span>
                 <span className="text-gray-500 opacity-100 font-bold">/&gt;</span>
               </h3>
           </div>
@@ -97,10 +98,10 @@ const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
                       rel="noopener noreferrer"
                       className="truncate hover:text-ide-accent hover:underline decoration-ide-accent/50 underline-offset-2 transition-all cursor-pointer"
                     >
-                      "{edu.school}"
+                      "<Highlight text={edu.school} />"
                     </a>
                   ) : (
-                    <span className="truncate">"{edu.school}"</span>
+                    <span className="truncate">"<Highlight text={edu.school} />"</span>
                   )}
               </div>
 
@@ -114,14 +115,14 @@ const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
                {/* 3. Duration */}
                 <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Period">
                    <Calendar size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                   <span className="text-ide-keyword">year=</span>"{edu.year}"
+                   <span className="text-ide-keyword">year=</span>"<Highlight text={edu.year} />"
               </span>
 
               {/* 4. Location */}
                {edu.location && (
                  <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Location">
                     <MapPin size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                    <span className="text-ide-keyword">location=</span>"{edu.location}"
+                    <span className="text-ide-keyword">location=</span>"<Highlight text={edu.location} />"
                 </span>
               )}
           </div>
@@ -131,7 +132,7 @@ const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
              {/* Summary Section - Always Visible */}
              {edu.summary && (
                 <div className="text-base md:text-lg text-ide-text-active italic font-medium px-4 py-3 bg-ide-bg rounded-lg border-l-2 border-ide-accent/20">
-                  {edu.summary}
+                  <Highlight text={edu.summary} />
                 </div>
               )}
         </div>

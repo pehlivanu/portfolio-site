@@ -83,7 +83,7 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
           <div className="flex flex-col mb-2">
               <h3 className="text-xl md:text-2xl font-mono font-bold text-ide-text-active transition-colors flex flex-wrap items-center gap-1">
                 <span className="text-gray-500 opacity-100 font-bold">&lt;</span>
-                <span className={`${roleColor}`}>{job.role}</span>
+                <span className={`${roleColor}`}><Highlight text={job.role} /></span>
                 <span className="text-gray-500 opacity-100 font-bold">/&gt;</span>
               </h3>
           </div>
@@ -99,21 +99,21 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
               >
                   <Briefcase size={12} className="mr-1 shrink-0 text-ide-text/50"/>
                   <span className="text-ide-keyword">company=</span>
-                  <span className="group-hover/link:underline decoration-ide-accent underline-offset-4 truncate">"{job.company}"</span>
+                  <span className="group-hover/link:underline decoration-ide-accent underline-offset-4 truncate">"<Highlight text={job.company} />"</span>
                   <ExternalLink size={10} className="opacity-0 group-hover/link:opacity-100 transition-opacity ml-1 shrink-0" />
               </a>
 
               {/* 2. Duration */}
               <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Period">
                   <Calendar size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                  <span className="text-ide-keyword">time=</span>"{job.period}"
+                  <span className="text-ide-keyword">time=</span>"<Highlight text={job.period} />"
               </span>
               
               {/* 3. Industry */}
               {job.industry && (
                 <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Industry">
                    <Building size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                   <span className="text-ide-keyword">type=</span>"{job.industry}"
+                   <span className="text-ide-keyword">type=</span>"<Highlight text={job.industry} />"
                 </span>
               )}
 
@@ -121,7 +121,7 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
                {job.locationType && (
                 <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Location">
                    <MapPin size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                   <span className="text-ide-keyword">location=</span>"{job.locationType}"
+                   <span className="text-ide-keyword">location=</span>"<Highlight text={job.locationType} />"
                 </span>
               )}
 
@@ -129,7 +129,7 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
               {job.companySize && (
                 <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Company Size">
                   <Users size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                  <span className="text-ide-keyword">size=</span>"{job.companySize}"
+                  <span className="text-ide-keyword">size=</span>"<Highlight text={job.companySize} />"
                 </span>
               )}
 
@@ -151,7 +151,7 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
                 >
                   <GraduationCap size={12} className="mr-1 shrink-0 group-hover/edu:scale-110 transition-transform text-ide-text/50"/>
                   <span className="text-ide-keyword group-hover/edu:text-ide-accent">education=</span>
-                  <span className="group-hover/edu:underline decoration-ide-accent underline-offset-4">"{job.dualStudy}"</span>
+                  <span className="group-hover/edu:underline decoration-ide-accent underline-offset-4">"<Highlight text={job.dualStudy} />"</span>
                   <ExternalLink size={10} className="opacity-0 group-hover/edu:opacity-100 transition-opacity ml-1 shrink-0" />
                 </button>
               )}
@@ -162,7 +162,7 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
           {/* Summary Section - Always Visible */}
           {job.summary && (
             <div className="mb-4 text-base md:text-lg text-ide-text-active italic font-medium px-4 py-3 bg-ide-bg rounded-lg border-l-2 border-ide-accent/20">
-              {job.summary}
+              <Highlight text={job.summary} />
             </div>
           )}
 
@@ -180,10 +180,28 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
                      {/* Markdown Description */}
                      <ReactMarkdown
                         components={{
-                          p: ({node, ...props}: any) => <p className="mb-4 last:mb-0" {...props} />,
-                          ul: ({node, ...props}: any) => <ul className="list-disc list-outside ml-4 mb-4 space-y-1" {...props} />,
-                          li: ({node, ...props}: any) => <li className="pl-1" {...props} />,
-                          strong: ({node, ...props}: any) => <strong className="text-ide-text-active font-semibold" {...props} />,
+                          p: ({node, children, ...props}: any) => (
+                            <p className="mb-4 last:mb-0" {...props}>
+                              {React.Children.map(children, child => 
+                                typeof child === 'string' ? <Highlight text={child} /> : child
+                              )}
+                            </p>
+                          ),
+                          ul: ({node, children, ...props}: any) => <ul className="list-disc list-outside ml-4 mb-4 space-y-1" {...props}>{children}</ul>,
+                          li: ({node, children, ...props}: any) => (
+                            <li className="pl-1" {...props}>
+                               {React.Children.map(children, child => 
+                                typeof child === 'string' ? <Highlight text={child} /> : child
+                              )}
+                            </li>
+                          ),
+                          strong: ({node, children, ...props}: any) => (
+                            <strong className="text-ide-text-active font-semibold" {...props}>
+                               {React.Children.map(children, child => 
+                                typeof child === 'string' ? <Highlight text={child} /> : child
+                              )}
+                            </strong>
+                          ),
                         }}
                       >
                         {job.description}
