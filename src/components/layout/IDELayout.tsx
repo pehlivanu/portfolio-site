@@ -10,6 +10,8 @@ import ContactPanel from './ContactPanel';
 import Tabs from './Tabs';
 import StatusBar from './StatusBar';
 import { useNavigation } from '@/context/NavigationContext';
+import { useLanguage } from '@/context/LanguageContext';
+import ReactMarkdown from 'react-markdown';
 import Highlight from '@/components/ui/Highlight';
 
 export default function IDELayout({ children }: { children: React.ReactNode }) {
@@ -17,10 +19,7 @@ export default function IDELayout({ children }: { children: React.ReactNode }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { zoomLevel, setZoomLevel, activeRightPanel, closeRightPanel } = useNavigation();
   const [isMobile, setIsMobile] = useState(false);
-  // Import needs to be top level, adding it here for context:
-  // import { linkedInProfile } from '@/data/mockData';
-  // import ReactMarkdown from 'react-markdown';
-  // We need to add these imports at the top of the file.
+  const { t } = useLanguage();
 
   useEffect(() => {
     const checkMobile = () => {
@@ -36,7 +35,6 @@ export default function IDELayout({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    // ... existing useEffect code ...
     const updateZoomLevel = () => {
       const level = Math.round(window.devicePixelRatio * 100);
       setZoomLevel(level);
@@ -115,7 +113,7 @@ export default function IDELayout({ children }: { children: React.ReactNode }) {
                        {/* Header - Height 36px (h-9) to match Tabs and Left Sidebar Header */}
                        <div className="h-9 flex items-center justify-between px-3 bg-ide-sidebar border-b border-ide-border/30">
                           <span className="text-xs font-bold text-ide-text tracking-wider uppercase">
-                            {activeRightPanel === 'contact' ? 'Contact Me' : 'Biography'}
+                            {activeRightPanel === 'contact' ? t('contactMe') : t('biography')}
                           </span>
                           <button 
                             onClick={closeRightPanel}
@@ -130,10 +128,6 @@ export default function IDELayout({ children }: { children: React.ReactNode }) {
                            <ContactPanel />
                          ) : (
                            <div className="p-6 prose prose-invert max-w-none text-sm">
-                              {/* We need to dynamically import these component to avoid circular Deps or just inline the content. 
-                                  Better to render children or specific component. 
-                                  For now I am inlining the Bio render logic here or checking how to access profile data 
-                              */}
                               <BioPanel />
                            </div>
                          )}
@@ -152,10 +146,6 @@ export default function IDELayout({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
-
-// Helper Component for Bio
-import ReactMarkdown from 'react-markdown';
-import { useLanguage } from '@/context/LanguageContext';
 
 function BioPanel() {
   const { data } = useLanguage();

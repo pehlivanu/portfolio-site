@@ -3,9 +3,11 @@
 import React from 'react';
 import { GitBranch, RefreshCw, XCircle, AlertTriangle, Bell, Check, Mail } from 'lucide-react';
 import { useNavigation } from '@/context/NavigationContext';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function StatusBar() {
   const { contactStatus, zoomLevel, activeSection } = useNavigation();
+  const { t } = useLanguage();
 
   const getLanguageForSection = (section: string) => {
     switch (section) {
@@ -51,12 +53,12 @@ export default function StatusBar() {
             {contactStatus === 'sent' ? (
                 <>
                     <Check size={12} />
-                    <span>Email Sent</span>
+                    <span>{t('emailSent')}</span>
                 </>
             ) : (
                 <>
                     <Mail size={12} />
-                    <span>Not Contacted Yet</span>
+                    <span>{t('notContacted')}</span>
                 </>
             )}
         </div>

@@ -55,7 +55,7 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
         newResults.push({ 
           type: 'project', 
           title: project.title, 
-          subtitle: 'Project', 
+          subtitle: t('projects'), 
           section: 'projects',
           id: `projects-${project.id}`
         });
@@ -84,7 +84,7 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
         about.greeting.toLowerCase().includes(term)) {
       newResults.push({
         type: 'about',
-        title: 'About Me',
+        title: t('about'),
         subtitle: about.description.substring(0, 30) + '...',
         section: 'about',
         id: 'about'
@@ -96,7 +96,7 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
     if (contactText.toLowerCase().includes(term)) {
       newResults.push({
         type: 'contact',
-        title: 'Contact',
+        title: t('contact'),
         subtitle: t('getInTouch'),
         section: 'contact',
         id: 'contact'
@@ -104,11 +104,7 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
     }
 
     setResults(newResults);
-  }, [searchTerm, setActiveMatch]);
-
-  // Clear selection when component unmounts or closes if needed, 
-  // but the requirement is just "when we clear the search text ... or close the search component"
-  // so handling it in handleCloseWrapper is better.
+  }, [searchTerm, setActiveMatch, experience, education, projects, about, t]);
 
   const handleClose = () => {
     setActiveMatch(null);
@@ -148,7 +144,7 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
   return (
     <div className="w-full md:w-80 bg-ide-sidebar flex flex-col h-full border-r border-ide-border/30 flex">
       <div className="p-3 text-xs font-bold text-ide-text tracking-wider uppercase flex justify-between items-center">
-        <span>Search</span>
+        <span>{t('search')}</span>
         <button onClick={handleClose} className="md:hidden text-ide-text hover:text-ide-text-active">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
         </button>
@@ -160,7 +156,7 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder="Search (Ctrl+Shift+F)"
+            placeholder={t('searchPlaceholder')}
             className="w-full bg-ide-bg border border-ide-border focus:border-ide-accent text-ide-text text-sm px-2 py-1 pr-8 outline-none placeholder:text-gray-500"
             autoFocus
           />
@@ -171,7 +167,7 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
                 setActiveMatch(null); 
               }}
               className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-ide-text transition-colors"
-              title="Clear Search"
+              title={t('clearSearch')}
             >
               <X size={14} />
             </button>
@@ -183,7 +179,7 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
         <div className="flex flex-col overflow-y-auto">
           <div className="px-3 py-1 text-xs font-bold text-ide-text opacity-70 uppercase flex items-center gap-1">
             <ChevronDown size={14} />
-            <span>{results.length} results</span>
+            <span>{results.length} {t('results')}</span>
           </div>
           
           {results.map((result, idx) => (

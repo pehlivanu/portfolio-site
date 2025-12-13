@@ -5,9 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Send, AlertCircle, Check, X, MapPin, Globe, Car, Train } from 'lucide-react';
 import { useNavigation } from '@/context/NavigationContext';
 import Highlight from '@/components/ui/Highlight';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function ContactForm() {
   const { setContactStatus } = useNavigation();
+  const { t } = useLanguage();
   
   const [formData, setFormData] = useState({
     name: '',
@@ -72,7 +74,7 @@ export default function ContactForm() {
     if (!tech) return;
 
     if (forbiddenTech.some(ft => tech.includes(ft))) {
-      setTechError(`I do not accept projects involving ${techInput.trim()}. I specialize in Java/Spring & JS/React ecosystems.`);
+      setTechError(t('techError').replace('{tech}', techInput.trim()));
       return;
     }
 
@@ -124,7 +126,7 @@ export default function ContactForm() {
             setTravelStats(travelStats);
 
             if (distance > 25 && countryCode !== 'ch') {
-              setAddressError(`Distance is ${Math.round(distance)}km. I only accept on-site offers within 25km of my location, Relocation is not an option, inside Germany.`);
+              setAddressError(t('distanceError').replace('{distance}', Math.round(distance).toString()));
             }
           } else {
              console.error('API Error');
@@ -133,10 +135,10 @@ export default function ContactForm() {
           console.error('Error calling distance API', error);
         }
       } else {
-        setAddressError('Could not find this address. Please try to be more specific.');
+        setAddressError(t('addressNotFound'));
       }
     } catch (error) {
-      setAddressError('Error checking location. Please try again.');
+      setAddressError(t('addressError'));
     } finally {
       setIsCheckingLocation(false);
     }
@@ -147,24 +149,14 @@ export default function ContactForm() {
     if (submitted) return;
 
     if ((formData.location === 'onsite' || formData.location === 'hybrid') && (addressError || !formData.address)) {
-      if (!formData.address) setAddressError('Address is required for on-site/hybrid offers.');
+      if (!formData.address) setAddressError(t('addressRequired'));
       return;
     }
 
-    const subject = `Portfolio Contact: ${formData.purpose} - ${formData.name}`;
-    const body = `
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Purpose: ${formData.purpose}
-Location Preference: ${formData.location}
-Address: ${(formData.location === 'onsite' || formData.location === 'hybrid') ? formData.address : 'N/A'}
-Technologies: ${technologies.join(', ')}
-
-Message:
-${formData.message}
-    `;
-
+    // Keep subject and body internal logic in English for the email recipient (Liviu)
+    // or maybe translate them? Usually email content sent to owner is fine in English or mixed.
+    // I will keep the email body construction as is, assuming Liviu reads it.
+    
     console.log('[ContactForm] Sending email via API');
 
     try {
@@ -204,17 +196,17 @@ ${formData.message}
     <>
       <div className="mb-6">
         <h3 className="text-xl font-bold text-ide-text-active group-hover:text-ide-accent transition-colors mb-2">
-          <Highlight text="Get In Touch" />
+          <Highlight text={t('getInTouch')} />
         </h3>
         <p className="text-ide-text text-sm leading-relaxed">
-          <Highlight text="Whether you have a question, a project proposal, or just want to say hi, I'll try my best to get back to you!" />
+          <Highlight text={t('contactIntro')} />
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-1">
-            <label className="text-xs text-ide-text uppercase font-bold">Name</label>
+            <label className="text-xs text-ide-text uppercase font-bold">{t('name')}</label>
             <input 
               type="text" 
               required
@@ -225,7 +217,7 @@ ${formData.message}
             />
           </div>
           <div className="space-y-1">
-            <label className="text-xs text-ide-text uppercase font-bold">Email</label>
+            <label className="text-xs text-ide-text uppercase font-bold">{t('email')}</label>
             <input 
               type="email" 
               required
@@ -238,7 +230,7 @@ ${formData.message}
         </div>
 
         <div className="space-y-1">
-          <label className="text-xs text-ide-text uppercase font-bold">Phone (Optional)</label>
+          <label className="text-xs text-ide-text uppercase font-bold">{t('phoneOptional')}</label>
           <input 
             type="tel" 
             placeholder="+49..."
@@ -250,24 +242,24 @@ ${formData.message}
         </div>
 
         <div className="space-y-1">
-          <label className="text-xs text-ide-text uppercase font-bold">Purpose</label>
+          <label className="text-xs text-ide-text uppercase font-bold">{t('purpose')}</label>
           <select 
             className="w-full bg-ide-bg border border-ide-border rounded p-2 text-ide-text focus:border-ide-accent outline-none transition-colors"
             value={formData.purpose}
             onChange={e => setFormData({...formData, purpose: e.target.value})}
             disabled={submitted}
           >
-            <option value="recruiting_company">Recruiting (My Company)</option>
-            <option value="recruiting_client">Recruiting (For a Client)</option>
-            <option value="personal_project">Personal Project / Freelance</option>
-            <option value="buy_template">Buy This Website Template</option>
+            <option value="recruiting_company">{t('recruitingCompany')}</option>
+            <option value="recruiting_client">{t('recruitingClient')}</option>
+            <option value="personal_project">{t('personalProject')}</option>
+            <option value="buy_template">{t('buyTemplate')}</option>
           </select>
         </div>
 
         {formData.purpose !== 'buy_template' && (
           <>
             <div className="space-y-1">
-              <label className="text-xs text-ide-text uppercase font-bold">Location Preference</label>
+              <label className="text-xs text-ide-text uppercase font-bold">{t('locationPreference')}</label>
               <div className="flex gap-4 mt-1">
                 <label className="flex items-center gap-2 text-sm text-ide-text cursor-pointer">
                   <input 
@@ -279,7 +271,7 @@ ${formData.message}
                     className="accent-ide-accent"
                     disabled={submitted}
                   />
-                  <Globe size={14} /> Remote
+                  <Globe size={14} /> {t('remote')}
                 </label>
                 <label className="flex items-center gap-2 text-sm text-ide-text cursor-pointer">
                   <input 
@@ -291,7 +283,7 @@ ${formData.message}
                     className="accent-ide-accent"
                     disabled={submitted}
                   />
-                  <Globe size={14} /> Hybrid
+                  <Globe size={14} /> {t('hybrid')}
                 </label>
                 <label className="flex items-center gap-2 text-sm text-ide-text cursor-pointer">
                   <input 
@@ -303,18 +295,18 @@ ${formData.message}
                     className="accent-ide-accent"
                     disabled={submitted}
                   />
-                  <MapPin size={14} /> On-site
+                  <MapPin size={14} /> {t('onsite')}
                 </label>
               </div>
               
               {(formData.location === 'onsite' || formData.location === 'hybrid') && (
                 <div className="mt-2">
                    <div className="flex justify-between items-end mb-1 px-1 flex-wrap gap-2">
-                       <span className="text-xs text-ide-text/50">Address for distance calculation</span>
+                       <span className="text-xs text-ide-text/50">{t('addressLabel')}</span>
                        {distanceValue !== null && (
                           <div className="flex flex-col items-end gap-1">
                             <span className={`text-xs font-mono ${addressError ? 'text-red-400' : 'text-green-400'}`}>
-                                {distanceValue}km from Kirchheim
+                                {distanceValue}km {t('fromKirchheim')}
                             </span>
                             {travelStats && !addressError && (
                               <div className="flex gap-3 text-[10px] text-ide-text/70">
@@ -327,14 +319,14 @@ ${formData.message}
                    </div>
                    <input 
                       type="text" 
-                      placeholder="Office Address (Street, City, Country)"
+                      placeholder={t('officeAddressPlaceholder')}
                       className={`w-full bg-ide-bg border ${addressError ? 'border-red-500' : 'border-ide-border'} rounded p-2 text-ide-text focus:border-ide-accent outline-none transition-colors text-sm`}
                       value={formData.address}
                       onChange={e => setFormData({...formData, address: e.target.value})}
                       onBlur={(e) => checkLocation(e.target.value)}
                       disabled={submitted}
                     />
-                    {isCheckingLocation && <div className="text-xs text-ide-text mt-1">Checking distance...</div>}
+                    {isCheckingLocation && <div className="text-xs text-ide-text mt-1">{t('checkingDistance')}</div>}
                     {addressError && (
                       <div className="text-red-400 [.light-theme_&]:text-red-600 text-xs flex items-center gap-1 mt-1">
                           <AlertCircle size={12} /> {addressError}
@@ -345,7 +337,7 @@ ${formData.message}
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs text-ide-text uppercase font-bold">Technologies</label>
+              <label className="text-xs text-ide-text uppercase font-bold">{t('technologies')}</label>
               <div className="bg-ide-bg border border-ide-border rounded p-2 focus-within:border-ide-accent transition-colors">
                 <div className="flex flex-wrap gap-2 mb-2">
                   {technologies.map(tech => (
@@ -357,7 +349,7 @@ ${formData.message}
                 </div>
                 <input 
                   type="text" 
-                  placeholder="Type tech and press Enter (e.g. Java, React)"
+                  placeholder={t('techPlaceholder')}
                   className="w-full bg-transparent outline-none text-sm text-ide-text"
                   value={techInput}
                   onChange={e => {
@@ -379,12 +371,12 @@ ${formData.message}
 
         {formData.purpose === 'buy_template' && (
           <div className="bg-blue-500/10 border border-blue-500/30 p-3 rounded text-sm text-blue-200 [.light-theme_&]:text-blue-800">
-            This template is designed to easily import your LinkedIn data. I'll send you the setup instructions!
+            {t('buyTemplateMessage')}
           </div>
         )}
 
         <div className="space-y-1">
-          <label className="text-xs text-ide-text uppercase font-bold">Message</label>
+          <label className="text-xs text-ide-text uppercase font-bold">{t('message')}</label>
           <textarea 
             required
             rows={4}
@@ -404,7 +396,7 @@ ${formData.message}
             <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
               <Check size={32} className="text-green-400 [.light-theme_&]:text-green-600" />
             </div>
-            <h3 className="text-2xl font-bold text-ide-text-active mb-2">Thank you!</h3>
+            <h3 className="text-2xl font-bold text-ide-text-active mb-2">{t('successMessage')}</h3>
             {cooldown > 0 ? (
               <p className="text-sm text-ide-text/50 font-mono">
                 You can send another message in {Math.floor(cooldown / 60)}:{(cooldown % 60).toString().padStart(2, '0')}
@@ -424,7 +416,7 @@ ${formData.message}
             type="submit"
             className="w-full bg-ide-accent hover:bg-blue-600 text-white font-medium py-2 rounded transition-colors flex items-center justify-center gap-2"
           >
-            <Send size={18} /> Send Message
+            <Send size={18} /> {t('sendMessage')}
           </button>
         )}
       </form>

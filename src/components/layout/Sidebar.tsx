@@ -1,12 +1,11 @@
 "use client";
 
 import React from 'react';
-import { Files, Search, Play, LayoutGrid, Settings, Github, Linkedin, Sun, Moon, Globe } from 'lucide-react';
+import { Files, Search, LayoutGrid, Settings, Github, Linkedin, Sun, Moon, Globe } from 'lucide-react';
 
 import { useTheme } from '@/context/ThemeContext';
 import { useNavigation } from '@/context/NavigationContext';
 import { useLanguage, Language } from '@/context/LanguageContext';
-import Link from 'next/link';
 
 interface SidebarProps {
   activeView: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | null;
@@ -17,8 +16,8 @@ interface SidebarProps {
 
 export default function Sidebar({ activeView, setActiveView, isOpen = false, onClose }: SidebarProps) {
   const { theme, toggleTheme } = useTheme();
-  const { activeRightPanel, openRightPanel, closeRightPanel, scrollToSection } = useNavigation();
-  const { language, setLanguage } = useLanguage();
+  const { activeRightPanel, openRightPanel, closeRightPanel } = useNavigation();
+  const { language, setLanguage, t } = useLanguage();
 
   const handleContactClick = () => {
     if (activeRightPanel === 'contact') {
@@ -61,40 +60,40 @@ export default function Sidebar({ activeView, setActiveView, isOpen = false, onC
       <div className="flex flex-col gap-4">
         <button 
           className={`p-2 cursor-pointer ${activeView === 'explorer' ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
-          title="Explorer"
-          aria-label="Explorer"
+          title={t('explorer')}
+          aria-label={t('explorer')}
           onClick={() => handleViewClick('explorer')}
         >
           <Files size={24} strokeWidth={1.5} />
         </button>
         <button 
           className={`p-2 cursor-pointer ${activeView === 'search' ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
-          title="Search"
-          aria-label="Search"
+          title={t('search')}
+          aria-label={t('search')}
           onClick={() => handleViewClick('search')}
         >
           <Search size={24} strokeWidth={1.5} />
         </button>
         <button 
           className={`p-2 cursor-pointer ${activeView === 'github' ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
-          title="GitHub Stats"
-          aria-label="GitHub Stats"
+          title={t('githubStats')}
+          aria-label={t('githubStats')}
           onClick={() => handleViewClick('github')}
         >
           <Github size={24} strokeWidth={1.5} />
         </button>
         <button 
           className={`p-2 cursor-pointer ${activeView === 'linkedin' ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
-          title="LinkedIn Profile"
-          aria-label="LinkedIn Profile"
+          title={t('linkedinProfile')}
+          aria-label={t('linkedinProfile')}
           onClick={() => handleViewClick('linkedin')}
         >
           <Linkedin size={24} strokeWidth={1.5} />
         </button>
         <button 
           className={`p-2 cursor-pointer ${activeRightPanel === 'contact' ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
-          title="Contact Me"
-          aria-label="Contact Me"
+          title={t('contactMe')}
+          aria-label={t('contactMe')}
           onClick={handleContactClick}
         >
           <LayoutGrid size={24} strokeWidth={1.5} />
@@ -104,8 +103,8 @@ export default function Sidebar({ activeView, setActiveView, isOpen = false, onC
         <button 
           className="p-2 cursor-pointer text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100 relative" 
           onClick={toggleLanguage}
-          title={`Switch Language (Current: ${language.toUpperCase()})`}
-          aria-label="Switch Language"
+          title={`${t('switchLanguage')} (${language.toUpperCase()})`}
+          aria-label={t('switchLanguage')}
         >
           <Globe size={24} strokeWidth={1.5} />
           <span className="absolute bottom-0 right-0 text-[10px] font-bold bg-ide-bg rounded px-0.5 leading-none shadow-sm">{language.toUpperCase()}</span>
@@ -113,15 +112,15 @@ export default function Sidebar({ activeView, setActiveView, isOpen = false, onC
         <button 
           className="p-2 cursor-pointer text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100" 
           onClick={toggleTheme}
-          title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Theme`}
-          aria-label={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Theme`}
+          title={t('switchTheme')}
+          aria-label={t('switchTheme')}
         >
           {theme === 'dark' ? <Sun size={24} strokeWidth={1.5} /> : <Moon size={24} strokeWidth={1.5} />}
         </button>
         <button 
           className="p-2 cursor-pointer text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100" 
-          title="Settings"
-          aria-label="Settings"
+          title={t('settings')}
+          aria-label={t('settings')}
         >
           <Settings size={24} strokeWidth={1.5} />
         </button>
