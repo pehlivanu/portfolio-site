@@ -74,24 +74,56 @@ export const experience = [
 export const education = [
   {
     id: 1,
-    degree: "Dual Study in Computer Science (B.Sc. equiv.)",
-    school: "ADV Böblingen",
+    type: "dual-study",
+    studyField: "Dual Study",
+    degree: "Certified Computer Specialist",
+    school: "GDS Schule 2",
+    url: "https://gds2.de",
+    location: "Böblingen, Germany",
     year: "2011 - 2014",
-    description: "Intensive dual study program focusing on Software Engineering, Database Systems, and Project Management. Graduated with a thesis grade of 1.0 (Excellent)."
+    summary: "Intensive dual study program focusing on Software Engineering, Database Systems, and Project Management.",
+    description: `*   **Specialization**: Software Engineering, Database Systems, Project Management.
+*   **Thesis**: "Alpine Curve Editor" - Graded **1.0 (Excellent)**.
+*   **Key Courses**: C/Assembly (Intel 8085), Java (OO, Distributed Systems), SQL/JDBC, UML/Design Patterns, Linux, Robot-Programming.
+*   **Certifications**: Cisco CCNA Exploration Modules 1-4.`,
   },
   {
     id: 2,
-    degree: "Master's in Computer Science",
+    type: "master",
+    studyField: "Master",
+    degree: "Master's Degree in Mathematics Teacher Education",
     school: "West University of Timisoara",
+    url: "https://info.uvt.ro/en/",
+    location: "Timisoara, Romania",
     year: "2009 - 2011",
-    description: "Advanced studies in Distributed Systems, Artificial Intelligence, and Software Architecture."
+    summary: "Specialized training in Pedagogy and Didactics for Mathematics education.",
+    description: `*   **Goal**: Professional certification for teaching Mathematics.
+*   **Focus**: Advanced Mathematics, Pedagogical Psychology, Curriculum Design.`,
   },
   {
     id: 3,
-    degree: "Bachelor's in Mathematics & Computer Science",
+    type: "bachelor",
+    studyField: "Bachelor",
+    degree: "Bachelor's Degree in Mathematics and Computer Science",
     school: "West University of Timisoara",
+    url: "https://info.uvt.ro/en/",
+    location: "Timisoara, Romania",
     year: "2006 - 2009",
-    description: "Strong foundation in Algorithms, Data Structures, and Theoretical Computer Science."
+    summary: "Dual major providing distinct foundations in both abstract Mathematics and Applied Computer Science.",
+    description: `*   **Major**: Mathematics & Computer Science.
+*   **Core Skills**: Advanced Calculus, Algebra, Algorithms, Data Structures, Operating Systems.`,
+  },
+  {
+    id: 4,
+    type: "high-school",
+    studyField: "College",
+    degree: "Baccalaureate Diploma",
+    school: "National College of Computer Science \"Spiru Haret\"",
+    url: "https://www.cni-sv.ro/",
+    location: "Suceava, Romania",
+    year: "2002 - 2006",
+    summary: "Intensive Computer Science and Mathematics curriculum.",
+    description: `*   **Profile**: Mathematics & Computer Science (Intensive).`,
   },
 ];
 

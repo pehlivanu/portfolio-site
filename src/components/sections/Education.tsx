@@ -1,13 +1,144 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap } from 'lucide-react';
+import { GraduationCap, Award, BookOpen, School, Calendar, MapPin, Code } from 'lucide-react';
 import { education } from '@/data/mockData';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
-import Highlight from '@/components/ui/Highlight';
-
 import { useSearch } from '@/context/SearchContext';
+
+const getIconByType = (type: string) => {
+  switch (type) {
+    case 'dual-study':
+      return <Code size={20} className="text-ide-text-active" />;
+    case 'master':
+      return <Award size={20} className="text-ide-text-active" />;
+    case 'bachelor':
+      return <GraduationCap size={20} className="text-ide-text-active" />;
+    case 'high-school':
+      return <School size={20} className="text-ide-text-active" />;
+    default:
+      return <BookOpen size={20} className="text-ide-text-active" />;
+  }
+};
+
+const getIconBackground = (type: string) => {
+  switch (type) {
+    case 'dual-study':
+      return 'bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.5)]';
+    case 'master':
+      return 'bg-purple-500 shadow-[0_0_15px_rgba(168,85,247,0.5)]';
+    case 'bachelor':
+      return 'bg-green-500 shadow-[0_0_15px_rgba(34,197,94,0.5)]';
+    case 'high-school':
+      return 'bg-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.5)]';
+    default:
+      return 'bg-gray-500';
+  }
+};
+
+const getRoleColor = (type: string) => {
+  switch (type) {
+    case 'dual-study': return 'text-blue-400';
+    case 'master': return 'text-purple-400';
+    case 'bachelor': return 'text-green-400';
+    case 'high-school': return 'text-orange-400';
+    default: return 'text-blue-400';
+  }
+};
+
+const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
+  const roleColor = getRoleColor(edu.type || '');
+  // Remove spaces for tag style
+  const tagContent = edu.studyField ? edu.studyField.replace(/\s+/g, '').replace(/&/g, 'And') : edu.degree.replace(/\s+/g, '');
+
+  return (
+    <motion.div
+      key={edu.id}
+      id={`education-${edu.id}`}
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      className={`relative pl-0 md:pl-16 transition-all duration-500 ${isActive ? 'bg-orange-500/10 -mx-4 px-4 py-4 rounded-lg border-l-4 border-orange-500' : ''}`}
+    >
+      {/* Timeline Icon */}
+      <div className={`hidden md:flex absolute -left-[19px] top-0 w-10 h-10 rounded-full items-center justify-center border-4 border-ide-bg z-10 ${getIconBackground(edu.type || '')}`}>
+        {getIconByType(edu.type || '')}
+      </div>
+
+      <div className="bg-ide-card-bg p-6 rounded-lg border border-ide-border hover:border-ide-accent/50 transition-colors group relative overflow-hidden">
+         {/* Subtle gradient overlay based on role type */}
+         <div className={`absolute top-0 left-0 w-1 h-full opacity-50 ${
+            edu.type === 'master' ? 'bg-purple-500' : 
+            edu.type === 'dual-study' ? 'bg-blue-500' : 
+            edu.type === 'bachelor' ? 'bg-green-500' : 'bg-orange-500'
+        }`} />
+
+        <div className="flex flex-col mb-4">
+           {/* Row 1: Study Field (Tag Style) */}
+           <div className="flex flex-col mb-2">
+              <h3 className="text-xl md:text-2xl font-mono font-bold text-ide-text-active transition-colors flex flex-wrap items-center gap-1">
+                <span className="text-gray-500 opacity-100 font-bold">&lt;</span>
+                <span className={`${roleColor}`}>{tagContent}</span>
+                <span className="text-gray-500 opacity-100 font-bold">/&gt;</span>
+              </h3>
+          </div>
+
+          {/* Row 2: Metadata Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm pl-4 font-mono">
+              {/* 1. Institution */}
+              <div className="flex items-center gap-1 text-ide-text transition-colors w-full truncate">
+                  <School size={12} className="mr-1 shrink-0 opacity-60"/>
+                  <span className="text-ide-keyword opacity-70">institution=</span>
+                  {edu.url ? (
+                    <a 
+                      href={edu.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="truncate hover:text-ide-accent hover:underline decoration-ide-accent/50 underline-offset-2 transition-all cursor-pointer"
+                    >
+                      "{edu.school}"
+                    </a>
+                  ) : (
+                    <span className="truncate">"{edu.school}"</span>
+                  )}
+              </div>
+
+               {/* 2. Degree Name */}
+               <div className="flex items-center gap-1 text-ide-text transition-colors w-full truncate">
+                  <Award size={12} className="mr-1 shrink-0 opacity-60"/>
+                  <span className="text-ide-keyword opacity-70">degree=</span>
+                  <span className="truncate">"{edu.degree}"</span>
+              </div>
+
+               {/* 3. Duration */}
+               <span className="flex items-center gap-1 opacity-60 hover:text-ide-text transition-colors cursor-default" title="Period">
+                  <Calendar size={12} className="mr-1 shrink-0"/>
+                  <span className="text-ide-keyword opacity-70">year=</span>"{edu.year}"
+              </span>
+
+              {/* 4. Location */}
+              {edu.location && (
+                <span className="flex items-center gap-1 opacity-60 hover:text-ide-text transition-colors cursor-default" title="Location">
+                   <MapPin size={12} className="mr-1 shrink-0"/>
+                   <span className="text-ide-keyword opacity-70">location=</span>"{edu.location}"
+                </span>
+              )}
+          </div>
+        </div>
+
+        <div className="text-ide-text mb-0 leading-relaxed text-sm">
+             {/* Summary Section - Always Visible */}
+             {edu.summary && (
+                <div className="text-base md:text-lg text-ide-text-active italic font-medium px-4 py-3 bg-ide-activity-bar/30 rounded-lg border-l-2 border-ide-accent/20">
+                  {edu.summary}
+                </div>
+              )}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 export default function Education() {
   useScrollSpy('education');
@@ -21,36 +152,10 @@ export default function Education() {
         <div className="h-[1px] bg-ide-border flex-1 ml-4"></div>
       </div>
 
-      <div className="grid gap-6">
+      <div className="relative md:border-l-2 md:border-ide-border ml-0 md:ml-6 space-y-8 md:space-y-16">
         {education.map((edu, index) => {
           const isActive = activeMatch?.id === `education-${edu.id}`;
-          return (
-            <motion.div
-              key={edu.id}
-              id={`education-${edu.id}`}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className={`bg-ide-card-bg p-6 rounded-lg border border-ide-border hover:border-ide-accent/50 transition-all duration-500 flex items-start gap-4 ${isActive ? 'bg-orange-500/10 border-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.2)]' : ''}`}
-            >
-              <div className="p-3 bg-ide-activity-bar rounded-lg text-ide-accent">
-                <GraduationCap size={24} />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold text-ide-text-active"><Highlight text={edu.school} /></h3>
-                <p className="text-ide-text text-lg"><Highlight text={edu.degree} /></p>
-                <p className="text-sm text-gray-500 font-mono mt-1 mb-2">{edu.year}</p>
-                {/* @ts-ignore */}
-                {edu.description && (
-                  <p className="text-sm text-gray-400 leading-relaxed max-w-2xl">
-                    {/* @ts-ignore */}
-                    {edu.description}
-                  </p>
-                )}
-              </div>
-            </motion.div>
-          );
+          return <EducationCard key={edu.id} edu={edu} isActive={isActive} />;
         })}
       </div>
     </section>
