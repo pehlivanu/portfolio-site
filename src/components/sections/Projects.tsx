@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Folder, Github, ExternalLink, Code, Leaf, Triangle, Atom } from 'lucide-react';
-import { projects } from '@/data/mockData';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useSearch } from '@/context/SearchContext';
 import { useLanguage } from '@/context/LanguageContext';
@@ -18,7 +17,7 @@ const getProjectIcon = (tech: string[]) => {
 
 export default function Projects() {
   useScrollSpy('projects');
-  const { data } = useLanguage();
+  const { data, t } = useLanguage();
   const { projects } = data;
   const { activeMatch } = useSearch();
 
@@ -26,7 +25,7 @@ export default function Projects() {
     <section id="projects" className="py-20 px-8 max-w-6xl mx-auto">
       <div className="flex items-center gap-2 mb-12">
         <span className="text-ide-accent font-mono text-xl">04.</span>
-        <h2 className="text-3xl font-bold text-ide-text-active">Projects</h2>
+        <h2 className="text-3xl font-bold text-ide-text-active">{t('projects')}</h2>
         <div className="h-[1px] bg-ide-border flex-1 ml-4"></div>
       </div>
 
@@ -55,7 +54,7 @@ export default function Projects() {
                     
                     <div className="flex gap-3">
                       {project.githubUrl && (
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" title="View Code" aria-label="View Code">
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" title={t('viewCode')} aria-label={t('viewCode')}>
                           <Github 
                             size={20} 
                             className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
@@ -64,7 +63,7 @@ export default function Projects() {
                         </a>
                       )}
                       {project.deployUrl && (
-                        <a href={project.deployUrl} target="_blank" rel="noopener noreferrer" title="Live Demo" aria-label="Live Demo">
+                        <a href={project.deployUrl} target="_blank" rel="noopener noreferrer" title={t('liveDemo')} aria-label={t('liveDemo')}>
                           <ExternalLink 
                             size={20} 
                             className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
@@ -95,7 +94,7 @@ export default function Projects() {
                         {/* Stack: Styled as an array */}
                         <div className="flex flex-wrap items-center gap-1">
                             <Code size={14} className="mr-1 text-ide-accent shrink-0" />
-                             <span className="text-ide-keyword">stack=</span>
+                             <span className="text-ide-keyword">{t('stackLabel')}</span>
                              <span className="text-ide-text-active">[</span>
                              {project.tech.map((t, i) => (
                                  <span key={t}>

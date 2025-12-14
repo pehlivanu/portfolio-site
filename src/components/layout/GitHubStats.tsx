@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { Github, Clock, Book, GitCommit, Users } from 'lucide-react';
 
+import { useLanguage } from '@/context/LanguageContext';
+
 interface GitHubProfile {
   login: string;
   avatar_url: string;
@@ -20,6 +22,7 @@ export default function GitHubStats({ onClose }: { onClose?: () => void }) {
   const [profile, setProfile] = useState<GitHubProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const { t } = useLanguage();
 
   useEffect(() => {
     const fetchGitHubData = async () => {
@@ -38,14 +41,14 @@ export default function GitHubStats({ onClose }: { onClose?: () => void }) {
     fetchGitHubData();
   }, []);
 
-  if (loading) return <div className="p-8 text-ide-text text-center">Loading GitHub Profile...</div>;
-  if (error) return <div className="p-8 text-red-400 [.light-theme_&]:text-red-600 text-center">{error}</div>;
+  if (loading) return <div className="p-8 text-ide-text text-center">{t('loadingGithub')}</div>;
+  if (error) return <div className="p-8 text-red-400 [.light-theme_&]:text-red-600 text-center">{t('errorGithub')}</div>;
   if (!profile) return null;
 
   return (
     <div className="w-full md:w-80 bg-ide-sidebar flex flex-col h-full border-r border-ide-border/30 flex overflow-y-auto">
       <div className="p-3 text-xs font-bold text-ide-text tracking-wider uppercase border-b border-ide-border/30 flex justify-between items-center">
-        <span>GitHub Profile</span>
+        <span>{t('githubStats')}</span>
         <button onClick={onClose} className="md:hidden text-ide-text hover:text-ide-text-active">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
         </button>
@@ -82,38 +85,38 @@ export default function GitHubStats({ onClose }: { onClose?: () => void }) {
           
           <div className="flex items-center gap-3 text-sm text-ide-text">
             <Clock size={16} className="text-ide-accent" />
-            <span>Joined {new Date(profile.created_at).getFullYear()}</span>
+            <span>{t('joined')} {new Date(profile.created_at).getFullYear()}</span>
           </div>
           
           <div className="grid grid-cols-2 gap-3 mt-6">
             <div className="bg-ide-bg p-3 rounded-lg border border-ide-border text-center">
               <Book size={20} className="mx-auto mb-2 text-blue-400 [.light-theme_&]:text-blue-700" />
               <div className="text-xl font-bold text-ide-text-active">{profile.public_repos}</div>
-              <div className="text-xs text-gray-500 [.light-theme_&]:text-gray-600">Repositories</div>
+              <div className="text-xs text-gray-500 [.light-theme_&]:text-gray-600">{t('repositories')}</div>
             </div>
             
             <div className="bg-ide-bg p-3 rounded-lg border border-ide-border text-center">
               <GitCommit size={20} className="mx-auto mb-2 text-green-400 [.light-theme_&]:text-green-700" />
               <div className="text-xl font-bold text-ide-text-active">235</div>
-              <div className="text-xs text-gray-500 [.light-theme_&]:text-gray-600">Contributions (Last Year)</div>
+              <div className="text-xs text-gray-500 [.light-theme_&]:text-gray-600">{t('contributions')}</div>
             </div>
           </div>
         </div>
         
         <div className="mt-8 w-full">
-          <h3 className="text-xs font-bold text-ide-text uppercase mb-3 text-left">Achievements</h3>
+          <h3 className="text-xs font-bold text-ide-text uppercase mb-3 text-left">{t('achievements')}</h3>
           <div className="grid grid-cols-2 gap-3">
-            <div className="bg-ide-bg p-2 rounded border border-ide-border flex flex-col items-center text-center gap-2" title="Quick Draw">
+            <div className="bg-ide-bg p-2 rounded border border-ide-border flex flex-col items-center text-center gap-2" title={t('quickDraw')}>
               <img src="/images/quick-draw.png" alt="Quick Draw" className="w-12 h-12" />
-              <span className="text-xs text-ide-text font-medium">Quick Draw</span>
+              <span className="text-xs text-ide-text font-medium">{t('quickDraw')}</span>
             </div>
-            <div className="bg-ide-bg p-2 rounded border border-ide-border flex flex-col items-center text-center gap-2" title="Pull Shark">
+            <div className="bg-ide-bg p-2 rounded border border-ide-border flex flex-col items-center text-center gap-2" title={t('pullShark')}>
               <img src="/images/pull-shark.png" alt="Pull Shark" className="w-12 h-12" />
-              <span className="text-xs text-ide-text font-medium">Pull Shark</span>
+              <span className="text-xs text-ide-text font-medium">{t('pullShark')}</span>
             </div>
-            <div className="bg-ide-bg p-2 rounded border border-ide-border flex flex-col items-center text-center gap-2" title="YOLO">
+            <div className="bg-ide-bg p-2 rounded border border-ide-border flex flex-col items-center text-center gap-2" title={t('yolo')}>
               <img src="/images/yolo.png" alt="YOLO" className="w-12 h-12" />
-              <span className="text-xs text-ide-text font-medium">YOLO</span>
+              <span className="text-xs text-ide-text font-medium">{t('yolo')}</span>
             </div>
           </div>
         </div>

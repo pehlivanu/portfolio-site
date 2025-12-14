@@ -5,9 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Mail } from 'lucide-react';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useNavigation } from '@/context/NavigationContext';
+import { useLanguage } from '@/context/LanguageContext';
 import ContactForm from './ContactForm';
 
 export default function Contact() {
+  const { t } = useLanguage();
   useScrollSpy('contact');
   const { activeRightPanel, closeRightPanel } = useNavigation();
   const sectionRef = React.useRef<HTMLElement>(null);
@@ -59,7 +61,7 @@ export default function Contact() {
         >
       <div className="flex items-center gap-2 mb-12">
         <span className="text-ide-accent font-mono text-xl">05.</span>
-        <h2 className="text-3xl font-bold text-ide-text-active">Contact Me</h2>
+        <h2 className="text-3xl font-bold text-ide-text-active">{t('contact')}</h2>
         <div className="h-[1px] bg-ide-border flex-1 ml-4"></div>
       </div>
 

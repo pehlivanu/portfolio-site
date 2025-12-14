@@ -2,7 +2,7 @@ export const experience = [
   {
     id: 1,
     type: "senior",
-    role: "Senior Software Developer",
+    role: "Senior Softwareentwickler",
     company: "DAT Group",
     companySize: "501-1,000 Mitarbeiter",
     industry: "Automotive Software",
@@ -21,7 +21,7 @@ export const experience = [
   {
     id: 2,
     type: "mid",
-    role: "Mid Software Developer",
+    role: "Softwareentwickler",
     company: "evia solutions GmbH",
     companySize: "51-200 Mitarbeiter",
     industry: "IT Services & Consulting",
@@ -38,7 +38,7 @@ export const experience = [
   {
     id: 3,
     type: "junior",
-    role: "Junior Software Developer",
+    role: "Junior Softwareentwickler",
     company: "PRODYNA AG",
     companySize: "201-500 Mitarbeiter",
     industry: "IT Consulting",
@@ -165,7 +165,7 @@ export const projects = [
 
 export const linkedInProfile = {
   name: "Liviu Ionesi",
-  headline: "Full Stack Developer | Java | Spring Boot | Next.js",
+  headline: "Full Stack Entwickler | Java | Spring Boot | Next.js",
   location: "Kirchheim unter Teck, Deutschland",
   connections: "500+",
   about: "Aufbau des digitalen Rückgrats der Automobil- und Fintech-Branche. Mit über 13 Jahren Erfahrung in der Entwicklung von hochleistungsfähigen verteilten Systemen spezialisiere ich mich auf die Modernisierung von Legacy-Architekturen und die Bereitstellung skalierbarer Cloud-Native-Lösungen.",
@@ -183,7 +183,7 @@ Ich schlage die Brücke zwischen komplexer Backend-Logik und intuitiven Frontend
 ---
 *Aktuell auf der Suche nach Remote- oder Hybrid-Möglichkeiten, bei denen ich meine architektonischen Einblicke und meinen KI-gestützten Workflow nutzen kann, um komplexe technische Herausforderungen zu lösen.*`,
   avatarUrl: "/images/linkedin-profile.png",
-  skills: ["Java", "Spring Boot", "Spring Cloud", "React", "Next.js", "Azure", "Docker", "Kubernetes", "SQL/NoSQL", "IntelliJ IDEA", "AI Tools (Cursor, Windsurf, Antigravity, MCP)"],
+  skills: ["Java", "Spring Boot", "Spring Cloud", "React", "Next.js", "Azure", "Docker", "Kubernetes", "SQL/NoSQL", "IntelliJ IDEA", "KI-Tools (Cursor, Windsurf, Antigravity, MCP)"],
   certifications: [
     { name: "Oracle Certified Professional, Java SE 6 Programmer", authority: "Oracle", url: "" },
     { name: "Oracle Certified Expert Java EE 6 Web Components Developer", authority: "Oracle", url: "" },

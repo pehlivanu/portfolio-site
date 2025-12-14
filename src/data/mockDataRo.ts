@@ -2,7 +2,7 @@ export const experience = [
   {
     id: 1,
     type: "senior",
-    role: "Senior Software Developer",
+    role: "Dezvoltator Software Senior",
     company: "DAT Group",
     companySize: "501-1,000 angajați",
     industry: "Software Auto",
@@ -21,7 +21,7 @@ export const experience = [
   {
     id: 2,
     type: "mid",
-    role: "Mid Software Developer",
+    role: "Dezvoltator Software",
     company: "evia solutions GmbH",
     companySize: "51-200 angajați",
     industry: "Servicii IT & Consultanță",
@@ -38,7 +38,7 @@ export const experience = [
   {
     id: 3,
     type: "junior",
-    role: "Junior Software Developer",
+    role: "Dezvoltator Software Junior",
     company: "PRODYNA AG",
     companySize: "201-500 angajați",
     industry: "Consultanță IT",
@@ -164,7 +164,7 @@ export const projects = [
 
 export const linkedInProfile = {
   name: "Liviu Ionesi",
-  headline: "Full Stack Developer | Java | Spring Boot | Next.js",
+  headline: "Dezvoltator Full Stack | Java | Spring Boot | Next.js",
   location: "Kirchheim unter Teck, Germania",
   connections: "500+",
   about: "Construirea coloanei vertebrale digitale a industriilor Auto și Fintech. Cu peste 13 ani de experiență în ingineria sistemelor distribuite de înaltă performanță, mă specializez în modernizarea arhitecturilor moștenite și livrarea de soluții scalabile, native cloud.",
@@ -182,7 +182,7 @@ Fac legătura între logica backend complexă și experiențele frontend intuiti
 ---
 *În prezent caut oportunități Remote sau Hybrid unde îmi pot folosi perspicacitatea arhitecturală și fluxul de lucru îmbunătățit de IA pentru a rezolva provocări inginerești complexe.*`,
   avatarUrl: "/images/linkedin-profile.png",
-  skills: ["Java", "Spring Boot", "Spring Cloud", "React", "Next.js", "Azure", "Docker", "Kubernetes", "SQL/NoSQL", "IntelliJ IDEA", "AI Tools (Cursor, Windsurf, Antigravity, MCP)"],
+  skills: ["Java", "Spring Boot", "Spring Cloud", "React", "Next.js", "Azure", "Docker", "Kubernetes", "SQL/NoSQL", "IntelliJ IDEA", "Instrumente IA (Cursor, Windsurf, Antigravity, MCP)"],
   certifications: [
     { name: "Oracle Certified Professional, Java SE 6 Programmer", authority: "Oracle", url: "" },
     { name: "Oracle Certified Expert Java EE 6 Web Components Developer", authority: "Oracle", url: "" },
@@ -198,7 +198,7 @@ export const about = {
   greeting: "~/developer/portfolio",
   name: "Liviu",
   suffix: ".io",
-  lastName: "IONESI",
+  lastName: "NESI",
   description: "Senior Fullstack Architect & Engineer | Enterprise Vibe Coder. Construirea coloanei vertebrale digitale a industriilor Auto și Fintech. Pionieratul unui nou standard în livrarea de software prin fuziunea rigorii de nivel enterprise cu viteza IDE-urilor integrate cu IA.",
   fullBio: linkedInProfile.fullBio,
   ctaPrimary: "Proiecte, nu doar cod",

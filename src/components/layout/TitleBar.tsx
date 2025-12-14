@@ -5,7 +5,10 @@ interface TitleBarProps {
   onMenuClick?: () => void;
 }
 
+import { useLanguage } from '@/context/LanguageContext';
+
 export default function TitleBar({ onMenuClick }: TitleBarProps) {
+  const { t } = useLanguage();
   return (
     <div className="h-8 bg-ide-title-bar flex items-center justify-between px-2 select-none shrink-0">
       <div className="flex items-center gap-2">
@@ -23,7 +26,7 @@ export default function TitleBar({ onMenuClick }: TitleBarProps) {
         </div>
       </div>
       <div className="text-sm text-ide-text opacity-80 font-sans truncate px-2">
-        portfolio - Antigravity - liviuionesi.dev
+        {t('portfolioTitle')}
       </div>
       <div className="flex items-center gap-2 opacity-0 sm:opacity-100 w-[60px]">
          {/* Spacer to balance the title centering if needed, or controls */}

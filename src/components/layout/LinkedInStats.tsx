@@ -4,15 +4,17 @@ import React from 'react';
 import { Linkedin, MapPin, Users, Briefcase, Award, ExternalLink } from 'lucide-react';
 import { linkedInProfile } from '@/data/mockData';
 import { useNavigation } from '@/context/NavigationContext';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
   const { openRightPanel } = useNavigation();
-  const profile = linkedInProfile;
+  const { data, t } = useLanguage();
+  const profile = data.linkedInProfile;
 
   return (
     <div className="w-full md:w-80 bg-ide-sidebar flex flex-col h-full border-r border-ide-border/30 flex overflow-y-auto">
       <div className="p-3 text-xs font-bold text-ide-text tracking-wider uppercase border-b border-ide-border/30 flex justify-between items-center">
-        <span>LinkedIn Profile</span>
+        <span>{t('linkedinProfile')}</span>
         <button onClick={onClose} className="md:hidden text-ide-text hover:text-ide-text-active">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
         </button>
@@ -39,7 +41,7 @@ export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
           rel="noopener noreferrer"
           className="px-4 py-2 bg-[#0077b5] hover:bg-[#006396] text-white text-sm rounded-md font-medium transition-colors flex items-center gap-2 mb-6"
         >
-          <span>View Profile</span>
+          <span>{t('viewProfile')}</span>
           <ExternalLink size={14} />
         </a>
         
@@ -48,12 +50,12 @@ export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
           
           <div className="flex items-center gap-3 text-sm text-ide-text">
             <Users size={16} className="text-ide-accent" />
-            <span>{profile.connections} connections</span>
+            <span>{profile.connections} {t('connections')}</span>
           </div>
 
           <div className="bg-ide-bg p-4 rounded-lg border border-ide-border text-left mt-4">
             <h3 className="text-xs font-bold text-ide-text uppercase mb-2 flex items-center gap-2">
-              <Briefcase size={14} /> About
+              <Briefcase size={14} /> {t('about')}
             </h3>
             <p className="text-sm text-ide-text leading-relaxed line-clamp-4">
               {profile.about}
@@ -62,12 +64,12 @@ export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
                 onClick={() => openRightPanel('bio')}
                 className="text-ide-accent text-xs hover:underline mt-2 font-medium"
             >
-                Read More
+                {t('readMore')}
             </button>
           </div>
           
           <div className="mt-6 w-full">
-            <h3 className="text-xs font-bold text-ide-text uppercase mb-3 text-left">Top Skills</h3>
+            <h3 className="text-xs font-bold text-ide-text uppercase mb-3 text-left">{t('topSkills')}</h3>
             <div className="flex flex-wrap gap-2">
               {profile.skills.slice(0, 8).map((skill) => (
                 <span key={skill} className="px-2 py-1 bg-ide-bg border border-ide-border rounded text-xs text-ide-text">
@@ -78,7 +80,7 @@ export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
           </div>
 
           <div className="mt-6 w-full">
-            <h3 className="text-xs font-bold text-ide-text uppercase mb-3 text-left">Certifications</h3>
+            <h3 className="text-xs font-bold text-ide-text uppercase mb-3 text-left">{t('certificationsLabel')}</h3>
             <div className="space-y-2 max-h-60 overflow-y-auto pr-1 custom-scrollbar">
               {profile.certifications?.map((cert, index) => {
                  const isClickable = !!cert.url;

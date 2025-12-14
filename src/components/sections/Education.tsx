@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, Award, BookOpen, School, Calendar, MapPin, Code } from 'lucide-react';
-import { education } from '@/data/mockData';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useSearch } from '@/context/SearchContext';
 import Highlight from '@/components/ui/Highlight';
@@ -48,7 +47,10 @@ const getRoleColor = (type: string) => {
   }
 };
 
+import { useLanguage } from '@/context/LanguageContext';
+
 const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
+  const { t } = useLanguage();
   const roleColor = getRoleColor(edu.type || '');
   // Remove spaces for tag style
   const tagContent = edu.studyField ? edu.studyField.replace(/\s+/g, '').replace(/&/g, 'And') : edu.degree.replace(/\s+/g, '');
@@ -90,7 +92,7 @@ const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
               {/* 1. Institution */}
               <div className="flex items-center gap-1 text-ide-text transition-colors w-full truncate">
                   <School size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                  <span className="text-ide-keyword">institution=</span>
+                  <span className="text-ide-keyword">{t('institutionLabel')}</span>
                   {edu.url ? (
                     <a 
                       href={edu.url}
@@ -108,21 +110,21 @@ const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
                {/* 2. Degree Name */}
                 <div className="flex items-center gap-1 text-ide-text transition-colors w-full truncate">
                    <Award size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                   <span className="text-ide-keyword">degree=</span>
+                   <span className="text-ide-keyword">{t('degreeLabel')}</span>
                    <span className="truncate">"{edu.degree}"</span>
               </div>
 
                {/* 3. Duration */}
                 <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Period">
                    <Calendar size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                   <span className="text-ide-keyword">year=</span>"<Highlight text={edu.year} />"
+                   <span className="text-ide-keyword">{t('yearLabel')}</span>"<Highlight text={edu.year} />"
               </span>
 
               {/* 4. Location */}
                {edu.location && (
                  <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Location">
                     <MapPin size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                    <span className="text-ide-keyword">location=</span>"<Highlight text={edu.location} />"
+                    <span className="text-ide-keyword">{t('locationLabel')}</span>"<Highlight text={edu.location} />"
                 </span>
               )}
           </div>
@@ -144,12 +146,14 @@ const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
 export default function Education() {
   useScrollSpy('education');
   const { activeMatch } = useSearch();
+  const { data, t } = useLanguage();
+  const { education } = data;
 
   return (
     <section id="education" className="py-20 px-8 max-w-4xl mx-auto">
       <div className="flex items-center gap-2 mb-12">
         <span className="text-ide-accent font-mono text-xl">03.</span>
-        <h2 className="text-3xl font-bold text-ide-text-active">Education</h2>
+        <h2 className="text-3xl font-bold text-ide-text-active">{t('education')}</h2>
         <div className="h-[1px] bg-ide-border flex-1 ml-4"></div>
       </div>
 

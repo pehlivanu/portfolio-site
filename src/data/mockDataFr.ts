@@ -164,7 +164,7 @@ export const projects = [
 
 export const linkedInProfile = {
   name: "Liviu Ionesi",
-  headline: "Full Stack Developer | Java | Spring Boot | Next.js",
+  headline: "Développeur Full Stack | Java | Spring Boot | Next.js",
   location: "Kirchheim unter Teck, Allemagne",
   connections: "500+",
   about: "Construire la colonne vertébrale numérique des industries Automobile et Fintech. Avec plus de 13 ans d'expérience dans l'ingénierie de systèmes distribués haute performance, je me spécialise dans la modernisation des architectures existantes et la fourniture de solutions évolutives et cloud-natives.",
@@ -182,7 +182,7 @@ Je fais le lien entre une logique backend complexe et des expériences frontend 
 ---
 *Je recherche actuellement des opportunités en Télétravail ou Hybrides où je peux tirer parti de ma vision architecturale et de mon flux de travail amélioré par l'IA pour résoudre des défis d'ingénierie complexes.*`,
   avatarUrl: "/images/linkedin-profile.png",
-  skills: ["Java", "Spring Boot", "Spring Cloud", "React", "Next.js", "Azure", "Docker", "Kubernetes", "SQL/NoSQL", "IntelliJ IDEA", "AI Tools (Cursor, Windsurf, Antigravity, MCP)"],
+  skills: ["Java", "Spring Boot", "Spring Cloud", "React", "Next.js", "Azure", "Docker", "Kubernetes", "SQL/NoSQL", "IntelliJ IDEA", "Outils IA (Cursor, Windsurf, Antigravity, MCP)"],
   certifications: [
     { name: "Oracle Certified Professional, Java SE 6 Programmer", authority: "Oracle", url: "" },
     { name: "Oracle Certified Expert Java EE 6 Web Components Developer", authority: "Oracle", url: "" },
@@ -198,7 +198,7 @@ export const about = {
   greeting: "~/developer/portfolio",
   name: "Liviu",
   suffix: ".io",
-  lastName: "IONESI",
+  lastName: "NESI",
   description: "Senior Fullstack Architect & Engineer | Enterprise Vibe Coder. Construire la colonne vertébrale numérique des industries Automobile et Fintech. Pionier d'une nouvelle norme dans la livraison de logiciels en fusionnant la rigueur de niveau entreprise avec la vitesse des IDE intégrés à l'IA.",
   fullBio: linkedInProfile.fullBio,
   ctaPrimary: "Projets, pas juste du code",

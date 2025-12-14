@@ -188,7 +188,7 @@ export default function ContactForm() {
       setContactStatus('sent');
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('Failed to send message. Please try again later or contact me directly via email.');
+      alert(t('errorMessage'));
     }
   };
 
@@ -399,7 +399,7 @@ export default function ContactForm() {
             <h3 className="text-2xl font-bold text-ide-text-active mb-2">{t('successMessage')}</h3>
             {cooldown > 0 ? (
               <p className="text-sm text-ide-text/50 font-mono">
-                You can send another message in {Math.floor(cooldown / 60)}:{(cooldown % 60).toString().padStart(2, '0')}
+                {t('cooldownMessage')} {Math.floor(cooldown / 60)}:{(cooldown % 60).toString().padStart(2, '0')}
               </p>
             ) : (
               <button 
@@ -407,7 +407,7 @@ export default function ContactForm() {
                 onClick={() => setSubmitted(false)}
                 className="text-sm text-ide-text hover:text-white underline decoration-ide-accent/50 hover:decoration-ide-accent transition-all"
               >
-                Send another message
+                {t('sendAnother')}
               </button>
             )}
           </motion.div>

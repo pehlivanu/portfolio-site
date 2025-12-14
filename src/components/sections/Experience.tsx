@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Rocket, Briefcase, Code, GraduationCap, Users, MapPin, Building, Globe, ExternalLink } from 'lucide-react';
-import { experience } from '@/data/mockData';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import ReactMarkdown from 'react-markdown';
 import Highlight from '@/components/ui/Highlight';
@@ -52,7 +51,10 @@ const getRoleColor = (type: string) => {
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
 
+import { useLanguage } from '@/context/LanguageContext';
+
 const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
+  const { t } = useLanguage();
   const [isExpanded, setIsExpanded] = React.useState(false);
   const roleColor = getRoleColor(job.type || '');
 
@@ -98,7 +100,7 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
                 className="flex items-center gap-1 text-ide-text hover:text-ide-accent transition-colors group/link w-full truncate"
               >
                   <Briefcase size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                  <span className="text-ide-keyword">company=</span>
+                  <span className="text-ide-keyword">{t('companyLabel')}</span>
                   <span className="group-hover/link:underline decoration-ide-accent underline-offset-4 truncate">"<Highlight text={job.company} />"</span>
                   <ExternalLink size={10} className="opacity-0 group-hover/link:opacity-100 transition-opacity ml-1 shrink-0" />
               </a>
@@ -106,14 +108,14 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
               {/* 2. Duration */}
               <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Period">
                   <Calendar size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                  <span className="text-ide-keyword">time=</span>"<Highlight text={job.period} />"
+                  <span className="text-ide-keyword">{t('timeLabel')}</span>"<Highlight text={job.period} />"
               </span>
               
               {/* 3. Industry */}
               {job.industry && (
                 <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Industry">
                    <Building size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                   <span className="text-ide-keyword">type=</span>"<Highlight text={job.industry} />"
+                   <span className="text-ide-keyword">{t('typeLabel')}</span>"<Highlight text={job.industry} />"
                 </span>
               )}
 
@@ -121,7 +123,7 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
                {job.locationType && (
                 <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Location">
                    <MapPin size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                   <span className="text-ide-keyword">location=</span>"<Highlight text={job.locationType} />"
+                   <span className="text-ide-keyword">{t('locationLabel')}</span>"<Highlight text={job.locationType} />"
                 </span>
               )}
 
@@ -129,7 +131,7 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
               {job.companySize && (
                 <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Company Size">
                   <Users size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                  <span className="text-ide-keyword">size=</span>"<Highlight text={job.companySize} />"
+                  <span className="text-ide-keyword">{t('sizeLabel')}</span>"<Highlight text={job.companySize} />"
                 </span>
               )}
 
@@ -150,7 +152,7 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
                   title="Click to view Education details"
                 >
                   <GraduationCap size={12} className="mr-1 shrink-0 group-hover/edu:scale-110 transition-transform text-ide-text/50"/>
-                  <span className="text-ide-keyword group-hover/edu:text-ide-accent">education=</span>
+                  <span className="text-ide-keyword group-hover/edu:text-ide-accent">{t('educationLabel')}</span>
                   <span className="group-hover/edu:underline decoration-ide-accent underline-offset-4">"<Highlight text={job.dualStudy} />"</span>
                   <ExternalLink size={10} className="opacity-0 group-hover/edu:opacity-100 transition-opacity ml-1 shrink-0" />
                 </button>
@@ -228,12 +230,12 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
         >
           {isExpanded ? (
             <>
-              <span className="group-hover/toggle:underline">Show Less</span>
+              <span className="group-hover/toggle:underline">{t('showLess')}</span>
               <ChevronUp size={16} />
             </>
           ) : (
             <>
-              <span className="group-hover/toggle:underline">Show Details</span>
+              <span className="group-hover/toggle:underline">{t('showDetails')}</span>
               <ChevronDown size={16} />
             </>
           )}
@@ -247,12 +249,14 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
 export default function Experience() {
   useScrollSpy('experience');
   const { activeMatch } = useSearch();
+  const { data, t } = useLanguage();
+  const { experience } = data;
 
   return (
     <section id="experience" className="py-20 px-8 max-w-4xl mx-auto">
       <div className="flex items-center gap-2 mb-12">
         <span className="text-ide-accent font-mono text-xl">02.</span>
-        <h2 className="text-3xl font-bold text-ide-text-active">Work Experience</h2>
+        <h2 className="text-3xl font-bold text-ide-text-active">{t('experience')}</h2>
         <div className="h-[1px] bg-ide-border flex-1 ml-4"></div>
       </div>
 

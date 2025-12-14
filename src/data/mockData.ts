@@ -199,7 +199,7 @@ export const about = {
   greeting: "~/developer/portfolio",
   name: "Liviu",
   suffix: ".io",
-  lastName: "IONESI",
+  lastName: "NESI",
   description: "Senior Fullstack Architect & Engineer | Enterprise Vibe Coder. Building the digital backbone of the Automotive and Fintech industries. Pioneering a new standard in software delivery by fusing enterprise-grade rigor with the speed of AI-integrated IDEs.",
   fullBio: linkedInProfile.fullBio,
   ctaPrimary: "Projects, not just code",

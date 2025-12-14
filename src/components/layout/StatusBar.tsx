@@ -31,7 +31,7 @@ export default function StatusBar() {
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-1 hover:bg-ide-status-bar-hover px-1 rounded cursor-pointer transition-colors">
           <GitBranch size={12} />
-          <span>main*</span>
+          <span>{t('mainBranch')}</span>
         </div>
         <div className="flex items-center gap-1 hover:bg-ide-status-bar-hover px-1 rounded cursor-pointer transition-colors">
           <RefreshCw size={12} />
@@ -64,10 +64,10 @@ export default function StatusBar() {
         </div>
         
         <div className="flex items-center gap-1 hover:bg-ide-status-bar-hover px-1 rounded cursor-pointer transition-colors">
-           <span>Ln 1, Col 1</span>
+           <span>{t('lnCol')}</span>
         </div>
         <div className="flex items-center gap-1 hover:bg-ide-status-bar-hover px-1 rounded cursor-pointer transition-colors">
-           <span>UTF-8</span>
+           <span>{t('utf8')}</span>
         </div>
         <div className="flex items-center gap-1 hover:bg-ide-status-bar-hover px-1 rounded cursor-pointer transition-colors min-w-[80px] justify-center">
            <span>{getLanguageForSection(activeSection)}</span>
