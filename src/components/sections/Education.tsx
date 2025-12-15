@@ -52,8 +52,8 @@ import { useLanguage } from '@/context/LanguageContext';
 const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
   const { t } = useLanguage();
   const roleColor = getRoleColor(edu.type || '');
-  // Remove spaces for tag style
-  const tagContent = edu.studyField ? edu.studyField.replace(/\s+/g, '').replace(/&/g, 'And') : edu.degree.replace(/\s+/g, '');
+  // Use full name without stripping spaces
+  const tagContent = edu.studyField ? edu.studyField : edu.degree;
 
   return (
     <motion.div

@@ -191,6 +191,12 @@ Je fais le lien entre une logique backend complexe et des expériences frontend 
     { name: "Microservices Architecture - The Complete Guide", authority: "Udemy", url: "https://www.udemy.com/certificate/UC-52b76175-4ab7-464f-9117-baf905ac24c2/" },
     { name: "Spring Boot Microservices and Spring Cloud", authority: "Udemy", url: "http://ude.my/UC-70ca993d-e60a-436f-8673-739a57fe54da" },
     { name: "Azure DevOps Fundamentals for Beginners", authority: "Udemy", url: "https://www.udemy.com/certificate/UC-1ced9814-91c6-4ebc-b656-af2fbeeba0f9/" }
+  ],
+  languages: [
+    { language: "Allemand", proficiency: "Compétence professionnelle" },
+    { language: "Anglais", proficiency: "Compétence professionnelle" },
+    { language: "Roumain", proficiency: "Langue maternelle ou bilingue" },
+    { language: "Français", proficiency: "Compétence élémentaire" }
   ]
 };
 

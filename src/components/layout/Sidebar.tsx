@@ -1,15 +1,16 @@
 "use client";
 
 import React from 'react';
-import { Files, Search, LayoutGrid, Settings, Github, Linkedin, Sun, Moon, Globe } from 'lucide-react';
+import { Files, Search, LayoutGrid, Settings, Github, Linkedin, Sun, Moon, Globe, FileText, LogIn, LogOut, Lock } from 'lucide-react';
+import { useSession, signIn, signOut } from "next-auth/react";
 
 import { useTheme } from '@/context/ThemeContext';
 import { useNavigation } from '@/context/NavigationContext';
 import { useLanguage, Language } from '@/context/LanguageContext';
 
 interface SidebarProps {
-  activeView: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | null;
-  setActiveView: (view: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | null) => void;
+  activeView: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | 'cv-generator' | null;
+  setActiveView: (view: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | 'cv-generator' | null) => void;
   isOpen?: boolean;
   onClose?: () => void;
 }
@@ -18,6 +19,7 @@ export default function Sidebar({ activeView, setActiveView, isOpen = false, onC
   const { theme, toggleTheme } = useTheme();
   const { activeRightPanel, openRightPanel, closeRightPanel } = useNavigation();
   const { language, setLanguage, t } = useLanguage();
+  const { data: session, status } = useSession();
 
   const handleContactClick = () => {
     if (activeRightPanel === 'contact') {
@@ -30,7 +32,7 @@ export default function Sidebar({ activeView, setActiveView, isOpen = false, onC
     }
   };
 
-  const handleViewClick = (view: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact') => {
+  const handleViewClick = (view: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | 'cv-generator') => {
     setActiveView(activeView === view ? null : view);
     if (onClose) onClose();
   };
@@ -40,6 +42,16 @@ export default function Sidebar({ activeView, setActiveView, isOpen = false, onC
     const nextIndex = (langs.indexOf(language) + 1) % langs.length;
     setLanguage(langs[nextIndex]);
   };
+
+  const handleAuth = () => {
+    if (status === 'authenticated') {
+        signOut();
+    } else {
+        signIn('google');
+    }
+  };
+
+  const isAuthorized = session?.user?.email === 'pehlivanu@gmail.com';
 
   return (
     <>
@@ -98,8 +110,36 @@ export default function Sidebar({ activeView, setActiveView, isOpen = false, onC
         >
           <LayoutGrid size={24} strokeWidth={1.5} />
         </button>
+
+        {/* Protected CV Generator Button */}
+        {isAuthorized && (
+            <button 
+                className={`p-2 cursor-pointer ${activeView === 'cv-generator' ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
+                title="CV Generator"
+                aria-label="CV Generator"
+                onClick={() => handleViewClick('cv-generator')}
+            >
+                <FileText size={24} strokeWidth={1.5} />
+            </button>
+        )}
+
       </div>
       <div className="flex flex-col gap-4">
+        
+        {/* Auth Button */}
+        <button 
+          className="p-2 cursor-pointer text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100" 
+          onClick={handleAuth}
+          title={status === 'authenticated' ? 'Sign Out' : 'Sign In'}
+          aria-label={status === 'authenticated' ? 'Sign Out' : 'Sign In'}
+        >
+          {status === 'authenticated' ? (
+              <LogOut size={24} strokeWidth={1.5} />
+          ) : (
+              <LogIn size={24} strokeWidth={1.5} />
+          )}
+        </button>
+
         <button 
           className="p-2 cursor-pointer text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100 relative" 
           onClick={toggleLanguage}
