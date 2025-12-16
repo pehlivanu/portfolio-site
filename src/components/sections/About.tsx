@@ -45,7 +45,7 @@ export default function About() {
                 onClick={() => openRightPanel('bio')}
                 className="text-ide-accent hover:underline ml-2 font-medium text-base inline-flex items-center gap-1"
             >
-                Start Reading...
+                {t('readMore')}
             </button>
             </div>
         </motion.div>

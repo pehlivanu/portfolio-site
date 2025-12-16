@@ -6,7 +6,7 @@
     - generic [ref=e4]:
       - button "Toggle Menu" [ref=e6]:
         - img [ref=e7]
-      - generic [ref=e12]: portfolio - Antigravity - liviuionesi.dev
+      - generic [ref=e12]: portfolio - Antigravity - liviuionesi.com
     - generic [ref=e13]:
       - generic [ref=e14]:
         - generic [ref=e15]:
