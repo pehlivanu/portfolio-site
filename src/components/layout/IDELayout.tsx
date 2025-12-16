@@ -13,9 +13,10 @@ import { useNavigation } from '@/context/NavigationContext';
 import { useLanguage } from '@/context/LanguageContext';
 import ReactMarkdown from 'react-markdown';
 import Highlight from '@/components/ui/Highlight';
+import CVConfigPanel from '@/components/layout/CVConfigPanel';
 
 export default function IDELayout({ children }: { children: React.ReactNode }) {
-  const [activeSidebarView, setActiveSidebarView] = useState<'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | null>('explorer');
+  const [activeSidebarView, setActiveSidebarView] = useState<'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | 'cv-config' | null>('explorer');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { zoomLevel, setZoomLevel, activeRightPanel, closeRightPanel } = useNavigation();
   const [isMobile, setIsMobile] = useState(false);
@@ -86,15 +87,19 @@ export default function IDELayout({ children }: { children: React.ReactNode }) {
               {activeSidebarView === 'search' && <Search onClose={() => setActiveSidebarView(null)} isMobile={isMobile} />}
               {activeSidebarView === 'github' && <GitHubStats onClose={() => setActiveSidebarView(null)} />}
               {activeSidebarView === 'linkedin' && <LinkedInStats onClose={() => setActiveSidebarView(null)} />}
+              {activeSidebarView === 'cv-config' && <CVConfigPanel onClose={() => setActiveSidebarView(null)} />}
               {/* ContactPanel removed from left sidebar views */}
               
               <div className={`flex-col flex-1 min-w-0 bg-ide-bg ${activeSidebarView ? 'hidden md:flex' : 'flex'}`}>
-                <Tabs />
-                <main className="flex-1 overflow-y-auto p-0 scrollbar-hide relative">
-                  <div className="h-full w-full">
-                    {children}
-                  </div>
-                </main>
+                
+                    <>
+                        <Tabs />
+                        <main className="flex-1 overflow-y-auto p-0 scrollbar-hide relative">
+                        <div className="h-full w-full">
+                            {children}
+                        </div>
+                        </main>
+                    </>
               </div>
 
               {/* Right Sidebar (Generic: Contact Me / Bio) */}

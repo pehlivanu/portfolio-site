@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Files, Search, LayoutGrid, Settings, Github, Linkedin, Sun, Moon, Globe, FileText, LogIn, LogOut, Lock } from 'lucide-react';
+import { Files, Search, LayoutGrid, Settings, Github, Linkedin, Sun, Moon, Globe, FileText, LogIn, LogOut, Lock, Printer } from 'lucide-react';
 import { useSession, signIn, signOut } from "next-auth/react";
 
 import { useTheme } from '@/context/ThemeContext';
@@ -9,8 +9,8 @@ import { useNavigation } from '@/context/NavigationContext';
 import { useLanguage, Language } from '@/context/LanguageContext';
 
 interface SidebarProps {
-  activeView: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | 'cv-generator' | null;
-  setActiveView: (view: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | 'cv-generator' | null) => void;
+  activeView: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | 'cv-config' | null;
+  setActiveView: (view: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | 'cv-config' | null) => void;
   isOpen?: boolean;
   onClose?: () => void;
 }
@@ -32,7 +32,7 @@ export default function Sidebar({ activeView, setActiveView, isOpen = false, onC
     }
   };
 
-  const handleViewClick = (view: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | 'cv-generator') => {
+  const handleViewClick = (view: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | 'cv-config') => {
     setActiveView(activeView === view ? null : view);
     if (onClose) onClose();
   };
@@ -114,12 +114,12 @@ export default function Sidebar({ activeView, setActiveView, isOpen = false, onC
         {/* Protected CV Generator Button */}
         {isAuthorized && (
             <button 
-                className={`p-2 cursor-pointer ${activeView === 'cv-generator' ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
-                title="CV Generator"
-                aria-label="CV Generator"
-                onClick={() => handleViewClick('cv-generator')}
+                className={`p-2 cursor-pointer ${activeView === 'cv-config' ? 'border-l-2 border-ide-accent text-ide-text-active' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
+                title="CV Configuration"
+                aria-label="CV Configuration"
+                onClick={() => handleViewClick('cv-config')}
             >
-                <FileText size={24} strokeWidth={1.5} />
+                <Printer size={24} strokeWidth={1.5} />
             </button>
         )}
 

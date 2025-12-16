@@ -123,7 +123,7 @@ export const education = [
     location: "Suceava, Roumanie",
     year: "2002 - 2006",
     summary: "Programme intensif d'informatique et de mathématiques.",
-    description: `*   **Profil** : Mathématiques & Informatique (Intensiv).`,
+    description: `*   **Profil** : Mathématiques & Informatique (Intensif).`,
   },
 ];
 
@@ -166,6 +166,9 @@ export const linkedInProfile = {
   name: "Liviu Ionesi",
   headline: "Développeur Full Stack | Java | Spring Boot | Next.js",
   location: "Kirchheim unter Teck, Allemagne",
+  phone: "+49 1415 6966 832",
+  address: "Freiwaldaustr. 39, 73230 Kirchheim unter Teck",
+  email: "ionesiliviu@yahoo.com",
   connections: "500+",
   about: "Construire la colonne vertébrale numérique des industries Automobile et Fintech. Avec plus de 13 ans d'expérience dans l'ingénierie de systèmes distribués haute performance, je me spécialise dans la modernisation des architectures existantes et la fourniture de solutions évolutives et cloud-natives.",
   fullBio: `### **Construire la colonne vertébrale numérique des industries Automobile et Fintech.**

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import IDELayout from "@/components/layout/IDELayout";
+
 import { NavigationProvider } from "@/context/NavigationContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { ThemeProvider } from "@/context/ThemeContext";
@@ -43,14 +43,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-ide-bg text-ide-text overflow-hidden`}
+        className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-ide-bg text-ide-text`}
       >
         <ThemeProvider>
           <SessionProvider>
             <LanguageProvider>
               <SearchProvider>
                 <NavigationProvider>
-                  <IDELayout>{children}</IDELayout>
+                  {children}
                   <Analytics />
                   <SpeedInsights />
                   <WebVitals />

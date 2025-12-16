@@ -166,6 +166,9 @@ export const linkedInProfile = {
   name: "Liviu Ionesi",
   headline: "Dezvoltator Full Stack | Java | Spring Boot | Next.js",
   location: "Kirchheim unter Teck, Germania",
+  phone: "+49 1415 6966 832", 
+  address: "Freiwaldaustr. 39, 73230 Kirchheim unter Teck",
+  email: "ionesiliviu@yahoo.com",
   connections: "500+",
   about: "Specializarea mea este extindere coloanei vertebrale digitale a industriilor Auto și Fintech. Cu peste 13 ani de experiență în ingineria sistemelor distribuite de înaltă performanță, mă specializez în modernizarea proiectelor existente și livrarea de soluții scalabile, native cloud.",
   fullBio: `### **Construirea coloanei vertebrale digitale a industriilor Auto și Fintech.**

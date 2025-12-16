@@ -30,7 +30,7 @@
 **Senior Fullstack Developer | Aspiring Software Architect**
 *Driving Digital Transformation in Fintech & Automotive*
 
-📍 Kirchheim unter Teck, Germany | 🌐 [Portfolio](https://liviu.io) | 🐙 [GitHub](https://github.com/pehlivanu)
+📍 Kirchheim unter Teck, Germany | 🌐- **Portfolio**: [liviuionesi.com](https://liviuionesi.com) | 🐙 [GitHub](https://github.com/pehlivanu)
 
 ### 🚀 Executive Summary
 Senior Software Developer with **9+ years of experience** specializing in the modernization of enterprise-grade systems. Expert in transitioning monolithic **Java EE** architectures to scalable **Spring Boot** microservices and responsive **React/Next.js** frontends. Proven track record in the **Automotive** and **Fintech** sectors, delivering high-availability solutions for clients like Daimler and Bosch. Passionate advocate for **Clean Code**, **TDD**, and **AI-assisted development workflows**.

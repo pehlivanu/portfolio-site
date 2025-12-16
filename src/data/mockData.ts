@@ -166,7 +166,10 @@ export const projects = [
 export const linkedInProfile = {
   name: "Liviu Ionesi",
   headline: "Full Stack Developer | Java | Spring Boot | Next.js",
-  location: "Kirchheim unter Teck, Germany",
+  location: "Freiwaldaustr. 39, 73230 Kirchheim unter Teck, Germany",
+  phone: "+49 1415 6966 832",
+  address: "Freiwaldaustr. 39, 73230 Kirchheim unter Teck",
+  email: "ionesiliviu@yahoo.com",
   connections: "500+",
   about: "Building the digital backbone of the Automotive and Fintech industries. With over 13 years of experience engineering high-performance distributed systems, I specialize in modernizing legacy architectures and delivering scalable, cloud-native solutions.",
   fullBio: `### **Building the digital backbone of the Automotive and Fintech industries.**

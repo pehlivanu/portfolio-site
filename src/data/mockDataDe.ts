@@ -83,9 +83,9 @@ export const education = [
     year: "2011 - 2014",
     summary: "Intensives duales Studium mit Schwerpunkt Software Engineering, Datenbanksysteme und Projektmanagement.",
     description: `*   **Spezialisierung**: Software Engineering, Datenbanksysteme, Projektmanagement.
-*   **Abschlussarbeit**: "Alpine Curve Editor" - Note **1,0 (Exzellent)**.
-*   **Kernkurse**: C/Assembly (Intel 8085), Java (OO, Verteilte Systeme), SQL/JDBC, UML/Design Patterns, Linux, Roboter-Programmierung.
-*   **Zertifizierungen**: Cisco CCNA Exploration Module 1-4.`,
+*   **Thesis**: "Alpine Curve Editor" - Note **1.0 (Sehr Gut)**.
+*   **Schlüsselkurse**: C/Assembly (Intel 8085), Java (OO, Verteilte Systeme), SQL/JDBC, UML/Design Patterns, Linux, Roboterprogrammierung.
+*   **Zertifikate**: Cisco CCNA Exploration Module 1-4.`,
   },
   {
     id: 2,
@@ -98,7 +98,7 @@ export const education = [
     year: "2009 - 2011",
     summary: "Spezialisierte Ausbildung in Pädagogik und Didaktik für den Mathematikunterricht.",
     description: `*   **Ziel**: Berufszertifizierung für den Mathematikunterricht.
-*   **Schwerpunkt**: Höhere Mathematik, Pädagogische Psychologie, Lehrplangestaltung.`,
+*   **Schwerpunkte**: Höhere Mathematik, Pädagogische Psychologie, Lehrplanentwicklung.`,
   },
   {
     id: 3,
@@ -167,6 +167,9 @@ export const linkedInProfile = {
   name: "Liviu Ionesi",
   headline: "Full Stack Entwickler | Java | Spring Boot | Next.js",
   location: "Kirchheim unter Teck, Deutschland",
+  phone: "+49 1415 6966 832",
+  address: "Freiwaldaustr. 39, 73230 Kirchheim unter Teck",
+  email: "ionesiliviu@yahoo.com",
   connections: "500+",
   about: "Aufbau des digitalen Rückgrats der Automobil- und Fintech-Branche. Mit über 13 Jahren Erfahrung in der Entwicklung von hochleistungsfähigen verteilten Systemen spezialisiere ich mich auf die Modernisierung von Legacy-Architekturen und die Bereitstellung skalierbarer Cloud-Native-Lösungen.",
   fullBio: `### **Aufbau des digitalen Rückgrats der Automobil- und Fintech-Branche.**
