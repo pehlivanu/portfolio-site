@@ -120,13 +120,27 @@ export default function ContactForm() {
             body: JSON.stringify({ lat, lon }),
           });
           
-          if (apiResponse.ok) {
+            if (apiResponse.ok) {
             const { distance, travelStats } = await apiResponse.json();
             setDistanceValue(Math.round(distance));
             setTravelStats(travelStats);
 
-            if (distance > 25 && countryCode !== 'ch') {
-              setAddressError(t('distanceError').replace('{distance}', Math.round(distance).toString()));
+            if (travelStats) {
+                const minTime = Math.min(
+                    travelStats.carMinutes || 999, 
+                    travelStats.ptMinutes || 999
+                );
+                
+                // 60 minutes limit
+                if (minTime > 60 && countryCode !== 'ch') {
+                     setAddressError(t('distanceError').replace('{time}', minTime.toString()));
+                }
+            } else if (distance > 50 && countryCode !== 'ch') {
+                 // Fallback to distance if no travel stats (e.g. OSRM down), using rough 50km ~ 1h assumption or keep old 25km?
+                 // User said "maximum travel distance ... is one hour". 
+                 // If we have no time, we might want to be lenient or strict. 
+                 // Let's stick to 50km as a proxy for 1h drive.
+                 setAddressError(t('distanceError').replace('{time}', 'unknown')); 
             }
           } else {
              console.error('API Error');
@@ -306,7 +320,7 @@ export default function ContactForm() {
                        {distanceValue !== null && (
                           <div className="flex flex-col items-end gap-1">
                             <span className={`text-xs font-mono ${addressError ? 'text-red-400' : 'text-green-400'}`}>
-                                {distanceValue}km {t('fromKirchheim')}
+                                {distanceValue}km
                             </span>
                             {travelStats && !addressError && (
                               <div className="flex gap-3 text-[10px] text-ide-text/70">

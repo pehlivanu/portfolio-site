@@ -2,7 +2,7 @@ export const experience = [
   {
     id: 1,
     type: "senior",
-    role: "Dezvoltator Software Senior",
+    role: "Inginer software senior",
     company: "DAT Group",
     companySize: "501-1,000 angajați",
     industry: "Software Auto",
@@ -21,7 +21,7 @@ export const experience = [
   {
     id: 2,
     type: "mid",
-    role: "Dezvoltator Software",
+    role: "Inginer software",
     company: "evia solutions GmbH",
     companySize: "51-200 angajați",
     industry: "Servicii IT & consultanță",
@@ -55,7 +55,7 @@ export const experience = [
   {
     id: 4,
     type: "intern",
-    role: "Stagiu în dezvoltare software",
+    role: "Stagiu practic",
     company: "Alpine Electronics R&D Europe",
     companySize: "1,000+ angajați",
     industry: "Electronică auto",

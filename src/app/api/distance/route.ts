@@ -10,9 +10,9 @@ export async function POST(request: Request) {
     }
 
     // Default to Kirchheim unter Teck if env vars are not set (fallback/demo mode)
-    // ideally these should be set in .env.local
-    const homeLat = parseFloat(process.env.HOME_LAT || '48.64806');
-    const homeLon = parseFloat(process.env.HOME_LON || '9.45111');
+    // ideally these should be set in .env.local   
+    const homeLat = parseFloat(process.env.HOME_LAT || '48.634512');
+    const homeLon = parseFloat(process.env.HOME_LON || '9.4555054');
 
     const deg2rad = (deg: number) => {
       return deg * (Math.PI / 180);
@@ -49,7 +49,9 @@ export async function POST(request: Request) {
 
         travelStats = {
           car: `${drivingMinutes} min`,
-          publicTransport: `~${ptMinutes} min`
+          publicTransport: `~${ptMinutes} min`,
+          carMinutes: drivingMinutes,
+          ptMinutes: ptMinutes
         };
       }
     } catch (e) {

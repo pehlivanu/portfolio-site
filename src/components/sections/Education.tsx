@@ -80,7 +80,7 @@ const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
         <div className="flex flex-col mb-4">
            {/* Row 1: Study Field (Tag Style) */}
            <div className="flex flex-col mb-2">
-              <h3 className="text-xl md:text-2xl font-mono font-bold text-ide-text-active transition-colors flex flex-wrap items-center gap-1">
+              <h3 className="text-lg md:text-2xl font-mono font-bold text-ide-text-active transition-colors flex flex-wrap items-center gap-1">
                 <span className="text-gray-500 opacity-100 font-bold">&lt;</span>
                 <span className={`${roleColor}`}><Highlight text={tagContent} /></span>
                 <span className="text-gray-500 opacity-100 font-bold">/&gt;</span>

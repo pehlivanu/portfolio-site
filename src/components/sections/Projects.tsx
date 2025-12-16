@@ -76,7 +76,7 @@ export default function Projects() {
 
                 {/* Title in Tag Style */}
                 <div className="mb-4">
-                     <h3 className="text-xl font-mono font-bold text-ide-text-active transition-colors flex flex-wrap items-center gap-1">
+                     <h3 className="text-lg md:text-2xl font-mono font-bold text-ide-text-active transition-colors flex flex-wrap items-center gap-1">
                         <span className="text-gray-500 opacity-100 font-bold">&lt;</span>
                         <span className="text-blue-400 [.light-theme_&]:text-blue-700"><Highlight text={project.title} /></span>
                         <span className="text-gray-500 opacity-100 font-bold">/&gt;</span>
