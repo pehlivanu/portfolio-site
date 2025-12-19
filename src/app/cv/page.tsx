@@ -214,6 +214,7 @@ function CVContent() {
                                 )}>
                                     {detailLevel === 'detailed' ? (
                                         <div className="prose prose-sm prose-blue max-w-none dark:prose-invert">
+                                            <p className="mb-2">{job.summary}</p>
                                             <ReactMarkdown 
                                                 components={{
                                                     ul: ({node, ...props}) => <ul className="list-disc pl-5 my-2 space-y-1" {...props} />,
