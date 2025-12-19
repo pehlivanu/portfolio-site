@@ -350,7 +350,7 @@ export const translations: Record<Language, Record<string, string>> = {
     achievements: "Medalii",
     loadingGithub: "Se încarcă profilul de GitHub...",
     errorGithub: "Nu s-a putut încărca profilul de GitHub",
-    portfolioTitle: "portofoliu - Antigravity - liviuionesi.dev",
+    portfolioTitle: "portofoliu - Antigravity - liviuionesi.com",
     lnCol: "Ln 1, Col 1",
     utf8: "UTF-8",
     zoom: "100%",

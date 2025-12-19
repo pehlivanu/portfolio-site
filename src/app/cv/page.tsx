@@ -53,7 +53,7 @@ function CVContent() {
                 }
                 
                 @media print {
-                    @page { margin: 0.5cm; size: auto; }
+                    @page { margin: 0; size: auto; }
                     body { background: white; color: black; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
                     .print-break-inside-avoid { break-inside: avoid; }
                 }
@@ -66,7 +66,7 @@ function CVContent() {
             
             {/* HERO SECTION - Matching Site Design */}
             <div className={clsx(
-                "border-b p-8 print:p-6",
+                "border-b p-8 print:p-[10mm]",
                 theme === 'ide' 
                     ? "bg-ide-bg border-ide-border" 
                     : "bg-[#f8f9fa] border-gray-200 print:bg-[#f8f9fa]"
@@ -75,7 +75,31 @@ function CVContent() {
                     <div className="flex-1 space-y-4">
                         <div className="flex items-center gap-2 text-blue-600 mb-2">
                             <Terminal size={18} />
-                            <span className="font-mono text-sm font-semibold">{t('portfolioTitle').replace('portfolio - ', '')}</span>
+                            <span className="font-mono text-sm font-semibold">
+                                {(() => {
+                                    const rawTitle = t('portfolioTitle');
+                                    const cleanTitle = rawTitle.replace(/^(portfolio|portofoliu)\s*-\s*/i, '');
+                                    const urlPart = 'liviuionesi.com';
+                                    
+                                    if (cleanTitle.toLowerCase().includes(urlPart)) {
+                                        const textPart = cleanTitle.replace(new RegExp(urlPart, 'i'), '');
+                                        return (
+                                            <>
+                                                {textPart}
+                                                <a 
+                                                    href="https://liviuionesi.vercel.app" 
+                                                    target="_blank" 
+                                                    rel="noopener noreferrer" 
+                                                    className="font-bold hover:underline"
+                                                >
+                                                    {urlPart}
+                                                </a>
+                                            </>
+                                        );
+                                    }
+                                    return cleanTitle;
+                                })()}
+                            </span>
                         </div>
                         
                         <div>
@@ -149,7 +173,7 @@ function CVContent() {
                 </div>
             </div>
 
-            <div className="p-8 print:p-6 space-y-8">
+            <div className="p-8 print:p-[10mm] space-y-8">
                 {/* EXPERIENCE SECTION */}
                 <section>
                     <div className={clsx(
