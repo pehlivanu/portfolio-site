@@ -167,7 +167,7 @@ export const linkedInProfile = {
   name: "Liviu Ionesi",
   headline: "Full Stack Entwickler | Java | Spring Boot | Next.js",
   location: "Kirchheim unter Teck, Deutschland",
-  phone: "+49 1415 6966 832",
+  phone: "+49 1514 6966 832",
   address: "Freiwaldaustr. 39, 73230 Kirchheim unter Teck",
   email: "ionesiliviu@yahoo.com",
   connections: "500+",
