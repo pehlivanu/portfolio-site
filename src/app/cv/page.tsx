@@ -136,7 +136,9 @@ function CVContent() {
                              {linkedInProfile.phone && (
                                 <div className="flex items-center gap-2">
                                     <Phone size={14} className="text-blue-500" />
-                                    <span>{linkedInProfile.phone}</span>
+                                    <a href={`tel:${linkedInProfile.phone.replace(/\s+/g, '')}`} className="text-gray-600 hover:text-blue-600 hover:underline">
+                                        {linkedInProfile.phone}
+                                    </a>
                                 </div>
                             )}
                             <div className="flex items-center gap-2">
