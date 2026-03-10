@@ -182,7 +182,7 @@ export const projects = [
     description: "Un outil d'automatisation GUI basé sur Python pour 'Last Z: Survival Shooter'. Dispose d'une correspondance de modèles visuels pour des interactions de type humain, une assistance automatisée aux alliés et une collecte d'armes avec Tkinter et Bash.",
     tech: ["Python", "Tkinter", "GUI Automation", "Bash Scripting", "Linux"],
     githubUrl: "https://github.com/pehlivanu/last_z_automation",
-    deployUrl: "",
+    deployUrl: "https://phenix-wiki.vercel.app/en/docs/automation-app",
   },
   {
     id: 10,
