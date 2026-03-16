@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Folder, Github, ExternalLink, Code, Leaf, Triangle, Atom } from 'lucide-react';
+import { Folder, Github, ExternalLink, Code, Leaf, Triangle, Atom, Coffee, Terminal } from 'lucide-react';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useSearch } from '@/context/SearchContext';
 import { useLanguage } from '@/context/LanguageContext';
@@ -10,6 +10,8 @@ import Highlight from '@/components/ui/Highlight';
 
 const getProjectIcon = (tech: string[]) => {
   if (tech.some(t => t.includes('Spring Boot'))) return <Leaf size={40} className="text-green-500" />;
+  if (tech.some(t => t.includes('Java'))) return <Coffee size={40} className="text-orange-500" />;
+  if (tech.some(t => t.includes('Python'))) return <Terminal size={40} className="text-blue-500" />;
   if (tech.some(t => t.includes('Next.js'))) return <Triangle size={40} className="text-white invert rotate-180" />; // Triangle for Vercel/Next.js vibe
   if (tech.some(t => t.includes('React'))) return <Atom size={40} className="text-blue-400" />;
   return <Folder size={40} className="text-ide-accent" />;

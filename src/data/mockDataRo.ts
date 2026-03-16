@@ -188,7 +188,7 @@ export const projects = [
     id: 10,
     title: "Bosch DevOps Showcase",
     description: "O prezentare cuprinzătoare a unui lanț de instrumente CI/CD care implementează un mediu complet containerizat. Integrează Podman Compose, Jenkins CI, JFrog Artifactory, Gradle și ALM/MQC simulat prin REST API.",
-    tech: ["Jenkins", "Docker / Podman", "JFrog Artifactory", "Gradle", "Bash"],
+    tech: ["Java", "Jenkins", "Docker / Podman", "JFrog Artifactory", "Gradle", "Bash"],
     githubUrl: "https://github.com/pehlivanu/BOSCH",
     deployUrl: "",
   },
