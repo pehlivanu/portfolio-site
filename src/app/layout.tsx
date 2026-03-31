@@ -23,10 +23,10 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://liviuionesi.com'),
-  title: "Liviu | Full Stack Developer",
+  title: "Liviu Ionesi",
   description: "From Java EE & JSP to Spring Boot Next.js Transition - Developer Portfolio",
   openGraph: {
-    title: "Liviu | Full Stack Developer",
+    title: "Liviu Ionesi",
     description: "Senior Fullstack Architect & Engineer Portfolio",
     url: 'https://liviuionesi.com',
     siteName: 'Liviu Ionesi Portfolio',

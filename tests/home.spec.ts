@@ -4,7 +4,7 @@ test('homepage has correct title and sections', async ({ page }) => {
   await page.goto('/');
 
   // Check title
-  await expect(page).toHaveTitle(/Liviu | Full Stack Developer/);
+  await expect(page).toHaveTitle(/Liviu Ionesi/);
 
   // Check for main sections
   const heroSection = page.locator('#hero');
