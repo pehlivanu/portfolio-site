@@ -8,7 +8,7 @@ export const experience = [
     industry: "Logiciel Automobile",
     locationType: "Télétravail / Hybride",
     websiteUrl: "https://www.dat.eu",
-    period: "Sep 2020 - Présent",
+    period: "Sep 2020 - Mar 2026",
     summary: `Modernisation de l'écosystème "SilverDAT", la norme industrielle pour les données automobiles et la gestion des sinistres.`,
     description: `*   **Innovation Architecturale** : J'ai modifié la stratégie d'ingénierie pour **tirer pleinement parti de l'écosystème Spring Boot** au lieu de maintenir des anti-patrons complexes "indépendants du framework". J'ai introduit **OpenRewrite** et **Renovate** pour la maintenance automatisée, et standardisé sur **JUnit 5 & MockMvc**. J'ai promu le développement **Contract-First** pour le travail parallèle FE/BE. J'ai réalisé la **Livraison Continue** pour les nouveaux projets, tout en optimisant le cycle de publication trimestriel des fonctionnalités pour les logiciels existants.
 *   **Excellence en Ingénierie** : J'ai préconisé des structures **Monorepo** et des **Modules Java** pour organiser le code existant, tout en promouvant une approche "Tableau de Bord Unifié" par rapport aux micro-frontends pour assurer des tests intégrés et une cohésion.

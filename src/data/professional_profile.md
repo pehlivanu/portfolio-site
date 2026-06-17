@@ -44,7 +44,7 @@ Senior Software Developer with **9+ years of experience** specializing in the mo
 ### 💼 Professional Experience
 
 **Senior Software Developer** | **DAT Group** | *Ostfildern, Germany*
-*Sep 2020 – Present*
+*Sep 2020 – Mar 2026*
 *Leading quality initiatives and architectural analysis for automotive valuation platforms.*
 *   **Legacy Maintenance & Modernization:** Maintained critical legacy systems (**Java EE SOA**, **Oracle SQL**, **JavaScript**) while progressively developing modern replacement services.
 *   **Engineering Excellence:** Designed and implemented a flagship microservice recognized as the **"best documented, tested, and architected"** service in the company's history, setting a new standard for development quality.

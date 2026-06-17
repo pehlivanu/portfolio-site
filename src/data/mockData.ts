@@ -8,7 +8,7 @@ export const experience = [
     industry: "Automotive Software",
     locationType: "Remote / Hybrid",
     websiteUrl: "https://www.dat.eu",
-    period: "Sep 2020 - Present",
+    period: "Sep 2020 - Mar 2026",
     summary: `Driving the modernization of the "SilverDAT" ecosystem, the industry standard for automotive data and claims management.`,
     description: `*   **Architectural Innovation**: Shifted engineering strategy to fully **leverage the Spring Boot ecosystem** instead of maintaining complex "framework-agnostic" anti-patterns. Introduced **OpenRewrite** and **Renovate** for automated maintenance, and standardized on **JUnit 5 & MockMvc**. Promoted **Contract-First** development for parallel FE/BE work. Achieved **Continuous Delivery** for new projects, while optimizing the quarterly feature release cycle for legacy software.
 *   **Engineering Excellence**: Advocated for **Monorepo** structures and **Java Modules** to organize legacy code, while promoting a "Unified Dashboard" approach over micro-frontends to ensure integrated testing and cohesion.

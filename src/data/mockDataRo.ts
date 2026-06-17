@@ -8,7 +8,7 @@ export const experience = [
     industry: "Software Auto",
     locationType: "Remote / Hybrid",
     websiteUrl: "https://www.dat.eu",
-    period: "Sep 2020 - Prezent",
+    period: "Sep 2020 - Mar 2026",
     summary: `Modernizarea ecosistemului "SilverDAT", standardul industriei pentru date auto și gestionarea reparatiilor vehiculelor.`,
     description: `*   **Inovație arhitecturală**: Am schimbat strategia de inginerie pentru a **utiliza pe deplin ecosistemul Spring Boot** în locul anti-modele complexe "agnostice de framework". Am introdus **OpenRewrite** și **Renovate** pentru mentenanța dependențelor automată și am standardizat testarea cu **JUnit 5 & MockMvc**. Am promovat dezvoltarea **Contract-First** pentru lucrul paralel FE/BE. Am realizat **Continuous build** pentru proiecte noi, comparativ cu proiectele moștenite, care folosesc ciclul cuaternar de lansare.
 *   **Excelență în inginerie**: Am pledat pentru structuri **monorepo** și **module Java** pentru a organiza codul existent, promovând în același timp o abordare de tip "Unified Dashboard" în locul micro-front-end-urilor pentru a asigura testarea integrată și coeziunea.
