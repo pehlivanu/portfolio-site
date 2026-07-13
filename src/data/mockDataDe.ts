@@ -84,21 +84,25 @@ export const education = [
     summary: "Intensives duales Studium mit Schwerpunkt Software Engineering, Datenbanksysteme und Projektmanagement.",
     description: `*   **Spezialisierung**: Software Engineering, Datenbanksysteme, Projektmanagement.
 *   **Thesis**: "Alpine Curve Editor" - Note **1.0 (Sehr Gut)**.
-*   **Schlüsselkurse**: C/Assembly (Intel 8085), Java (OO, Verteilte Systeme), SQL/JDBC, UML/Design Patterns, Linux, Roboterprogrammierung.
-*   **Zertifikate**: Cisco CCNA Exploration Module 1-4.`,
+*   **Wichtige Kurse**: C/Assembly (Intel 8085), Java (OO, verteilte Systeme), SQL/JDBC, UML/Design Patterns, Linux, Roboterprogrammierung.
+*   **Zertifizierungen**: Cisco CCNA Exploration Module 1-4.
+*   **Auszeichnungen**: Erhalt einer offiziellen "Belobigung".`,
+    grade: 'Praktikumsarbeit: 1,0 ("sehr gut")',
   },
   {
     id: 2,
     type: "master",
     studyField: "Master",
-    degree: "Master in Mathematik-Didaktik",
+    degree: "Masterstudium in Mathematikdidaktik (120 ECTS)",
     school: "West University of Timisoara",
     url: "https://info.uvt.ro/en/",
     location: "Timisoara, Rumänien",
     year: "2009 - 2011",
     summary: "Spezialisierte Ausbildung in Pädagogik und Didaktik für den Mathematikunterricht.",
-    description: `*   **Ziel**: Berufszertifizierung für den Mathematikunterricht.
-*   **Schwerpunkte**: Höhere Mathematik, Pädagogische Psychologie, Lehrplanentwicklung.`,
+    description: `*   **Ziel**: Berufliche Zertifizierung für den Mathematikunterricht.
+*   **Schwerpunkt**: Höhere Mathematik, Pädagogische Psychologie, Lehrplangestaltung.
+*   **Auslandserfahrung**: 1. Studienjahr absolviert über ein Erasmus-Stipendium in Stuttgart, Deutschland.`,
+    grade: 'Durchschnittsnoten: 1. Jahr (7,70/10), 2. Jahr (7,66/10)',
   },
   {
     id: 3,
@@ -111,7 +115,8 @@ export const education = [
     year: "2006 - 2009",
     summary: "Doppelstudium mit fundierten Grundlagen sowohl in abstrakter Mathematik als auch in angewandter Informatik.",
     description: `*   **Hauptfach**: Mathematik & Informatik.
-*   **Kernkompetenzen**: Fortgeschrittene Analysis, Algebra, Algorithmen, Datenstrukturen, Betriebssysteme.`,
+*   **Kernkompetenzen**: Höhere Analysis, Algebra, Algorithmen, Datenstrukturen, Betriebssysteme.`,
+    grade: 'Gesamtnote (Media ponderată): 9,02/10 (Abschlussarbeit: 10/10)',
   },
   {
     id: 4,
@@ -122,8 +127,9 @@ export const education = [
     url: "https://www.cni-sv.ro/",
     location: "Suceava, Rumänien",
     year: "2002 - 2006",
-    summary: "Intensiver Lehrplan für Informatik und Mathematik.",
+    summary: "Intensiver Lehrplan in Informatik und Mathematik.",
     description: `*   **Profil**: Mathematik & Informatik (Intensiv).`,
+    grade: 'Abiturnote: 9,81/10 (Deutsches Abitur Äquivalent: 1,1)',
   },
 ];
 

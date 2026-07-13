@@ -84,21 +84,25 @@ export const education = [
     summary: "Programme d'études en alternance intensif axé sur le génie logiciel, les systèmes de bases de données et la gestion de projet.",
     description: `*   **Spécialisation** : Génie Logiciel, Systèmes de Bases de Données, Gestion de Projet.
 *   **Thèse** : "Alpine Curve Editor" - Noté **1,0 (Excellent)**.
-*   **Cours Clés** : C/Assembleur (Intel 8085), Java (OO, Systèmes Distribués), SQL/JDBC, UML/Design Patterns, Linux, Programmation de Robots.
-*   **Certifications** : Cisco CCNA Exploration Modules 1-4.`,
+*   **Cours Clés**: C/Assembly (Intel 8085), Java (OO, Systèmes Distribués), SQL/JDBC, UML/Design Patterns, Linux, Programmation de Robots.
+*   **Certifications**: Cisco CCNA Exploration Modules 1-4.
+*   **Prix**: Reçu la mention officielle ("Belobigung").`,
+    grade: 'Thèse pratique: 1.0 ("sehr gut" / très bien)',
   },
   {
     id: 2,
     type: "master",
     studyField: "Master",
-    degree: "Master en Didactique des Mathématiques",
+    degree: "Études de Master en Didactique des Mathématiques (120 ECTS)",
     school: "Université de l'Ouest de Timisoara",
     url: "https://info.uvt.ro/en/",
     location: "Timisoara, Roumanie",
     year: "2009 - 2011",
     summary: "Formation spécialisée en Pédagogie et Didactique pour l'enseignement des mathématiques.",
-    description: `*   **Objectif** : Certification professionnelle pour l'enseignement des mathématiques.
-*   **Focus** : Mathématiques Avancées, Psychologie Pédagogique, Conception de Programmes.`,
+    description: `*   **Objectif**: Certification professionnelle pour l'enseignement des Mathématiques.
+*   **Domaine de spécialisation**: Mathématiques Avancées, Psychologie Pédagogique, Conception de Programmes Scolaires.
+*   **Expérience Internationale**: 1ère année d'études effectuée via une bourse Erasmus à Stuttgart, Allemagne.`,
+    grade: 'Moyennes: 1ère Année (7.70/10), 2ème Année (7.66/10)',
   },
   {
     id: 3,
@@ -110,8 +114,9 @@ export const education = [
     location: "Timisoara, Roumanie",
     year: "2006 - 2009",
     summary: "Double majeure offrant des bases distinctes en mathématiques abstraites et en informatique appliquée.",
-    description: `*   **Majeure** : Mathématiques & Informatique.
-*   **Compétences de base** : Calcul Avancé, Algèbre, Algorithmes, Structures de Données, Systèmes d'Exploitation.`,
+    description: `*   **Majeure**: Mathématiques & Informatique.
+*   **Compétences de Base**: Analyse Avancée, Algèbre, Algorithmes, Structures de Données, Systèmes d'Exploitation.`,
+    grade: 'Moyenne pondérée: 9.02/10 (Mémoire: 10/10)',
   },
   {
     id: 4,
@@ -122,8 +127,9 @@ export const education = [
     url: "https://www.cni-sv.ro/",
     location: "Suceava, Roumanie",
     year: "2002 - 2006",
-    summary: "Programme intensif d'informatique et de mathématiques.",
-    description: `*   **Profil** : Mathématiques & Informatique (Intensif).`,
+    summary: "Programme intensif en Informatique et Mathématiques.",
+    description: `*   **Profil**: Mathématiques & Informatique (Intensif).`,
+    grade: 'Note du Baccalauréat: 9.81/10 (Équivalent Abitur allemand: 1.1)',
   },
 ];
 

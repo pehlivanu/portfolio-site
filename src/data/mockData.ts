@@ -85,20 +85,24 @@ export const education = [
     description: `*   **Specialization**: Software Engineering, Database Systems, Project Management.
 *   **Thesis**: "Alpine Curve Editor" - Graded **1.0 (Excellent)**.
 *   **Key Courses**: C/Assembly (Intel 8085), Java (OO, Distributed Systems), SQL/JDBC, UML/Design Patterns, Linux, Robot-Programming.
-*   **Certifications**: Cisco CCNA Exploration Modules 1-4.`,
+*   **Certifications**: Cisco CCNA Exploration Modules 1-4.
+*   **Awards**: Received Official Commendation ("Belobigung").`,
+    grade: 'Practical Thesis: 1.0 ("sehr gut")',
   },
   {
     id: 2,
     type: "master",
     studyField: "Master",
-    degree: "Master's Degree in Mathematics Teacher Education",
+    degree: "Master's Studies in Mathematics Teacher Education (120 ECTS)",
     school: "West University of Timisoara",
     url: "https://info.uvt.ro/en/",
     location: "Timisoara, Romania",
     year: "2009 - 2011",
     summary: "Specialized training in Pedagogy and Didactics for Mathematics education.",
     description: `*   **Goal**: Professional certification for teaching Mathematics.
-*   **Focus**: Advanced Mathematics, Pedagogical Psychology, Curriculum Design.`,
+*   **Focus**: Advanced Mathematics, Pedagogical Psychology, Curriculum Design.
+*   **International Experience**: Completed 1st year via Erasmus scholarship in Stuttgart, Germany.`,
+    grade: 'Average Grades: Year 1 (7.70/10), Year 2 (7.66/10)',
   },
   {
     id: 3,
@@ -112,6 +116,7 @@ export const education = [
     summary: "Dual major providing distinct foundations in both abstract Mathematics and Applied Computer Science.",
     description: `*   **Major**: Mathematics & Computer Science.
 *   **Core Skills**: Advanced Calculus, Algebra, Algorithms, Data Structures, Operating Systems.`,
+    grade: 'Overall Grade: 9.02/10 (Thesis: 10/10)',
   },
   {
     id: 4,
@@ -124,6 +129,7 @@ export const education = [
     year: "2002 - 2006",
     summary: "Intensive Computer Science and Mathematics curriculum.",
     description: `*   **Profile**: Mathematics & Computer Science (Intensive).`,
+    grade: 'Baccalaureate Grade: 9.81/10 (German Abitur equivalent: 1.1)',
   },
 ];
 

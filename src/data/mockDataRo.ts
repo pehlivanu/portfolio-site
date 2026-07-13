@@ -84,21 +84,25 @@ export const education = [
     summary: "Program intensiv de studiu dual axat in domeniu ingineriei software, sisteme de baze de date și management de proiect.",
     description: `*   **Specializare**: Inginerie software, sisteme de baze de date, management de proiect.
 *   **Teză**: "Alpine Curve Editor" - Notat **1.0 (Excelent)**.
-*   **Cursuri Cheie**: C/Assembly (Intel 8085), Java (OO, Sisteme Distribuite), SQL/JDBC, UML/Design Patterns, Linux, Programare Roboți.
-*   **Certificări**: Cisco CCNA Exploration Modules 1-4.`,
+*   **Cursuri principale**: C/Assembly (Intel 8085), Java (OO, Sisteme Distribuite), SQL/JDBC, UML/Design Patterns, Linux, Programare Roboți.
+*   **Certificări**: Cisco CCNA Exploration Module 1-4.
+*   **Premii**: Am primit distincția oficială "Belobigung".`,
+    grade: 'Lucrare practică: 1.0 ("sehr gut" / foarte bine)',
   },
   {
     id: 2,
     type: "master",
     studyField: "Masterat",
-    degree: "Diplomă de master în matematică didactică",
+    degree: "Studii de Masterat în Didactica Matematicii (120 ECTS)",
     school: "Universitatea de Vest din Timișoara",
     url: "https://info.uvt.ro/en/",
     location: "Timișoara, România",
     year: "2009 - 2011",
     summary: "Formare specializată în pedagogie și didactică pentru predarea matematicii.",
-    description: `*   **Scop**: Certificare profesională pentru predarea matematicii.
-*   **Focus**: Matematică avansată, psihologie pedagogică, design curricular.`,
+    description: `*   **Obiectiv**: Certificare profesională pentru predarea Matematicii.
+*   **Arie de interes**: Matematică Avansată, Psihologie Pedagogică, Design Curricular.
+*   **Experiență Internațională**: Anul 1 de studiu absolvit prin bursă Erasmus în Stuttgart, Germania.`,
+    grade: 'Note medii: Anul 1 (7.70/10), Anul 2 (7.66/10)',
   },
   {
     id: 3,
@@ -111,7 +115,8 @@ export const education = [
     year: "2006 - 2009",
     summary: "Specializare dublă oferind baze distincte atât în matematică abstractă, cât și în informatică aplicată.",
     description: `*   **Specializare**: Matematică & Informatică.
-*   **Abilități de bază**: analiză avansată, algebră, algoritmi, structuri de date, sisteme de operare.`,
+*   **Competențe de bază**: Analiză Matematică, Algebră, Algoritmi, Structuri de Date, Sisteme de Operare.`,
+    grade: 'Media ponderată: 9.02/10 (Nota lucrare: 10/10)',
   },
   {
     id: 4,
@@ -124,6 +129,7 @@ export const education = [
     year: "2002 - 2006",
     summary: "Curriculum intensiv de Informatică și Matematică.",
     description: `*   **Profil**: Matematică & Informatică (Intensiv).`,
+    grade: 'Nota Bacalaureat: 9.81/10 (Echivalent Abitur german: 1.1)',
   },
 ];
 

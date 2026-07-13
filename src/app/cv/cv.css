@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+.cv-page-container {
+    -webkit-font-smoothing: antialiased;
+}
+
+.cv-page-container.theme-ide {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    background: #1e1e2e;
+}
+
+.cv-page-container.theme-print {
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    background: #ffffff;
+}
+
+/* Ensure individual items don't break across pages, but sections can */
+.cv-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 1.5rem; /* Better breathing room between jobs */
+}
+
+/* The section container should allow breaks */
+.cv-section {
+    margin-bottom: 2rem;
+}
+
+/* Print Overrides */
+@media print {
+    @page {
+        /* Elegant, generous margins for a premium look */
+        margin: 15mm 20mm;
+        size: A4;
+    }
+    
+    html, body, .cv-page-container, article, header, section {
+        /* Force pure white background everywhere to kill the slate tint */
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+    }
+
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        font-size: 10pt;
+        line-height: 1.5; /* More elegant line height */
+    }
+
+    .cv-page-container.theme-ide {
+        background: #1e1e2e !important;
+        color: #cdd6f4 !important;
+        font-size: 9pt;
+    }
+
+    .theme-print a {
+        text-decoration: none !important;
+    }
+
+    .print-hidden {
+        display: none !important;
+    }
+    
+    .cv-item {
+        /* Maintain good spacing in print, but slightly tighter than screen */
+        margin-bottom: 1.25rem;
+    }
+    
+    .cv-section {
+        margin-bottom: 1.75rem;
+    }
+}
