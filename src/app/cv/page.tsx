@@ -129,32 +129,37 @@ function CVContent() {
                         <div className="grid grid-cols-2 gap-y-2 gap-x-6 text-sm mt-4 text-gray-600">
                             {(linkedInProfile.address || linkedInProfile.location) && (
                                 <div className="flex items-center gap-2 col-span-2">
-                                    <MapPin size={14} className="text-blue-500" />
+                                    <MapPin size={14} className="text-blue-500 print:hidden" aria-hidden="true" />
+                                    <span className="hidden print:inline font-semibold">Location:</span>
                                     <span>{linkedInProfile.address || linkedInProfile.location}</span>
                                 </div>
                             )}
                              {linkedInProfile.phone && (
                                 <div className="flex items-center gap-2">
-                                    <Phone size={14} className="text-blue-500" />
+                                    <Phone size={14} className="text-blue-500 print:hidden" aria-hidden="true" />
+                                    <span className="hidden print:inline font-semibold">Phone:</span>
                                     <a href={`tel:${linkedInProfile.phone.replace(/\s+/g, '')}`} className="text-gray-600 hover:text-blue-600 hover:underline">
                                         {linkedInProfile.phone}
                                     </a>
                                 </div>
                             )}
                             <div className="flex items-center gap-2">
-                                <Mail size={14} className="text-blue-500" />
+                                <Mail size={14} className="text-blue-500 print:hidden" aria-hidden="true" />
+                                <span className="hidden print:inline font-semibold">Email:</span>
                                 <a href={`mailto:${linkedInProfile.email || "ionesiliviu@yahoo.com"}`} className="text-gray-600 hover:text-blue-600 hover:underline">
                                     {linkedInProfile.email || "ionesiliviu@yahoo.com"}
                                 </a>
                             </div>
                              <div className="flex items-center gap-2">
-                                <Linkedin size={14} className="text-blue-500" />
+                                <Linkedin size={14} className="text-blue-500 print:hidden" aria-hidden="true" />
+                                <span className="hidden print:inline font-semibold">LinkedIn:</span>
                                 <a href="https://linkedin.com/in/liviu-ionesi" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 hover:underline">
                                     linkedin.com/in/liviu-ionesi
                                 </a>
                             </div>
                              <div className="flex items-center gap-2">
-                                <Github size={14} className="text-blue-500" />
+                                <Github size={14} className="text-blue-500 print:hidden" aria-hidden="true" />
+                                <span className="hidden print:inline font-semibold">GitHub:</span>
                                 <a href="https://github.com/pehlivanu" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 hover:underline">
                                     github.com/pehlivanu
                                 </a>
