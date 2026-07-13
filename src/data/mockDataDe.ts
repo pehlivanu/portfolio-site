@@ -197,26 +197,26 @@ export const projects = [
 
 export const linkedInProfile = {
   name: "Liviu Ionesi",
-  headline: "Full Stack Entwickler | Java | Spring Boot | Next.js",
+  headline: "Tech Lead | Senior Full-Stack Engineer | Java, Spring Boot, React, Next.js",
   location: "Kirchheim unter Teck, Deutschland",
   phone: "+49 1514 6966 832",
   address: "Freiwaldaustr. 39, 73230 Kirchheim unter Teck",
   email: "ionesiliviu@yahoo.com",
   connections: "500+",
-  about: "Aufbau des digitalen Rückgrats der Automobil- und Fintech-Branche. Mit über 13 Jahren Erfahrung in der Entwicklung von hochleistungsfähigen verteilten Systemen spezialisiere ich mich auf die Modernisierung von Legacy-Architekturen und die Bereitstellung skalierbarer Cloud-Native-Lösungen.",
-  fullBio: `### **Aufbau des digitalen Rückgrats der Automobil- und Fintech-Branche.**
+  about: "Technical Lead & Senior Full-Stack Engineer. Aufbau des digitalen Rückgrats der Automobil- und Fintech-Branche. Mit über 13 Jahren Erfahrung im Engineering von hochleistungsfähigen verteilten Systemen, spezialisiere ich mich auf technische Leitung, die Modernisierung von Legacy-Architekturen und die Bereitstellung skalierbarer, Cloud-nativer Lösungen.",
+  fullBio: `### **Technical Lead & Senior Full-Stack Engineer | Experte für Automotive & FinTech**
 
-Mit über 13 Jahren Erfahrung in der Entwicklung von hochleistungsfähigen verteilten Systemen spezialisiere ich mich auf die Modernisierung von Legacy-Architekturen und die Bereitstellung skalierbarer Cloud-Native-Lösungen. Meine Reise führte mich von der Entwicklung kritischer Testautomatisierungs-Frameworks für **Alpine Electronics** zur Innovation bei der digitalen Transformation von Automobil-Datenplattformen bei der **DAT Group**.
+Mit über 13 Jahren Erfahrung im Engineering von hochleistungsfähigen verteilten Systemen spezialisiere ich mich auf technische Leitung, die Modernisierung von Legacy-Architekturen und die Bereitstellung skalierbarer, Cloud-nativer Lösungen. Meine Karriere erstreckt sich von der Entwicklung kritischer Automatisierungs-Frameworks bei **Alpine Electronics** bis hin zur Vorantreibung der digitalen Transformation von Enterprise-Datenplattformen bei der **DAT Group**. Ich zeichne mich durch die Führung funktionsübergreifender Teams bei der Entwicklung robuster Software mit modernen Tech-Stacks aus.
 
-Ich schlage die Brücke zwischen komplexer Backend-Logik und intuitiven Frontend-Erlebnissen. Meine Expertise liegt in:
+Ich schlage die Brücke zwischen komplexer Backend-Logik, intuitiven Frontend-Erlebnissen und strategischen Geschäftszielen. Zu meinen Kernkompetenzen gehören:
 
-  * **Architektonische Modernisierung und Leistung**: Verfechter der Migration von monolithischen **Java EE**-Systemen zu **Microservices** (Spring Boot, Azure) und Best Practices im Frontend (Next.js), wodurch die Systemresilienz und Skalierbarkeit erheblich verbessert wurden.
-  * **Full-Stack-Exzellenz**: Erstellung reaktionsschneller, benutzerzentrierter Schnittstellen mit **React, Next.js und TypeScript**, unterstützt durch robuste **Java 21**-APIs.
-  * **DevOps & Qualitätskultur**: Förderung von **TDD** und einer "Set and Forget"-CI/CD-Automatisierungsphilosophie (Azure, GitHub Actions, Vercel) sowie Mentoring von Teams zur Übernahme von **"Clean Code"**-Prinzipien.
-  * **Enterprise Vibe Coding**: Vorreiter für einen neuen Standard in der Softwarebereitstellung durch Verschmelzung von Enterprise-Rigorosität (Epics, Stories, TDD, CI/CD) mit der Geschwindigkeit von KI-integrierten IDEs (**Cursor, Windsurf, Antigravity**). Ich wende dies nicht nur auf neue Projekte an, sondern auch zur Modernisierung, Dokumentation und Refactorierung komplexer Legacy-EE-Monolithen, um eine kontinuierliche Verbesserung und Reduzierung der technischen Schulden sicherzustellen.
+  * **Technische Leitung & Architektur**: Steuerung des Systemdesigns und Förderung der Migration monolithischer **Java EE**-Anwendungen hin zu skalierbaren **Microservices** (Spring Boot, Azure) und modernen Frontends (React/Next.js), was die Systemresilienz maßgeblich verbessert.
+  * **Full-Stack Engineering-Exzellenz**: Architektur und Entwicklung responsiver, nutzerzentrierter Oberflächen mit **React, Next.js und TypeScript**, nahtlos integriert mit robusten und sicheren **Java 21 / Spring Boot** APIs.
+  * **DevOps & Qualitätskultur**: Förderung von **TDD**, **Clean Code**-Prinzipien und Etablierung von CI/CD-Automatisierung (Azure, GitHub Actions) für eine hochqualitative und verlässliche Softwarebereitstellung. Mentoring von Entwicklungsteams zur Steigerung der technischen Standards.
+  * **KI-gestütztes Engineering**: Vorreiter in der rasanten Softwarebereitstellung durch die Verschmelzung von Enterprise-Rigorosität (Epics, Agile/Scrum, CI/CD) mit fortschrittlichen, KI-integrierten Workflows (Cursor, Windsurf). Dieser Ansatz beschleunigt Greenfield-Entwicklungen und vereinfacht das Refactoring komplexer Legacy-Monolithen, wodurch technische Schulden effektiv reduziert werden.
 
 ---
-*Aktuell auf der Suche nach Remote- oder Hybrid-Möglichkeiten, bei denen ich meine architektonischen Einblicke und meinen KI-gestützten Workflow nutzen kann, um komplexe technische Herausforderungen zu lösen.*`,
+*Aktuell suche ich nach einer Rolle als Technical Lead im Spring Boot- und React-Ökosystem. Offen für hybride Positionen im Raum Stuttgart oder vollständige Remote-Tätigkeiten innerhalb Deutschlands.*`,
   avatarUrl: "/images/linkedin-profile.png",
   skills: ["Java", "Spring Boot", "Spring Cloud", "React", "Next.js", "Azure", "Docker", "Kubernetes", "SQL/NoSQL", "IntelliJ IDEA", "KI-Tools (Cursor, Windsurf, Antigravity, MCP)"],
   certifications: [
@@ -241,7 +241,7 @@ export const about = {
   name: "Liviu",
   suffix: ".io",
   lastName: "NESI",
-  description: "Senior Fullstack Architect & Engineer | Enterprise Vibe Coder. Aufbau des digitalen Rückgrats der Automobil- und Fintech-Branche. Vorreiter eines neuen Standards in der Softwarebereitstellung durch Verschmelzung von Enterprise-Rigorosität mit der Geschwindigkeit KI-integrierter IDEs.",
+  description: "Technical Lead & Senior Full-Stack Engineer. Aufbau des digitalen Rückgrats der Automobil- und Fintech-Branche. Ich bin spezialisiert auf Spring Boot Microservices, React Frontends und die Vorantreibung von Enterprise-Softwarebereitstellung in hoher Geschwindigkeit durch KI-gestützte Workflows.",
   fullBio: linkedInProfile.fullBio,
   ctaPrimary: "Projekte, nicht nur Code",
   ctaSecondary: "Kontaktieren Sie mich"

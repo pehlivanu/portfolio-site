@@ -197,26 +197,26 @@ export const projects = [
 
 export const linkedInProfile = {
   name: "Liviu Ionesi",
-  headline: "Full Stack Developer | Java | Spring Boot | Next.js",
+  headline: "Tech Lead | Senior Full-Stack Engineer | Java, Spring Boot, React, Next.js",
   location: "Freiwaldaustr. 39, 73230 Kirchheim unter Teck, Germany",
   phone: "+49 1514 6966 832",
   address: "Freiwaldaustr. 39, 73230 Kirchheim unter Teck",
   email: "ionesiliviu@yahoo.com",
   connections: "500+",
-  about: "Building the digital backbone of the Automotive and Fintech industries. With over 13 years of experience engineering high-performance distributed systems, I specialize in modernizing legacy architectures and delivering scalable, cloud-native solutions.",
-  fullBio: `### **Building the digital backbone of the Automotive and Fintech industries.**
+  about: "Technical Lead & Senior Full-Stack Engineer. Building the digital backbone of the Automotive and Fintech industries. With over 13 years of experience in engineering high-performance distributed systems, I specialize in technical leadership, modernizing legacy architectures, and delivering scalable, cloud-native solutions.",
+  fullBio: `### **Technical Lead & Senior Full-Stack Engineer | Automotive & FinTech Specialist**
 
-With over 13 years of experience engineering high-performance distributed systems, I specialize in modernizing legacy architectures and delivering scalable, cloud-native solutions. My journey has taken me from developing critical test automation frameworks for **Alpine Electronics** to innovating in the digital transformation of automotive data platforms at **DAT Group**.
+With over 13 years of experience in engineering high-performance distributed systems, I specialize in technical leadership, modernizing legacy architectures, and delivering scalable, cloud-native solutions. My career spans from developing critical automation frameworks at **Alpine Electronics** to driving the digital transformation of enterprise data platforms at **DAT Group**. I excel at guiding cross-functional teams to build robust software using modern tech stacks.
 
-I bridge the gap between complex backend logic and intuitive frontend experiences. My expertise lies in:
+I bridge the gap between complex backend logic, intuitive frontend experiences, and strategic business goals. My core competencies include:
 
-  * **Architectural Modernization and Performance**: Advocating for the migration of monolithic **Java EE** systems to **Microservices** (Spring Boot, Azure) and best practices in frontend (Next.js), significantly improving system resilience and scalability.
-  * **Full-Stack Excellence**: Crafting responsive, user-centric interfaces with **React, Next.js, and TypeScript**, backed by robust **Java 21** APIs.
-  * **DevOps & Quality Culture**: Championing **TDD**, and a "Set and Forget" CI/CD automation philosophy (Azure, GitHub Actions, Vercel), mentoring teams to adopt **"Clean Code"** principles.
-  * **Enterprise Vibe Coding**: Pioneering a new standard in software delivery by fusing enterprise-grade rigor (Epics, Stories, TDD, CI/CD) with the speed of AI-integrated IDEs (**Cursor, Windsurf, Antigravity**). I apply this not just to greenfield projects, but to modernize, document, and refactor complex legacy EE monoliths, ensuring continuous improvement and technical debt reduction.
+  * **Technical Leadership & Architecture**: Driving system design and advocating for the migration of monolithic **Java EE** applications to scalable **Microservices** (Spring Boot, Azure) and modern frontends (React/Next.js), significantly improving system resilience.
+  * **Full-Stack Engineering Excellence**: Architecting and developing responsive, user-centric interfaces with **React, Next.js, and TypeScript**, seamlessly integrated with robust, secure **Java 21 / Spring Boot** APIs.
+  * **DevOps & Quality Culture**: Championing **TDD**, **Clean Code** principles, and establishing CI/CD automation (Azure, GitHub Actions) to ensure high-quality, predictable software delivery. Mentoring engineering teams to elevate their technical standards.
+  * **AI-Augmented Engineering**: Pioneering high-velocity software delivery by fusing enterprise-grade rigor (Epics, Agile/Scrum, CI/CD) with advanced AI-integrated workflows (Cursor, Windsurf). This approach accelerates greenfield development and streamlines the refactoring of complex legacy monoliths, effectively reducing technical debt.
 
 ---
-*Currently seeking Remote or Hybrid opportunities where I can leverage my architectural insight and AI-enhanced workflow to solve complex engineering challenges.*`,
+*Currently seeking a Technical Lead role in Spring Boot and React ecosystems. Open to hybrid opportunities in the Stuttgart area or fully remote positions within Germany.*`,
   avatarUrl: "/images/linkedin-profile.png",
   skills: ["Java", "Spring Boot", "Spring Cloud", "React", "Next.js", "Azure", "Docker", "Kubernetes", "SQL/NoSQL", "IntelliJ IDEA", "AI Tools (Cursor, Windsurf, Antigravity, MCP)"],
   certifications: [
@@ -241,7 +241,7 @@ export const about = {
   name: "Liviu",
   suffix: ".io",
   lastName: "NESI",
-  description: "Senior Fullstack Architect & Engineer | Enterprise Vibe Coder. Building the digital backbone of the Automotive and Fintech industries. Pioneering a new standard in software delivery by fusing enterprise-grade rigor with the speed of AI-integrated IDEs.",
+  description: "Technical Lead & Senior Full-Stack Engineer. Building the digital backbone of the Automotive and Fintech industries. I specialize in Spring Boot microservices, React frontends, and driving high-velocity, enterprise-grade software delivery through AI-augmented workflows.",
   fullBio: linkedInProfile.fullBio,
   ctaPrimary: "Projects, not just code",
   ctaSecondary: "Contact Me"

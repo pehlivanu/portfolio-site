@@ -196,26 +196,26 @@ export const projects = [
 
 export const linkedInProfile = {
   name: "Liviu Ionesi",
-  headline: "Dezvoltator Full Stack | Java | Spring Boot | Next.js",
+  headline: "Tech Lead | Senior Full-Stack Engineer | Java, Spring Boot, React, Next.js",
   location: "Kirchheim unter Teck, Germania",
   phone: "+49 1514 6966 832",
   address: "Freiwaldaustr. 39, 73230 Kirchheim unter Teck",
   email: "ionesiliviu@yahoo.com",
   connections: "500+",
-  about: "Specializarea mea este extindere coloanei vertebrale digitale a industriilor Auto și Fintech. Cu peste 13 ani de experiență în ingineria sistemelor distribuite de înaltă performanță, mă specializez în modernizarea proiectelor existente și livrarea de soluții scalabile, native cloud.",
-  fullBio: `### **Construirea coloanei vertebrale digitale a industriilor Auto și Fintech.**
+  about: "Technical Lead & Senior Full-Stack Engineer. Construirea coloanei vertebrale digitale a industriilor Auto și Fintech. Cu peste 13 ani de experiență în ingineria sistemelor distribuite de înaltă performanță, mă specializez în conducere tehnică, modernizarea arhitecturilor vechi și livrarea de soluții scalabile, native cloud.",
+  fullBio: `### **Technical Lead & Senior Full-Stack Engineer | Specialist Auto & FinTech**
 
-Cu peste 13 ani de experiență în ingineria sistemelor distribuite de înaltă performanță, mă specializez în modernizarea proiectelor existente și livrarea de soluții scalabile, native cloud. Călătoria mea m-a dus de la dezvoltarea platformelor critice de automatizare a testelor pentru **Alpine Electronics** la inovarea în transformarea digitală a softurilor bazate pe date automotive la **DAT Group**.
+Cu peste 13 ani de experiență în ingineria sistemelor distribuite de înaltă performanță, mă specializez în conducere tehnică, modernizarea arhitecturilor vechi și livrarea de soluții scalabile, native cloud. Cariera mea se întinde de la dezvoltarea cadrelor critice de automatizare la **Alpine Electronics** până la stimularea transformării digitale a platformelor de date enterprise la **DAT Group**. Excelența mea constă în îndrumarea echipelor interfuncționale pentru a construi software robust folosind tehnologii moderne.
 
-Fac legătura între logica backend complexă și experiențele frontend intuitive. Expertiza mea constă în:
+Fac legătura între logica backend complexă, experiențele frontend intuitive și obiectivele strategice de afaceri. Competențele mele de bază includ:
 
-  * **Modernizare arhitecturală și performanță**: Pledarea pentru migrarea sistemelor monolitice **Java EE** către **Microservicii** (Spring Boot, Azure) și cele mai bune practici în frontend (Next.js), îmbunătățind semnificativ reziliența și scalabilitatea sistemelor.
-  * **Excelență full-stack**: Crearea de interfețe moderne, responsive și centrate pe experiența utilizatorului cu **React, Next.js și TypeScript**, susținute de API-uri robuste dezvolate în **Java 21**.
-  * **DevOps & Cultura Calității**: Susținerea **TDD** și o filozofie de automatizare CI/CD "configură și uită" (Azure, GitHub Actions, Vercel), mentorând echipele să adopte principii **"Clean Code"**.
-  * **Enterprise Vibe Coding**: Pionieratul unui nou standard în livrarea de software prin fuziunea rigorii de nivel Enterprise (Epics, Stories, TDD, CI/CD) cu viteza IDE-urilor integrate cu IA (**Cursor, Windsurf, Antigravity**). Aplic acest lucru nu doar la proiectele noi, sau personale, ci și pentru a moderniza, documenta și refactoriza monoliți EE, asigurând îmbunătățirea continuă și reducerea datoriei tehnice.
+  * **Conducere Tehnică & Arhitectură**: Conducerea designului de sistem și susținerea migrării aplicațiilor monolitice **Java EE** către **Microservicii** scalabile (Spring Boot, Azure) și frontend-uri moderne (React/Next.js), îmbunătățind semnificativ reziliența sistemului.
+  * **Excelență în Ingineria Full-Stack**: Arhitecturarea și dezvoltarea interfețelor responsive, centrate pe utilizator cu **React, Next.js și TypeScript**, integrate perfect cu API-uri robuste și sigure **Java 21 / Spring Boot**.
+  * **DevOps & Cultura Calității**: Promovarea **TDD**, a principiilor **Clean Code** și stabilirea automatizării CI/CD (Azure, GitHub Actions) pentru a asigura o livrare software de înaltă calitate și predictibilă. Mentorarea echipelor de inginerie pentru a-și ridica standardele tehnice.
+  * **Inginerie Augmentată de IA**: Pionierat în livrarea de software de mare viteză prin fuziunea rigorii enterprise (Epics, Agile/Scrum, CI/CD) cu fluxuri de lucru avansate integrate cu IA (Cursor, Windsurf). Această abordare accelerează dezvoltarea proiectelor noi și eficientizează refactorizarea monoliților complecși, reducând efectiv datoria tehnică.
 
 ---
-*În prezent caut oportunități de telemuncă sau Hybrid unde îmi pot folosi perspicacitatea arhitecturală și fluxul de lucru îmbunătățit de IA pentru a rezolva provocări inginerești complexe.*`,
+*În prezent caut un rol de Technical Lead în ecosistemele Spring Boot și React. Deschis pentru oportunități hibride în zona Stuttgart sau poziții complet remote în Germania.*`,
   avatarUrl: "/images/linkedin-profile.png",
   skills: ["Java", "Spring Boot", "Spring Cloud", "React", "Next.js", "Azure", "Docker", "Kubernetes", "SQL/NoSQL", "IntelliJ IDEA", "Instrumente IA (Cursor, Windsurf, Antigravity, MCP)"],
   certifications: [
@@ -240,7 +240,7 @@ export const about = {
   name: "Liviu",
   suffix: ".io",
   lastName: "NESI",
-  description: "Ingineer senior fullstack, arhitect și fondator | Enterprise Vibe Coder. Implicat în construirea coloanei vertebrale digitale a industriilor Auto și Fintech. Asigur pionieratul unui nou standard în livrarea de software, prin fuziunea rigorii de nivel enterprise cu viteza IDE-urilor integrate cu IA.",
+  description: "Technical Lead & Senior Full-Stack Engineer. Construirea coloanei vertebrale digitale a industriilor Auto și Fintech. Sunt specializat în microservicii Spring Boot, frontend-uri React și stimularea livrării de software enterprise de mare viteză prin fluxuri de lucru augmentate de IA.",
   fullBio: linkedInProfile.fullBio,
   ctaPrimary: "Proiecte, nu doar cod",
   ctaSecondary: "Contactează-mă"
