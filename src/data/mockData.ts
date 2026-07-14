@@ -93,7 +93,7 @@ export const education = [
     id: 2,
     type: "master",
     studyField: "Master",
-    degree: "Master's Studies in Mathematics Teacher Education (120 ECTS)",
+    degree: "Master's Studies in Mathematics Teacher Education",
     school: "West University of Timisoara",
     url: "https://info.uvt.ro/en/",
     location: "Timisoara, Romania",

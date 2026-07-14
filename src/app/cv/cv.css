@@ -14,11 +14,16 @@
     background: #ffffff;
 }
 
-/* Ensure individual items don't break across pages, but sections can */
+/* Allow items to break across pages to prevent large gaps */
 .cv-item {
-    break-inside: avoid;
-    page-break-inside: avoid;
     margin-bottom: 1.5rem; /* Better breathing room between jobs */
+}
+
+/* Prevent breaking right after headers */
+.cv-item > div:first-child,
+.cv-item > div:nth-child(2) {
+    break-after: avoid;
+    page-break-after: avoid;
 }
 
 /* The section container should allow breaks */
