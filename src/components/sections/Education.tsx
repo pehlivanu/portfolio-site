@@ -133,7 +133,7 @@ const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
         <div className="text-ide-text mb-0 leading-relaxed text-sm">
              {/* Summary Section - Always Visible */}
              {edu.summary && (
-                <div className="text-base md:text-lg text-ide-text-active italic font-medium px-4 py-3 bg-ide-bg rounded-lg border-l-2 border-ide-accent/20">
+                <div className="mb-4 text-base md:text-lg italic font-normal px-4 py-3 bg-ide-bg rounded-lg border-l-2 border-ide-accent/20">
                   <Highlight text={edu.summary} />
                 </div>
               )}
@@ -150,7 +150,7 @@ export default function Education() {
   const { education } = data;
 
   return (
-    <section id="education" className="py-20 px-8 max-w-4xl mx-auto">
+    <section id="education" className="py-20 px-8 max-w-7xl mx-auto w-full">
       <div className="flex items-center gap-2 mb-12">
         <span className="text-ide-accent font-mono text-xl">03.</span>
         <h2 className="text-3xl font-bold text-ide-text-active">{t('education')}</h2>

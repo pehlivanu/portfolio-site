@@ -50,7 +50,7 @@ export default function Projects() {
   const { activeMatch } = useSearch();
 
   return (
-    <section id="projects" className="py-20 px-8 max-w-6xl mx-auto">
+    <section id="projects" className="py-20 px-8 max-w-7xl mx-auto w-full">
       <div className="flex items-center gap-2 mb-12">
         <span className="text-ide-accent font-mono text-xl">04.</span>
         <h2 className="text-3xl font-bold text-ide-text-active">{t('projects')}</h2>
@@ -112,8 +112,8 @@ export default function Projects() {
                 </div>
 
                 {/* Description */}
-                <div className="text-ide-text mb-6 text-sm leading-relaxed flex-1 font-mono bg-ide-bg p-4 rounded-md border border-ide-border/50">
-                   <p className="text-ide-text/90"><Highlight text={project.description} /></p>
+                <div className="mb-6 text-base md:text-lg italic font-normal px-4 py-3 bg-ide-bg rounded-lg border-l-2 border-ide-accent/20 flex-1">
+                   <p className="text-ide-text"><Highlight text={project.description} /></p>
                 </div>
 
                 {/* Tech Stack Metadata Style */}
