@@ -20,7 +20,15 @@ export const experience = [
 *   Modernisierung des ererbten Spring-Boot-Parent-Builds: Ein Upgrade über 3.0.10 hinaus war manuell nicht möglich (Versionen werden über die Spring-Boot-BOM verwaltet); Prototyp eines OpenRewrite-Gradle-Plugins zum automatischen Anheben der Version sowie eines Renovate-Bots auf Azure für Drittanbieter-Updates (Dependabot evaluiert, als kostenpflichtig verworfen); der Anwendungscode blieb unverändert, während Build und Konfiguration von ordnerbasierten Properties auf Spring-Profile umgestellt wurden.
 *   Aufbau eines KI-gestützten Workflows über IntelliJ IDEA (CodeGPT mit lokalem Azure-LLM), Cursor und Windsurf zur Dokumentation und Analyse von Legacy-Code, Anforderungsextraktion, Architekturentwurf und Implementierung neuer Services bei 100 % SonarQube-sauberem Code.
 *   Bewertung der Migration des Custom-API-Gateways auf Spring Cloud Gateway; als nicht umsetzbar dokumentiert — es erfordert den reaktiven Spring-WebFlux-Stack, während die bestehenden Gateways servlet-basiert sind.`,
-    tech: ["Java 17+", "Jakarta EE / Java EE", "Spring Boot 3+", "Spring Cloud", "Spring WebFlux", "REST-APIs", "OpenAPI", "Microservices", "SOA / SOAP", "WSDL", "JavaScript", "HTML", "CSS", "React", "TypeScript", "Effector", "PrimeReact", "PostgreSQL", "Oracle", "MongoDB", "H2", "SQL", "JPA", "Hibernate", "JDBC", "TestNG", "Mockito", "JUnit 5", "MockMvc", "Testcontainers", "SonarQube", "Jenkins", "GitLab CI/CD", "Gradle", "Gradle Wrapper", "Node.js", "npm", "Docker", "Docker Compose", "Azure", "Kubernetes (AKS)", "Helm", "NGINX Ingress", "OpenRewrite", "Renovate", "Dependabot", "IntelliJ IDEA", "Git", "GitLab", "Azure Repos", "Postman", "SoapUI", "SQL Developer", "Cursor", "Windsurf", "CodeGPT", "Azure OpenAI", "Agile", "Kanban", "Jira"],
+    tech: [
+      { category: "Backend", skills: ["Java 17+", "Jakarta EE", "Spring Boot 3+", "Spring Cloud", "REST-APIs", "OpenAPI", "Microservices", "SOA/SOAP", "WSDL"] },
+      { category: "Frontend", skills: ["JavaScript", "HTML", "CSS", "React", "TypeScript", "Effector", "PrimeReact"] },
+      { category: "Datenbanken", skills: ["PostgreSQL", "Oracle", "MongoDB", "H2", "JPA", "Hibernate", "JDBC"] },
+      { category: "Testing", skills: ["TestNG", "Mockito", "JUnit 5", "MockMvc", "Testcontainers"] },
+      { category: "CI/CD & DevOps", skills: ["Jenkins", "GitLab CI/CD", "Gradle", "Node.js", "Docker", "Azure", "Kubernetes (AKS)", "Helm", "NGINX Ingress", "OpenRewrite", "Renovate", "Dependabot"] },
+      { category: "Tools", skills: ["IntelliJ IDEA", "Postman", "SoapUI", "SQL Developer", "Cursor", "Windsurf", "Azure OpenAI"] },
+      { category: "Methodik", skills: ["Agile", "Kanban", "Jira"] },
+    ],
   },
   {
     id: 2,
@@ -37,7 +45,15 @@ export const experience = [
 *   **Backend-Entwicklung**: Entwicklung leistungsstarker Integrationsdienste für große **Bankenkunden** mit **Java EE** und **Micronaut** in Zusammenarbeit mit externen Frontend-Teams für nahtlosen B2B-Datenaustausch.
 *   **Implementierung von Microsoft-Lösungen**: Fungierte als Hauptentwickler für die neue Einheit "Microsoft Delivery". Implementierung von Unternehmensintranets und Prozessautomatisierung mit **SharePoint** und **Microsoft Flow**, Übersetzung strategischer Anforderungen in funktionale automatisierte Workflows.
 *   **Frontend-Expertise & Zertifizierungen**: Zertifizierung in BPM als **Pega CSA** und Beginn meines Microsoft-Zertifizierungspfades mit Frontend-Zertifizierung für **HTML5, CSS3 und JavaScript**. Anwendung dieses Wissens zur Wartung und Verbesserung verschiedener Web-Schnittstellen.`,
-    tech: ["Java EE", "Micronaut", "WebSphere", "SharePoint", "Microsoft Flow", "Pega CSA", "HTML5/CSS3/JS"],
+    tech: [
+      { category: "Backend", skills: ["Java EE", "Micronaut", "WebSphere"] },
+      { category: "Datenbanken", skills: ["Oracle SQL", "PostgreSQL"] },
+      { category: "CI/CD & DevOps", skills: ["Docker", "Jenkins", "Git"] },
+      { category: "Testing & Qualität", skills: ["JUnit", "SonarQube"] },
+      { category: "Sonstiges", skills: ["SharePoint", "Microsoft Flow"] },
+      { category: "Methodik", skills: ["SAFe", "SCRUM"] },
+      { category: "Zertifizierungen", skills: ["Pega CSA"] },
+    ],
   },
   {
     id: 3,
@@ -54,7 +70,13 @@ export const experience = [
 *   **Agile Lieferung**: Zusammenarbeit in SCRUM-Teams zur Lieferung hochwertiger Software-Inkremente unter Verwendung von **Jira** und **Confluence** zur transparenten Projektverfolgung.
 *   **Qualitätssicherung**: Integration von **SonarQube** in den Build-Prozess zur Sicherstellung von Codequalität und Wartbarkeit vom ersten Tag an.
 *   **Erreichte Zertifizierungen**: Validierung der Kernkompetenzen durch Erlangung von **Oracle Certified Professional Java Programmer (OCPJP)** und **Oracle Certified Expert Web Component Developer (OCE WCD)**.`,
-    tech: ["Java EE", "Liferay", "MySQL", "AlloyUI", "SonarQube", "OCPJP", "OCE WCD"],
+    tech: [
+      { category: "Backend", skills: ["Java EE", "Liferay"] },
+      { category: "Frontend", skills: ["AlloyUI"] },
+      { category: "Datenbanken", skills: ["MySQL"] },
+      { category: "Qualität", skills: ["SonarQube"] },
+      { category: "Zertifizierungen", skills: ["OCPJP", "OCE WCD"] },
+    ],
   },
   {
     id: 4,
@@ -71,7 +93,11 @@ export const experience = [
     description: `*   **Framework-Entwicklung**: Design und Implementierung des "Alpine Curve Editor" und anderer Module für das **Alpine Test Automation Tool**. Refactoring des gesamten Frontends unter Verwendung des **MVC**-Musters, Neuanordnung des UI-Prototyps und signifikante Verbesserung der Softwarequalität mit **StyleCop**.
 *   **Innovation**: Entwicklung einer "Tablet Robot Interface Control" (TRIC)-App mit dem **Android SDK**, die die Fernsteuerung von Industrierobotern für Touchscreen-Tests ermöglicht.
 *   **Thesis-Exzellenz**: Auszeichnung mit der Bestnote (1,0) für die Thesis über "Alpine Curve Editor" in Anerkennung der architektonischen Robustheit und Nützlichkeit des Tools.`,
-    tech: ["C#", ".NET", "WPF", "MVC", "StyleCop", "Android SDK"],
+    tech: [
+      { category: "Backend", skills: ["C#", ".NET"] },
+      { category: "Frontend & Mobile", skills: ["WPF", "MVC", "Android SDK"] },
+      { category: "Qualität", skills: ["StyleCop"] },
+    ],
   },
 ];
 

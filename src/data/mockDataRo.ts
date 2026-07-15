@@ -20,7 +20,15 @@ export const experience = [
 *   Am modernizat configurările moștenite pentru build-urile Spring Boot: întrucât upgrade-ul manual peste versiunea 3.0.10 nu mai era fezabil, am creat un prototip cu pluginul Gradle OpenRewrite pentru actualizarea automată a versiunilor. De asemenea, am integrat bot-ul Renovate pe Azure pentru actualizarea dependențelor third-party.
 *   Am construit un flux de lucru asistat de Inteligența Artificială folosind IntelliJ IDEA (prin CodeGPT conectat la un LLM Azure local), Cursor și Windsurf. Acest setup a facilitat documentarea și analiza codului vechi, extragerea cerințelor de business, designul arhitectural și implementarea noilor servicii, obținând astfel cod de o calitate ireproșabilă (100% clean în SonarQube).
 *   Am evaluat fezabilitatea migrării soluției custom de API Gateway către Spring Cloud Gateway, însă am concluzionat și documentat că migrarea nu este posibilă momentan, deoarece necesită stack-ul reactiv Spring WebFlux, în timp ce gateway-urile noastre foloseau tehnologii bazate pe servlet-uri.`,
-    tech: ["Java 17+", "Jakarta EE / Java EE", "Spring Boot 3+", "Spring Cloud", "Spring WebFlux", "REST APIs", "OpenAPI", "Microservices", "SOA / SOAP", "WSDL", "JavaScript", "HTML", "CSS", "React", "TypeScript", "Effector", "PrimeReact", "PostgreSQL", "Oracle", "MongoDB", "H2", "SQL", "JPA", "Hibernate", "JDBC", "TestNG", "Mockito", "JUnit 5", "MockMvc", "Testcontainers", "SonarQube", "Jenkins", "GitLab CI/CD", "Gradle", "Gradle Wrapper", "Node.js", "npm", "Docker", "Docker Compose", "Azure", "Kubernetes (AKS)", "Helm", "NGINX Ingress", "OpenRewrite", "Renovate", "Dependabot", "IntelliJ IDEA", "Git", "GitLab", "Azure Repos", "Postman", "SoapUI", "SQL Developer", "Cursor", "Windsurf", "CodeGPT", "Azure OpenAI", "Agile", "Kanban", "Jira"],
+    tech: [
+      { category: "Backend", skills: ["Java 17+", "Jakarta EE", "Spring Boot 3+", "Spring Cloud", "REST APIs", "OpenAPI", "Microservices", "SOA / SOAP", "WSDL"] },
+      { category: "Frontend", skills: ["JavaScript", "HTML", "CSS", "React", "TypeScript", "Effector", "PrimeReact"] },
+      { category: "Baze de Date", skills: ["PostgreSQL", "Oracle", "MongoDB", "H2", "JPA", "Hibernate", "JDBC"] },
+      { category: "Testare", skills: ["TestNG", "Mockito", "JUnit 5", "MockMvc", "Testcontainers"] },
+      { category: "CI/CD & DevOps", skills: ["Jenkins", "GitLab CI/CD", "Gradle", "Node.js", "npm", "Docker", "Azure", "Kubernetes (AKS)", "Helm", "NGINX Ingress", "OpenRewrite", "Renovate", "Dependabot"] },
+      { category: "Instrumente", skills: ["IntelliJ IDEA", "Postman", "SoapUI", "SQL Developer", "Cursor", "Windsurf", "Azure OpenAI"] },
+      { category: "Metodologie", skills: ["Agile", "Kanban", "Jira"] },
+    ],
   },
   {
     id: 2,
@@ -37,7 +45,15 @@ export const experience = [
 *   **Dezvoltare backend**: Am dezvoltat servicii de integrare de înaltă performanță pentru clienți importanți din **domeniul bancar** folosind **Java EE** și **Micronaut**, colaborând cu echipe externe de frontend pentru schimbul de date B2B fără probleme.
 *   **Implementare Soluții Microsoft**: Am servit ca dezvoltator principal pentru noua unitate "Microsoft Delivery". Am implementat structura intranet a companiei și automatizarea proceselor folosind **SharePoint** și **Microsoft Flow**, traducând cerințele strategice în fluxuri de lucru automatizate funcționale.
 *   **Expertiză frontend & certificări**: Am obținut certificarea în BPM ca **Pega CSA** și am început parcursul meu de certificare Microsoft cu certificarea frontend pentru **HTML5, CSS3 și JavaScript**. Am aplicat aceste cunoștințe pentru a menține și îmbunătăți diverse interfețe web.`,
-    tech: ["Java EE", "Micronaut", "WebSphere", "SharePoint", "Microsoft Flow", "Pega CSA", "HTML5/CSS3/JS"],
+    tech: [
+      { category: "Backend", skills: ["Java EE", "Micronaut", "WebSphere"] },
+      { category: "Baze de Date", skills: ["Oracle SQL", "PostgreSQL"] },
+      { category: "CI/CD & DevOps", skills: ["Docker", "Jenkins", "Git"] },
+      { category: "Testare & Calitate", skills: ["JUnit", "SonarQube"] },
+      { category: "Altele", skills: ["SharePoint", "Microsoft Flow"] },
+      { category: "Metodologie", skills: ["SAFe", "SCRUM"] },
+      { category: "Certificări", skills: ["Pega CSA"] },
+    ],
   },
   {
     id: 3,
@@ -54,7 +70,13 @@ export const experience = [
 *   **Proiecte agile**: Am colaborat în echipe SCRUM pentru a livra software de înaltă calitate, utilizând **Jira** și **Confluence** pentru documentarea si raportarea transparentă a proiectelor.
 *   **Asigurarea calității**: Am integrat **SonarQube** în procesul de build, pentru a asigura obligatoriu calitatea și mentenabilitatea codului încă din prima zi.
 *   **Certificări obținute**: Am validat expertiza de bază obținând **Oracle Certified Professional Java Programmer (OCPJP)** și **Oracle Certified Expert Web Component Developer (OCE WCD)**.`,
-    tech: ["Java EE", "Liferay", "MySQL", "AlloyUI", "SonarQube", "OCPJP", "OCE WCD"],
+    tech: [
+      { category: "Backend", skills: ["Java EE", "Liferay"] },
+      { category: "Frontend", skills: ["AlloyUI"] },
+      { category: "Baze de Date", skills: ["MySQL"] },
+      { category: "Calitate", skills: ["SonarQube"] },
+      { category: "Certificări", skills: ["OCPJP", "OCE WCD"] },
+    ],
   },
   {
     id: 4,
@@ -71,7 +93,11 @@ export const experience = [
     description: `*   **Dezvoltare Framework**: Am proiectat și implementat "Alpine Curve Editor" și alte module pentru **Alpine Test Automation Tool**. Am refactorizat întregul frontend folosind modelul **MVC**, am rearanjat prototipul UI și am îmbunătățit semnificativ calitatea software-ului folosind **StyleCop**.
 *   **Inovație**: Am dezvoltat o aplicație "Tablet Robot Interface Control" (TRIC) folosind **Android SDK**, permițând controlul de la distanță al roboților industriali pentru testarea ecranelor tactile.
 *   **Excelență Teză**: Am primit nota maximă (1.0) pentru teza despre "Alpine Curve Editor", recunoscând robustețea arhitecturală și utilitatea instrumentului.`,
-    tech: ["C#", ".NET", "WPF", "MVC", "StyleCop", "Android SDK"],
+    tech: [
+      { category: "Backend", skills: ["C#", ".NET"] },
+      { category: "Frontend & Mobile", skills: ["WPF", "MVC", "Android SDK"] },
+      { category: "Calitate", skills: ["StyleCop"] },
+    ],
   },
 ];
 

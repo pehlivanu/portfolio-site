@@ -20,7 +20,15 @@ export const experience = [
 *   Modernized the inherited Spring Boot parent build: upgrading past 3.0.10 was impossible manually (versions are managed by the Spring Boot BOM), so I prototyped an OpenRewrite Gradle plugin to bump the version automatically and a Renovate bot on Azure for third-party updates (Dependabot evaluated, rejected as paid); application code stayed unchanged while build and configuration moved from folder-based properties to Spring profiles.
 *   Built an AI-augmented workflow across IntelliJ IDEA (CodeGPT on a local Azure LLM), Cursor, and Windsurf to document and analyze legacy code, extract requirements, design architecture, and implement new services kept 100% SonarQube-clean.
 *   Assessed migrating the custom API gateway to Spring Cloud Gateway and documented it as unfeasible — it requires the reactive Spring WebFlux stack, while the existing gateways are servlet-based.`,
-    tech: ["Java 17+", "Jakarta EE / Java EE", "Spring Boot 3+", "Spring Cloud", "Spring WebFlux", "REST APIs", "OpenAPI", "Microservices", "SOA / SOAP", "WSDL", "JavaScript", "HTML", "CSS", "React", "TypeScript", "Effector", "PrimeReact", "PostgreSQL", "Oracle", "MongoDB", "H2", "SQL", "JPA", "Hibernate", "JDBC", "TestNG", "Mockito", "JUnit 5", "MockMvc", "Testcontainers", "SonarQube", "Jenkins", "GitLab CI/CD", "Gradle", "Gradle Wrapper", "Node.js", "npm", "Docker", "Docker Compose", "Azure", "Kubernetes (AKS)", "Helm", "NGINX Ingress", "OpenRewrite", "Renovate", "Dependabot", "IntelliJ IDEA", "Git", "GitLab", "Azure Repos", "Postman", "SoapUI", "SQL Developer", "Cursor", "Windsurf", "CodeGPT", "Azure OpenAI", "Agile", "Kanban", "Jira"],
+    tech: [
+      { category: "Backend", skills: ["Java 17+", "Jakarta EE", "Spring Boot 3+", "Spring Cloud", "REST APIs", "OpenAPI", "Microservices", "SOA / SOAP", "WSDL"] },
+      { category: "Frontend", skills: ["JavaScript", "HTML", "CSS", "React", "TypeScript", "Effector", "PrimeReact"] },
+      { category: "Databases", skills: ["PostgreSQL", "Oracle", "MongoDB", "H2", "JPA", "Hibernate", "JDBC"] },
+      { category: "Testing", skills: ["TestNG", "Mockito", "JUnit 5", "MockMvc", "Testcontainers"] },
+      { category: "CI/CD & DevOps", skills: ["Jenkins", "GitLab CI/CD", "Gradle", "Node.js", "npm", "Docker", "Azure", "Kubernetes (AKS)", "Helm", "NGINX Ingress", "OpenRewrite", "Renovate", "Dependabot"] },
+      { category: "Tools", skills: ["IntelliJ IDEA", "Postman", "SoapUI", "SQL Developer", "Cursor", "Windsurf", "Azure OpenAI"] },
+      { category: "Methodology", skills: ["Agile", "Kanban", "Jira"] },
+    ],
   },
   {
     id: 2,
@@ -39,7 +47,15 @@ export const experience = [
 *   **Insurance Portals (W&W)**: Maintained and extended portals for insurance brokers using Java (JSF, Spring, Hibernate), IBM WebSphere, IBM DB2, LDAP. Security audits per **OWASP** standards.
 *   **Microsoft Solutions**: Primary developer for the "Microsoft Delivery" unit. Implemented enterprise intranets and process automation using **SharePoint** and **Microsoft Flow**.
 *   **Certifications**: **Pega CSA** (BPM), Microsoft Frontend (HTML5, CSS3, JavaScript).`,
-    tech: ["Java EE", "Micronaut", "WebSphere", "Oracle SQL", "PostgreSQL", "Docker", "Jenkins", "Git", "SharePoint", "Microsoft Flow", "JUnit", "SonarQube", "SAFe", "SCRUM"],
+    tech: [
+      { category: "Backend", skills: ["Java EE", "Micronaut", "WebSphere"] },
+      { category: "Databases", skills: ["Oracle SQL", "PostgreSQL"] },
+      { category: "CI/CD & DevOps", skills: ["Docker", "Jenkins", "Git"] },
+      { category: "Testing & Quality", skills: ["JUnit", "SonarQube"] },
+      { category: "Other", skills: ["SharePoint", "Microsoft Flow"] },
+      { category: "Methodology", skills: ["SAFe", "SCRUM"] },
+      { category: "Certifications", skills: ["Pega CSA"] },
+    ],
   },
   {
     id: 3,
@@ -56,7 +72,13 @@ export const experience = [
 *   **Agile Delivery**: Collaborated in SCRUM teams to deliver high-quality software increments, utilizing **Jira** and **Confluence** for transparent project tracking.
 *   **Quality Assurance**: Integrated **SonarQube** into the build process to ensure code quality and maintainability from day one.
 *   **Certifications Achieved**: Validated core expertise by earning **Oracle Certified Professional Java Programmer (OCPJP)** and **Oracle Certified Expert Web Component Developer (OCE WCD)**.`,
-    tech: ["Java EE", "Liferay", "MySQL", "AlloyUI", "SonarQube", "OCPJP", "OCE WCD"],
+    tech: [
+      { category: "Backend", skills: ["Java EE", "Liferay"] },
+      { category: "Frontend", skills: ["AlloyUI"] },
+      { category: "Databases", skills: ["MySQL"] },
+      { category: "Quality", skills: ["SonarQube"] },
+      { category: "Certifications", skills: ["OCPJP", "OCE WCD"] },
+    ],
   },
   {
     id: 4,
@@ -73,7 +95,11 @@ export const experience = [
     description: `*   **Framework Development**: Designed and implemented the "Alpine Curve Editor" and other modules for the **Alpine Test Automation Tool**. Refactored the entire frontend using **MVC** pattern, rearranged the UI prototype, and significantly improved software quality using **StyleCop**.
 *   **Innovation**: Developed a "Tablet Robot Interface Control" (TRIC) app using **Android SDK**, enabling remote control of industrial robots for touch-screen testing.
 *   **Thesis Excellence**: Awarded top grade (1.0) for the thesis on "Alpine Curve Editor", recognizing the architectural robustness and utility of the tool.`,
-    tech: ["C#", ".NET", "WPF", "MVC", "StyleCop", "Android SDK"],
+    tech: [
+      { category: "Backend", skills: ["C#", ".NET"] },
+      { category: "Frontend & Mobile", skills: ["WPF", "MVC", "Android SDK"] },
+      { category: "Quality", skills: ["StyleCop"] },
+    ],
   },
 ];
 

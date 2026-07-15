@@ -210,11 +210,16 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
                       </ReactMarkdown>
 
                       {/* Tech Stack */}
-                      <div className="flex flex-wrap gap-2 mt-6 pt-4 border-t border-ide-border/30">
-                        {job.tech.map((tech: string) => (
-                          <span key={tech} className="px-3 py-1 text-xs font-medium rounded-full bg-ide-bg text-ide-accent border border-ide-border hover:bg-ide-accent/10 transition-colors cursor-default">
-                            <Highlight text={tech} />
-                          </span>
+                      <div className="flex flex-col gap-2.5 mt-5 pt-4 border-t border-ide-border/30">
+                        {job.tech.map((techGroup: { category: string, skills: string[] }) => (
+                          <div key={techGroup.category} className="flex flex-wrap items-baseline gap-2">
+                            <h4 className="text-sm font-semibold text-ide-text-active mr-1">{techGroup.category}:</h4>
+                            {techGroup.skills.map((tech: string) => (
+                              <span key={tech} className="px-2 py-0.5 text-xs font-medium rounded-full bg-ide-bg text-ide-accent border border-ide-border hover:bg-ide-accent/10 transition-colors cursor-default">
+                                <Highlight text={tech} />
+                              </span>
+                            ))}
+                          </div>
                         ))}
                       </div>
                   </div>

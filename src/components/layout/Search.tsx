@@ -36,7 +36,10 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
       if (job.role.toLowerCase().includes(term) || 
           job.company.toLowerCase().includes(term) || 
           job.description.toLowerCase().includes(term) ||
-          job.tech.some(t => t.toLowerCase().includes(term))) {
+          job.tech.some((tGroup: any) => 
+            tGroup.category.toLowerCase().includes(term) || 
+            tGroup.skills.some((skill: string) => skill.toLowerCase().includes(term))
+          )) {
         newResults.push({ 
           type: 'experience', 
           title: job.role, 

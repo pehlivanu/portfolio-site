@@ -20,7 +20,15 @@ export const experience = [
 *   Modernisation de la configuration de build Spring Boot héritée : la montée de version au-delà de 3.0.10 n'étant plus gérable manuellement, j'ai prototypé un plugin Gradle OpenRewrite pour automatiser cette tâche, et mis en place le bot Renovate sur Azure pour la mise à jour des dépendances tierces.
 *   Déploiement d'un workflow assisté par l'IA (IntelliJ IDEA avec CodeGPT sur un modèle Azure LLM local, Cursor et Windsurf) afin d'accélérer la documentation et l'analyse du code existant, l'extraction des règles métier, la conception architecturale et l'implémentation de nouveaux services. Le résultat : un code maintenable et 100% clean sous SonarQube.
 *   Évaluation de la faisabilité d'une migration de la passerelle API sur-mesure vers Spring Cloud Gateway. J'ai conclu et documenté que cette migration était irréalisable en l'état, car elle nécessitait la stack réactive Spring WebFlux, alors que nos passerelles reposaient sur des technologies basées sur les servlets.`,
-    tech: ["Java 17+", "Jakarta EE / Java EE", "Spring Boot 3+", "Spring Cloud", "Spring WebFlux", "REST APIs", "OpenAPI", "Microservices", "SOA / SOAP", "WSDL", "JavaScript", "HTML", "CSS", "React", "TypeScript", "Effector", "PrimeReact", "PostgreSQL", "Oracle", "MongoDB", "H2", "SQL", "JPA", "Hibernate", "JDBC", "TestNG", "Mockito", "JUnit 5", "MockMvc", "Testcontainers", "SonarQube", "Jenkins", "GitLab CI/CD", "Gradle", "Gradle Wrapper", "Node.js", "npm", "Docker", "Docker Compose", "Azure", "Kubernetes (AKS)", "Helm", "NGINX Ingress", "OpenRewrite", "Renovate", "Dependabot", "IntelliJ IDEA", "Git", "GitLab", "Azure Repos", "Postman", "SoapUI", "SQL Developer", "Cursor", "Windsurf", "CodeGPT", "Azure OpenAI", "Agile", "Kanban", "Jira"],
+    tech: [
+      { category: "Backend", skills: ["Java 17+", "Jakarta EE", "Spring Boot 3+", "Spring Cloud", "REST APIs", "OpenAPI", "Microservices", "SOA / SOAP", "WSDL"] },
+      { category: "Frontend", skills: ["JavaScript", "HTML", "CSS", "React", "TypeScript", "Effector", "PrimeReact"] },
+      { category: "Bases de données", skills: ["PostgreSQL", "Oracle", "MongoDB", "H2", "JPA", "Hibernate", "JDBC"] },
+      { category: "Tests", skills: ["TestNG", "Mockito", "JUnit 5", "MockMvc", "Testcontainers"] },
+      { category: "CI/CD & DevOps", skills: ["Jenkins", "GitLab CI/CD", "Gradle", "Node.js", "npm", "Docker", "Azure", "Kubernetes (AKS)", "Helm", "NGINX Ingress", "OpenRewrite", "Renovate", "Dependabot"] },
+      { category: "Outils", skills: ["IntelliJ IDEA", "Postman", "SoapUI", "SQL Developer", "Cursor", "Windsurf", "Azure OpenAI"] },
+      { category: "Méthodologie", skills: ["Agile", "Kanban", "Jira"] },
+    ],
   },
   {
     id: 2,
@@ -37,7 +45,15 @@ export const experience = [
 *   **Développement Backend** : J'ai développé des services d'intégration haute performance pour des clients majeurs du secteur **Bancaire** en utilisant **Java EE** et **Micronaut**, en collaborant avec des équipes frontend externes pour un échange de données B2B transparent.
 *   **Mise en œuvre de Solutions Microsoft** : J'ai servi de développeur principal pour la nouvelle unité "Microsoft Delivery". J'ai mis en œuvre des intranets d'entreprise et l'automatisation des processus en utilisant **SharePoint** et **Microsoft Flow**, traduisant les exigences stratégiques en flux de travail automatisés fonctionnels.
 *   **Expertise Frontend & Certifications** : J'ai obtenu la certification en BPM en tant que **Pega CSA** et j'ai commencé mon parcours de certification Microsoft avec la certification frontend pour **HTML5, CSS3 et JavaScript**. J'ai appliqué ces connaissances pour maintenir et améliorer diverses interfaces web.`,
-    tech: ["Java EE", "Micronaut", "WebSphere", "SharePoint", "Microsoft Flow", "Pega CSA", "HTML5/CSS3/JS"],
+    tech: [
+      { category: "Backend", skills: ["Java EE", "Micronaut", "WebSphere"] },
+      { category: "Bases de données", skills: ["Oracle SQL", "PostgreSQL"] },
+      { category: "CI/CD & DevOps", skills: ["Docker", "Jenkins", "Git"] },
+      { category: "Tests & Qualité", skills: ["JUnit", "SonarQube"] },
+      { category: "Autres", skills: ["SharePoint", "Microsoft Flow"] },
+      { category: "Méthodologie", skills: ["SAFe", "SCRUM"] },
+      { category: "Certifications", skills: ["Pega CSA"] },
+    ],
   },
   {
     id: 3,
@@ -54,7 +70,13 @@ export const experience = [
 *   **Livraison Agile** : J'ai collaboré au sein d'équipes SCRUM pour livrer des incréments logiciels de haute qualité, en utilisant **Jira** et **Confluence** pour un suivi de projet transparent.
 *   **Assurance Qualité** : J'ai intégré **SonarQube** dans le processus de build pour assurer la qualité et la maintenabilité du code dès le premier jour.
 *   **Certifications Obtenues** : J'ai validé mon expertise de base en obtenant **Oracle Certified Professional Java Programmer (OCPJP)** et **Oracle Certified Expert Web Component Developer (OCE WCD)**.`,
-    tech: ["Java EE", "Liferay", "MySQL", "AlloyUI", "SonarQube", "OCPJP", "OCE WCD"],
+    tech: [
+      { category: "Backend", skills: ["Java EE", "Liferay"] },
+      { category: "Frontend", skills: ["AlloyUI"] },
+      { category: "Bases de données", skills: ["MySQL"] },
+      { category: "Qualité", skills: ["SonarQube"] },
+      { category: "Certifications", skills: ["OCPJP", "OCE WCD"] },
+    ],
   },
   {
     id: 4,
@@ -71,7 +93,11 @@ export const experience = [
     description: `*   **Développement de Framework** : J'ai conçu et mis en œuvre "Alpine Curve Editor" et d'autres modules pour **Alpine Test Automation Tool**. J'ai refactorisé l'ensemble du frontend en utilisant le modèle **MVC**, réorganisé le prototype d'interface utilisateur et considérablement amélioré la qualité du logiciel en utilisant **StyleCop**.
 *   **Innovation** : J'ai développé une application "Tablet Robot Interface Control" (TRIC) utilisant le **SDK Android**, permettant le contrôle à distance de robots industriels pour les tests d'écrans tactiles.
 *   **Excellence de Thèse** : J'ai obtenu la note maximale (1,0) pour la thèse sur "Alpine Curve Editor", reconnaissant la robustesse architecturale et l'utilité de l'outil.`,
-    tech: ["C#", ".NET", "WPF", "MVC", "StyleCop", "SDK Android"],
+    tech: [
+      { category: "Backend", skills: ["C#", ".NET"] },
+      { category: "Frontend & Mobile", skills: ["WPF", "MVC", "Android SDK"] },
+      { category: "Qualité", skills: ["StyleCop"] },
+    ],
   },
 ];
 

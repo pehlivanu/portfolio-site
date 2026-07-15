@@ -172,31 +172,48 @@ function CVContent() {
 
                     {/* ── PROFESSIONAL EXPERIENCE ── */}
                     <Section title={translations[language].cvProfessionalExperience} colors={colors}>
-                        <div className="space-y-0">
+                        <div className="space-y-6">
                             {experience.map((job: any) => (
-                                <div key={job.id} className="cv-item">
-                                    <div className="flex justify-between items-baseline gap-4 mb-1">
-                                        <h3 className={`text-base font-bold ${colors.textBright}`}>{job.role}</h3>
+                                <div key={job.id} className="cv-item break-inside-avoid">
+                                    <div className="flex justify-between items-baseline gap-4 mb-1 border-b border-gray-100 pb-1 print:border-gray-300">
+                                        <h3 className={`text-lg font-bold ${colors.textBright}`}>{job.role}</h3>
                                         <span className={`text-sm ${colors.textMuted} font-semibold whitespace-nowrap tabular-nums`}>
                                             {job.period}
                                         </span>
                                     </div>
-                                    <div className={`text-sm ${colors.heading} font-semibold mb-2`}>
+                                    <div className={`text-base ${colors.heading} font-semibold mb-3 flex items-center`}>
                                         {job.websiteUrl ? (
                                             <a href={job.websiteUrl} target="_blank" rel="noopener noreferrer" className={`hover:underline ${isIde ? '' : 'print:text-black print:no-underline'}`}>
                                                 {job.company}
                                             </a>
                                         ) : job.company}
+                                        {job.locationType && (
+                                            <span className={`ml-2 text-sm font-normal ${colors.textMuted}`}>— {job.locationType}</span>
+                                        )}
                                     </div>
 
                                     {/* Summary line */}
-                                    <p className={`text-sm mb-2 ${colors.summaryColor}`}>
+                                    <p className={`text-sm leading-relaxed mb-3 ${colors.summaryColor}`}>
                                         {job.summary}
                                     </p>
 
                                     {/* Bullet points */}
                                     {isDetailed && (
-                                        <BulletList markdown={job.description} colors={colors} isIde={isIde} />
+                                        <div className="mb-3">
+                                            <BulletList markdown={job.description} colors={colors} isIde={isIde} />
+                                        </div>
+                                    )}
+
+                                    {/* Tech Stack for ATS and human readability */}
+                                    {job.tech && isDetailed && (
+                                        <div className="mt-3 pt-3 border-t border-gray-50 border-dashed print:border-gray-200">
+                                            {job.tech.map((techGroup: any, idx: number) => (
+                                                <div key={idx} className="text-[13px] leading-tight mb-1">
+                                                    <strong className={`${colors.textBright} font-semibold`}>{techGroup.category}: </strong>
+                                                    <span className={colors.textMuted}>{techGroup.skills.join(', ')}</span>
+                                                </div>
+                                            ))}
+                                        </div>
                                     )}
                                 </div>
                             ))}
@@ -206,35 +223,35 @@ function CVContent() {
                     {/* ── PROJECTS ── */}
                     {showProjects && (
                         <Section title={translations[language].cvProjects} colors={colors}>
-                            <div className="space-y-0">
+                            <div className="space-y-6">
                                 {projects.slice(0, 4).map((proj: any) => (
-                                    <div key={proj.id} className="cv-item">
-                                        <div className="flex items-baseline gap-2 mb-0.5">
-                                            <h3 className={`text-sm font-bold ${colors.textBright}`}>{proj.title}</h3>
-                                            {proj.githubUrl && (
-                                                <a href={proj.githubUrl} target="_blank" rel="noopener noreferrer" className={`text-xs ${colors.linkColor} hover:underline ${isIde ? '' : 'print:text-gray-600 print:no-underline'}`}>
-                                                    GitHub ↗
-                                                </a>
-                                            )}
-                                            {proj.deployUrl && (
-                                                <a href={proj.deployUrl} target="_blank" rel="noopener noreferrer" className={`text-xs ${colors.linkColor} hover:underline ${isIde ? '' : 'print:text-gray-600 print:no-underline'}`}>
-                                                    Live ↗
-                                                </a>
-                                            )}
+                                    <div key={proj.id} className="cv-item break-inside-avoid">
+                                        <div className="flex justify-between items-baseline gap-4 mb-1 border-b border-gray-100 pb-1 print:border-gray-300">
+                                            <div className="flex items-baseline gap-3">
+                                                <h3 className={`text-lg font-bold ${colors.textBright}`}>{proj.title}</h3>
+                                                <div className="flex gap-2">
+                                                    {proj.githubUrl && (
+                                                        <a href={proj.githubUrl} target="_blank" rel="noopener noreferrer" className={`text-xs font-semibold ${colors.linkColor} hover:underline ${isIde ? '' : 'print:text-gray-600 print:no-underline'}`}>
+                                                            [GitHub]
+                                                        </a>
+                                                    )}
+                                                    {proj.deployUrl && (
+                                                        <a href={proj.deployUrl} target="_blank" rel="noopener noreferrer" className={`text-xs font-semibold ${colors.linkColor} hover:underline ${isIde ? '' : 'print:text-gray-600 print:no-underline'}`}>
+                                                            [Live]
+                                                        </a>
+                                                    )}
+                                                </div>
+                                            </div>
+                                            <span className={`text-sm ${colors.textMuted} font-semibold whitespace-nowrap tabular-nums`}>
+                                                Project
+                                            </span>
                                         </div>
                                         {isDetailed && (
-                                            <p className={`text-sm ${colors.textMuted} mb-1`}>{proj.description}</p>
+                                            <p className={`text-sm leading-relaxed mb-3 mt-2 ${colors.textMuted}`}>{proj.description}</p>
                                         )}
-                                        <div className="flex flex-wrap gap-1">
-                                            {proj.tech.map((techItem: string, i: number) => (
-                                                <span key={i} className={`text-[10px] px-2 py-0.5 rounded font-medium border ${
-                                                    isIde
-                                                        ? 'bg-[#313244] text-[#89dceb] border-[#45475a]'
-                                                        : 'bg-blue-50 text-blue-800 border-blue-200'
-                                                }`}>
-                                                    {techItem}
-                                                </span>
-                                            ))}
+                                        <div className="mt-2 text-[13px] leading-tight">
+                                            <strong className={`${colors.textBright} font-semibold`}>Tech Stack: </strong>
+                                            <span className={colors.textMuted}>{proj.tech.join(', ')}</span>
                                         </div>
                                     </div>
                                 ))}
@@ -244,29 +261,33 @@ function CVContent() {
 
                     {/* ── EDUCATION ── */}
                     <Section title={translations[language].cvEducation} colors={colors}>
-                        <div className="space-y-0">
+                        <div className="space-y-6">
                             {education.map((edu: any) => (
-                                <div key={edu.id} className="cv-item">
-                                    <div className="flex justify-between items-baseline gap-4 mb-1">
-                                        <h3 className={`text-base font-bold ${colors.textBright}`}>{edu.degree}</h3>
-                                        <span className={`text-sm ${colors.textMuted} font-semibold whitespace-nowrap tabular-nums`}>{edu.year}</span>
+                                <div key={edu.id} className="cv-item break-inside-avoid">
+                                    <div className="flex justify-between items-baseline gap-4 mb-1 border-b border-gray-100 pb-1 print:border-gray-300">
+                                        <h3 className={`text-lg font-bold ${colors.textBright}`}>{edu.degree}</h3>
+                                        <span className={`text-sm ${colors.textMuted} font-semibold whitespace-nowrap tabular-nums`}>
+                                            {edu.year}
+                                        </span>
                                     </div>
-                                    <div className={`text-sm ${colors.heading} font-semibold`}>
+                                    <div className={`text-base ${colors.heading} font-semibold mb-2 flex items-center`}>
                                         {edu.url ? (
                                             <a href={edu.url} target="_blank" rel="noopener noreferrer" className={`hover:underline ${isIde ? '' : 'print:text-black print:no-underline'}`}>
                                                 {edu.school}
                                             </a>
                                         ) : edu.school}
-                                        {edu.location && <span className={`${colors.textMuted} font-normal`}>, {edu.location}</span>}
+                                        {edu.location && <span className={`ml-2 text-sm font-normal ${colors.textMuted}`}>— {edu.location}</span>}
                                     </div>
                                     {edu.grade && (
-                                        <div className="mt-1">
-                                            <span className="text-xs font-bold text-blue-800 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
+                                        <div className="mb-2">
+                                            <span className={`text-xs font-bold px-2 py-0.5 rounded border ${isIde ? 'bg-[#313244] text-[#89dceb] border-[#45475a]' : 'text-blue-800 bg-blue-50 border-blue-200 print:border-gray-300 print:text-black print:bg-transparent'}`}>
                                                 {edu.grade}
                                             </span>
                                         </div>
                                     )}
-                                    {isDetailed && edu.summary && <p className={`text-sm ${colors.textMuted} mt-1.5`}>{edu.summary}</p>}
+                                    {isDetailed && edu.summary && (
+                                        <p className={`text-sm leading-relaxed mt-2 ${colors.textMuted}`}>{edu.summary}</p>
+                                    )}
                                 </div>
                             ))}
                         </div>
