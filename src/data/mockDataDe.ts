@@ -2,21 +2,25 @@ export const experience = [
   {
     id: 1,
     type: "senior",
-    role: "Senior Softwareentwickler",
+    role: "Senior Software Developer",
     company: "DAT Group",
     companySize: "501-1,000 Mitarbeiter",
     industry: "Automotive Software",
     locationType: "Remote / Hybrid",
     websiteUrl: "https://www.dat.eu",
     period: "Sep 2020 - Mar 2026",
-    summary: `Modernisierung des "SilverDAT"-Ökosystems, des Industriestandards für Automobildaten und Schadensmanagement.`,
-    description: `*   **Architektonische Innovation**: Umstellung der Engineering-Strategie auf die **vollständige Nutzung des Spring Boot-Ökosystems** anstatt komplexe "framework-agnostische" Anti-Patterns beizubehalten. Einführung von **OpenRewrite** und **Renovate** für automatisierte Wartung und Standardisierung auf **JUnit 5 & MockMvc**. Förderung der **Contract-First**-Entwicklung für parallele FE/BE-Arbeit. Erreichung von **Continuous Delivery** für neue Projekte bei gleichzeitiger Optimierung des vierteljährlichen Feature-Release-Zyklus für Legacy-Software.
-*   **Engineering-Exzellenz**: Befürwortung von **Monorepo**-Strukturen und **Java-Modulen** zur Organisation von Legacy-Code bei gleichzeitiger Förderung eines "Unified Dashboard"-Ansatzes gegenüber Micro-Frontends, um integrierte Tests und Kohäsion sicherzustellen.
-*   **API-Management**: Befürwortung der Standardisierung des öffentlichen API-Managements unter Verwendung von **OpenAPI**, um klare Verträge und eine einfachere Integration für Partner sicherzustellen.
-*   **Frontend-Neugestaltung**: Neuaufbau von Legacy-JS-Anwendungen mit **React und TypeScript**, um unseren Kunden eine moderne, reaktionsschnelle Benutzererfahrung zu bieten.
-*   **KI-gestützte Modernisierung**: Nutzung von KI-Tools zur Dokumentation, Refactorierung und Optimierung kritischer Legacy-Java-EE-Komponenten bei gleichzeitigem Debugging und Testen in **IntelliJ IDEA**.
-*   **DevOps-Integration**: Standardisierung der lokalen Entwicklung mit **Docker Compose** und **Testcontainers** bei gleichzeitiger Befürwortung von Standard-**Kubernetes**-Backend-Bereitstellungen und **Vercel** für das Frontend.`,
-    tech: ["Java 17+", "Spring Boot", "Spring Cloud", "React", "TypeScript", "Docker", "Kubernetes", "OpenRewrite", "Renovate", "JUnit 5", "MockMvc"],
+    summary: `Teil des Teams Costing Applications hinter SilverDAT 3 „calculate" — dem von Kfz-Versicherungen anerkannten Standard zur Reparaturkostenkalkulation, der herstellerbasierte Kostenvoranschläge für Wartungs-, Verschleiß- und Unfallreparaturen über mehr als 70.000 Modellvarianten erstellt (Ersatzteile, Arbeitswerte, Lacksysteme, OEM-Reparaturanleitungen). Genutzt von Werkstätten, Autohäusern, Kfz-Sachverständigen, Versicherungen, Banken und Herstellern.`,
+    description: `*   Erweiterung, Wartung, Fehlerbehebung und Test bestehender Java-EE-Services (SOA-/SOAP-Monorepo mit JavaScript/React-Frontends), inkl. umfangreicher manueller Tests und SoapUI-Testsuiten, die bei Änderungen der Services angepasst wurden.
+*   End-to-End-Verantwortung und Architektur neuer Spring-Boot-Services als Ablösung von Java EE — Umsetzung einer Clean Architecture mit striktem DTO-Mapping, zentraler Fehlerbehandlung und verteiltem Tracing (MDC) für optimale Observability.
+*   Spezifikation und Implementierung von Contract-First-REST-APIs (OpenAPI) inkl. HATEOAS-Konformität für klare Verträge, API-Discoverability und parallele Frontend-/Backend-Entwicklung.
+*   Verwaltung der Datenschicht mit JPA und Hibernate in den neuen Spring-Boot-Services, während die Legacy-Anwendung einen direkteren, JDBC-basierten Ansatz nutzte — über PostgreSQL, Oracle (via SQL Developer) und MongoDB sowie H2 als In-Memory-Datenbank für Tests.
+*   Neuaufbau von Legacy-JavaScript-Anwendungen mit React und TypeScript zu modernen, reaktionsschnellen Web-Anwendungen sowie Optimierung der Frontend-Architektur mit Effector (State-Management) und PrimeReact-Komponenten.
+*   Sicherstellung einer umfassenden Testabdeckung durch TestNG-/Mockito-Unit-Tests für neu hinzugefügten Legacy-Code und moderne Services, ergänzt durch 200+ JUnit-5-/MockMvc-Tests und Postman-Collections für eine vollständige Spring-Integration.
+*   CI/CD: Build der Legacy-Plattform mit Gradle auf Jenkins (Deployment auf Test und Produktiv) und neuer Services mit dem Gradle Wrapper, Auslieferung nach Azure-Kubernetes (AKS) über Build-/Release-Pipelines und Helm-Charts (NGINX-Ingress), mit Docker Compose/Testcontainers für die lokale Entwicklung; Versionsverwaltung von GitLab auf Azure Repos migriert. ~6 Releases pro Jahr für die Legacy-Plattform in einem Kanban-Workflow (Jira).
+*   Modernisierung des ererbten Spring-Boot-Parent-Builds: Ein Upgrade über 3.0.10 hinaus war manuell nicht möglich (Versionen werden über die Spring-Boot-BOM verwaltet); Prototyp eines OpenRewrite-Gradle-Plugins zum automatischen Anheben der Version sowie eines Renovate-Bots auf Azure für Drittanbieter-Updates (Dependabot evaluiert, als kostenpflichtig verworfen); der Anwendungscode blieb unverändert, während Build und Konfiguration von ordnerbasierten Properties auf Spring-Profile umgestellt wurden.
+*   Aufbau eines KI-gestützten Workflows über IntelliJ IDEA (CodeGPT mit lokalem Azure-LLM), Cursor und Windsurf zur Dokumentation und Analyse von Legacy-Code, Anforderungsextraktion, Architekturentwurf und Implementierung neuer Services bei 100 % SonarQube-sauberem Code.
+*   Bewertung der Migration des Custom-API-Gateways auf Spring Cloud Gateway; als nicht umsetzbar dokumentiert — es erfordert den reaktiven Spring-WebFlux-Stack, während die bestehenden Gateways servlet-basiert sind.`,
+    tech: ["Java 17+", "Jakarta EE / Java EE", "Spring Boot 3+", "Spring Cloud", "Spring WebFlux", "REST-APIs", "OpenAPI", "Microservices", "SOA / SOAP", "WSDL", "JavaScript", "HTML", "CSS", "React", "TypeScript", "Effector", "PrimeReact", "PostgreSQL", "Oracle", "MongoDB", "H2", "SQL", "JPA", "Hibernate", "JDBC", "TestNG", "Mockito", "JUnit 5", "MockMvc", "Testcontainers", "SonarQube", "Jenkins", "GitLab CI/CD", "Gradle", "Gradle Wrapper", "Node.js", "npm", "Docker", "Docker Compose", "Azure", "Kubernetes (AKS)", "Helm", "NGINX Ingress", "OpenRewrite", "Renovate", "Dependabot", "IntelliJ IDEA", "Git", "GitLab", "Azure Repos", "Postman", "SoapUI", "SQL Developer", "Cursor", "Windsurf", "CodeGPT", "Azure OpenAI", "Agile", "Kanban", "Jira"],
   },
   {
     id: 2,

@@ -2,21 +2,25 @@ export const experience = [
   {
     id: 1,
     type: "senior",
-    role: "Inginer software senior",
+    role: "Senior Software Developer",
     company: "DAT Group",
     companySize: "501-1,000 angajați",
     industry: "Software Auto",
     locationType: "Remote / Hybrid",
     websiteUrl: "https://www.dat.eu",
     period: "Sep 2020 - Mar 2026",
-    summary: `Modernizarea ecosistemului "SilverDAT", standardul industriei pentru date auto și gestionarea reparatiilor vehiculelor.`,
-    description: `*   **Inovație arhitecturală**: Am schimbat strategia de inginerie pentru a **utiliza pe deplin ecosistemul Spring Boot** în locul anti-modele complexe "agnostice de framework". Am introdus **OpenRewrite** și **Renovate** pentru mentenanța dependențelor automată și am standardizat testarea cu **JUnit 5 & MockMvc**. Am promovat dezvoltarea **Contract-First** pentru lucrul paralel FE/BE. Am realizat **Continuous build** pentru proiecte noi, comparativ cu proiectele moștenite, care folosesc ciclul cuaternar de lansare.
-*   **Excelență în inginerie**: Am pledat pentru structuri **monorepo** și **module Java** pentru a organiza codul existent, promovând în același timp o abordare de tip "Unified Dashboard" în locul micro-front-end-urilor pentru a asigura testarea integrată și coeziunea.
-*   **Gestionarea API-urilor**: Am pledat pentru standardizarea gestionării API-urilor publice folosind **OpenAPI**, asigurând contracte clare și o integrare mai ușoară pentru echipele interne și parteneri.
-*   **Revizuire frontend**: Am reconstruit aplicațiile JS moștenite folosind **React și TypeScript**, oferind o experiență modernă și responsivă pentru utilizatorii noștri.
-*   **Modernizare accelerată de IA**: Am folosit instrumente de IA pentru a documenta, refactoriza și optimiza componente critice Java EE, depanând și testând în același timp în **IntelliJ IDEA**.
-*   **Integrare DevOps**: Am standardizat dezvoltarea locală folosind **Docker Compose** și **Testcontainers**, pledând în același timp pentru implementări standard **Kubernetes** pentru backend și **Vercel** pentru frontend.`,
-    tech: ["Java 17+", "Spring Boot", "Spring Cloud", "React", "TypeScript", "Docker", "Kubernetes", "OpenRewrite", "Renovate", "JUnit 5", "MockMvc"],
+    summary: `Am făcut parte din echipa Costing Applications pentru SilverDAT 3 „calculate” — standardul recunoscut de asigurători pentru calculul costurilor de reparații. Aplicația generează devize precise, bazate pe normele producătorilor, pentru peste 70.000 de modele auto (piese, manoperă, vopsitorie, manuale OEM). Este utilizată pe scară largă de service-uri, reprezentanțe, evaluatori, asigurători, bănci și producători.`,
+    description: `*   Am dezvoltat, întreținut, depanat și testat servicii legacy în Java EE (arhitectură SOA/SOAP monorepo cu interfețe în JS/React), rulând suite ample de teste manuale și SoapUI, pe care le-am adaptat constant la modificările serviciilor.
+*   Am conceput arhitectura și am preluat responsabilitatea end-to-end pentru noile microservicii Spring Boot, menite să înlocuiască vechile componente Java EE. Am implementat o arhitectură curată (Clean Architecture), cu o mapare strictă a DTO-urilor, gestionare centralizată a erorilor și distributed tracing prin MDC pentru un nivel ridicat de observabilitate.
+*   Am definit și implementat API-uri REST „contract-first”, conforme cu principiile HATEOAS, folosind OpenAPI. Acest lucru a asigurat contracte clare și a permis dezvoltarea în paralel pe frontend și backend.
+*   Am gestionat stratul de acces la date folosind JPA și Hibernate pentru noile servicii Spring Boot (aplicația legacy folosea o abordare directă prin JDBC), lucrând cu baze de date precum PostgreSQL, Oracle și MongoDB, dar și cu H2 pentru testele in-memory.
+*   Am rescris aplicațiile legacy din JavaScript în React și TypeScript, transformându-le în aplicații web moderne și responsive. Totodată, am optimizat arhitectura de frontend utilizând Effector pentru state management și componente PrimeReact.
+*   Am asigurat o acoperire riguroasă prin teste, scriind teste unitare cu TestNG și Mockito atât pentru codul nou adăugat în sistemul legacy, cât și pentru serviciile moderne. Am completat suita cu peste 200 de teste de integrare folosind JUnit 5, MockMvc și colecții Postman.
+*   CI/CD: Am configurat procesele de build cu Gradle pe Jenkins pentru platforma legacy (deploy pe mediile de test și producție) și am folosit Gradle Wrapper pentru serviciile noi. Acestea din urmă au fost livrate în Azure Kubernetes (AKS) prin pipeline-uri automate de release și Helm charts (NGINX Ingress). Pentru dezvoltarea locală am folosit Docker Compose și Testcontainers. Am migrat versionarea codului din GitLab în Azure Repos. Am livrat aproximativ 6 release-uri pe an pentru platforma legacy, respectând un flux de lucru Kanban în Jira.
+*   Am modernizat configurările moștenite pentru build-urile Spring Boot: întrucât upgrade-ul manual peste versiunea 3.0.10 nu mai era fezabil, am creat un prototip cu pluginul Gradle OpenRewrite pentru actualizarea automată a versiunilor. De asemenea, am integrat bot-ul Renovate pe Azure pentru actualizarea dependențelor third-party.
+*   Am construit un flux de lucru asistat de Inteligența Artificială folosind IntelliJ IDEA (prin CodeGPT conectat la un LLM Azure local), Cursor și Windsurf. Acest setup a facilitat documentarea și analiza codului vechi, extragerea cerințelor de business, designul arhitectural și implementarea noilor servicii, obținând astfel cod de o calitate ireproșabilă (100% clean în SonarQube).
+*   Am evaluat fezabilitatea migrării soluției custom de API Gateway către Spring Cloud Gateway, însă am concluzionat și documentat că migrarea nu este posibilă momentan, deoarece necesită stack-ul reactiv Spring WebFlux, în timp ce gateway-urile noastre foloseau tehnologii bazate pe servlet-uri.`,
+    tech: ["Java 17+", "Jakarta EE / Java EE", "Spring Boot 3+", "Spring Cloud", "Spring WebFlux", "REST APIs", "OpenAPI", "Microservices", "SOA / SOAP", "WSDL", "JavaScript", "HTML", "CSS", "React", "TypeScript", "Effector", "PrimeReact", "PostgreSQL", "Oracle", "MongoDB", "H2", "SQL", "JPA", "Hibernate", "JDBC", "TestNG", "Mockito", "JUnit 5", "MockMvc", "Testcontainers", "SonarQube", "Jenkins", "GitLab CI/CD", "Gradle", "Gradle Wrapper", "Node.js", "npm", "Docker", "Docker Compose", "Azure", "Kubernetes (AKS)", "Helm", "NGINX Ingress", "OpenRewrite", "Renovate", "Dependabot", "IntelliJ IDEA", "Git", "GitLab", "Azure Repos", "Postman", "SoapUI", "SQL Developer", "Cursor", "Windsurf", "CodeGPT", "Azure OpenAI", "Agile", "Kanban", "Jira"],
   },
   {
     id: 2,

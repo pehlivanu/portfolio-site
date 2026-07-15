@@ -9,31 +9,37 @@ export const experience = [
     locationType: "Remote / Hybrid",
     websiteUrl: "https://www.dat.eu",
     period: "Sep 2020 - Mar 2026",
-    summary: `Driving the modernization of the "SilverDAT" ecosystem, the industry standard for automotive data and claims management.`,
-    description: `*   **Architectural Innovation**: Shifted engineering strategy to fully **leverage the Spring Boot ecosystem** instead of maintaining complex "framework-agnostic" anti-patterns. Introduced **OpenRewrite** and **Renovate** for automated maintenance, and standardized on **JUnit 5 & MockMvc**. Promoted **Contract-First** development for parallel FE/BE work. Achieved **Continuous Delivery** for new projects, while optimizing the quarterly feature release cycle for legacy software.
-*   **Engineering Excellence**: Advocated for **Monorepo** structures and **Java Modules** to organize legacy code, while promoting a "Unified Dashboard" approach over micro-frontends to ensure integrated testing and cohesion.
-*   **API Management**: Advocated for standardizing public API management using **OpenAPI**, ensuring clear contracts and easier integration for partners.
-*   **Frontend Revamp**: Rebuilt legacy JS applications using **React and TypeScript**, delivering a modern, responsive user experience for our clients.
-*   **AI-Enhanced Modernization**: Leveraged AI tools to document, refactor, and optimize critical legacy Java EE components, while debugging and testing within **IntelliJ IDEA**.
-*   **DevOps Integration**: Standardized local development using **Docker Compose** and **Testcontainers**, while advocating for standard **Kubernetes** backend deployments and **Vercel** for frontend.`,
-    tech: ["Java 17+", "Spring Boot", "Spring Cloud", "React", "TypeScript", "Docker", "Kubernetes", "OpenRewrite", "Renovate", "JUnit 5", "MockMvc"],
+    summary: `Part of the Costing Applications team behind SilverDAT 3 "calculate" — the insurer-recognized repair cost calculation (Reparaturkostenkalkulation) standard, producing manufacturer-based repair, maintenance, and accident estimates across 70,000+ vehicle model variants (parts, labor values, paint systems, OEM repair manuals). Used by workshops, dealerships, appraisers, insurers, banks, and manufacturers.`,
+    description: `*   Extended, maintained, fixed, and tested legacy Java EE services (SOA/SOAP monorepo with JavaScript/React frontends), running extensive manual and SoapUI test suites and adapting them as services evolved.
+*   Architected and owned new Spring Boot services end to end to replace legacy Java EE components, enforcing clean N-Tier architecture with strict DTO-mapping, centralized error handling, and MDC-based distributed tracing for robust observability.
+*   Specified and implemented contract-first, HATEOAS-compliant REST APIs with OpenAPI, enabling discoverable contracts and parallel frontend/backend work.
+*   Managed the data layer with JPA and Hibernate in the new Spring Boot services, while the legacy application used a more direct JDBC-based approach — across PostgreSQL, Oracle (via SQL Developer) and MongoDB, plus H2 for in-memory testing.
+*   Rebuilt legacy JavaScript applications in React and TypeScript as modern, responsive web apps and optimized the frontend architecture using Effector (state management) and PrimeReact components.
+*   Ensured comprehensive test coverage by writing TestNG/Mockito unit tests for both newly added legacy code and modern services, alongside a suite of 200+ JUnit 5/MockMvc tests and Postman collections for full Spring-context integration.
+*   CI/CD: built the legacy platform with Gradle on Jenkins (deploying to test and production) and new services with the Gradle Wrapper, shipped to Azure Kubernetes (AKS) via build/release pipelines and Helm charts (NGINX ingress), with Docker Compose/Testcontainers for local development; source control migrated from GitLab to Azure Repos. Delivered ~6 releases per year for the legacy platform in a Kanban workflow tracked in Jira.
+*   Modernized the inherited Spring Boot parent build: upgrading past 3.0.10 was impossible manually (versions are managed by the Spring Boot BOM), so I prototyped an OpenRewrite Gradle plugin to bump the version automatically and a Renovate bot on Azure for third-party updates (Dependabot evaluated, rejected as paid); application code stayed unchanged while build and configuration moved from folder-based properties to Spring profiles.
+*   Built an AI-augmented workflow across IntelliJ IDEA (CodeGPT on a local Azure LLM), Cursor, and Windsurf to document and analyze legacy code, extract requirements, design architecture, and implement new services kept 100% SonarQube-clean.
+*   Assessed migrating the custom API gateway to Spring Cloud Gateway and documented it as unfeasible — it requires the reactive Spring WebFlux stack, while the existing gateways are servlet-based.`,
+    tech: ["Java 17+", "Jakarta EE / Java EE", "Spring Boot 3+", "Spring Cloud", "Spring WebFlux", "REST APIs", "OpenAPI", "Microservices", "SOA / SOAP", "WSDL", "JavaScript", "HTML", "CSS", "React", "TypeScript", "Effector", "PrimeReact", "PostgreSQL", "Oracle", "MongoDB", "H2", "SQL", "JPA", "Hibernate", "JDBC", "TestNG", "Mockito", "JUnit 5", "MockMvc", "Testcontainers", "SonarQube", "Jenkins", "GitLab CI/CD", "Gradle", "Gradle Wrapper", "Node.js", "npm", "Docker", "Docker Compose", "Azure", "Kubernetes (AKS)", "Helm", "NGINX Ingress", "OpenRewrite", "Renovate", "Dependabot", "IntelliJ IDEA", "Git", "GitLab", "Azure Repos", "Postman", "SoapUI", "SQL Developer", "Cursor", "Windsurf", "CodeGPT", "Azure OpenAI", "Agile", "Kanban", "Jira"],
   },
   {
     id: 2,
     type: "mid",
-    role: "Mid Software Developer",
+    role: "Fullstack Software Developer",
     company: "evia solutions GmbH",
     companySize: "51-200 employees",
     industry: "IT Services & Consulting",
     locationType: "On-site",
     websiteUrl: "https://www.evia.de",
     period: "Feb 2016 - Aug 2020",
-    summary: `Delivered critical digital solutions for the Insurance and Automotive sectors.`,
-    description: `*   **Legacy System Scaling**: Maintained and developed core **WebSphere Java EE (JSP)** applications. This critical work provided the stable revenue stream that supported the company's hyper-growth from 16 to 200+ employees.
-*   **Backend Development**: Developed high-performance integration services for major **Banking** clients using **Java EE** and **Micronaut**, collaborating with external frontend teams for seamless B2B data exchange.
-*   **Microsoft Solutions Implementation**: Served as the primary developer for the new "Microsoft Delivery" unit. Implemented enterprise intranets and process automation using **SharePoint** and **Microsoft Flow**, translating strategic requirements into functional automated workflows.
-*   **Frontend Expertise & Certifications**: Got certified in BPM as **Pega CSA** and started my Microsoft certification path with frontend certification for **HTML5, CSS3, and JavaScript**. Applied this knowledge to maintain and enhance various web interfaces.`,
-    tech: ["Java EE", "Micronaut", "WebSphere", "SharePoint", "Microsoft Flow", "Pega CSA", "HTML5/CSS3/JS"],
+    summary: `Delivered critical digital solutions for the Insurance, Automotive, and Banking sectors. Collaborated in cross-functional SCRUM and SAFe teams.`,
+    description: `*   **Banking Software Development (Daimler DSS)**: Fullstack development of a custom application for digital automobile credit applications in the **banking** sector. Backend development with **JEE 8** and **Oracle SQL**. Built modules for future **microservices** (Micronaut, PostgreSQL, Docker). **Test automation** with JUnit and SonarQube. **CI/CD** with **Jenkins** and Git. Collaboration in **SAFe** teams using **Jira** and **Confluence**.
+*   **Legacy System Scaling**: Maintained and developed core **WebSphere Java EE (JSP)** applications. This critical work provided the stable revenue stream that supported the company's hyper-growth from 16 to 200+ employees.
+*   **Backend Integration Services**: Developed high-performance **REST/SOAP** integration services for major **Banking** clients using **Java EE** and **Micronaut**, collaborating with external frontend teams for seamless B2B data exchange.
+*   **Insurance Portals (W&W)**: Maintained and extended portals for insurance brokers using Java (JSF, Spring, Hibernate), IBM WebSphere, IBM DB2, LDAP. Security audits per **OWASP** standards.
+*   **Microsoft Solutions**: Primary developer for the "Microsoft Delivery" unit. Implemented enterprise intranets and process automation using **SharePoint** and **Microsoft Flow**.
+*   **Certifications**: **Pega CSA** (BPM), Microsoft Frontend (HTML5, CSS3, JavaScript).`,
+    tech: ["Java EE", "Micronaut", "WebSphere", "Oracle SQL", "PostgreSQL", "Docker", "Jenkins", "Git", "SharePoint", "Microsoft Flow", "JUnit", "SonarQube", "SAFe", "SCRUM"],
   },
   {
     id: 3,
