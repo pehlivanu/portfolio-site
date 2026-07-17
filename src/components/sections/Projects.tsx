@@ -34,13 +34,13 @@ const PythonIcon = ({ size = 40, className = "" }: { size?: number, className?: 
   </svg>
 );
 
-const getProjectIcon = (tech: string[]) => {
-  if (tech.some(t => t.includes('Spring Boot'))) return <Leaf size={40} className="text-green-500" />;
-  if (tech.some(t => t.includes('Java'))) return <Coffee size={40} className="text-orange-500" />;
-  if (tech.some(t => t.includes('Python'))) return <PythonIcon size={40} className="text-blue-500" />;
-  if (tech.some(t => t.includes('Next.js'))) return <Triangle size={40} className="text-white invert rotate-180" />; // Triangle for Vercel/Next.js vibe
-  if (tech.some(t => t.includes('React'))) return <Atom size={40} className="text-blue-400" />;
-  return <Folder size={40} className="text-ide-accent" />;
+const getProjectIcon = (tech: string[], size = 40) => {
+  if (tech.some(t => t.includes('Spring Boot'))) return <Leaf size={size} className="text-green-500" />;
+  if (tech.some(t => t.includes('Java'))) return <Coffee size={size} className="text-orange-500" />;
+  if (tech.some(t => t.includes('Python'))) return <PythonIcon size={size} className="text-blue-500" />;
+  if (tech.some(t => t.includes('Next.js'))) return <Triangle size={size} className="text-white invert rotate-180" />; // Triangle for Vercel/Next.js vibe
+  if (tech.some(t => t.includes('React'))) return <Atom size={size} className="text-blue-400" />;
+  return <Folder size={size} className="text-ide-accent" />;
 };
 
 export default function Projects() {
@@ -74,67 +74,64 @@ export default function Projects() {
                <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-purple-500 opacity-50`} />
 
               <div className="p-6 flex flex-col h-full">
-                {/* Header: Project Icon + Links */}
-                <div className="flex justify-between items-start mb-6">
-                    <div className="p-2 bg-ide-bg rounded-lg border border-ide-border/50">
-                        {getProjectIcon(project.tech)}
-                    </div>
-                    
-                    <div className="flex gap-3">
-                      {project.githubUrl && (
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" title={t('viewCode')} aria-label={t('viewCode')}>
-                          <Github 
-                            size={20} 
-                            className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
-                            style={{ animationDelay: `${index * 1}s` }}
-                          />
-                        </a>
-                      )}
-                      {project.deployUrl && (
-                        <a href={project.deployUrl} target="_blank" rel="noopener noreferrer" title={t('liveDemo')} aria-label={t('liveDemo')}>
-                          <ExternalLink 
-                            size={20} 
-                            className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
-                            style={{ animationDelay: `${index * 1}s` }}
-                          />
-                        </a>
-                      )}
-                    </div>
-                </div>
+                <div className="flex flex-col mb-4">
+                  {/* Row 1: Icon and Title (Tag Style) + Links */}
+                  <div className="flex justify-between items-start mb-2">
+                      <h3 className="text-lg md:text-2xl font-mono font-bold text-ide-text-active transition-colors flex flex-wrap items-center gap-1">
+                          <div className="p-1 bg-ide-bg rounded-lg border border-ide-border/50 mr-2 flex items-center justify-center shrink-0">
+                              {getProjectIcon(project.tech, 24)}
+                          </div>
+                          <span className="text-gray-500 opacity-100 font-bold">&lt;</span>
+                          <span className="text-blue-400 [.light-theme_&]:text-blue-700"><Highlight text={project.title} /></span>
+                          <span className="text-gray-500 opacity-100 font-bold">/&gt;</span>
+                      </h3>
+                      
+                      <div className="flex gap-3 shrink-0 ml-4 mt-1">
+                        {project.githubUrl && (
+                          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" title={t('viewCode')} aria-label={t('viewCode')}>
+                            <Github 
+                              size={20} 
+                              className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
+                              style={{ animationDelay: `${index * 1}s` }}
+                            />
+                          </a>
+                        )}
+                        {project.deployUrl && (
+                          <a href={project.deployUrl} target="_blank" rel="noopener noreferrer" title={t('liveDemo')} aria-label={t('liveDemo')}>
+                            <ExternalLink 
+                              size={20} 
+                              className="text-ide-text opacity-90 hover:text-ide-text-active hover:opacity-100 cursor-pointer animate-pulse-glow" 
+                              style={{ animationDelay: `${index * 1}s` }}
+                            />
+                          </a>
+                        )}
+                      </div>
+                  </div>
 
-                {/* Title in Tag Style */}
-                <div className="mb-4">
-                     <h3 className="text-lg md:text-2xl font-mono font-bold text-ide-text-active transition-colors flex flex-wrap items-center gap-1">
-                        <span className="text-gray-500 opacity-100 font-bold">&lt;</span>
-                        <span className="text-blue-400 [.light-theme_&]:text-blue-700"><Highlight text={project.title} /></span>
-                        <span className="text-gray-500 opacity-100 font-bold">/&gt;</span>
-                     </h3>
+                  {/* Row 2: Metadata Grid (Tech Stack) */}
+                  <div className="grid grid-cols-1 gap-x-8 gap-y-2 text-sm pl-4 font-mono">
+                      <div className="flex items-center gap-1 text-ide-text transition-colors w-full flex-wrap">
+                          <Code size={12} className="mr-1 shrink-0 text-ide-text/50"/>
+                          <span className="text-ide-keyword">{t('stackLabel')}</span>
+                          <span className="text-ide-text-active">[</span>
+                          {project.tech.map((t: string, i: number) => (
+                              <span key={t}>
+                                  <span className="hover:text-ide-text-active transition-colors">
+                                      "<Highlight text={t} />"
+                                  </span>
+                                  {i < project.tech.length - 1 && <span className="text-ide-text-active">, </span>}
+                              </span>
+                          ))}
+                          <span className="text-ide-text-active">]</span>
+                      </div>
+                  </div>
                 </div>
 
                 {/* Description */}
-                <div className="mb-6 text-base md:text-lg italic font-normal px-4 py-3 bg-ide-bg rounded-lg border-l-2 border-ide-accent/20 flex-1">
-                   <p className="text-ide-text"><Highlight text={project.description} /></p>
-                </div>
-
-                {/* Tech Stack Metadata Style */}
-                <div className="mt-6 pt-4 border-t border-ide-border/50">
-                     <div className="font-mono text-xs text-ide-text flex flex-col gap-2 bg-ide-bg p-3 rounded-md border border-ide-border/50">
-                        {/* Stack: Styled as an array */}
-                        <div className="flex flex-wrap items-center gap-1">
-                            <Code size={14} className="mr-1 text-ide-accent shrink-0" />
-                             <span className="text-ide-keyword">{t('stackLabel')}</span>
-                             <span className="text-ide-text-active">[</span>
-                             {project.tech.map((t, i) => (
-                                 <span key={t}>
-                                     <span className="hover:text-ide-text-active transition-colors">
-                                         "<Highlight text={t} />"
-                                     </span>
-                                     {i < project.tech.length - 1 && <span className="text-ide-text-active">, </span>}
-                                 </span>
-                             ))}
-                             <span className="text-ide-text-active">]</span>
-                        </div>
-                     </div>
+                <div className="text-ide-text mb-0 leading-relaxed text-sm flex-1 flex flex-col">
+                   <div className="text-base md:text-lg italic font-normal px-4 py-3 bg-ide-bg rounded-lg border-l-2 border-ide-accent/20 flex-1">
+                      <p className="text-ide-text"><Highlight text={project.description} /></p>
+                   </div>
                 </div>
 
               </div>
