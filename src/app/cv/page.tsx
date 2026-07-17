@@ -233,6 +233,19 @@ function CVContent() {
                                             >
                                                 {job.description}
                                             </ReactMarkdown>
+                                            
+                                            {job.tech && job.tech.length > 0 && (
+                                                <div className="mt-3 flex flex-wrap gap-1">
+                                                    {job.tech.flatMap((t: any) => t.skills).map((skill: string, i: number) => (
+                                                        <span key={i} className={clsx(
+                                                            "px-2 py-0.5 text-[10px] rounded-full border",
+                                                            theme === 'ide' ? "bg-ide-bg border-ide-line text-ide-text opacity-80" : "bg-gray-50 border-gray-200 text-gray-600"
+                                                        )}>
+                                                            {skill}
+                                                        </span>
+                                                    ))}
+                                                </div>
+                                            )}
                                         </div>
                                     ) : (
                                         job.summary

@@ -33,7 +33,7 @@ description: `*   Extended, maintained, and tested legacy Java EE services (SOA/
   {
     id: 2,
     type: "mid",
-    role: "Fullstack Software Developer",
+    role: "Software Developer",
     company: "evia solutions GmbH",
     companySize: "51-200 employees",
     industry: "IT Services & Consulting",

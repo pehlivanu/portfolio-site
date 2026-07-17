@@ -132,6 +132,11 @@ function AtsCvContent() {
                                             >
                                                 {job.description}
                                             </ReactMarkdown>
+                                            {job.tech && job.tech.length > 0 && (
+                                                <div className="mt-2 text-sm text-gray-800">
+                                                    <strong>Tech:</strong> {job.tech.flatMap((t: any) => t.skills).join(', ')}
+                                                </div>
+                                            )}
                                         </div>
                                     ) : (
                                         <p>{job.summary}</p>
