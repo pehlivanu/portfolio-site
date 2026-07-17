@@ -86,15 +86,15 @@ export const experience = [
     locationType: "Vor Ort",
     websiteUrl: "https://www.alpine.de/",
     dualStudy: "ADV Böblingen",
-    period: "Sep 2012 - Aug 2014",
-    summary: `Entwicklung kritischer Testautomatisierungstools für Infotainment-Systeme der nächsten Generation im Automobilbereich.`,
-    description: `*   **Framework-Entwicklung**: Design und Implementierung des "Alpine Curve Editor" und anderer Module für das **Alpine Test Automation Tool**. Refactoring des gesamten Frontends unter Verwendung des **MVC**-Musters, Neuanordnung des UI-Prototyps und signifikante Verbesserung der Softwarequalität mit **StyleCop**.
-*   **Innovation**: Entwicklung einer "Tablet Robot Interface Control" (TRIC)-App mit dem **Android SDK**, die die Fernsteuerung von Industrierobotern für Touchscreen-Tests ermöglicht.
-*   **Thesis-Exzellenz**: Auszeichnung mit der Bestnote (1,0) für die Thesis über "Alpine Curve Editor" in Anerkennung der architektonischen Robustheit und Nützlichkeit des Tools.`,
+    period: "Sep 2012 - Aug 2013",
+    summary: `Praktikant in der Systemintegration (Car Infotainment / OEM) zur Entwicklung von Softwaremodulen für das interne „Alpine Test Automation Framework“.`,
+    description: `*   Entwicklung und Erweiterung des internen Alpine Test Automation Frameworks (C#, .NET 4.0) durch die Erstellung automatisierter Testmodule für Hardwareschnittstellen wie Bluetooth, RDS-Signalgeneratoren, MOST/CAN-Busse, Klimakammern und CD-/DVD-Wechsler-Roboter.
+*   Konzeption und Implementierung des „Alpine Voltage Curve Editor“ — ausgezeichnet mit der Bestnote 1,0 als Abschlussarbeit — sowie Modernisierung der grafischen Benutzeroberflächen mehrerer bestehender Testmodule mittels WPF und dem MVVM-Muster.
+*   Sicherstellung der architektonischen Robustheit über das gesamte Test-Framework hinweg durch Anwendung von UML-Modellierung und Entwurfsmustern in SharpDevelop.`,
     tech: [
-      { category: "Backend", skills: ["C#", ".NET"] },
-      { category: "Frontend & Mobile", skills: ["WPF", "MVC", "Android SDK"] },
-      { category: "Qualität", skills: ["StyleCop"] },
+      { category: "Backend", skills: ["C#", ".NET 4.0", "UML", "Design Patterns", "SharpDevelop", "StyleCop"] },
+      { category: "Frontend & Mobile", skills: ["WPF", "MVVM", "Android SDK"] },
+      { category: "Hardware & Protokolle", skills: ["Bluetooth", "CAN", "MOST", "RDS"] },
     ],
   },
 ];

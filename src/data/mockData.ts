@@ -11,7 +11,7 @@ export const experience = [
     locationType: "Remote / Hybrid",
     websiteUrl: "https://www.dat.eu",
     period: "Sep 2020 - Mar 2026",
-    summary: `Part of the Costing Applications team behind SilverDAT 3 "calculate" — the insurer-recognized repair cost calculation (Reparaturkostenkalkulation) standard, producing manufacturer-based repair, maintenance, and accident estimates across 70,000+ vehicle model variants (parts, labor values, paint systems, OEM repair manuals). Used by workshops, dealerships, appraisers, insurers, banks, and manufacturers.`,
+    summary: `Senior full-stack developer on the Costing Applications team behind SilverDAT 3 "calculate", the insurer-recognized standard for vehicle repair-cost calculation. Used industry-wide by workshops, dealers, appraisers, insurers, banks, and manufacturers across 70,000+ vehicle variants.`,
 description: `*   Extended, maintained, and tested legacy Java EE services (SOA/SOAP monorepo with JavaScript/React frontends), adapting SoapUI and manual test suites as services evolved, and adding TestNG/Mockito coverage for changes.
 *   Architected and owned new Spring Boot services end to end to replace legacy Java EE — clean N-Tier architecture with strict DTO-mapping, centralized error handling, and MDC-based distributed tracing — exposing contract-first, HATEOAS-compliant REST APIs (OpenAPI), backed by JUnit 5/MockMvc integration tests and Postman Collections with automated tests.
 *   Managed the data layer with JPA/Hibernate: PostgreSQL replaced the legacy SQL databases (mainly Oracle SQL) and MongoDB introduced NoSQL to a previously SQL-only stack.
@@ -40,21 +40,21 @@ description: `*   Extended, maintained, and tested legacy Java EE services (SOA/
     locationType: "On-site",
     websiteUrl: "https://www.evia.de",
     period: "Feb 2016 - Aug 2020",
-    summary: `Delivered critical digital solutions for the Insurance, Automotive, and Banking sectors. Collaborated in cross-functional SCRUM and SAFe teams.`,
-    description: `*   **Banking Software Development (Daimler DSS)**: Fullstack development of a custom application for digital automobile credit applications in the **banking** sector. Backend development with **JEE 8** and **Oracle SQL**. Built modules for future **microservices** (Micronaut, PostgreSQL, Docker). **Test automation** with JUnit and SonarQube. **CI/CD** with **Jenkins** and Git. Collaboration in **SAFe** teams using **Jira** and **Confluence**.
-*   **Legacy System Scaling**: Maintained and developed core **WebSphere Java EE (JSP)** applications. This critical work provided the stable revenue stream that supported the company's hyper-growth from 16 to 200+ employees.
-*   **Backend Integration Services**: Developed high-performance **REST/SOAP** integration services for major **Banking** clients using **Java EE** and **Micronaut**, collaborating with external frontend teams for seamless B2B data exchange.
-*   **Insurance Portals (W&W)**: Maintained and extended portals for insurance brokers using Java (JSF, Spring, Hibernate), IBM WebSphere, IBM DB2, LDAP. Security audits per **OWASP** standards.
-*   **Microsoft Solutions**: Primary developer for the "Microsoft Delivery" unit. Implemented enterprise intranets and process automation using **SharePoint** and **Microsoft Flow**.
-*   **Certifications**: **Pega CSA** (BPM), Microsoft Frontend (HTML5, CSS3, JavaScript).`,
+    summary: `Developer and consultant at a cross-industry IT system house, delivering custom and standard software across the Banking, Insurance, and enterprise Microsoft domains. Worked in cross-functional Scrum and SAFe teams, from legacy Java EE maintenance to a greenfield microservices migration.`,
+    description: `*   Maintained, extended, deployed, and tested insurance-broker portals for Wüstenrot & Württembergische — business-critical Java EE 8 applications (JSF/Spring/Hibernate, JSP) on IBM WebSphere 7 and 8.5 with IBM DB2 and LDAP/Active Directory, the stable revenue base that funded the company's growth from ~16 to 200+ employees — hardening them with penetration testing to OWASP standards and using Rational Application Developer 9.1 and iText for document and PDF generation (Apache Directory Studio, Postman, Eclipse, SVN, Cherwell).
+*   Helped establish the new "Microsoft Delivery" practice as primary developer, building an employee-onboarding solution on SharePoint Online (digital contract creation, onboarding journey, task management) and automating enterprise business processes with Microsoft Flow and Logic Apps (Office 365, JSON).
+*   Earned the Pega Certified System Architect (CSA) certification in BPM-oriented development and Microsoft 70-480 (HTML5, JavaScript & CSS3, incl. jQuery and AJAX) along the way.
+*   Built Daimler DSS "Digital Sales Solutions" — a greenfield banking application digitizing automobile-credit applications across multiple countries — developing modern Micronaut / JEE 11 microservices (Oracle SQL, PostgreSQL 12, Docker) behind an Angular frontend, with REST/SOAP integration services (OpenAPI) for B2B data exchange.
+*   Owned developer testing and QA (JUnit, SonarQube) and CI/CD to test and integration environments (Git, Jenkins), supported the test team's automated end-to-end suites (Protractor, Cucumber), and delivered in Scrum and then SAFe across frontend, test, and DevOps sub-teams (Jira, Confluence, MS Teams).`,
     tech: [
-      { category: "Backend", skills: ["Java EE", "Micronaut", "WebSphere"] },
-      { category: "Databases", skills: ["Oracle SQL", "PostgreSQL"] },
-      { category: "CI/CD & DevOps", skills: ["Docker", "Jenkins", "Git"] },
-      { category: "Testing & Quality", skills: ["JUnit", "SonarQube"] },
-      { category: "Other", skills: ["SharePoint", "Microsoft Flow"] },
-      { category: "Methodology", skills: ["SAFe", "SCRUM"] },
-      { category: "Certifications", skills: ["Pega CSA"] },
+      { category: "Backend", skills: ["Java EE (JEE 8 / 11)", "Micronaut", "Spring", "Hibernate", "JSF", "JSP", "iText", "REST", "SOAP", "OpenAPI"] },
+      { category: "Frontend", skills: ["Angular", "HTML5", "CSS3", "JavaScript", "jQuery", "AJAX"] },
+      { category: "Databases", skills: ["Oracle SQL", "PostgreSQL", "IBM DB2", "LDAP / Active Directory"] },
+      { category: "CI/CD & DevOps", skills: ["Git", "SVN", "Jenkins", "Maven", "Docker", "IBM WebSphere (7 / 8.5)"] },
+      { category: "Testing & Quality", skills: ["JUnit", "SonarQube", "Protractor", "Cucumber", "OWASP / Penetration Testing"] },
+      { category: "Tools", skills: ["IntelliJ IDEA", "Eclipse", "Rational Application Developer", "SharePoint", "Microsoft Flow", "Logic Apps", "Office 365", "Apache Directory Studio", "Postman", "Jira", "Confluence", "Cherwell", "MS Teams"] },
+      { category: "Methodology", skills: ["Scrum", "SAFe", "BPM"] },
+      { category: "Certifications", skills: ["Pega CSA", "Microsoft 70-480"] },
     ],
   },
   {
@@ -67,16 +67,18 @@ description: `*   Extended, maintained, and tested legacy Java EE services (SOA/
     locationType: "On-site / Travel",
     websiteUrl: "https://www.prodyna.com",
     period: "Nov 2014 - Jan 2016",
-    summary: `Provided expert IT consultancy for enterprise portals.`,
-    description: `*   **Enterprise Portals**: Developed and deployed complex **Liferay** portal solutions for large-scale clients, utilizing **Java EE**, **MySQL**, and **AlloyUI**.
-*   **Agile Delivery**: Collaborated in SCRUM teams to deliver high-quality software increments, utilizing **Jira** and **Confluence** for transparent project tracking.
-*   **Quality Assurance**: Integrated **SonarQube** into the build process to ensure code quality and maintainability from day one.
-*   **Certifications Achieved**: Validated core expertise by earning **Oracle Certified Professional Java Programmer (OCPJP)** and **Oracle Certified Expert Web Component Developer (OCE WCD)**.`,
+    summary: `Developer and consultant at an IT consultancy, embedded on-site with a major enterprise client to deliver their portal project end to end — from consulting and design through implementation and testing.`,
+    description: `*   Developed and delivered a Liferay 6.0 portal solution, with a Java 6 EE and MySQL backend and a JSP, HTML, CSS, JavaScript, and AlloyUI frontend.
+*   Deployed and tested the applications on Apache Tomcat, ran CI/CD with Jenkins and Maven, and integrated SonarQube into the build process to safeguard code quality.
+*   Delivered in agile Scrum teams (Jira, Confluence), and earned the Oracle Certified Professional Java Programmer (OCPJP) and Oracle Certified Expert Java EE 6 Web Component Developer (OCE WCD) certifications during the role.`,
     tech: [
-      { category: "Backend", skills: ["Java EE", "Liferay"] },
-      { category: "Frontend", skills: ["AlloyUI"] },
+      { category: "Backend", skills: ["Java 6 EE", "Liferay 6.0", "JSP"] },
+      { category: "Frontend", skills: ["HTML", "CSS", "JavaScript", "AlloyUI"] },
       { category: "Databases", skills: ["MySQL"] },
-      { category: "Quality", skills: ["SonarQube"] },
+      { category: "CI/CD & DevOps", skills: ["Apache Tomcat", "Jenkins", "Maven"] },
+      { category: "Testing & Quality", skills: ["SonarQube"] },
+      { category: "Tools", skills: ["Jira", "Confluence"] },
+      { category: "Methodology", skills: ["Scrum"] },
       { category: "Certifications", skills: ["OCPJP", "OCE WCD"] },
     ],
   },
@@ -90,15 +92,15 @@ description: `*   Extended, maintained, and tested legacy Java EE services (SOA/
     locationType: "On-site",
     websiteUrl: "https://www.alpine.de/",
     dualStudy: "ADV Böblingen",
-    period: "Sep 2012 - Aug 2014",
-    summary: `Engineered critical test automation tools for next-gen automotive infotainment systems.`,
-    description: `*   **Framework Development**: Designed and implemented the "Alpine Curve Editor" and other modules for the **Alpine Test Automation Tool**. Refactored the entire frontend using **MVC** pattern, rearranged the UI prototype, and significantly improved software quality using **StyleCop**.
-*   **Innovation**: Developed a "Tablet Robot Interface Control" (TRIC) app using **Android SDK**, enabling remote control of industrial robots for touch-screen testing.
-*   **Thesis Excellence**: Awarded top grade (1.0) for the thesis on "Alpine Curve Editor", recognizing the architectural robustness and utility of the tool.`,
+    period: "Sep 2012 - Aug 2013",
+    summary: `System Integration Intern in the OEM Car Infotainment division, developing software modules for the internal "Alpine Test Automation Framework".`,
+    description: `*   Developed and extended the internal Alpine Test Automation Framework (C#, .NET 4.0) by building automated testing modules for hardware interfaces such as Bluetooth, RDS signal generators, MOST/CAN buses, climate chambers, and CD/DVD changer robots.
+*   Designed and implemented the "Alpine Voltage Curve Editor" — which earned a top 1.0 grade as a final vocational thesis — and modernized the graphical user interfaces of multiple existing test modules using WPF and the MVVM pattern.
+*   Ensured architectural robustness across the test framework by applying UML modeling and design patterns in SharpDevelop.`,
     tech: [
-      { category: "Backend", skills: ["C#", ".NET"] },
-      { category: "Frontend & Mobile", skills: ["WPF", "MVC", "Android SDK"] },
-      { category: "Quality", skills: ["StyleCop"] },
+      { category: "Backend", skills: ["C#", ".NET 4.0", "UML", "Design Patterns", "SharpDevelop","StyleCop"] },
+      { category: "Frontend & Mobile", skills: ["WPF", "MVVM", "Android SDK"] },
+      { category: "Hardware & Protocols", skills: ["Bluetooth", "CAN", "MOST", "RDS"] },
     ],
   },
 ];

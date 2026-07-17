@@ -86,15 +86,15 @@ export const experience = [
     locationType: "La fața locului",
     websiteUrl: "https://www.alpine.de/",
     dualStudy: "ADV Böblingen",
-    period: "Sep 2012 - Aug 2014",
-    summary: `Am proiectat instrumente critice de automatizare a testelor pentru sisteme de infotainment auto de ultimă generație.`,
-    description: `*   **Dezvoltare Framework**: Am proiectat și implementat "Alpine Curve Editor" și alte module pentru **Alpine Test Automation Tool**. Am refactorizat întregul frontend folosind modelul **MVC**, am rearanjat prototipul UI și am îmbunătățit semnificativ calitatea software-ului folosind **StyleCop**.
-*   **Inovație**: Am dezvoltat o aplicație "Tablet Robot Interface Control" (TRIC) folosind **Android SDK**, permițând controlul de la distanță al roboților industriali pentru testarea ecranelor tactile.
-*   **Excelență Teză**: Am primit nota maximă (1.0) pentru teza despre "Alpine Curve Editor", recunoscând robustețea arhitecturală și utilitatea instrumentului.`,
+    period: "Sep 2012 - Aug 2013",
+    summary: `Stagiar în Integrarea Sistemelor pentru divizia OEM Car Infotainment, dezvoltând module software pentru proiectul „Alpine Test Automation Framework”.`,
+    description: `*   Am dezvoltat și extins Alpine Test Automation Framework (C#, .NET 4.0) intern construind module de testare automată pentru interfețe hardware precum Bluetooth, generatoare de semnal RDS, magistrale MOST/CAN, camere climatice și roboți pentru schimbarea CD/DVD.
+*   Am proiectat și implementat „Alpine Voltage Curve Editor” — evaluat cu nota maximă 1.0 ca lucrare de diplomă — și am modernizat interfețele grafice ale mai multor module de testare existente utilizând WPF și modelul MVVM.
+*   Am asigurat robustețea arhitecturală a cadrului de testare aplicând modelarea UML și șabloane de proiectare (design patterns) în SharpDevelop.`,
     tech: [
-      { category: "Backend", skills: ["C#", ".NET"] },
-      { category: "Frontend & Mobile", skills: ["WPF", "MVC", "Android SDK"] },
-      { category: "Calitate", skills: ["StyleCop"] },
+      { category: "Backend", skills: ["C#", ".NET 4.0", "UML", "Design Patterns", "SharpDevelop", "StyleCop"] },
+      { category: "Frontend & Mobile", skills: ["WPF", "MVVM", "Android SDK"] },
+      { category: "Hardware & Protocols", skills: ["Bluetooth", "CAN", "MOST", "RDS"] },
     ],
   },
 ];

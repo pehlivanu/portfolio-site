@@ -86,15 +86,15 @@ export const experience = [
     locationType: "Sur site",
     websiteUrl: "https://www.alpine.de/",
     dualStudy: "ADV Böblingen",
-    period: "Sep 2012 - Août 2014",
-    summary: `Conception d'outils critiques d'automatisation de tests pour les systèmes d'infodivertissement automobile de nouvelle génération.`,
-    description: `*   **Développement de Framework** : J'ai conçu et mis en œuvre "Alpine Curve Editor" et d'autres modules pour **Alpine Test Automation Tool**. J'ai refactorisé l'ensemble du frontend en utilisant le modèle **MVC**, réorganisé le prototype d'interface utilisateur et considérablement amélioré la qualité du logiciel en utilisant **StyleCop**.
-*   **Innovation** : J'ai développé une application "Tablet Robot Interface Control" (TRIC) utilisant le **SDK Android**, permettant le contrôle à distance de robots industriels pour les tests d'écrans tactiles.
-*   **Excellence de Thèse** : J'ai obtenu la note maximale (1,0) pour la thèse sur "Alpine Curve Editor", reconnaissant la robustesse architecturale et l'utilité de l'outil.`,
+    period: "Sep 2012 - Août 2013",
+    summary: `Stagiaire en Intégration de Systèmes au sein de la division OEM Car Infotainment, développant des modules logiciels pour le framework interne « Alpine Test Automation Framework ».`,
+    description: `*   Développement et extension de l'Alpine Test Automation Framework interne (C#, .NET 4.0) en créant des modules de test automatisés pour des interfaces matérielles telles que Bluetooth, les générateurs de signaux RDS, les bus MOST/CAN, les chambres climatiques et les robots changeurs de CD/DVD.
+*   Conception et implémentation de l'« Alpine Voltage Curve Editor » — qui a obtenu la note maximale de 1.0 comme mémoire de fin d'études — et modernisation des interfaces graphiques de plusieurs modules de test existants en utilisant WPF et le modèle MVVM.
+*   Garantie de la robustesse architecturale sur l'ensemble du framework de test en appliquant la modélisation UML et des modèles de conception dans SharpDevelop.`,
     tech: [
-      { category: "Backend", skills: ["C#", ".NET"] },
-      { category: "Frontend & Mobile", skills: ["WPF", "MVC", "Android SDK"] },
-      { category: "Qualité", skills: ["StyleCop"] },
+      { category: "Backend", skills: ["C#", ".NET 4.0", "UML", "Design Patterns", "SharpDevelop", "StyleCop"] },
+      { category: "Frontend & Mobile", skills: ["WPF", "MVVM", "Android SDK"] },
+      { category: "Matériel & Protocoles", skills: ["Bluetooth", "CAN", "MOST", "RDS"] },
     ],
   },
 ];
