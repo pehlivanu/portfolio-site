@@ -1,3 +1,5 @@
+import NextAuth from "next-auth";
+
 export const experience = [
   {
     id: 1,
@@ -161,67 +163,94 @@ export const education = [
 export const projects = [
   {
     id: 1,
-    title: "Filmpire Microservices",
-    description: "Enterprise-grade microservices platform for movie discovery. Architected with 8 Spring Boot 3.5 backend services, Spring Cloud infrastructure (Eureka, API Gateway), Spring AI integration, and hybrid PostgreSQL/MongoDB storage.",
-    tech: ["Java 25", "Spring Boot 3", "Spring Cloud", "PostgreSQL", "MongoDB", "Docker"],
+    title: "Filmpire Microservices Platform",
+    description:
+      "An end-to-end enterprise microservices platform for movie discovery, managed from idea to delivery-ready product using a GitHub Project Kanban boards (Epics, Stories, Tasks). Eight independent Java 25 / Spring Boot 3.5 services including Spring Cloud (Eureka, API Gateway), backed by a hybrid PostgreSQL/MongoDB strategy and a Redis cache that falls back to the TMDB API. Integrates Spring AI (Whisper/GPT-4) over both REST and gRPC. Built to strict modern standards — record DTOs, constructor injection, virtual threads — and a rigorous test bar (JUnit 5, Testcontainers, 85% JaCoCo coverage) wired into GitHub Actions CI/CD. Deployed using Kubernetes on Minikube",
+    tech: ["Java 25", "Spring Boot 3.5", "Spring Cloud", "PostgreSQL", "MongoDB", "Redis", "Spring AI", "gRPC", "REST", "JUnit 5", "Testcontainers", "JaCoCo", "GitHub Actions", "Docker", "Podman", "Kubernetes"],
     githubUrl: "https://github.com/pehlivanu/filmpire-microservices",
     deployUrl: "",
   },
   {
     id: 2,
     title: "Defense Asset Manager",
-    description: "Enterprise React 19 application. Features Zustand + Immer state management, Material UI v9, OpenAPI 3.1 contract-first development, MSW mocking, and Podman deployment.",
-    tech: ["TypeScript", "React 19", "Zustand", "Material UI", "OpenAPI", "Podman"],
+    description:
+      "An enterprise-grade React 19 application for asset and personnel management in the defense sector, enforcing a strict Feature-Based (Domain-Driven) architecture to support SAFe delivery across multiple teams. Fully typed contract-first against OpenAPI 3.1 and built on Vite for instant HMR. Uses Zustand with Immer for immutable state, Mock Service Worker for offline REST mocking, and high-contrast Material UI v9 components, with safety-critical UX such as destructive-action confirmations.",
+    tech: ["React 19", "Vite", "Zustand", "Material UI v9", "MSW", "OpenAPI 3.1", "TypeScript", "Vitest"],
     githubUrl: "https://github.com/pehlivanu/defense-asset-manager",
     deployUrl: "",
   },
   {
     id: 3,
-    title: "Portfolio Site",
-    description: "Developer portfolio built as an IDE-themed experience. Features Next.js 15 App Router, TypeScript, Tailwind CSS v4, and Framer Motion animations.",
-    tech: ["Next.js 15", "TypeScript", "Tailwind CSS v4", "Framer Motion", "React"],
+    title: "Antigravity IDE Portfolio",
+    description:
+      "A highly interactive developer portfolio that meticulously recreates the aesthetic of Google's Antigravity IDE — activity bar, file-tree explorer, editor area, live status bar and a working command palette — built on the Next.js 15 App Router with immersive Framer Motion micro-animations. Features automated CV generation to PDF in multiple templates and languages, plus a dynamic contact form that uses the Geolocation API to compute and display the physical distance between visitor and developer.",
+    tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Geolocation API", "PDF Generation", "Framer Motion"],
     githubUrl: "https://github.com/pehlivanu/portfolio-site",
     deployUrl: "https://liviuionesi.vercel.app",
   },
   {
     id: 4,
-    title: "Filmpire",
-    description: "An immersive movie discovery app featuring voice command search (AI), category filtering, and a rich, responsive material design.",
-    tech: ["React", "Material UI", "Redux Toolkit", "Alan AI", "TMDB API"],
+    title: "Filmpire Frontend",
+    description:
+      "A modern, interactive movie-discovery application in React 17 and Redux Toolkit, serving as the dedicated frontend client for the 8-service Filmpire microservices backend. Integrates the TMDB API for browsing categories and managing favorites, and its defining feature is an Alan AI SDK integration providing a fully conversational voice interface. Quality enforced with Jest / React Testing Library and ESLint (Airbnb).",
+    tech: ["React 17", "Material-UI", "Redux Toolkit", "Alan AI"],
     githubUrl: "https://github.com/pehlivanu/filmpire",
     deployUrl: "https://filmpire-ten.vercel.app/",
   },
   {
     id: 5,
     title: "Knowledge Base Platform",
-    description: "A production-ready, localized knowledge management platform for 'Last Z Survival Shooter'. Built with Next.js 16 App Router, featuring Next-Intl localization, middleware authentication, and mobile-first responsiveness.",
-    tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Vercel"],
+    description:
+      "An enterprise-ready localized documentation system built on Next.js 16 and React 19 Server Components for a minimal client payload. Acts as a static site generator that turns a simple collection of Markdown (.md) files into a complete wiki website. Features deep internationalization via next-intl handled at the middleware edge, with internal documentation secured behind custom edge middleware verifying HttpOnly cookies.",
+    tech: ["Next.js 16", "React 19", "Tailwind CSS v4", "next-intl", "Markdown"],
     githubUrl: "https://github.com/pehlivanu/knowledge-base-platform",
     deployUrl: "https://phenix-wiki.vercel.app",
   },
   {
     id: 6,
     title: "DevOps Toolchain Showcase",
-    description: "A comprehensive CI/CD toolchain showcase implementing a fully containerized environment. Integrates Podman Compose, Jenkins CI, JFrog Artifactory, Gradle, and simulated ALM/MQC via REST API.",
-    tech: ["Java", "Jenkins", "Docker / Podman", "JFrog Artifactory", "Gradle", "Bash"],
+    description:
+      "A fully containerized, declarative CI/CD toolchain demonstrating enterprise DevOps practices, orchestrated via Podman Compose. A customized Jenkins server uses Docker-outside-of-Docker (DooD) to build and push application images through a multi-stage Jenkinsfile. Automates JaCoCo coverage reporting and artifact publishing to JFrog Artifactory, and uses custom Bash + curl + jq scripting to push test metrics to external ALM/MQC systems via REST APIs.",
+    tech: ["Jenkins", "JFrog Artifactory", "Podman", "Gradle", "Java 17"],
     githubUrl: "https://github.com/pehlivanu/devops-toolchain-showcase",
     deployUrl: "",
   },
   {
     id: 7,
-    title: "DevFlow",
-    description: "A modern community platform for developers to share knowledge, featuring AI-powered recommendations and a responsive UI.",
-    tech: ["Next.js 14", "TypeScript", "Tailwind CSS", "MongoDB", "Clerk Auth"],
+    title: "DevFlow - Full-Stack Q&A Platform",
+    description:
+      "A sophisticated, community-driven developer Q&A platform built natively on the Next.js 14 App Router with Server Actions in place of a separate API tier. Features a robust tagging system, global search across questions, answers, users and tags, and personalized recommendation feeds. An advanced reputation-and-badge engine gamifies participation, authentication runs through NextAuth.js (Google/GitHub OAuth + credentials) with end-to-end Zod validation, and the OpenAI API generates comprehensive AI answers and code snippets.",
+    tech: ["Next.js 14", "TypeScript 5", "MongoDB Atlas", "Tailwind CSS", "OpenAI API", "NextAuth", "Zod"],
     githubUrl: "https://github.com/pehlivanu/devflow",
     deployUrl: "https://devflow-chi-roan.vercel.app/",
   },
   {
     id: 8,
-    title: "GUI Automation Framework",
-    description: "A Python-based GUI automation tool for 'Last Z: Survival Shooter'. Features visual template matching to perform human-like interactions, automated ally assistance, and automated weapon collection using Tkinter and Bash.",
-    tech: ["Python", "Tkinter", "GUI Automation", "Bash Scripting", "Linux"],
+    title: "Python GUI Automation Framework",
+    description:
+      "A resilient, cross-platform Python desktop application with a Tkinter GUI that controls and automates an Android application. Uses OpenCV template matching to visually detect and interact with dynamic on-device UI elements via the Android Debug Bridge (ADB), rather than any underlying API. Incorporates human-like interaction profiles — coordinate jitter and randomized timing — to evade bot-detection heuristics, and runs either from the GUI or headless as a Linux daemon.",
+    tech: ["Python 3.10", "OpenCV", "Tkinter", "ADB", "Bash"],
     githubUrl: "https://github.com/pehlivanu/gui-automation-framework",
-    deployUrl: "https://phenix-wiki.vercel.app/en/docs/automation-app",
+    deployUrl: "",
+  },
+  
+  {
+    id: 11,
+    title: "Alana Windsurf",
+    description:
+      "A scalable full-stack web application on the Next.js 13+ App Router and React 18+. Provides comprehensive authentication via NextAuth.js — OAuth (Google, GitHub) plus secure email/password credentials — with data persisted in MongoDB through Mongoose. State is managed with React Context and useReducer, forms handled robustly with React Hook Form and Zod, and the UI styled with Material UI and Emotion.",
+    tech: ["Next.js 13+", "React 18+", "Material UI", "NextAuth.js", "MongoDB", "Zod"],
+    githubUrl: "https://github.com/pehlivanu/alana-windsurf",
+    deployUrl: "",
+  },
+  {
+    id: 12,
+    title: "Payload E-Commerce Platform",
+    description:
+      "A comprehensive e-commerce solution pairing the Payload CMS framework with a static Next.js front-end. Ships a fully working backend with an enterprise-grade admin panel that manages both physical products and paywall-restricted content, integrated with Stripe webhooks for secure payment processing.",
+    tech: ["Next.js", "Payload CMS", "Stripe", "React Hook Form"],
+    githubUrl: "https://github.com/pehlivanu/e-commerce",
+    deployUrl: "",
   },
 ];
 

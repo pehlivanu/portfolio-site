@@ -9,16 +9,18 @@ export default function CVConfigPanel({ onClose }: { onClose?: () => void }) {
   
   const [detailLevel, setDetailLevel] = useState<'brief' | 'detailed'>('brief');
   const [showProjects, setShowProjects] = useState(true);
-  const [theme, setTheme] = useState<'print' | 'ide'>('print');
+  const [theme, setTheme] = useState<'print' | 'ats'>('print');
 
   const handleOpenCV = () => {
     const params = new URLSearchParams();
     params.set('lang', language);
     params.set('detail', detailLevel);
     params.set('projects', showProjects.toString());
-    params.set('theme', theme);
     
-    window.open(`/cv?${params.toString()}`, '_blank');
+    // Direct ATS theme to the ats page, else the visual print page
+    const baseUrl = theme === 'ats' ? '/cv-ats' : '/cv';
+    
+    window.open(`${baseUrl}?${params.toString()}`, '_blank');
   };
 
   return (
@@ -131,16 +133,16 @@ export default function CVConfigPanel({ onClose }: { onClose?: () => void }) {
                     <input 
                         type="radio" 
                         name="theme" 
-                        checked={theme === 'ide'} 
-                        onChange={() => setTheme('ide')}
+                        checked={theme === 'ats'} 
+                        onChange={() => setTheme('ats')}
                         className="mt-1 bg-ide-bg border-ide-border text-blue-600 focus:ring-blue-500 focus:ring-offset-gray-900"
                     />
                     <div className="flex flex-col">
                         <span className="text-sm font-medium text-ide-text group-hover:text-ide-text-active">
-                            {t('ideTheme') || "IDE Theme"}
+                            ATS Optimized
                         </span>
                         <span className="text-xs text-gray-500 mt-0.5">
-                            {t('ideThemeDesc') || "Uses the portfolio's dark theme. Best for PDF sharing."}
+                            Uses standard formatting with hidden labels for perfect machine reading.
                         </span>
                     </div>
                 </label>

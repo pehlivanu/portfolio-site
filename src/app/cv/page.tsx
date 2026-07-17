@@ -7,31 +7,23 @@ import * as mockDataRo from '@/data/mockDataRo';
 import * as mockDataDe from '@/data/mockDataDe';
 import * as mockDataFr from '@/data/mockDataFr';
 import { translations, Language } from '@/context/LanguageContext';
-
-// Import our dedicated print CSS
-import './cv.css';
-
-/* ─────────────────────────────────────────────
-   UNIFIED ATS-OPTIMIZED CV PAGE
-
-   This page represents the single, "Golden Path" CV:
-   - Beautiful for humans: Colors, typography, spacing
-   - Perfect for ATS: Single column, semantic HTML, standard keywords
-   ───────────────────────────────────────────── */
+import { Terminal, Code, MapPin, Phone, Mail, Linkedin, Globe, Calendar, Award, BookOpen, Layers, Github, ExternalLink, FileText } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import clsx from 'clsx';
 
 function CVContent() {
     const searchParams = useSearchParams();
-
-    // Read config
     const langParam = searchParams.get('lang');
-    const showProjects = searchParams.get('projects') !== 'false';
-    const detailLevel = searchParams.get('detail') === 'detailed' ? 'detailed' : 'brief';
-    const theme = searchParams.get('theme') === 'ide' ? 'ide' : 'print';
-
-    const language: Language = (langParam === 'ro' || langParam === 'de' || langParam === 'fr' || langParam === 'en')
-        ? langParam
+    const detailLevel = searchParams.get('detail') || 'brief'; // 'brief' | 'detailed'
+    const showProjects = searchParams.get('projects') !== 'false'; // Default to true
+    const theme = searchParams.get('theme') || 'print'; // 'print' | 'ide'
+    
+    // Determine language from URL param or default to 'en'
+    const language: Language = (langParam === 'ro' || langParam === 'de' || langParam === 'fr' || langParam === 'en') 
+        ? langParam 
         : 'en';
 
+    // Select Data
     const data = useMemo(() => {
         switch (language) {
             case 'ro': return mockDataRo;
@@ -41,366 +33,376 @@ function CVContent() {
         }
     }, [language]);
 
-    const t = (key: string) => translations[language]?.[key] || key;
-    const { linkedInProfile, experience, education, projects } = data;
-
-    const allSkills = linkedInProfile.skills;
-    const isIde = theme === 'ide';
-    const isDetailed = detailLevel === 'detailed';
-
-    // Theme-based color tokens
-    const colors = isIde ? {
-        text: 'text-[#cdd6f4]',
-        textMuted: 'text-[#a6adc8]',
-        textBright: 'text-[#cdd6f4]',
-        heading: 'text-[#89b4fa]',
-        accent: 'text-[#89dceb]',
-        border: 'border-[#45475a]',
-        pillBg: 'bg-[#313244]',
-        pillText: 'text-[#89b4fa]',
-        pillBorder: 'border-[#45475a]',
-        gradientFrom: 'from-[#1e1e2e]',
-        gradientTo: 'to-[#181825]',
-        sectionBorder: 'border-[#45475a]',
-        sectionTitle: 'text-[#89b4fa]',
-        bulletColor: 'before:text-[#89dceb]',
-        linkColor: 'text-[#89dceb]',
-        summaryColor: 'text-[#a6adc8] italic',
-    } : {
-        text: 'text-black',
-        textMuted: 'text-gray-600',
-        textBright: 'text-gray-900',
-        heading: 'text-blue-700',
-        accent: 'text-blue-600',
-        border: 'border-gray-200',
-        pillBg: 'bg-blue-50',
-        pillText: 'text-blue-800',
-        pillBorder: 'border-blue-200',
-        gradientFrom: 'from-white',
-        gradientTo: 'to-white',
-        sectionBorder: 'border-gray-200',
-        sectionTitle: 'text-gray-500',
-        bulletColor: 'before:text-blue-400',
-        linkColor: 'text-blue-600',
-        summaryColor: 'text-gray-600 italic',
+    // Translation Helper
+    const t = (key: string) => {
+        return translations[language]?.[key] || key;
     };
 
+    const { linkedInProfile, experience, education, projects, about } = data;
+
     return (
-        <div className={`cv-page-container min-h-screen theme-${theme}`}>
-            {/* ═══════ PRINT BUTTON (screen only) ═══════ */}
-            <div className="print-hidden fixed top-4 right-4 z-50 flex items-center gap-3">
-                {isIde && (
-                    <span className="text-xs bg-purple-100 text-purple-700 px-3 py-1.5 rounded-full font-semibold border border-purple-200 shadow-sm">
-                        IDE Theme
-                    </span>
-                )}
-                <button
-                    onClick={() => window.print()}
-                    className="flex items-center gap-2 bg-gray-900 text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-gray-800 transition-colors shadow-lg"
-                >
-                    ↓ Save as PDF
-                </button>
+        <div className="bg-white text-black min-h-screen max-w-[210mm] mx-auto print:max-w-none print:mx-0">
+            <style jsx global>{`
+                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+                
+                body { 
+                    font-family: 'Inter', sans-serif;
+                }
+                .font-mono {
+                    font-family: 'JetBrains Mono', monospace;
+                }
+                
+                @media print {
+                    @page { margin: 0; size: auto; }
+                    body { background: white; color: black; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+                    .print-break-inside-avoid { break-inside: avoid; }
+                }
+            `}</style>
+            
+            <div className={clsx(
+                "min-h-screen transition-colors p-0",
+                theme === 'ide' ? "bg-ide-bg text-ide-text" : "bg-white text-black"
+            )}>
+            
+            {/* HERO SECTION - Matching Site Design */}
+            <div className={clsx(
+                "border-b p-8 print:p-[10mm]",
+                theme === 'ide' 
+                    ? "bg-ide-bg border-ide-border" 
+                    : "bg-[#f8f9fa] border-gray-200 print:bg-[#f8f9fa]"
+            )}>
+                <div className="flex justify-between items-start gap-8">
+                    <div className="flex-1 space-y-4">
+                        <div className="flex items-center gap-2 text-blue-600 mb-2">
+                            <Terminal size={18} />
+                            <span className="font-mono text-sm font-semibold">
+                                {(() => {
+                                    const rawTitle = t('portfolioTitle');
+                                    const cleanTitle = rawTitle.replace(/^(portfolio|portofoliu)\s*-\s*/i, '');
+                                    const urlPart = 'liviuionesi.com';
+                                    
+                                    if (cleanTitle.toLowerCase().includes(urlPart)) {
+                                        const textPart = cleanTitle.replace(new RegExp(urlPart, 'i'), '');
+                                        return (
+                                            <>
+                                                {textPart}
+                                                <a 
+                                                    href="https://liviuionesi.vercel.app" 
+                                                    target="_blank" 
+                                                    rel="noopener noreferrer" 
+                                                    className="font-bold hover:underline"
+                                                >
+                                                    {urlPart}
+                                                </a>
+                                            </>
+                                        );
+                                    }
+                                    return cleanTitle;
+                                })()}
+                            </span>
+                        </div>
+                        
+                        <div>
+                            <h1 className={clsx(
+                                "text-4xl font-bold tracking-tight mb-1",
+                                theme === 'ide' ? "text-ide-text" : "text-gray-900"
+                            )}>
+                                {linkedInProfile.name}
+                            </h1>
+                            <p className="text-xl text-blue-600 font-medium">{linkedInProfile.headline}</p>
+                        </div>
+
+                        <div className={clsx(
+                            "leading-relaxed max-w-2xl text-sm",
+                             theme === 'ide' ? "text-ide-text opacity-90" : "text-gray-700"
+                        )}>
+                            {detailLevel === 'detailed' ? (
+                                <div className="prose prose-sm prose-blue max-w-none dark:prose-invert">
+                                    <ReactMarkdown>{about.description}</ReactMarkdown>
+                                </div>
+                            ) : (
+                                linkedInProfile.about
+                            )}
+                        </div>
+
+                        {/* Contact Grid */}
+                        <div className="grid grid-cols-2 gap-y-2 gap-x-6 text-sm mt-4 text-gray-600">
+                            {(linkedInProfile.address || linkedInProfile.location) && (
+                                <div className="flex items-center gap-2 col-span-2">
+                                    <MapPin size={14} className="text-blue-500" />
+                                    <span>{linkedInProfile.address || linkedInProfile.location}</span>
+                                </div>
+                            )}
+                             {linkedInProfile.phone && (
+                                <div className="flex items-center gap-2">
+                                    <Phone size={14} className="text-blue-500" />
+                                    <a href={`tel:${linkedInProfile.phone.replace(/\s+/g, '')}`} className="text-gray-600 hover:text-blue-600 hover:underline">
+                                        {linkedInProfile.phone}
+                                    </a>
+                                </div>
+                            )}
+                            <div className="flex items-center gap-2">
+                                <Mail size={14} className="text-blue-500" />
+                                <a href={`mailto:${linkedInProfile.email || "ionesiliviu@yahoo.com"}`} className="text-gray-600 hover:text-blue-600 hover:underline">
+                                    {linkedInProfile.email || "ionesiliviu@yahoo.com"}
+                                </a>
+                            </div>
+                             <div className="flex items-center gap-2">
+                                <Linkedin size={14} className="text-blue-500" />
+                                <a href="https://linkedin.com/in/liviu-ionesi" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 hover:underline">
+                                    linkedin.com/in/liviu-ionesi
+                                </a>
+                            </div>
+                             <div className="flex items-center gap-2">
+                                <Github size={14} className="text-blue-500" />
+                                <a href="https://github.com/pehlivanu" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 hover:underline">
+                                    github.com/pehlivanu
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Profile Image (Replaces Animation) */}
+                    <div className="flex-shrink-0">
+                        <div className="w-32 h-32 rounded-lg overflow-hidden border-2 border-white shadow-lg">
+                            <img 
+                                src={linkedInProfile.avatarUrl} 
+                                alt={linkedInProfile.name} 
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            {/* ═══════ CV DOCUMENT ═══════ */}
-            <article
-                className="max-w-[210mm] mx-auto print:max-w-none print:mx-0 print:pt-0"
-                itemScope
-                itemType="https://schema.org/Person"
-            >
-                {/* ── HEADER: Name + Contact ── */}
-                <header className={`px-8 py-10 print:px-0 print:py-0 ${isIde ? '' : `bg-gradient-to-b ${colors.gradientFrom} ${colors.gradientTo} print:!bg-none`} print:bg-transparent`}>
-                    <h1
-                        className={`font-extrabold tracking-tight mb-2 text-4xl ${colors.textBright}`}
-                        itemProp="name"
-                    >
-                        {linkedInProfile.name}
-                    </h1>
-                    <p className={`font-semibold mb-4 text-base ${colors.heading}`} itemProp="jobTitle">
-                        {linkedInProfile.headline}
-                    </p>
+            <div className="p-8 print:p-[10mm] space-y-8">
+                {/* EXPERIENCE SECTION */}
+                <section>
+                    <div className={clsx(
+                        "flex items-center gap-2 mb-4 border-b pb-2",
+                         theme === 'ide' ? "border-ide-border" : "border-gray-200"
+                    )}>
+                        <Layers className="text-blue-600" size={20} />
+                        <h2 className={clsx("text-lg font-bold uppercase tracking-wide", theme === 'ide' ? "text-ide-text" : "text-gray-900")}>{t('experience')}</h2>
+                    </div>
+                    
+                    <div className="space-y-6">
+                        {experience.map((job: any) => (
+                            <div key={job.id} className={clsx(
+                                "print-break-inside-avoid relative pl-4 border-l-2",
+                                theme === 'ide' ? "border-ide-border" : "border-gray-200"
+                            )}>
+                                <div className={clsx(
+                                    "absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full border-2",
+                                    theme === 'ide' ? "bg-blue-600 border-ide-bg" : "bg-blue-600 border-white"
+                                )}></div>
+                                <div className="flex justify-between items-baseline mb-1">
+                                    <h3 className={clsx("font-bold text-base", theme === 'ide' ? "text-ide-text" : "text-gray-900")}>{job.role}</h3>
+                                    <span className={clsx("font-mono text-xs px-2 py-0.5 rounded", theme === 'ide' ? "bg-ide-activity-bar text-gray-400" : "bg-gray-100 text-gray-500")}>{job.period}</span>
+                                </div>
+                                <div className="text-sm font-semibold text-blue-700 mb-2">
+                                    {job.websiteUrl ? (
+                                        <a href={job.websiteUrl} target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-1 w-fit">
+                                            {job.company}
+                                            <ExternalLink size={10} className="inline opacity-50" />
+                                        </a>
+                                    ) : (
+                                        job.company
+                                    )}
+                                </div>
+                                <div className={clsx(
+                                    "text-sm leading-relaxed text-justify",
+                                    theme === 'ide' ? "text-gray-300" : "text-gray-700"
+                                )}>
+                                    {detailLevel === 'detailed' ? (
+                                        <div className="prose prose-sm prose-blue max-w-none dark:prose-invert">
+                                            <p className="mb-2">{job.summary}</p>
+                                            <ReactMarkdown 
+                                                components={{
+                                                    ul: ({node, ...props}) => <ul className="list-disc pl-5 my-2 space-y-1" {...props} />,
+                                                    li: ({node, ...props}) => <li className="pl-1" {...props} />
+                                                }}
+                                            >
+                                                {job.description}
+                                            </ReactMarkdown>
+                                        </div>
+                                    ) : (
+                                        job.summary
+                                    )}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
 
-                    {/* Contact — semantic <address> for ATS */}
-                    <address
-                        className={`not-italic text-sm leading-relaxed ${colors.textMuted} mt-6`}
-                        itemProp="address"
-                    >
-                        <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                            <span className="font-medium text-gray-800 print:text-black">{linkedInProfile.address || linkedInProfile.location}</span>
-                            <span className={`${isIde ? 'text-[#45475a]' : 'text-gray-300'} print:text-gray-500`}>•</span>
-                            <a href={`tel:${linkedInProfile.phone?.replace(/\s+/g, '')}`} className={`${colors.textMuted} hover:${colors.accent} ${isIde ? '' : 'print:text-black'}`}>
-                                {linkedInProfile.phone}
-                            </a>
-                            <span className={`${isIde ? 'text-[#45475a]' : 'text-gray-300'} print:text-gray-500`}>•</span>
-                            <a href={`mailto:${linkedInProfile.email || 'ionesiliviu@yahoo.com'}`} className={`${colors.textMuted} hover:${colors.accent} ${isIde ? '' : 'print:text-black'}`}>
-                                {linkedInProfile.email || 'ionesiliviu@yahoo.com'}
-                            </a>
-                            <span className={`${isIde ? 'text-[#45475a]' : 'text-gray-300'} print:text-gray-500`}>•</span>
-                            <a href="https://linkedin.com/in/liviuionesi" className={`${colors.textMuted} hover:${colors.accent} ${isIde ? '' : 'print:text-black'}`} target="_blank" rel="noopener noreferrer">
-                                linkedin.com/in/liviuionesi
-                            </a>
-                            <span className={`${isIde ? 'text-[#45475a]' : 'text-gray-300'} print:text-gray-500`}>•</span>
-                            <a href="https://github.com/pehlivanu" className={`${colors.textMuted} hover:${colors.accent} ${isIde ? '' : 'print:text-black'}`} target="_blank" rel="noopener noreferrer">
-                                github.com/pehlivanu
-                            </a>
+                {/* PROJECTS SECTION */}
+                {showProjects && (
+                <section>
+                    <div className={clsx(
+                        "flex items-center gap-2 mb-4 border-b pb-2",
+                        theme === 'ide' ? "border-ide-border" : "border-gray-200"
+                    )}>
+                        <Code className="text-blue-600" size={20} />
+                        <h2 className={clsx("text-lg font-bold uppercase tracking-wide", theme === 'ide' ? "text-ide-text" : "text-gray-900")}>{t('projects')}</h2>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 gap-4">
+                        {projects.map((proj: any) => (
+                            <div key={proj.id} className={clsx(
+                                "print-break-inside-avoid p-4 rounded-lg border",
+                                theme === 'ide' ? "bg-ide-activity-bar border-ide-border" : "bg-gray-50 border-gray-200"
+                            )}>
+                                <div className="flex justify-between items-start mb-1">
+                                    <h3 className={clsx("font-bold text-base", theme === 'ide' ? "text-ide-text" : "text-gray-900")}>{proj.title}</h3>
+                                    <div className="flex gap-2">
+                                        {proj.githubUrl && (
+                                            <a href={proj.githubUrl} target="_blank" rel="noopener noreferrer" className={clsx("hover:text-blue-600", theme === 'ide' ? "text-gray-400" : "text-gray-500")} title="View Source">
+                                                <Github size={16} />
+                                            </a>
+                                        )}
+                                        {proj.deployUrl && (
+                                            <a href={proj.deployUrl} target="_blank" rel="noopener noreferrer" className={clsx("hover:text-blue-600", theme === 'ide' ? "text-gray-400" : "text-gray-500")} title="View Live">
+                                                <ExternalLink size={16} />
+                                            </a>
+                                        )}
+                                    </div>
+                                </div>
+                                <p className={clsx(
+                                    "text-sm leading-relaxed mb-3 text-justify",
+                                    theme === 'ide' ? "text-gray-300" : "text-gray-700"
+                                )}>
+                                    {proj.description}
+                                </p>
+                                <div className="flex flex-wrap gap-2">
+                                    {proj.tech.map((tech: string, i: number) => (
+                                        <span key={i} className={clsx(
+                                            "text-xs px-2 py-0.5 rounded border font-medium",
+                                            theme === 'ide' ? "bg-ide-bg text-blue-400 border-ide-border" : "bg-white text-blue-700 border-blue-100"
+                                        )}>
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+                )}
+
+                <div className="space-y-8">
+                     {/* SKILLS */}
+                    <section className="print-break-inside-avoid">
+                        <div className={clsx(
+                            "flex items-center gap-2 mb-4 border-b pb-2",
+                            theme === 'ide' ? "border-ide-border" : "border-gray-200"
+                        )}>
+                            <Terminal className="text-blue-600" size={20} />
+                            <h2 className={clsx("text-lg font-bold uppercase tracking-wide", theme === 'ide' ? "text-ide-text" : "text-gray-900")}>{t('skills')}</h2>
                         </div>
-                    </address>
-                </header>
-
-                <div className={`px-8 print:px-0 pb-8 print:pb-0`}>
-
-                    {/* ── PROFESSIONAL SUMMARY ── */}
-                    <Section title={translations[language].cvProfessionalSummary} colors={colors}>
-                        <p className={`leading-relaxed text-sm ${colors.textMuted} cv-item`} itemProp="description">
-                            {linkedInProfile.about}
-                        </p>
-                    </Section>
-
-                    {/* ── TECHNICAL SKILLS ── */}
-                    <Section title={translations[language].cvTechnicalSkills} colors={colors}>
-                        <div className="flex flex-wrap gap-1.5 cv-item">
-                            {allSkills.map((skill: string, i: number) => (
-                                <span
-                                    key={i}
-                                    className={`text-xs px-2.5 py-1 rounded-md font-medium border ${colors.pillBg} ${colors.pillText} ${colors.pillBorder}`}
-                                >
+                        <div className="flex flex-wrap gap-2">
+                            {linkedInProfile.skills.map((skill: string, index: number) => (
+                                <span key={index} className={clsx(
+                                    "text-sm px-2 py-1 rounded border font-medium",
+                                    theme === 'ide' ? "bg-ide-activity-bar text-gray-300 border-ide-border" : "bg-gray-100 text-gray-800 border-gray-200"
+                                )}>
                                     {skill}
                                 </span>
                             ))}
                         </div>
-                    </Section>
+                    </section>
 
-                    {/* ── PROFESSIONAL EXPERIENCE ── */}
-                    <Section title={translations[language].cvProfessionalExperience} colors={colors}>
-                        <div className="space-y-6">
-                            {experience.map((job: any) => (
-                                <div key={job.id} className="cv-item break-inside-avoid">
-                                    <div className="flex justify-between items-baseline gap-4 mb-1 border-b border-gray-100 pb-1 print:border-gray-300">
-                                        <h3 className={`text-lg font-bold ${colors.textBright}`}>{job.role}</h3>
-                                        <span className={`text-sm ${colors.textMuted} font-semibold whitespace-nowrap tabular-nums`}>
-                                            {job.period}
-                                        </span>
-                                    </div>
-                                    <div className={`text-base ${colors.heading} font-semibold mb-3 flex items-center`}>
-                                        {job.websiteUrl ? (
-                                            <a href={job.websiteUrl} target="_blank" rel="noopener noreferrer" className={`hover:underline ${isIde ? '' : 'print:text-black print:no-underline'}`}>
-                                                {job.company}
-                                            </a>
-                                        ) : job.company}
-                                        {job.locationType && (
-                                            <span className={`ml-2 text-sm font-normal ${colors.textMuted}`}>— {job.locationType}</span>
-                                        )}
-                                    </div>
-
-                                    {/* Summary line */}
-                                    <p className={`text-sm leading-relaxed mb-3 ${colors.summaryColor}`}>
-                                        {job.summary}
-                                    </p>
-
-                                    {/* Bullet points */}
-                                    {isDetailed && (
-                                        <div className="mb-3">
-                                            <BulletList markdown={job.description} colors={colors} isIde={isIde} />
-                                        </div>
-                                    )}
-
-                                    {/* Tech Stack for ATS and human readability */}
-                                    {job.tech && isDetailed && (
-                                        <div className="mt-3 pt-3 border-t border-gray-50 border-dashed print:border-gray-200">
-                                            {job.tech.map((techGroup: any, idx: number) => (
-                                                <div key={idx} className="text-[13px] leading-tight mb-1">
-                                                    <strong className={`${colors.textBright} font-semibold`}>{techGroup.category}: </strong>
-                                                    <span className={colors.textMuted}>{techGroup.skills.join(', ')}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
-                            ))}
+                    {/* EDUCATION */}
+                    <section className="print-break-inside-avoid">
+                        <div className={clsx(
+                            "flex items-center gap-2 mb-4 border-b pb-2",
+                            theme === 'ide' ? "border-ide-border" : "border-gray-200"
+                        )}>
+                            <BookOpen className="text-blue-600" size={20} />
+                            <h2 className={clsx("text-lg font-bold uppercase tracking-wide", theme === 'ide' ? "text-ide-text" : "text-gray-900")}>{t('education')}</h2>
                         </div>
-                    </Section>
-
-                    {/* ── PROJECTS ── */}
-                    {showProjects && (
-                        <Section title={translations[language].cvProjects} colors={colors}>
-                            <div className="space-y-6">
-                                {projects.slice(0, 4).map((proj: any) => (
-                                    <div key={proj.id} className="cv-item break-inside-avoid">
-                                        <div className="flex justify-between items-baseline gap-4 mb-1 border-b border-gray-100 pb-1 print:border-gray-300">
-                                            <div className="flex items-baseline gap-3">
-                                                <h3 className={`text-lg font-bold ${colors.textBright}`}>{proj.title}</h3>
-                                                <div className="flex gap-2">
-                                                    {proj.githubUrl && (
-                                                        <a href={proj.githubUrl} target="_blank" rel="noopener noreferrer" className={`text-xs font-semibold ${colors.linkColor} hover:underline ${isIde ? '' : 'print:text-gray-600 print:no-underline'}`}>
-                                                            [GitHub]
-                                                        </a>
-                                                    )}
-                                                    {proj.deployUrl && (
-                                                        <a href={proj.deployUrl} target="_blank" rel="noopener noreferrer" className={`text-xs font-semibold ${colors.linkColor} hover:underline ${isIde ? '' : 'print:text-gray-600 print:no-underline'}`}>
-                                                            [Live]
-                                                        </a>
-                                                    )}
-                                                </div>
-                                            </div>
-                                            <span className={`text-sm ${colors.textMuted} font-semibold whitespace-nowrap tabular-nums`}>
-                                                Project
-                                            </span>
-                                        </div>
-                                        {isDetailed && (
-                                            <p className={`text-sm leading-relaxed mb-3 mt-2 ${colors.textMuted}`}>{proj.description}</p>
-                                        )}
-                                        <div className="mt-2 text-[13px] leading-tight">
-                                            <strong className={`${colors.textBright} font-semibold`}>Tech Stack: </strong>
-                                            <span className={colors.textMuted}>{proj.tech.join(', ')}</span>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </Section>
-                    )}
-
-                    {/* ── EDUCATION ── */}
-                    <Section title={translations[language].cvEducation} colors={colors}>
-                        <div className="space-y-6">
+                        <div className="space-y-4">
                             {education.map((edu: any) => (
-                                <div key={edu.id} className="cv-item break-inside-avoid">
-                                    <div className="flex justify-between items-baseline gap-4 mb-1 border-b border-gray-100 pb-1 print:border-gray-300">
-                                        <h3 className={`text-lg font-bold ${colors.textBright}`}>{edu.degree}</h3>
-                                        <span className={`text-sm ${colors.textMuted} font-semibold whitespace-nowrap tabular-nums`}>
+                                <div key={edu.id} className={clsx(
+                                    "print-break-inside-avoid relative pl-4 border-l-2",
+                                    theme === 'ide' ? "border-ide-border" : "border-gray-200"
+                                )}>
+                                    <div className={clsx(
+                                        "absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full border-2",
+                                        theme === 'ide' ? "bg-blue-600 border-ide-bg" : "bg-blue-600 border-white"
+                                    )}></div>
+                                    <div className="flex justify-between items-baseline mb-1">
+                                        <h3 className={clsx("font-bold text-base", theme === 'ide' ? "text-ide-text" : "text-gray-900")}>
+                                            {edu.degree}
+                                        </h3>
+                                        <span className={clsx("font-mono text-xs px-2 py-0.5 rounded", theme === 'ide' ? "bg-ide-activity-bar text-gray-400" : "bg-gray-100 text-gray-500")}>
                                             {edu.year}
                                         </span>
                                     </div>
-                                    <div className={`text-base ${colors.heading} font-semibold mb-2 flex items-center`}>
-                                        {edu.url ? (
-                                            <a href={edu.url} target="_blank" rel="noopener noreferrer" className={`hover:underline ${isIde ? '' : 'print:text-black print:no-underline'}`}>
-                                                {edu.school}
-                                            </a>
-                                        ) : edu.school}
-                                        {edu.location && <span className={`ml-2 text-sm font-normal ${colors.textMuted}`}>— {edu.location}</span>}
-                                    </div>
-                                    {edu.grade && (
-                                        <div className="mb-2">
-                                            <span className={`text-xs font-bold px-2 py-0.5 rounded border ${isIde ? 'bg-[#313244] text-[#89dceb] border-[#45475a]' : 'text-blue-800 bg-blue-50 border-blue-200 print:border-gray-300 print:text-black print:bg-transparent'}`}>
-                                                {edu.grade}
-                                            </span>
+                                    <div className="flex justify-between items-baseline mb-2">
+                                        <div className="text-sm font-semibold text-blue-700">
+                                            {edu.url ? (
+                                                <a href={edu.url} target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-1 w-fit">
+                                                    {edu.school}
+                                                    <ExternalLink size={10} className="inline opacity-50" />
+                                                </a>
+                                            ) : (
+                                                edu.school
+                                            )}
                                         </div>
-                                    )}
-                                    {isDetailed && edu.summary && (
-                                        <p className={`text-sm leading-relaxed mt-2 ${colors.textMuted}`}>{edu.summary}</p>
-                                    )}
+                                        {edu.location && (
+                                            <span className={clsx("text-sm font-normal", theme === 'ide' ? "text-gray-400" : "text-gray-500")}>
+                                                {edu.location}
+                                            </span>
+                                        )}
+                                    </div>
+                                    <div className={clsx(
+                                        "text-sm leading-relaxed text-justify",
+                                        theme === 'ide' ? "text-gray-300" : "text-gray-700"
+                                    )}>
+                                        {detailLevel === 'detailed' ? (
+                                            <div className="prose prose-sm prose-blue max-w-none dark:prose-invert">
+                                                {edu.description && (
+                                                    <ReactMarkdown 
+                                                        components={{
+                                                            ul: ({node, ...props}) => <ul className="list-disc pl-5 my-2 space-y-1" {...props} />,
+                                                            li: ({node, ...props}) => <li className="pl-1" {...props} />
+                                                        }}
+                                                    >
+                                                        {edu.description}
+                                                    </ReactMarkdown>
+                                                )}
+                                                {edu.grade && (
+                                                    <div className={clsx("mt-2 font-semibold", theme === 'ide' ? "text-ide-text" : "text-gray-800")}>
+                                                        {t('grade') || 'Grade'}: {edu.grade}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        ) : (
+                                            <p>{edu.summary}</p>
+                                        )}
+                                    </div>
                                 </div>
                             ))}
                         </div>
-                    </Section>
-
-                    {/* ── CERTIFICATIONS ── */}
-                    <Section title={translations[language].cvCertifications} colors={colors}>
-                        <div className="space-y-1.5 cv-item">
-                            {linkedInProfile.certifications.map((cert: any, i: number) => (
-                                <div key={i} className="flex items-baseline gap-2 text-sm">
-                                    <span className={`font-medium ${colors.textBright}`}>{cert.name}</span>
-                                    <span className={colors.textMuted}>—</span>
-                                    <span className={colors.textMuted}>{cert.authority}</span>
-                                    {cert.url && (
-                                        <a href={cert.url} target="_blank" rel="noopener noreferrer" className={`text-xs ${colors.linkColor} hover:underline print-hidden`}>
-                                            Verify ↗
-                                        </a>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                    </Section>
-
-                    {/* ── LANGUAGES ── */}
-                    <Section title={translations[language].cvLanguages} colors={colors}>
-                        <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm cv-item">
-                            {linkedInProfile.languages.map((l: any, i: number) => (
-                                <div key={i}>
-                                    <span className={`font-medium ${colors.textBright}`}>{l.language}</span>
-                                    <span className={`${colors.textMuted} ml-1.5`}>{l.proficiency}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </Section>
-
+                    </section>
                 </div>
-            </article>
+            </div>
+            
+            </div>
+
+             {/* Print Button Overlay */}
+             <div className="fixed top-8 right-8 print:hidden z-50">
+                <button 
+                    onClick={() => window.print()}
+                    className="flex items-center gap-2 bg-ide-accent text-white px-6 py-3 rounded-md shadow-xl hover:bg-blue-600 font-bold transition-all transform hover:-translate-y-0.5"
+                >
+                    <span className="text-lg">🖨️</span> {t('downloadResume') || "Print CV"}
+                </button>
+            </div>
         </div>
     );
 }
 
-/* ─── Theme Color Token Type ──────────────────────── */
-interface ColorTokens {
-    text: string;
-    textMuted: string;
-    textBright: string;
-    heading: string;
-    accent: string;
-    border: string;
-    pillBg: string;
-    pillText: string;
-    pillBorder: string;
-    gradientFrom: string;
-    gradientTo: string;
-    sectionBorder: string;
-    sectionTitle: string;
-    bulletColor: string;
-    linkColor: string;
-    summaryColor: string;
-}
-
-/* ─── Reusable Section Component ──────────────────── */
-function Section({ title, colors, children }: {
-    title: string;
-    colors: ColorTokens;
-    children: React.ReactNode;
-}) {
-    return (
-        <section className="cv-section">
-            <h2 className={`font-extrabold pb-2 mb-4 border-b-2 text-xl tracking-tight uppercase ${colors.sectionTitle} ${colors.sectionBorder} ${colors.sectionBorder.includes('45475a') ? '' : 'print:text-gray-900 print:border-gray-800'}`}>
-                {title}
-            </h2>
-            {children}
-        </section>
-    );
-}
-
-/* ─── Bullet List Parser ──────────────────────────── 
-   Converts markdown bullet strings into clean <ul>/<li> 
-   elements that ATS can parse.                         */
-function BulletList({ markdown, colors, isIde }: {
-    markdown: string;
-    colors: ColorTokens;
-    isIde: boolean;
-}) {
-    const bullets = markdown
-        .split('\n')
-        .map(line => line.replace(/^\s*\*\s+/, '').trim())
-        .filter(line => line.length > 0);
-
-    if (bullets.length === 0) return null;
-
-    return (
-        <ul className={`space-y-1 text-sm ${colors.textMuted}`}>
-            {bullets.map((bullet, i) => {
-                // Render bold parts with <strong>
-                const parts = bullet.split(/(\*\*[^*]+\*\*)/g);
-                return (
-                    <li key={i} className={`pl-4 relative before:content-['▸'] before:absolute before:left-0 ${colors.bulletColor} before:text-xs before:top-[3px] ${isIde ? '' : "print:before:content-['•'] print:before:text-black"}`}>
-                        {parts.map((part, j) => {
-                            if (part.startsWith('**') && part.endsWith('**')) {
-                                return <strong key={j} className={`${colors.textBright} font-semibold`}>{part.slice(2, -2)}</strong>;
-                            }
-                            return <span key={j}>{part}</span>;
-                        })}
-                    </li>
-                );
-            })}
-        </ul>
-    );
-}
-
-/* ─── Page Export ──────────────────────────────────── */
 export default function PrintableCVPage() {
     return (
         <Suspense fallback={<div className="p-8 text-center text-gray-500">Loading CV...</div>}>

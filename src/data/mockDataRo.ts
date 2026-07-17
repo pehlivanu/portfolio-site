@@ -159,67 +159,93 @@ export const education = [
 export const projects = [
   {
     id: 1,
-    title: "Filmpire Microservices",
-    description: "Platformă enterprise de microservicii pentru descoperirea de filme. Arhitecturată cu 8 servicii backend Spring Boot 3.5, infrastructură Spring Cloud (Eureka, API Gateway), integrare Spring AI și stocare hibridă PostgreSQL/MongoDB.",
-    tech: ["Java 25", "Spring Boot 3", "Spring Cloud", "PostgreSQL", "MongoDB", "Docker"],
+    title: "Filmpire Microservices Platform",
+    description:
+      "O platformă enterprise completă de microservicii pentru descoperirea de filme, gestionată de la idee la produsul gata de livrare folosind panouri Kanban GitHub Projects (Epics, Stories, Tasks). Opt servicii independente Java 25 / Spring Boot 3.5 care includ Spring Cloud (Eureka, API Gateway), susținute de o strategie hibridă PostgreSQL/MongoDB și un cache Redis cu fallback la TMDB API. Integrează Spring AI (Whisper/GPT-4) prin REST și gRPC. Construită la standarde moderne stricte — record DTOs, constructor injection, virtual threads — și cu o testare riguroasă (JUnit 5, Testcontainers, acoperire JaCoCo 85%) integrată în GitHub Actions CI/CD. Implementată folosind Kubernetes pe Minikube.",
+    tech: ["Java 25", "Spring Boot 3.5", "Spring Cloud", "PostgreSQL", "MongoDB", "Redis", "Spring AI", "gRPC", "REST", "JUnit 5", "Testcontainers", "JaCoCo", "GitHub Actions", "Docker", "Podman", "Kubernetes"],
     githubUrl: "https://github.com/pehlivanu/filmpire-microservices",
     deployUrl: "",
   },
   {
     id: 2,
     title: "Defense Asset Manager",
-    description: "Aplicație enterprise React 19. Prezintă managementul stării cu Zustand + Immer, Material UI v9, dezvoltare contract-first cu OpenAPI 3.1, simulare cu MSW și implementare cu Podman.",
-    tech: ["TypeScript", "React 19", "Zustand", "Material UI", "OpenAPI", "Podman"],
+    description:
+      "O aplicație enterprise React 19 pentru gestionarea activelor și a personalului în sectorul de apărare, impunând o arhitectură strictă bazată pe funcționalități (Domain-Driven) pentru a sprijini livrarea SAFe la nivelul mai multor echipe. Dezvoltare complet tipizată, contract-first prin OpenAPI 3.1 și construită pe Vite pentru HMR instantaneu. Utilizează Zustand cu Immer pentru starea imuabilă, Mock Service Worker pentru simularea offline REST și componente Material UI v9 cu contrast ridicat, cu funcții UX critice de siguranță, cum ar fi confirmările pentru acțiuni distructive.",
+    tech: ["React 19", "Vite", "Zustand", "Material UI v9", "MSW", "OpenAPI 3.1", "TypeScript", "Vitest"],
     githubUrl: "https://github.com/pehlivanu/defense-asset-manager",
     deployUrl: "",
   },
   {
     id: 3,
-    title: "Portfolio Site",
-    description: "Portofoliu de dezvoltator construit ca o experiență cu tematică IDE. Prezintă Next.js 15 App Router, TypeScript, Tailwind CSS v4 și animații Framer Motion.",
-    tech: ["Next.js 15", "TypeScript", "Tailwind CSS v4", "Framer Motion", "React"],
+    title: "Antigravity IDE Portfolio",
+    description:
+      "Un portofoliu de dezvoltator extrem de interactiv care recreează meticulos estetica mediului de dezvoltare Antigravity de la Google — activity bar, explorator de fișiere, zonă de editare, status bar live și o paletă de comenzi funcțională — construit pe Next.js 15 App Router cu micro-animații imersive Framer Motion. Dispune de generare automată a CV-ului în format PDF, în multiple șabloane și limbi, plus un formular de contact dinamic ce utilizează API-ul Geolocation pentru a calcula și afișa distanța fizică dintre vizitator și dezvoltator.",
+    tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Geolocation API", "PDF Generation", "Framer Motion"],
     githubUrl: "https://github.com/pehlivanu/portfolio-site",
     deployUrl: "https://liviuionesi.vercel.app",
   },
   {
     id: 4,
-    title: "Filmpire",
-    description: "O aplicație imersivă de descoperire a filmelor cu funcție de căutare prin comandă vocală (IA), filtrare pe categorii şi un design modern şi responsiv.",
-    tech: ["React", "Material UI", "Redux Toolkit", "Alan AI", "TMDB API"],
+    title: "Filmpire Frontend",
+    description:
+      "O aplicație modernă și interactivă pentru descoperirea filmelor în React 17 și Redux Toolkit, servind drept client frontend dedicat pentru backend-ul de 8 microservicii Filmpire. Integrează API-ul TMDB pentru navigarea categoriilor și gestionarea favoritelor, iar funcția sa definitorie este o integrare Alan AI SDK care oferă o interfață vocală complet conversațională. Calitatea codului este asigurată cu Jest / React Testing Library și ESLint (Airbnb).",
+    tech: ["React 17", "Material-UI", "Redux Toolkit", "Alan AI"],
     githubUrl: "https://github.com/pehlivanu/filmpire",
     deployUrl: "https://filmpire-ten.vercel.app/",
   },
   {
     id: 5,
     title: "Knowledge Base Platform",
-    description: "O platformă de management al cunoștințelor pregătită pentru producție și localizată pentru 'Last Z Survival Shooter'. Construită cu Next.js 16 App Router, cu localizare Next-Intl, autentificare middleware și un design mobile-first.",
-    tech: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Vercel"],
+    description:
+      "Un sistem de documentare localizat gata pentru enterprise, construit pe Next.js 16 și React 19 Server Components pentru un payload client minim. Acționează ca un generator de site-uri statice care transformă o simplă colecție de fișiere Markdown (.md) într-un site wiki complet. Dispune de internaționalizare avansată prin next-intl gestionată la nivelul de middleware, cu documentația internă securizată de un middleware custom care verifică cookie-urile HttpOnly.",
+    tech: ["Next.js 16", "React 19", "Tailwind CSS v4", "next-intl", "Markdown"],
     githubUrl: "https://github.com/pehlivanu/knowledge-base-platform",
     deployUrl: "https://phenix-wiki.vercel.app",
   },
   {
     id: 6,
     title: "DevOps Toolchain Showcase",
-    description: "O prezentare cuprinzătoare a unui lanț de instrumente CI/CD care implementează un mediu complet containerizat. Integrează Podman Compose, Jenkins CI, JFrog Artifactory, Gradle și ALM/MQC simulat prin REST API.",
-    tech: ["Java", "Jenkins", "Docker / Podman", "JFrog Artifactory", "Gradle", "Bash"],
+    description:
+      "Un lanț de instrumente CI/CD declarativ, complet containerizat, care demonstrează practici DevOps de nivel enterprise, orchestrat prin Podman Compose. Un server Jenkins personalizat folosește Docker-outside-of-Docker (DooD) pentru a compila și publica imagini ale aplicației printr-un Jenkinsfile în mai multe etape. Automatizează raportarea acoperirii JaCoCo și publicarea artifactelor în JFrog Artifactory, și folosește scripturi personalizate Bash + curl + jq pentru a trimite metricile de testare către sisteme externe ALM/MQC via API-uri REST.",
+    tech: ["Jenkins", "JFrog Artifactory", "Podman", "Gradle", "Java 17"],
     githubUrl: "https://github.com/pehlivanu/devops-toolchain-showcase",
     deployUrl: "",
   },
   {
     id: 7,
-    title: "DevFlow",
-    description: "O platformă comunitară modernă pentru dezvoltatori pentru a împărtăși cunoștințe, cu recomandări bazate pe IA și o interfață utilizator receptivă.",
-    tech: ["Next.js 14", "TypeScript", "Tailwind CSS", "MongoDB", "Clerk Auth"],
+    title: "DevFlow - Full-Stack Q&A Platform",
+    description:
+      "O platformă sofisticată de Q&A pentru dezvoltatori, condusă de comunitate, construită nativ pe Next.js 14 App Router cu Server Actions în loc de un nivel API separat. Dispune de un sistem robust de etichetare, căutare globală pentru întrebări, răspunsuri, utilizatori și etichete, și fluxuri personalizate de recomandări. Un motor avansat de reputație și insigne ludifică participarea, autentificarea rulează prin NextAuth.js (Google/GitHub OAuth + credențiale) cu validare end-to-end Zod, iar API-ul OpenAI generează răspunsuri complete cu inteligență artificială și fragmente de cod.",
+    tech: ["Next.js 14", "TypeScript 5", "MongoDB Atlas", "Tailwind CSS", "OpenAI API", "NextAuth", "Zod"],
     githubUrl: "https://github.com/pehlivanu/devflow",
     deployUrl: "https://devflow-chi-roan.vercel.app/",
   },
   {
     id: 8,
-    title: "GUI Automation Framework",
-    description: "Un instrument de automatizare GUI bazat pe Python pentru 'Last Z: Survival Shooter'. Prezintă potrivire de șabloane vizuale pentru interacțiuni asemănătoare omului, asistență automatizată a aliaților și colectarea armelor folosind Tkinter și Bash.",
-    tech: ["Python", "Tkinter", "GUI Automation", "Bash Scripting", "Linux"],
+    title: "Python GUI Automation Framework",
+    description:
+      "O aplicație desktop Python rezilientă, cross-platform, cu o interfață grafică Tkinter, care controlează și automatizează o aplicație Android. Utilizează potrivirea de șabloane OpenCV pentru a detecta vizual și a interacționa cu elemente UI dinamice direct pe dispozitiv via Android Debug Bridge (ADB), mai degrabă decât prin orice API de bază. Incorporează profiluri de interacțiune asemănătoare oamenilor — variații de coordonate și temporizare aleatorie — pentru a evita metodele euristice de detectare a boților, și rulează fie din interfața grafică, fie headless ca un daemon Linux.",
+    tech: ["Python 3.10", "OpenCV", "Tkinter", "ADB", "Bash"],
     githubUrl: "https://github.com/pehlivanu/gui-automation-framework",
     deployUrl: "https://phenix-wiki.vercel.app/en/docs/automation-app",
+  },
+  {
+    id: 11,
+    title: "Alana Windsurf",
+    description:
+      "O aplicație web full-stack scalabilă pe Next.js 13+ App Router și React 18+. Oferă o autentificare comprehensivă prin NextAuth.js — OAuth (Google, GitHub) plus credențiale securizate de e-mail/parolă — cu datele stocate în MongoDB prin Mongoose. Starea este gestionată cu React Context și useReducer, formularele sunt tratate robust cu React Hook Form și Zod, iar interfața este stilizată cu Material UI și Emotion.",
+    tech: ["Next.js 13+", "React 18+", "Material UI", "NextAuth.js", "MongoDB", "Zod"],
+    githubUrl: "https://github.com/pehlivanu/alana-windsurf",
+    deployUrl: "",
+  },
+  {
+    id: 12,
+    title: "Payload E-Commerce Platform",
+    description:
+      "O soluție e-commerce comprehensivă care îmbină framework-ul Payload CMS cu un frontend static Next.js. Vine cu un backend complet funcțional, cu un panou de administrare enterprise care gestionează atât produse fizice, cât și conținut restricționat cu paywall, integrat cu webhooks Stripe pentru procesarea securizată a plăților.",
+    tech: ["Next.js", "Payload CMS", "Stripe", "React Hook Form"],
+    githubUrl: "https://github.com/pehlivanu/e-commerce",
+    deployUrl: "",
   },
 ];
 
