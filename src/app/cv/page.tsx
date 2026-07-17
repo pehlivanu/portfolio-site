@@ -53,7 +53,15 @@ function CVContent() {
                 }
                 
                 @media print {
-                    @page { margin: 0; size: auto; }
+                    @page { 
+                        margin-top: 15mm; 
+                        margin-bottom: 15mm; 
+                        margin-left: 0; 
+                        margin-right: 0; 
+                    }
+                    @page :first { 
+                        margin-top: 0; 
+                    }
                     body { background: white; color: black; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
                     .print-break-inside-avoid { break-inside: avoid; }
                 }
@@ -66,7 +74,7 @@ function CVContent() {
             
             {/* HERO SECTION - Matching Site Design */}
             <div className={clsx(
-                "border-b p-8 print:p-[10mm]",
+                "border-b p-8 print:px-[15mm] print:pt-[15mm] print:pb-0",
                 theme === 'ide' 
                     ? "bg-ide-bg border-ide-border" 
                     : "bg-[#f8f9fa] border-gray-200 print:bg-[#f8f9fa]"
@@ -175,7 +183,7 @@ function CVContent() {
                 </div>
             </div>
 
-            <div className="p-8 print:p-[10mm] space-y-8">
+            <div className="p-8 print:px-[15mm] print:py-4 space-y-8">
                 {/* EXPERIENCE SECTION */}
                 <section>
                     <div className={clsx(
@@ -189,7 +197,7 @@ function CVContent() {
                     <div className="space-y-6">
                         {experience.map((job: any) => (
                             <div key={job.id} className={clsx(
-                                "print-break-inside-avoid relative pl-4 border-l-2",
+                                "relative pl-4 border-l-2",
                                 theme === 'ide' ? "border-ide-border" : "border-gray-200"
                             )}>
                                 <div className={clsx(
@@ -312,7 +320,7 @@ function CVContent() {
                     </section>
 
                     {/* EDUCATION */}
-                    <section className="print-break-inside-avoid">
+                    <section>
                         <div className={clsx(
                             "flex items-center gap-2 mb-4 border-b pb-2",
                             theme === 'ide' ? "border-ide-border" : "border-gray-200"

@@ -111,7 +111,7 @@ function AtsCvContent() {
                     <h2 className="text-xl font-bold uppercase border-b border-gray-400 mb-4 pb-1">{t('cvProfessionalExperience') || 'Experience'}</h2>
                     <div className="space-y-6">
                         {experience.map((job: any) => (
-                            <div key={job.id} className="print-break-inside-avoid">
+                            <div key={job.id}>
                                 <div className="flex justify-between items-baseline mb-1">
                                     <h3 className="font-bold text-base">{job.role}</h3>
                                     <span className="text-sm font-bold">{job.period}</span>
@@ -159,8 +159,15 @@ function AtsCvContent() {
                                 <div className="text-sm leading-relaxed text-justify">
                                     {detailLevel === 'detailed' && edu.description ? (
                                         <div className="prose prose-sm max-w-none text-black">
-                                            <p className="mb-1">{edu.description}</p>
-                                            {edu.grade && <p><strong>Grade:</strong> {edu.grade}</p>}
+                                            <ReactMarkdown
+                                                components={{
+                                                    ul: ({node, ...props}) => <ul className="list-disc pl-5 my-1 space-y-1" {...props} />,
+                                                    li: ({node, ...props}) => <li className="pl-1" {...props} />
+                                                }}
+                                            >
+                                                {edu.description}
+                                            </ReactMarkdown>
+                                            {edu.grade && <p className="mt-1 font-semibold text-black"><strong>{t('grade') || 'Grade'}:</strong> {edu.grade}</p>}
                                         </div>
                                     ) : (
                                         <p>{edu.summary}</p>
