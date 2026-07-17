@@ -1,27 +1,29 @@
+import NextAuth from "next-auth";
+
 export const experience = [
   {
     id: 1,
     type: "senior",
     role: "Senior Software Developer",
     company: "DAT Group",
-    companySize: "501-1,000 angajați",
+    companySize: "501-1.000 angajați",
     industry: "Software Auto",
-    locationType: "Remote / Hybrid",
+    locationType: "Remote / Hibrid",
     websiteUrl: "https://www.dat.eu",
     period: "Sep 2020 - Mar 2026",
-    summary: `Am făcut parte din echipa Costing Applications pentru SilverDAT 3 „calculate” — standardul recunoscut de asigurători pentru calculul costurilor de reparații. Aplicația generează devize precise, bazate pe normele producătorilor, pentru peste 70.000 de modele auto (piese, manoperă, vopsitorie, manuale OEM). Este utilizată pe scară largă de service-uri, reprezentanțe, evaluatori, asigurători, bănci și producători.`,
-    description: `*   Am extins, întreținut și testat serviciile legacy Java EE (monorepo SOA/SOAP cu frontend-uri JavaScript/React), adaptând suitele de teste SoapUI și manuale pe măsură ce serviciile au evoluat și adăugând acoperire TestNG/Mockito pentru modificări.
-*   Am arhitecturat și deținut end-to-end noi servicii Spring Boot pentru a înlocui componentele legacy Java EE — arhitectură curată N-Tier cu mapare strictă DTO, gestionare centralizată a erorilor și tracing distribuit bazat pe MDC — expunând API-uri REST contract-first, compatibile HATEOAS (OpenAPI), susținute de teste de integrare JUnit 5/MockMvc și Postman Collections cu teste automate.
-*   Am gestionat stratul de date cu JPA/Hibernate: PostgreSQL a înlocuit bazele de date SQL legacy (în principal Oracle SQL), iar MongoDB a introdus NoSQL într-un stack anterior exclusiv SQL.
-*   Am rescris frontend-urile legacy JavaScript ca și componente moderne și responsive React/TypeScript, optimizând arhitectura cu Effector (state management) și PrimeReact.
-*   CI/CD: Am construit platforma legacy cu Gradle pe Jenkins și am livrat-o în testare și producție; serviciile noi au fost livrate prin Gradle Wrapper. Livrare către Azure Kubernetes (AKS) prin pipeline-uri de build și release cu chart-uri Helm și NGINX ingress. Am folosit Docker Compose pentru dezvoltare locală. Am migrat controlul versiunilor din GitLab în Azure Repos. Platforma legacy are 6 release-uri/an pe un panou Kanban în Jira, în timp ce serviciile noi au trecut la livrare continuă.
-*   Am modernizat build-ul părinte Spring Boot moștenit (OpenRewrite pentru actualizări automate de versiune peste limita BOM, un bot Renovate pe Azure pentru actualizări de dependențe) și am mutat configurarea din proprietăți bazate pe foldere în profile Spring.
-*   Am construit un flux de lucru augmentat de AI în IntelliJ IDEA (CodeGPT pe un LLM local Azure), Cursor și Windsurf pentru a documenta și analiza codul legacy, a extrage cerințele și a implementa servicii noi, menținute 100% curate în SonarQube.
-*   Am ghidat direcția tehnică prin prototipare și evaluarea unor abordări mai bune ori de câte ori am găsit una — demonstrându-le în cod funcțional și susținând workshop-uri cu echipa (design REST/API-first, React modern și Next.js, OpenRewrite pentru upgrade-uri automate, Dependabot și o evaluare Spring Cloud Gateway pentru înlocuirea gateway-ului personalizat DAT).`,
+    summary: `Dezvoltator Full-Stack Senior în cadrul echipei "Costing Applications" din spatele SilverDAT 3 "calculate", standardul recunoscut de asigurători pentru calcularea costurilor de reparație auto. Sistemul este folosit la nivelul întregii industrii de către service-uri, dealeri auto, experți evaluatori, asigurători, bănci și producători pentru peste 70.000 de variante de vehicule.`,
+    description: `*   Mentenanța, extinderea și testarea serviciilor moștenite în Java EE (monorepo SOA/SOAP cu front-end-uri JavaScript/React). Adaptarea instrumentelor SoapUI și a suitelor de testare manuală la evoluția serviciilor, alături de adăugarea acoperirii TestNG/Mockito pentru modificările noi.
+*   Proiectarea arhitecturală și dezvoltarea end-to-end a noilor servicii Spring Boot destinate înlocuirii vechii aplicații Java EE — utilizând o arhitectură curată N-Tier, o mapare strictă DTO, gestionarea centralizată a erorilor și un sistem de tracing distribuit bazat pe MDC. Implementarea de API-uri REST "contract-first", conforme cu HATEOAS (OpenAPI), securizate prin teste de integrare JUnit 5/MockMvc și colecții Postman automatizate.
+*   Gestionarea stratului de date prin JPA/Hibernate: înlocuirea vechilor baze de date SQL (în principal Oracle SQL) cu PostgreSQL și introducerea MongoDB ca prima soluție NoSQL într-o stivă tehnologică bazată anterior exclusiv pe SQL.
+*   Reconstruirea front-end-urilor vechi din JavaScript în componente moderne și responsive folosind React/TypeScript. Optimizarea arhitecturii prin utilizarea Effector (gestionarea stării) și PrimeReact.
+*   CI/CD: Compilarea (build) platformei vechi cu Gradle pe Jenkins și implementarea (deployment) în mediile de testare și producție; noile servicii fiind livrate prin Gradle Wrapper. Implementarea în Azure Kubernetes (AKS) prin conducte (pipelines) de build și release, folosind chart-uri Helm și NGINX Ingress. Utilizarea Docker Compose pentru dezvoltarea locală. Migrarea controlului versiunilor (source control) de la GitLab la Azure Repos. Serviciile vechi urmează un ciclu de 6 lansări pe an printr-un panou Kanban în Jira, în timp ce noile servicii au trecut la un regim de livrare continuă (Continuous Delivery).
+*   Modernizarea procesului părinte de build Spring Boot moștenit (folosind OpenRewrite pentru actualizări automate de versiuni peste limita BOM, și Renovate Bot pe Azure pentru actualizările dependențelor) și migrarea configurării tradiționale din fișiere proprietăți către profilurile Spring.
+*   Implementarea unui flux de lucru asistat de IA prin IntelliJ IDEA (CodeGPT pe un LLM local Azure), Cursor și Windsurf pentru documentarea și analizarea codului vechi, extragerea cerințelor și dezvoltarea de servicii noi care îndeplinesc în proporție de 100% criteriile (Quality Gates) SonarQube.
+*   Ghidarea direcției tehnice prin prototiparea și evaluarea unor abordări îmbunătățite — verificate direct în cod și prezentate în cadrul workshop-urilor de echipă (de ex. design REST/API-first, utilizarea React modern și Next.js, OpenRewrite, Dependabot și o evaluare Spring Cloud Gateway ca înlocuitor pentru gateway-ul personalizat al DAT).`,
     tech: [
-      { category: "Backend", skills: ["Java 17+", "Jakarta EE", "Spring Boot 3+", "Spring Cloud", "REST APIs", "OpenAPI", "Microservices", "SOA / SOAP", "WSDL"] },
+      { category: "Backend", skills: ["Java 17+", "Jakarta EE", "Spring Boot 3+", "Spring Cloud", "API REST", "OpenAPI", "Microservicii", "SOA / SOAP", "WSDL"] },
       { category: "Frontend", skills: ["JavaScript", "HTML", "CSS", "React", "TypeScript", "Effector", "PrimeReact"] },
-      { category: "Baze de Date", skills: ["PostgreSQL", "Oracle", "MongoDB", "H2", "JPA", "Hibernate", "JDBC"] },
+      { category: "Baze de date", skills: ["PostgreSQL", "Oracle", "MongoDB", "H2", "JPA", "Hibernate", "JDBC"] },
       { category: "Testare", skills: ["TestNG", "Mockito", "JUnit 5", "MockMvc", "Testcontainers"] },
       { category: "CI/CD & DevOps", skills: ["Jenkins", "GitLab CI/CD", "Gradle", "Node.js", "npm", "Docker", "Azure", "Kubernetes (AKS)", "Helm", "NGINX Ingress", "OpenRewrite", "Renovate", "Dependabot"] },
       { category: "Instrumente", skills: ["IntelliJ IDEA", "Postman", "SoapUI", "SQL Developer", "Cursor", "Windsurf", "Azure OpenAI"] },
@@ -31,70 +33,74 @@ export const experience = [
   {
     id: 2,
     type: "mid",
-    role: "Inginer software",
+    role: "Software Developer",
     company: "evia solutions GmbH",
     companySize: "51-200 angajați",
-    industry: "Servicii IT & consultanță",
-    locationType: "on-site",
+    industry: "Servicii IT și Consultanță",
+    locationType: "La fața locului",
     websiteUrl: "https://www.evia.de",
     period: "Feb 2016 - Aug 2020",
-    summary: `Am livrat soluții digitale critice pentru sectoarele de asigurări și automotive.`,
-    description: `*   **Scalare sisteme exitente**: Am întreținut și dezvoltat aplicația de bază **WebSphere Java EE (JSP)**. Această muncă asiduă a asigurat fluxul stabil de venituri, care a susținut hipercresterea companiei de la 16 la peste 200 de angajați.
-*   **Dezvoltare backend**: Am dezvoltat servicii de integrare de înaltă performanță pentru clienți importanți din **domeniul bancar** folosind **Java EE** și **Micronaut**, colaborând cu echipe externe de frontend pentru schimbul de date B2B fără probleme.
-*   **Implementare Soluții Microsoft**: Am servit ca dezvoltator principal pentru noua unitate "Microsoft Delivery". Am implementat structura intranet a companiei și automatizarea proceselor folosind **SharePoint** și **Microsoft Flow**, traducând cerințele strategice în fluxuri de lucru automatizate funcționale.
-*   **Expertiză frontend & certificări**: Am obținut certificarea în BPM ca **Pega CSA** și am început parcursul meu de certificare Microsoft cu certificarea frontend pentru **HTML5, CSS3 și JavaScript**. Am aplicat aceste cunoștințe pentru a menține și îmbunătăți diverse interfețe web.`,
+    summary: `Dezvoltator și consultant în cadrul unei companii de soluții IT adresate diverselor industrii, livrând software personalizat și standard pentru sectoarele bancar, de asigurări și mediile Microsoft Enterprise. Am lucrat în echipe interfuncționale Agile Scrum și SAFe — acoperind totul, de la mentenanța aplicațiilor clasice Java EE până la dezvoltarea de la zero a unor arhitecturi microservicii (Greenfield).`,
+    description: `*   Mentenanța, extinderea, livrarea și testarea portalurilor pentru brokerii de asigurări destinate Wüstenrot & Württembergische — aplicații critice Java EE 8 (JSF/Spring/Hibernate, JSP) rulând pe IBM WebSphere 7 și 8.5 cu IBM DB2 și LDAP/Active Directory. Acestea au format fundația financiară solidă ce a sprijinit creșterea companiei de la ~16 la peste 200 de angajați. Securizarea sistemelor s-a realizat prin teste de penetrare conforme cu standardele OWASP. S-au utilizat Rational Application Developer 9.1 și iText pentru generarea documentelor și a fișierelor PDF (alături de Apache Directory Studio, Postman, Eclipse, SVN, Cherwell).
+*   Implicare majoră în fondarea noului departament "Microsoft Delivery" în calitate de dezvoltator principal. Crearea unei soluții de integrare (onboarding) pentru angajați în SharePoint Online (generare digitală a contractelor, parcurs de onboarding, gestionarea sarcinilor) și automatizarea proceselor de afaceri folosind Microsoft Flow și Logic Apps (Office 365, JSON).
+*   Obținerea certificării "Pega Certified System Architect (CSA)" axată pe dezvoltarea BPM și a certificării "Microsoft 70-480" (HTML5, JavaScript & CSS3, incluzând jQuery și AJAX).
+*   Dezvoltarea platformei "Digital Sales Solutions" (DSS) pentru Daimler — o aplicație bancară dezvoltată de la zero, care a digitalizat procesul solicitărilor de credite auto în mai multe țări. Implementarea de microservicii moderne în Micronaut / JEE 11 (Oracle SQL, PostgreSQL 12, Docker) în spatele unui frontend Angular, însoțite de servicii de integrare REST/SOAP (OpenAPI) pentru transferul de date B2B.
+*   Responsabil de testarea la nivel de dezvoltator, Asigurarea Calității (JUnit, SonarQube) și conductele (pipelines) CI/CD destinate mediilor de testare și integrare (Git, Jenkins). Am oferit suport echipei de testare pentru suitele de teste end-to-end automatizate (Protractor, Cucumber) lucrând în regim Agile (inițial Scrum, ulterior SAFe), în strânsă colaborare cu departamentele Frontend, QA și DevOps (Jira, Confluence, MS Teams).`,
     tech: [
-      { category: "Backend", skills: ["Java EE", "Micronaut", "WebSphere"] },
-      { category: "Baze de Date", skills: ["Oracle SQL", "PostgreSQL"] },
-      { category: "CI/CD & DevOps", skills: ["Docker", "Jenkins", "Git"] },
-      { category: "Testare & Calitate", skills: ["JUnit", "SonarQube"] },
-      { category: "Altele", skills: ["SharePoint", "Microsoft Flow"] },
-      { category: "Metodologie", skills: ["SAFe", "SCRUM"] },
-      { category: "Certificări", skills: ["Pega CSA"] },
+      { category: "Backend", skills: ["Java EE (JEE 8 / 11)", "Micronaut", "Spring", "Hibernate", "JSF", "JSP", "iText", "REST", "SOAP", "OpenAPI"] },
+      { category: "Frontend", skills: ["Angular", "HTML5", "CSS3", "JavaScript", "jQuery", "AJAX"] },
+      { category: "Baze de date", skills: ["Oracle SQL", "PostgreSQL", "IBM DB2", "LDAP / Active Directory"] },
+      { category: "CI/CD & DevOps", skills: ["Git", "SVN", "Jenkins", "Maven", "Docker", "IBM WebSphere (7 / 8.5)"] },
+      { category: "Testare și Calitate", skills: ["JUnit", "SonarQube", "Protractor", "Cucumber", "OWASP / Penetration Testing"] },
+      { category: "Instrumente", skills: ["IntelliJ IDEA", "Eclipse", "Rational Application Developer", "SharePoint", "Microsoft Flow", "Logic Apps", "Office 365", "Apache Directory Studio", "Postman", "Jira", "Confluence", "Cherwell", "MS Teams"] },
+      { category: "Metodologie", skills: ["Scrum", "SAFe", "BPM"] },
+      { category: "Certificări", skills: ["Pega CSA", "Microsoft 70-480"] },
     ],
   },
   {
     id: 3,
     type: "junior",
-    role: "Inginer software junior",
+    role: "Junior Software Developer",
     company: "PRODYNA AG",
     companySize: "201-500 angajați",
-    industry: "consultanță IT",
-    locationType: "la fața locului / deplasări",
+    industry: "Consultanță IT",
+    locationType: "La fața locului / Deplasări",
     websiteUrl: "https://www.prodyna.com",
     period: "Nov 2014 - Ian 2016",
-    summary: `Am oferit consultanță IT expertă pentru portaluri de întreprindere.`,
-    description: `*   **Portaluri Enterprise**: Am dezvoltat și implementat soluții complexe de portal **Liferay** pentru clienți de mari dimensiuni, utilizând **Java EE**, **MySQL** și **AlloyUI**.
-*   **Proiecte agile**: Am colaborat în echipe SCRUM pentru a livra software de înaltă calitate, utilizând **Jira** și **Confluence** pentru documentarea si raportarea transparentă a proiectelor.
-*   **Asigurarea calității**: Am integrat **SonarQube** în procesul de build, pentru a asigura obligatoriu calitatea și mentenabilitatea codului încă din prima zi.
-*   **Certificări obținute**: Am validat expertiza de bază obținând **Oracle Certified Professional Java Programmer (OCPJP)** și **Oracle Certified Expert Web Component Developer (OCE WCD)**.`,
+    summary: `Dezvoltator și consultant în cadrul unei companii de consultanță IT, repartizat la sediul unui client Enterprise pentru a livra de la A la Z un proiect de portal web — acoperind etapele de consultanță, design, implementare și testare.`,
+    description: `*   Dezvoltarea și lansarea unei soluții de portal pe Liferay 6.0 cu un backend Java 6 EE și MySQL, împreună cu un frontend ce integrează JSP, HTML, CSS, JavaScript și AlloyUI.
+*   Livrarea și testarea aplicațiilor pe Apache Tomcat, direcționând procesele CI/CD cu Jenkins și Maven și integrând SonarQube în procesul de compilare pentru a asigura standardele de calitate a codului.
+*   Lucrul constant în echipe Agile Scrum (Jira, Confluence) și obținerea în această perioadă a certificărilor "Oracle Certified Professional Java Programmer (OCPJP)" și "Oracle Certified Expert Java EE 6 Web Component Developer (OCE WCD)".`,
     tech: [
-      { category: "Backend", skills: ["Java EE", "Liferay"] },
-      { category: "Frontend", skills: ["AlloyUI"] },
-      { category: "Baze de Date", skills: ["MySQL"] },
-      { category: "Calitate", skills: ["SonarQube"] },
+      { category: "Backend", skills: ["Java 6 EE", "Liferay 6.0", "JSP"] },
+      { category: "Frontend", skills: ["HTML", "CSS", "JavaScript", "AlloyUI"] },
+      { category: "Baze de date", skills: ["MySQL"] },
+      { category: "CI/CD & DevOps", skills: ["Apache Tomcat", "Jenkins", "Maven"] },
+      { category: "Testare și Calitate", skills: ["SonarQube"] },
+      { category: "Instrumente", skills: ["Jira", "Confluence"] },
+      { category: "Metodologie", skills: ["Scrum"] },
       { category: "Certificări", skills: ["OCPJP", "OCE WCD"] },
     ],
   },
   {
     id: 4,
     type: "intern",
-    role: "Stagiu practic",
+    role: "Stagiu în Dezvoltare Software",
     company: "Alpine Electronics R&D Europe",
-    companySize: "1,000+ angajați",
-    industry: "Electronică auto",
+    companySize: "1.000+ angajați",
+    industry: "Electronică Auto",
     locationType: "La fața locului",
     websiteUrl: "https://www.alpine.de/",
     dualStudy: "ADV Böblingen",
     period: "Sep 2012 - Aug 2013",
-    summary: `Stagiar în Integrarea Sistemelor pentru divizia OEM Car Infotainment, dezvoltând module software pentru proiectul „Alpine Test Automation Framework”.`,
-    description: `*   Am dezvoltat și extins Alpine Test Automation Framework (C#, .NET 4.0) intern construind module de testare automată pentru interfețe hardware precum Bluetooth, generatoare de semnal RDS, magistrale MOST/CAN, camere climatice și roboți pentru schimbarea CD/DVD.
-*   Am proiectat și implementat „Alpine Voltage Curve Editor” — evaluat cu nota maximă 1.0 ca lucrare de diplomă — și am modernizat interfețele grafice ale mai multor module de testare existente utilizând WPF și modelul MVVM.
-*   Am asigurat robustețea arhitecturală a cadrului de testare aplicând modelarea UML și șabloane de proiectare (design patterns) în SharpDevelop.`,
+    summary: `Stagiar în Integrarea Sistemelor (Car Infotainment / OEM) pentru dezvoltarea modulelor software destinate framework-ului intern „Alpine Test Automation Framework”.`,
+    description: `*   Dezvoltarea și extinderea sistemului intern Alpine Test Automation Framework (C#, .NET 4.0) construind module de testare automată pentru interfețe hardware, cum ar fi Bluetooth, generatoare de semnal RDS, magistrale MOST/CAN, camere climatice și roboți pentru schimbarea CD/DVD-urilor.
+*   Proiectarea și implementarea „Alpine Voltage Curve Editor” — lucrare notată cu punctaj maxim (1.0) ca teză de absolvire — și modernizarea interfețelor utilizator pentru mai multe module de test existente, folosind WPF și modelul MVVM.
+*   Asigurarea robusteții arhitecturale pe întregul framework de testare prin aplicarea modelării UML și a șabloanelor de design "Gang of Four" (Singleton, Composite, Factory Method, Memento) în SharpDevelop.`,
     tech: [
       { category: "Backend", skills: ["C#", ".NET 4.0", "UML", "Design Patterns", "SharpDevelop", "StyleCop"] },
       { category: "Frontend & Mobile", skills: ["WPF", "MVVM", "Android SDK"] },
-      { category: "Hardware & Protocols", skills: ["Bluetooth", "CAN", "MOST", "RDS"] },
+      { category: "Hardware & Protocoale", skills: ["Bluetooth", "CAN", "MOST", "RDS"] },
     ],
   },
 ];
@@ -103,53 +109,53 @@ export const education = [
   {
     id: 1,
     type: "dual-study",
-    studyField: "Studiu dual",
-    degree: "Informatician cu certificare de stat",
+    studyField: "Sistem Dual",
+    degree: "Informatician Certificat de Stat (Staatlich geprüfter Informatiker)",
     school: "Gottlieb-Daimler-Schule 2 - Akademie für Datenverarbeitung (ADV)",
     url: "https://gds2.de",
     location: "Böblingen, Germania",
     year: "2011 - 2014",
-    summary: "Program intensiv de studiu dual axat in domeniu ingineriei software, sisteme de baze de date și management de proiect.",
-    description: "Formare profesională de 3 ani (Berufskolleg). A inclus un an de stadiu practic la Alpine Electronics R&D Europe GmbH, cu teza: \"Alpine Voltage Curve Editor\" (Calificativ: Excelent).",
+    summary: "Program intensiv de studiu dual axat pe Inginerie Software, Baze de Date și Management de Proiect.",
+    description: "Pregătire profesională de 3 ani (Berufskolleg). A inclus un an de stagiu practic la Alpine Electronics R&D Europe GmbH, unde am elaborat teza finală: „Alpine Voltage Curve Editor” (Nota: Excelent / 1.0).",
     grade: "Promovat cu distincție (Belobigung)",
   },
   {
     id: 2,
     type: "master",
-    studyField: "Masterat",
-    degree: "Diplomă de master",
+    studyField: "Master",
+    degree: "Master",
     school: "Universitatea de Vest din Timișoara",
     url: "https://info.uvt.ro/en/",
     location: "Timișoara, România",
     year: "2009 - 2011",
-    summary: "Formare specializată în pedagogie și didactică pentru predarea matematicii.",
-    description: "Program academic avansat, axat pe modele matematice complexe și metodologii educaționale. Primul an al acestui program de master a fost absolvit în străinătate, la Universitatea din Stuttgart, prin intermediul programului Erasmus. Materiile principale au inclus: Analiză vectorială, Algebră avansată și Geometrie, Metode iterative, Metode statistice și probabilistice, precum și Software pentru management educațional.",
+    summary: "Pregătire specializată în Pedagogia și Didactica matematicii.",
+    description: "Program academic avansat centrat pe modele matematice complexe și pe metodologii educaționale. Primul an de master a fost efectuat în străinătate, la Universitatea din Stuttgart, prin programul Erasmus. Obiectele principale de studiu au inclus: Analiză Vectorială, Algebră Superioară și Geometrie, Metode Iterative, Metode Statistice și Probabilistice și Software pentru Managementul Educațional.",
     grade: "7.70 / 10 (Anul 1) & 7.66 / 10 (Anul 2)",
   },
   {
     id: 3,
     type: "bachelor",
-    studyField: "Bachelor",
-    degree: "Diplomă de licență",
+    studyField: "Licență",
+    degree: "Diplomă de Licență",
     school: "Universitatea de Vest din Timișoara",
     url: "https://info.uvt.ro/en/",
     location: "Timișoara, România",
     year: "2006 - 2009",
-    summary: "Specializare dublă oferind baze distincte atât în matematică abstractă, cât și în informatică aplicată.",
-    description: "Curriculum cu dublă specializare care îmbină matematica teoretică cu informatica aplicată și ingineria software. Materiile principale au inclus: Structuri de Date, Inteligență Artificială, Sisteme de Baze de Date, Rețele de Calculatoare, Geometrie Computațională, Programare Logică și Funcțională și Modelare/Simulare Matematică.",
-    grade: "10 / 10 (Examen final) | 9.02 / 10 (Media generală)",
+    summary: "Specializare dublă care oferă fundamente solide atât în matematică abstractă, cât și în informatică aplicată.",
+    description: "Curriculum dual ce îmbină rigoarea matematicii teoretice cu abordările practice din informatică și ingineria software. Subiectele de bază au inclus: Structuri de Date, Inteligență Artificială, Sisteme de Baze de Date, Rețele de Calculatoare, Geometrie Computațională, Programare Logică și Funcțională și Modelare/Simulare Matematică.",
+    grade: "10 / 10 (Examen final de licență) | 9.02 / 10 (Media generală)",
   },
   {
     id: 4,
     type: "high-school",
-    studyField: "Colegiu",
+    studyField: "Liceu",
     degree: "Diplomă de Bacalaureat",
-    school: "Colegiul Național de Informatică \"Spiru Haret\" Suceava",
+    school: "Colegiul Național de Informatică „Spiru Haret” Suceava",
     url: "https://www.cni-sv.ro/",
     location: "Suceava, România",
     year: "2002 - 2006",
-    summary: "Curriculum intensiv de Informatică și Matematică.",
-    description: "Profil: Matematică-informatică intensiv.",
+    summary: "Program intensiv pe profil de Informatică și Matematică.",
+    description: "Profil urmat: Matematică și Informatică (Intensiv).",
     grade: "9.81 / 10",
   },
 ];
@@ -157,9 +163,9 @@ export const education = [
 export const projects = [
   {
     id: 1,
-    title: "Filmpire Microservices Platform",
+    title: "Platforma Microservicii Filmpire",
     description:
-      "O platformă enterprise completă de microservicii pentru descoperirea de filme, gestionată de la idee la produsul gata de livrare folosind panouri Kanban GitHub Projects (Epics, Stories, Tasks). Opt servicii independente Java 25 / Spring Boot 3.5 care includ Spring Cloud (Eureka, API Gateway), susținute de o strategie hibridă PostgreSQL/MongoDB și un cache Redis cu fallback la TMDB API. Integrează Spring AI (Whisper/GPT-4) prin REST și gRPC. Construită la standarde moderne stricte — record DTOs, constructor injection, virtual threads — și cu o testare riguroasă (JUnit 5, Testcontainers, acoperire JaCoCo 85%) integrată în GitHub Actions CI/CD. Implementată folosind Kubernetes pe Minikube.",
+      "O platformă Enterprise complexă bazată pe microservicii dedicată descoperirii de filme, administrată cap-coadă, de la idee până la produsul final, folosind sistemul Kanban din GitHub Projects (Epics, Stories, Tasks). Platforma reunește opt servicii independente dezvoltate în Java 25 / Spring Boot 3.5, ce includ integrarea Spring Cloud (Eureka, API Gateway). Arhitectura utilizează o bază de date hibridă PostgreSQL/MongoDB alături de caching Redis, implementând un fallback către API-ul TMDB. Proiectul integrează capabilitățile Spring AI (Whisper/GPT-4) comunicând via REST și gRPC. Construită având la bază cele mai noi și stricte standarde din domeniu (DTO Records, injectare de dependențe în constructor, virtual threads), calitatea platformei este susținută de testări riguroase (JUnit 5, Testcontainers, acoperire JaCoCo 85%) ce rulează automatizat prin conducte CI/CD GitHub Actions. Livrarea și implementarea au loc pe Kubernetes utilizând mediul Minikube.",
     tech: ["Java 25", "Spring Boot 3.5", "Spring Cloud", "PostgreSQL", "MongoDB", "Redis", "Spring AI", "gRPC", "REST", "JUnit 5", "Testcontainers", "JaCoCo", "GitHub Actions", "Docker", "Podman", "Kubernetes"],
     githubUrl: "https://github.com/pehlivanu/filmpire-microservices",
     deployUrl: "",
@@ -168,79 +174,79 @@ export const projects = [
     id: 2,
     title: "Defense Asset Manager",
     description:
-      "O aplicație enterprise React 19 pentru gestionarea activelor și a personalului în sectorul de apărare, impunând o arhitectură strictă bazată pe funcționalități (Domain-Driven) pentru a sprijini livrarea SAFe la nivelul mai multor echipe. Dezvoltare complet tipizată, contract-first prin OpenAPI 3.1 și construită pe Vite pentru HMR instantaneu. Utilizează Zustand cu Immer pentru starea imuabilă, Mock Service Worker pentru simularea offline REST și componente Material UI v9 cu contrast ridicat, cu funcții UX critice de siguranță, cum ar fi confirmările pentru acțiuni distructive.",
+      "Aplicație Enterprise React 19 destinată gestiunii activelor și a resurselor umane pentru sectorul de apărare. Abordează o arhitectură strictă (Domain-Driven Design) concepută pentru a susține o implementare simultană de către mai multe echipe conform normelor SAFe. Complet tipizată static, dezvoltată „contract-first” pe baza OpenAPI 3.1 și integrată pe mediul Vite pentru viteze instanțelor HMR (Hot Module Replacement). Aplicația alege utilitarul Zustand alături de Immer pentru stări inalterabile (immutable), un Mock Service Worker ce oferă simulări offline fluente ale API-urilor REST și se construiește solid folosind setul Material UI v9 incluzând proceduri specifice mediilor critice cu impact de securitate (confirmări duble pentru decizii cu caracter destructiv).",
     tech: ["React 19", "Vite", "Zustand", "Material UI v9", "MSW", "OpenAPI 3.1", "TypeScript", "Vitest"],
     githubUrl: "https://github.com/pehlivanu/defense-asset-manager",
     deployUrl: "",
   },
   {
     id: 3,
-    title: "Antigravity IDE Portfolio",
+    title: "Portofoliu Antigravity IDE",
     description:
-      "Un portofoliu de dezvoltator extrem de interactiv care recreează meticulos estetica mediului de dezvoltare Antigravity de la Google — activity bar, explorator de fișiere, zonă de editare, status bar live și o paletă de comenzi funcțională — construit pe Next.js 15 App Router cu micro-animații imersive Framer Motion. Dispune de generare automată a CV-ului în format PDF, în multiple șabloane și limbi, plus un formular de contact dinamic ce utilizează API-ul Geolocation pentru a calcula și afișa distanța fizică dintre vizitator și dezvoltator.",
-    tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Geolocation API", "PDF Generation", "Framer Motion"],
+      "Portofoliu de dezvoltator complet interactiv care aduce nativ pe un site web experiența unui editor tip IDE, reconstituind cu detalii meticuloase interfața estetică regăsită sub editorul Google Antigravity IDE — deținând o bară funcțională pentru activități, explorator nativ complet, editor interactiv pe ferestre, bară inferioară dinamică de stare și o paletă activă de comenzi pe ecran. Este clădit complet folosind ecosistemul Next.js 15 (App Router) având multiple straturi imersive de micro-animații gestionate curat cu Framer Motion. Automatizează procesul generării PDF a propriului CV din varii tipare ori variante lingvistice specifice și înglobează și un modul complex de formulare dinamice al cărui efect unic calculează și afișează automat fix distanța de pe hartă direct via unui API Geolocation între server și un potențial recruiter.",
+    tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Geolocation API", "Generare PDF", "Framer Motion"],
     githubUrl: "https://github.com/pehlivanu/portfolio-site",
     deployUrl: "https://liviuionesi.vercel.app",
   },
   {
     id: 4,
-    title: "Filmpire Frontend",
+    title: "Frontend Filmpire",
     description:
-      "O aplicație modernă și interactivă pentru descoperirea filmelor în React 17 și Redux Toolkit, servind drept client frontend dedicat pentru backend-ul de 8 microservicii Filmpire. Integrează API-ul TMDB pentru navigarea categoriilor și gestionarea favoritelor, iar funcția sa definitorie este o integrare Alan AI SDK care oferă o interfață vocală complet conversațională. Calitatea codului este asigurată cu Jest / React Testing Library și ESLint (Airbnb).",
+      "Aplicație front-end complexă, modernă și fluentă dedicată indexării filmelor populare, exclusiv dezvoltată în mediul React 17 pe fundația unui control gestionat prin Redux Toolkit. Creată intenționat sub vizorul de aplicație web dedicată ce lucrează ca sistem complet frontend apelând funcționalitățile extinse venite sub capota infrastructurii backend formată din ecosistemul celor 8 microservicii ale proiectului Filmpire. Aceasta interoghează rapid capabilitățile TMDB API creând indexări fluide pe multiple categorii specifice listând totul într-un portofoliu organizat din panoul favoritelor și implementează la mod unic integrarea avansată din librăriile (SDK) speciale ce formează sistemul IA renumit nativ — Alan AI —, adăugând un nivel de comandă complet conversațională directă folosind limbaj rostit. Codul respectă fără abateri normele impuse în standardul larg al pachetelor de verificare ESLint ale rețelei Airbnb și un ciclu absolut verificat de testare masivă din alianța integrată stabil Jest cu React Testing Library.",
     tech: ["React 17", "Material-UI", "Redux Toolkit", "Alan AI"],
     githubUrl: "https://github.com/pehlivanu/filmpire",
     deployUrl: "https://filmpire-ten.vercel.app/",
   },
   {
     id: 5,
-    title: "Knowledge Base Platform",
+    title: "Platformă Bază de Cunoștințe",
     description:
-      "Un sistem de documentare localizat gata pentru enterprise, construit pe Next.js 16 și React 19 Server Components pentru un payload client minim. Acționează ca un generator de site-uri statice care transformă o simplă colecție de fișiere Markdown (.md) într-un site wiki complet. Dispune de internaționalizare avansată prin next-intl gestionată la nivelul de middleware, cu documentația internă securizată de un middleware custom care verifică cookie-urile HttpOnly.",
+      "Un sistem de documentare tip „enterprise”, creat cu funcții complete de internaționalizare pe fundația noii generații de pachete Next.js 16 cu ajutorul Componentelor Servere din React 19 pentru o gestionare ultra rapidă din interior ce micșorează uriaș latura adesea limitată venită pe banda de navigare a clientului. Platforma redă instant conținutul fix procesat via unui mecanism intern de randare (SSG), preluând un volum generos de fișiere statice din structura standard nativ numită Markdown (.md) într-o enciclopedie pe ecran detaliată tip (Wiki). Sistemul integrează complet capabilitățile de limbi multiple sub pachetul next-intl trecute direct doar pe frontiera apelor rețelelor numită middleware edge, păstrând la interior doar resursele cu acces de companie printr-un proces automat avansat ce permite deschiderea limitat a paginilor din același middleware cu verificare exclusiv adusă validităților modulelor fixe ascunse la vizualizare clasică cunoscute (HttpOnly cookies).",
     tech: ["Next.js 16", "React 19", "Tailwind CSS v4", "next-intl", "Markdown"],
     githubUrl: "https://github.com/pehlivanu/knowledge-base-platform",
     deployUrl: "https://phenix-wiki.vercel.app",
   },
   {
     id: 6,
-    title: "DevOps Toolchain Showcase",
+    title: "Infrastructură DevOps (Toolchain Showcase)",
     description:
-      "Un lanț de instrumente CI/CD declarativ, complet containerizat, care demonstrează practici DevOps de nivel enterprise, orchestrat prin Podman Compose. Un server Jenkins personalizat folosește Docker-outside-of-Docker (DooD) pentru a compila și publica imagini ale aplicației printr-un Jenkinsfile în mai multe etape. Automatizează raportarea acoperirii JaCoCo și publicarea artifactelor în JFrog Artifactory, și folosește scripturi personalizate Bash + curl + jq pentru a trimite metricile de testare către sisteme externe ALM/MQC via API-uri REST.",
+      "O rețea independentă dedicată CI/CD orchestrată impecabil dintr-un ecosistem stabil de mașinării de containere tip containerizare sub comanda platformei izolate regăsite cu instrumentele tip Podman Compose ce oferă la vedere o integrare completă bazată specific în stil Enterprise a celor mai noi proceduri cunoscute ca rutină globală din zona DevOps. Utilizează intern un utilaj pe format Docker avansat unde mediul masiv creat din pachetele Jenkins adoptă conceptul tip (DooD / Docker-outside-of-Docker) capabil singur din script la compilări ample ce crează complet noi fișiere imagini aplicative dirijate etapizat curat prin configurările scripturilor unui lanț mare Jenkinsfile multi-etapă. Obține la final automatizare complet globală de unde trimite imediat pe fond fișiere de rapoarte la evaluările testate cu instrument unitar central JaCoCo către exterior până sus fix prin punctele de contact adresate unui server de rețea JFrog Artifactory lansând apoi spre ALM/MQC setări clare rezultate la toate evaluările de sistem pe apeluri automate în spate doar folosind capabilitățile externe direct peste rețete clasice terminal prin rute integrate la Bash (curl) transformând nativ formatele primite la proces tip Json bazându-se nativ cu jq.",
     tech: ["Jenkins", "JFrog Artifactory", "Podman", "Gradle", "Java 17"],
     githubUrl: "https://github.com/pehlivanu/devops-toolchain-showcase",
     deployUrl: "",
   },
   {
     id: 7,
-    title: "DevFlow - Full-Stack Q&A Platform",
+    title: "DevFlow - Platformă Q&A Full-Stack",
     description:
-      "O platformă sofisticată de Q&A pentru dezvoltatori, condusă de comunitate, construită nativ pe Next.js 14 App Router cu Server Actions în loc de un nivel API separat. Dispune de un sistem robust de etichetare, căutare globală pentru întrebări, răspunsuri, utilizatori și etichete, și fluxuri personalizate de recomandări. Un motor avansat de reputație și insigne ludifică participarea, autentificarea rulează prin NextAuth.js (Google/GitHub OAuth + credențiale) cu validare end-to-end Zod, iar API-ul OpenAI generează răspunsuri complete cu inteligență artificială și fragmente de cod.",
+      "Platformă online Q&A extrem de complexă adresată în mediul dezvoltatorilor unde structura și modul de funcționare complet sunt native orientate bazat doar prin funcționalitățile rețelei aduse de performantul Next.js 14 App Router care reușește curat prin comanda noilor facilități a Server Actions implementarea independentă și renunțarea absolut directă la nevoia clasic obținută din API backend izolat. Acesta înglobează intern absolut tot ce e nevoie, cu rutine eficiente tip etichetare și funcție majoră adresată de motoare super vizuale de căutare fix pe toate zonele interioare incluzând profile de membri, subiecte deschise cu tot la nivel de răspuns ce apoi adună și generează clar direcții unice de sugestii ce pleacă personalizate exclusiv pe vizitatorul logat. Stimulează masiv curiozitatea membrilor activând un algoritm pe stil recompense vizuale și ecusoane adăugate gradual sub profil din sistem de gamificare. Acreditările la porțile de intrare apelează integrat renumitul utilitar NextAuth.js unde accesul curge nativ din zona OAuth către celebrele platforme Github ori Google complet cu posibilitatea standard a formularelor simple din protecție riguros încadrată prin pachet utilitar unic Zod. Opțiunea esențial inteligentă integrează suplimentar capabilitățile puternicului sistem AI adus prin conexiune OpenAI API ajutând pe site din afara interacțiunii umane aducând din interior soluții vaste cu porțiuni aduse la nivel pur generare din exemple funcționale tip cod.",
     tech: ["Next.js 14", "TypeScript 5", "MongoDB Atlas", "Tailwind CSS", "OpenAI API", "NextAuth", "Zod"],
     githubUrl: "https://github.com/pehlivanu/devflow",
     deployUrl: "https://devflow-chi-roan.vercel.app/",
   },
   {
     id: 8,
-    title: "Python GUI Automation Framework",
+    title: "Platformă Automatizare GUI Python",
     description:
-      "O aplicație desktop Python rezilientă, cross-platform, cu o interfață grafică Tkinter, care controlează și automatizează o aplicație Android. Utilizează potrivirea de șabloane OpenCV pentru a detecta vizual și a interacționa cu elemente UI dinamice direct pe dispozitiv via Android Debug Bridge (ADB), mai degrabă decât prin orice API de bază. Incorporează profiluri de interacțiune asemănătoare oamenilor — variații de coordonate și temporizare aleatorie — pentru a evita metodele euristice de detectare a boților, și rulează fie din interfața grafică, fie headless ca un daemon Linux.",
+      "Aplicație de tip desktop complet versatilă, solid dezvoltată în limbajul Python având dincolo de pachet nativ direct inclus sub fereastră un cadru standardizat pentru mediu utilaj vizual cunoscut prin prezența instrumentului clar de fereastră creat cu Tkinter construită complet la baza sa doar ca unelte capabile fără limitare spre automatizarea fluidă ce rulează neobservat cap-coadă capabilă control direcțional a aplicațiilor din ecosistem pe mobil platforma de sistem Android. Baza unică și secretul esențial o oferă de fapt excluderea din interior a rutinei fixe impuse standard prin intermediul interfeței API din sistem folosind la rezolvare procedurile unice pe proces din preluare cu clase unice din bibliotecile vizuale (OpenCV template matching) vizualizând nativ absolut oriunde interacțiunea ce primește ca țintă setate din clase și care interacționează dirijat perfect la rezolvare direct folosind magistrale ascunse prin comunicație de la depanatorul recunoscut tip (Android Debug Bridge - ADB). Elementul major la algoritm adaugă perfect o iluzie naturală cu profil din interacțiune unică umană integrat intern adus exclusiv peste ecranul terminal având varianțe cu grade scurte din timpi la deviație de axă punctelor și de acțiune cu durata imprevizibilă, eliminând pe loc acea detecție standardizată euristicii venită de roboți tip (bots). Proiectul livrează produs complet vizual sub afișare GUI dar în egală măsură și nativ prin module de tip ecran nevăzut direct pe platforme Unix direct ascunse (Linux Daemon headless mode).",
     tech: ["Python 3.10", "OpenCV", "Tkinter", "ADB", "Bash"],
     githubUrl: "https://github.com/pehlivanu/gui-automation-framework",
-    deployUrl: "https://phenix-wiki.vercel.app/en/docs/automation-app",
+    deployUrl: "",
   },
   {
     id: 11,
     title: "Alana Windsurf",
     description:
-      "O aplicație web full-stack scalabilă pe Next.js 13+ App Router și React 18+. Oferă o autentificare comprehensivă prin NextAuth.js — OAuth (Google, GitHub) plus credențiale securizate de e-mail/parolă — cu datele stocate în MongoDB prin Mongoose. Starea este gestionată cu React Context și useReducer, formularele sunt tratate robust cu React Hook Form și Zod, iar interfața este stilizată cu Material UI și Emotion.",
+      "Aplicație modernă dezvoltată scalabil tip Full-Stack creată pentru randament folosind integrat mediul din capabilitățile masive Next.js 13+ sub App Router susținut complet pe motorul asigurat din capabilitățile unice React 18+. Deține un profil integrant securizat și sigur direct acoperit masiv prin conectarea și autentificarea complet administrată la pachet oferit pe NextAuth.js oferind opțiuni deschise către OAuth (Google sau GitHub) asociat sistemului tradițional de acces fix sub credențiale cu parolă — informația în bazele de date stocându-se eficient la baza server MongoDB utilizând în modul tipic integrarea simplificată cu utilajul Mongoose. Toate mișcările de status se execută fix pe logica unică React Context adunate cu tehnici avansate specifice rutinei la comandă (useReducer). Procesele din capăt orientate fix către introduceri direct (formulare) aduc complet o experiență perfect asumat stabil din funcționalități solide aduse la vedere prin asistența bibliotecilor solide validate strict cu React Hook Form asociat pachetului Zod, toate redate la vedere din utilaj performant cu opțiuni standard unice vizuale sub Material UI acoperit extra de efect utilitar tip Emotion.",
     tech: ["Next.js 13+", "React 18+", "Material UI", "NextAuth.js", "MongoDB", "Zod"],
     githubUrl: "https://github.com/pehlivanu/alana-windsurf",
     deployUrl: "",
   },
   {
     id: 12,
-    title: "Payload E-Commerce Platform",
+    title: "E-Commerce Payload Platform",
     description:
-      "O soluție e-commerce comprehensivă care îmbină framework-ul Payload CMS cu un frontend static Next.js. Vine cu un backend complet funcțional, cu un panou de administrare enterprise care gestionează atât produse fizice, cât și conținut restricționat cu paywall, integrat cu webhooks Stripe pentru procesarea securizată a plăților.",
+      "Aplicație software dezvoltată ca variantă completă nativ Enterprise la capabilități masive dedicată comerțului tipic digital. Proiectul implementează avansat capacitățile din popularul cadru al mediului sistem inovator (Payload CMS) pe care le suprapune direct de fronturi stabilite nativ dezvoltate în interiorul instrumentarului (Next.js) folosind funcții specifice direct din funcționalități de compilări fixe vizual. Platforma reprezintă practic la final o afacere în cutie cu capabilități aduse curat în format gata administrativ pe fond dedicat strict pentru setări globale din partea sistemului stabil ce poate oferi pe piață nativ ambele soluții din tranzacții tip — din rândul mărfurilor ca tangibile dar acompaniat extrem complet sub același plafon exclusiv pentru pachetele informaționale condiționate la opțiune cu barieră tarifară (Paywall). Proiectul obține protecție integrantă masivă din opțiuni aduse direct la exterior via comenzi tip webhooks venite din partea faimoasei aplicații rețele globale de siguranță și procesări financiare exclusiv cunoscute pe denumire popular (Stripe).",
     tech: ["Next.js", "Payload CMS", "Stripe", "React Hook Form"],
     githubUrl: "https://github.com/pehlivanu/e-commerce",
     deployUrl: "",
@@ -250,27 +256,27 @@ export const projects = [
 export const linkedInProfile = {
   name: "Liviu Ionesi",
   headline: "Tech Lead | Senior Full-Stack Engineer | Java, Spring Boot, React, Next.js",
-  location: "Kirchheim unter Teck, Germania",
+  location: "Freiwaldaustr. 39, 73230 Kirchheim unter Teck, Germania",
   phone: "+49 1514 6966 832",
   address: "Freiwaldaustr. 39, 73230 Kirchheim unter Teck",
   email: "ionesiliviu@yahoo.com",
   connections: "500+",
-  about: "Technical Lead & Senior Full-Stack Engineer. Construirea coloanei vertebrale digitale a industriilor Auto și Fintech. Cu peste 13 ani de experiență în ingineria sistemelor distribuite de înaltă performanță, mă specializez în conducere tehnică, modernizarea arhitecturilor vechi și livrarea de soluții scalabile, native cloud.",
-  fullBio: `### **Technical Lead & Senior Full-Stack Engineer | Specialist Auto & FinTech**
+  about: "Technical Lead și Senior Full-Stack Engineer. Construiesc coloana vertebrală digitală a industriilor auto și fintech. Cu peste 13 ani de experiență în dezvoltarea de sisteme distribuite de înaltă performanță, mă concentrez pe leadership tehnic, modernizarea arhitecturilor moștenite și livrarea de soluții scalabile cloud-native.",
+  fullBio: `### **Technical Lead & Senior Full-Stack Engineer | Specialist Automotive & FinTech**
 
-Cu peste 13 ani de experiență în ingineria sistemelor distribuite de înaltă performanță, mă specializez în conducere tehnică, modernizarea arhitecturilor vechi și livrarea de soluții scalabile, native cloud. Cariera mea se întinde de la dezvoltarea cadrelor critice de automatizare la **Alpine Electronics** până la stimularea transformării digitale a platformelor de date enterprise la **DAT Group**. Excelența mea constă în îndrumarea echipelor interfuncționale pentru a construi software robust folosind tehnologii moderne.
+Cu peste 13 ani de experiență în ingineria sistemelor distribuite de înaltă performanță, sunt specializat în leadership tehnic, modernizarea arhitecturilor software moștenite și livrarea de soluții scalabile, cloud-native. Cariera mea s-a extins de la dezvoltarea de cadre critice de automatizare la **Alpine Electronics** până la coordonarea transformării digitale a platformelor de date enterprise din cadrul **DAT Group**. Sunt pasionat de mentoratul și ghidarea echipelor interfuncționale în construirea de software robust, utilizând stive tehnologice moderne.
 
-Fac legătura între logica backend complexă, experiențele frontend intuitive și obiectivele strategice de afaceri. Competențele mele de bază includ:
+Reprezint o punte între logica backend complexă, interfețele frontend intuitive și obiectivele strategice de afaceri. Competențele mele principale includ:
 
-  * **Conducere Tehnică & Arhitectură**: Conducerea designului de sistem și susținerea migrării aplicațiilor monolitice **Java EE** către **Microservicii** scalabile (Spring Boot, Azure) și frontend-uri moderne (React/Next.js), îmbunătățind semnificativ reziliența sistemului.
-  * **Excelență în Ingineria Full-Stack**: Arhitecturarea și dezvoltarea interfețelor responsive, centrate pe utilizator cu **React, Next.js și TypeScript**, integrate perfect cu API-uri robuste și sigure **Java 21 / Spring Boot**.
-  * **DevOps & Cultura Calității**: Promovarea **TDD**, a principiilor **Clean Code** și stabilirea automatizării CI/CD (Azure, GitHub Actions) pentru a asigura o livrare software de înaltă calitate și predictibilă. Mentorarea echipelor de inginerie pentru a-și ridica standardele tehnice.
-  * **Inginerie Augmentată de IA**: Pionierat în livrarea de software de mare viteză prin fuziunea rigorii enterprise (Epics, Agile/Scrum, CI/CD) cu fluxuri de lucru avansate integrate cu IA (Cursor, Windsurf). Această abordare accelerează dezvoltarea proiectelor noi și eficientizează refactorizarea monoliților complecși, reducând efectiv datoria tehnică.
+  * **Leadership Tehnic & Arhitectură**: Ofer direcție în designul sistemelor și conduc procesul de migrare al aplicațiilor monolitice **Java EE** către o arhitectură pe **Microservicii** complet scalabilă (Spring Boot, Azure) alături de interfețe moderne (React/Next.js), crescând masiv reziliența sistemelor.
+  * **Excelență în Inginerie Full-Stack**: Proiectez și dezvolt interfețe receptive centrate pe utilizator utilizând **React, Next.js și TypeScript**, complet integrate cu API-uri sigure și robuste construite pe **Java 21 / Spring Boot**.
+  * **Cultura DevOps și Asigurarea Calității**: Susțin principiile **TDD** (Test-Driven Development) și standardele **Clean Code**, și implementez sisteme de automatizare CI/CD (Azure, GitHub Actions) pentru a asigura livrări software predictibile și de cea mai înaltă calitate. Ghidez echipele de dezvoltare pentru a crește continuu performanțele și standardele tehnice.
+  * **Dezvoltare Asistată de Inteligență Artificială (AI-Augmented Engineering)**: Pionez o abordare de livrare software accelerată integrând cu mare succes rigoarea metodelor specifice mediului corporatist (Epics, Agile/Scrum, CI/CD) cu sisteme super moderne de dezvoltare asistate de IA (Cursor, Windsurf). Această îmbinare grăbește vizibil crearea masivă de proiecte de la zero (greenfield projects) minimizând masiv complexitatea la refactorizările blocate impuse proiectelor moștenite imense scăzând masiv la un termen considerabil ceea ce cunoscătorii evită prin prisma tehnologiei masive ca „datorie tehnică” (technical debt).
 
 ---
-*În prezent caut un rol de Technical Lead în ecosistemele Spring Boot și React. Deschis pentru oportunități hibride în zona Stuttgart sau poziții complet remote în Germania.*`,
+*În prezent caut un rol de Technical Lead axat pe ecosistemul Spring Boot și React. Sunt deschis la roluri în format Hibrid în regiunea Stuttgart, precum și către roluri cu program 100% de la distanță (Remote) din Germania.*`,
   avatarUrl: "/images/linkedin-profile.png",
-  skills: ["Java", "Spring Boot", "Spring Cloud", "React", "Next.js", "Azure", "Docker", "Kubernetes", "SQL/NoSQL", "IntelliJ IDEA", "Instrumente IA (Cursor, Windsurf, Antigravity, MCP)"],
+  skills: ["Java", "Spring Boot", "Spring Cloud", "React", "Next.js", "Azure", "Docker", "Kubernetes", "SQL/NoSQL", "IntelliJ IDEA", "Instrumente AI (Cursor, Windsurf, Antigravity, MCP)"],
   certifications: [
     { name: "Oracle Certified Professional, Java SE 6 Programmer", authority: "Oracle", url: "" },
     { name: "Oracle Certified Expert Java EE 6 Web Components Developer", authority: "Oracle", url: "" },
@@ -283,8 +289,8 @@ Fac legătura între logica backend complexă, experiențele frontend intuitive 
   languages: [
     { language: "Germană", proficiency: "Competență Profesională" },
     { language: "Engleză", proficiency: "Competență Profesională" },
-    { language: "Română", proficiency: "Nativ sau Bilingv" },
-    { language: "Franceză", proficiency: "Competență Elementară" }
+    { language: "Română", proficiency: "Limba Maternă" },
+    { language: "Franceză", proficiency: "Cunoștințe de Bază" }
   ]
 };
 
@@ -293,8 +299,8 @@ export const about = {
   name: "Liviu",
   suffix: ".io",
   lastName: "NESI",
-  description: "Technical Lead & Senior Full-Stack Engineer. Construirea coloanei vertebrale digitale a industriilor Auto și Fintech. Sunt specializat în microservicii Spring Boot, frontend-uri React și stimularea livrării de software enterprise de mare viteză prin fluxuri de lucru augmentate de IA.",
+  description: "Technical Lead și Senior Full-Stack Engineer. Construiesc coloana vertebrală digitală a industriilor auto și fintech. Mă concentrez pe microservicii Spring Boot, front-end-uri React și pe accelerarea livrărilor de software enterprise printr-un flux de lucru asistat de IA.",
   fullBio: linkedInProfile.fullBio,
-  ctaPrimary: "Proiecte, nu doar cod",
-  ctaSecondary: "Contactează-mă"
+  ctaPrimary: "Proiecte, nu doar Cod",
+  ctaSecondary: "Contact"
 };
