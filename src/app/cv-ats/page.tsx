@@ -98,13 +98,14 @@ function AtsCvContent() {
                     </div>
                 </section>
 
-                {/* 3. SKILLS */}
+                {/* 3. SKILLS (Redundant, skills are in jobs/projects)
                 <section className="mb-8 print-break-inside-avoid">
                     <h2 className="text-xl font-bold uppercase border-b border-gray-400 mb-4 pb-1">{t('cvTechnicalSkills') || 'Skills'}</h2>
                     <p className="text-sm leading-relaxed">
                         {linkedInProfile.skills.join(', ')}
                     </p>
                 </section>
+                */}
 
                 {/* 4. PROFESSIONAL EXPERIENCE */}
                 <section className="mb-8">

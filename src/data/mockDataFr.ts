@@ -197,6 +197,7 @@ export const projects = [
     githubUrl: "https://github.com/pehlivanu/filmpire",
     deployUrl: "https://filmpire-ten.vercel.app/",
   },
+/*
   {
     id: 5,
     title: "Knowledge Base Platform",
@@ -206,6 +207,7 @@ export const projects = [
     githubUrl: "https://github.com/pehlivanu/knowledge-base-platform",
     deployUrl: "https://phenix-wiki.vercel.app",
   },
+*/
   {
     id: 6,
     title: "DevOps Toolchain Showcase",
@@ -233,6 +235,7 @@ export const projects = [
     githubUrl: "https://github.com/pehlivanu/gui-automation-framework",
     deployUrl: "",
   },
+/*
   {
     id: 11,
     title: "Alana Windsurf",
@@ -251,6 +254,7 @@ export const projects = [
     githubUrl: "https://github.com/pehlivanu/e-commerce",
     deployUrl: "",
   },
+*/
 ];
 
 export const linkedInProfile = {

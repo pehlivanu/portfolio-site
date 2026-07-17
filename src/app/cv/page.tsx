@@ -311,7 +311,7 @@ function CVContent() {
                 )}
 
                 <div className="space-y-8">
-                     {/* SKILLS */}
+                     {/* SKILLS (Redundant, skills are in jobs/projects)
                     <section className="print-break-inside-avoid">
                         <div className={clsx(
                             "flex items-center gap-2 mb-4 border-b pb-2",
@@ -331,6 +331,7 @@ function CVContent() {
                             ))}
                         </div>
                     </section>
+                    */}
 
                     {/* EDUCATION */}
                     <section>
