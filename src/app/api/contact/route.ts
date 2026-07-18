@@ -1,8 +1,26 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { rateLimit } from '@/lib/rateLimit';
+
+function escapeHTML(str: string) {
+  if (!str) return str;
+  return str.replace(/[&<>'"]/g, 
+    tag => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      "'": '&#39;',
+      '"': '&quot;'
+    }[tag as keyof typeof Object.prototype] || tag)
+  );
+}
 
 export async function POST(request: Request) {
   try {
+    const ip = request.headers.get('x-forwarded-for') || '127.0.0.1';
+    if (!rateLimit(ip, 5, 60000)) {
+      return NextResponse.json({ error: 'Too many requests' }, { status: 429 });
+    }
     const body = await request.json();
     const { name, email, phone, purpose, location, address, technologies, message } = body;
 
@@ -47,16 +65,16 @@ ${message}
       `,
       html: `
         <h3>New Contact Form Submission</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
-        <p><strong>Purpose:</strong> ${purpose}</p>
-        <p><strong>Location Preference:</strong> ${location}</p>
-        <p><strong>Address:</strong> ${address || 'N/A'}</p>
-        <p><strong>Technologies:</strong> ${technologies ? technologies.join(', ') : 'None'}</p>
+        <p><strong>Name:</strong> ${escapeHTML(name)}</p>
+        <p><strong>Email:</strong> ${escapeHTML(email)}</p>
+        <p><strong>Phone:</strong> ${escapeHTML(phone || 'N/A')}</p>
+        <p><strong>Purpose:</strong> ${escapeHTML(purpose)}</p>
+        <p><strong>Location Preference:</strong> ${escapeHTML(location)}</p>
+        <p><strong>Address:</strong> ${escapeHTML(address || 'N/A')}</p>
+        <p><strong>Technologies:</strong> ${escapeHTML(technologies ? technologies.join(', ') : 'None')}</p>
         <br/>
         <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
+        <p>${escapeHTML(message).replace(/\n/g, '<br>')}</p>
       `,
     };
 
