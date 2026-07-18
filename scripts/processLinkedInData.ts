@@ -32,16 +32,16 @@ function parseCSV(content: string): Record<string, string>[] {
   for (let i = 1; i < lines.length; i++) {
     const line = lines[i].trim();
     if (!line) continue;
-    
+
     const values = parseLine(line);
     const obj: Record<string, string> = {};
-    
+
     headers.forEach((header, index) => {
       // Clean header name (remove spaces, lowercase)
-      const key = header.trim(); 
+      const key = header.trim();
       obj[key] = values[index] || '';
     });
-    
+
     result.push(obj);
   }
 
@@ -55,7 +55,7 @@ function parseLine(line: string): string[] {
 
   for (let i = 0; i < line.length; i++) {
     const char = line[i];
-    
+
     if (char === '"') {
       if (inQuotes && line[i + 1] === '"') {
         // Escaped quote
@@ -72,7 +72,7 @@ function parseLine(line: string): string[] {
     }
   }
   values.push(currentValue);
-  
+
   return values;
 }
 
@@ -83,13 +83,13 @@ async function main() {
 
     for (const file of files) {
       if (!file.endsWith('.csv')) continue;
-      
+
       const key = file.replace('.csv', '').toLowerCase();
       const content = fs.readFileSync(path.join(DATA_DIR, file), 'utf-8');
-      
+
       console.log(`Processing ${file}...`);
       const parsedData = parseCSV(content);
-      
+
       // Special handling for Profile (should be an object, not array)
       if (key === 'profile' && parsedData.length > 0) {
         finalData[key] = parsedData[0];
@@ -100,7 +100,6 @@ async function main() {
 
     fs.writeFileSync(OUTPUT_FILE, JSON.stringify(finalData, null, 2));
     console.log(`Successfully wrote data to ${OUTPUT_FILE}`);
-
   } catch (error) {
     console.error('Error processing data:', error);
   }

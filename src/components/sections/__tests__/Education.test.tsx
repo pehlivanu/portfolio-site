@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Education from './Education';
+import Education from '../Education';
 import { useLanguage } from '@/context/LanguageContext';
 import { useSearch } from '@/context/SearchContext';
 
@@ -54,7 +54,7 @@ describe('Education Component', () => {
 
   it('renders correctly with education data', () => {
     render(<Education />);
-    
+
     expect(screen.getByText('education')).toBeInTheDocument();
     expect(screen.getByText('Computer Science')).toBeInTheDocument();
     expect(screen.getByText('University')).toBeInTheDocument();

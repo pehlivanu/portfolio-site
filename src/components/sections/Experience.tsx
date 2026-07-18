@@ -68,7 +68,7 @@ import { AnimatePresence } from 'framer-motion';
 
 import { useLanguage } from '@/context/LanguageContext';
 
-import * as mockDataEn from '@/data/mockData';
+import * as mockDataEn from '@/data/locales/en';
 type JobType = (typeof mockDataEn.experience)[number];
 
 const JobCard = ({ job, isActive }: { job: JobType; isActive: boolean }) => {

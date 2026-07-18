@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import About from './About';
+import About from '../About';
 import { useNavigation } from '@/context/NavigationContext';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -63,7 +63,7 @@ describe('About Component', () => {
     const primaryCta = screen.getByText('Primary Action');
     fireEvent.click(primaryCta);
     expect(mockScrollToSection).toHaveBeenCalledWith('projects');
-    
+
     const secondaryCta = screen.getByText('Secondary Action');
     fireEvent.click(secondaryCta);
     expect(mockScrollToSection).toHaveBeenCalledWith('contact');

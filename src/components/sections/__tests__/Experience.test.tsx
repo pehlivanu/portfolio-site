@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import Experience from './Experience';
+import Experience from '../Experience';
 import { useLanguage } from '@/context/LanguageContext';
 import { useSearch } from '@/context/SearchContext';
 
@@ -51,7 +51,7 @@ describe('Experience Component', () => {
 
   it('renders correctly with experience data', () => {
     render(<Experience />);
-    
+
     expect(screen.getByText('experience')).toBeInTheDocument();
     expect(screen.getByText('Senior Dev')).toBeInTheDocument();
     expect(screen.getByText('Tech Corp')).toBeInTheDocument();
@@ -60,19 +60,19 @@ describe('Experience Component', () => {
 
   it('toggles details when show details button is clicked', () => {
     render(<Experience />);
-    
+
     // Details should be hidden initially
     expect(screen.queryByText('Backend:')).not.toBeInTheDocument();
-    
+
     // Click toggle
     const toggleButton = screen.getByText('showDetails');
     fireEvent.click(toggleButton);
-    
+
     // Details should be visible
     expect(screen.getByText('Backend:')).toBeInTheDocument();
     expect(screen.getByText('Java')).toBeInTheDocument();
     expect(screen.getByText('Spring')).toBeInTheDocument();
-    
+
     // Click toggle again
     const hideButton = screen.getByText('showLess');
     fireEvent.click(hideButton);

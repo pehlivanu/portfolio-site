@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Projects from './Projects';
+import Projects from '../Projects';
 import { useLanguage } from '@/context/LanguageContext';
 import { useSearch } from '@/context/SearchContext';
 
@@ -57,15 +57,15 @@ describe('Projects Component', () => {
 
   it('renders correctly with projects data', () => {
     render(<Projects />);
-    
+
     // Title
     expect(screen.getByText('projects')).toBeInTheDocument();
-    
+
     // Project One
     expect(screen.getByText('Project One')).toBeInTheDocument();
     expect(screen.getByText('First project description')).toBeInTheDocument();
     expect(screen.getByText('React')).toBeInTheDocument();
-    
+
     // Project Two
     expect(screen.getByText('Project Two')).toBeInTheDocument();
     expect(screen.getByText('Second project description')).toBeInTheDocument();
@@ -74,7 +74,7 @@ describe('Projects Component', () => {
 
   it('renders github and deploy links if provided', () => {
     render(<Projects />);
-    
+
     const links = screen.getAllByRole('link');
     // 2 links for Project One (GitHub, Deploy)
     expect(links).toHaveLength(2);
@@ -86,7 +86,7 @@ describe('Projects Component', () => {
     (useSearch as jest.Mock).mockReturnValue({
       activeMatch: { id: 'projects-1' },
     });
-    
+
     const { container } = render(<Projects />);
     const activeProject = container.querySelector('#projects-1');
     expect(activeProject).toHaveClass('bg-orange-500/10');

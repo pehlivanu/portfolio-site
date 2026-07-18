@@ -1,10 +1,10 @@
 'use client';
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import * as enData from '@/data/mockData';
-import * as deData from '@/data/mockDataDe';
-import * as roData from '@/data/mockDataRo';
-import * as frData from '@/data/mockDataFr';
+import * as enData from '@/data/locales/en';
+import * as deData from '@/data/locales/de';
+import * as roData from '@/data/locales/ro';
+import * as frData from '@/data/locales/fr';
 
 export type Language = 'en' | 'de' | 'ro' | 'fr';
 

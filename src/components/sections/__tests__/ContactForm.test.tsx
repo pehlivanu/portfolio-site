@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import ContactForm from './ContactForm';
+import ContactForm from '../ContactForm';
 import { useLanguage } from '@/context/LanguageContext';
 import { useNavigation } from '@/context/NavigationContext';
 
@@ -33,7 +33,7 @@ describe('ContactForm Component', () => {
 
   it('renders correctly', () => {
     render(<ContactForm />);
-    
+
     expect(screen.getByText('getInTouch')).toBeInTheDocument();
     expect(screen.getByText('name')).toBeInTheDocument();
     expect(screen.getByText('email')).toBeInTheDocument();

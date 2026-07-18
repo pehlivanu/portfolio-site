@@ -62,7 +62,7 @@ const getRoleColor = (type: string) => {
 
 import { useLanguage } from '@/context/LanguageContext';
 
-import * as mockDataEn from '@/data/mockData';
+import * as mockDataEn from '@/data/locales/en';
 type EducationType = (typeof mockDataEn.education)[number];
 
 const EducationCard = ({ edu, isActive }: { edu: EducationType; isActive: boolean }) => {
