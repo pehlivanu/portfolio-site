@@ -10,5 +10,6 @@
     "**/CVS": true,
     "**/next-env.d.ts": true,
     "**/node_modules": false
-  }
+  },
+  "css.lint.unknownAtRules": "ignore"
 }
