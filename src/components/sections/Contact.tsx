@@ -17,7 +17,7 @@ export default function Contact() {
   useEffect(() => {
     if (activeRightPanel !== 'contact' || !sectionRef.current) return;
 
-    const observer = new IntersectionObserver(
+    new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) {
            // Logic for when it leaves viewport
@@ -42,8 +42,9 @@ export default function Contact() {
 
     scrollObserver.observe(sectionRef.current);
 
+    const currentRef = sectionRef.current;
     return () => {
-        if (sectionRef.current) scrollObserver.unobserve(sectionRef.current);
+        if (currentRef) scrollObserver.unobserve(currentRef);
     };
   }, [activeRightPanel, closeRightPanel]);
   

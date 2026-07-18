@@ -1,7 +1,8 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
 
 import React, { useEffect, useState } from 'react';
-import { Github, Clock, Book, GitCommit, Users } from 'lucide-react';
+import { Github, Clock, Book, GitCommit } from 'lucide-react';
 
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -31,7 +32,7 @@ export default function GitHubStats({ onClose }: { onClose?: () => void }) {
         if (!response.ok) throw new Error('Failed to fetch GitHub data');
         const data = await response.json();
         setProfile(data);
-      } catch (err) {
+      } catch {
         setError('Could not load GitHub profile');
       } finally {
         setLoading(false);

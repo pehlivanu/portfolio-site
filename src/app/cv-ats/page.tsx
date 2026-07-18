@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import React, { useMemo, Suspense } from 'react';
@@ -8,6 +9,11 @@ import * as mockDataDe from '@/data/mockDataDe';
 import * as mockDataFr from '@/data/mockDataFr';
 import { translations, Language } from '@/context/LanguageContext';
 import ReactMarkdown from 'react-markdown';
+
+type Job = typeof mockDataEn.experience[number];
+type Education = typeof mockDataEn.education[number];
+type Project = typeof mockDataEn.projects[number];
+type LanguageLevel = typeof mockDataEn.linkedInProfile.languages[number];
 
 function AtsCvContent() {
     const searchParams = useSearchParams();
@@ -111,7 +117,7 @@ function AtsCvContent() {
                 <section className="mb-8">
                     <h2 className="text-xl font-bold uppercase border-b border-gray-400 mb-4 pb-1">{t('cvProfessionalExperience') || 'Experience'}</h2>
                     <div className="space-y-6">
-                        {experience.map((job: any) => (
+                        {experience.map((job: Job) => (
                             <div key={job.id}>
                                 <div className="flex justify-between items-baseline mb-1">
                                     <h3 className="font-bold text-base">{job.role}</h3>
@@ -127,15 +133,15 @@ function AtsCvContent() {
                                             <p className="mb-2 italic">{job.summary}</p>
                                             <ReactMarkdown
                                                 components={{
-                                                    ul: ({node, ...props}) => <ul className="list-disc pl-5 my-2 space-y-1" {...props} />,
-                                                    li: ({node, ...props}) => <li className="pl-1" {...props} />
+                                                    ul: ({node: _node, ...props}) => <ul className="list-disc pl-5 my-2 space-y-1" {...props} />,
+                                                    li: ({node: _node, ...props}) => <li className="pl-1" {...props} />
                                                 }}
                                             >
                                                 {job.description}
                                             </ReactMarkdown>
                                             {job.tech && job.tech.length > 0 && (
                                                 <div className="mt-2 text-sm text-gray-800">
-                                                    <strong>Tech:</strong> {job.tech.flatMap((t: any) => t.skills).join(', ')}
+                                                    <strong>Tech:</strong> {job.tech.flatMap((t: { skills: string[] }) => t.skills).join(', ')}
                                                 </div>
                                             )}
                                         </div>
@@ -152,7 +158,7 @@ function AtsCvContent() {
                 <section className="mb-8">
                     <h2 className="text-xl font-bold uppercase border-b border-gray-400 mb-4 pb-1">{t('cvEducation') || 'Education'}</h2>
                     <div className="space-y-6">
-                        {education.map((edu: any) => (
+                        {education.map((edu: Education) => (
                             <div key={edu.id} className="print-break-inside-avoid">
                                 <div className="flex justify-between items-baseline mb-1">
                                     <h3 className="font-bold text-base">{edu.degree} - {edu.studyField}</h3>
@@ -167,8 +173,8 @@ function AtsCvContent() {
                                         <div className="prose prose-sm max-w-none text-black">
                                             <ReactMarkdown
                                                 components={{
-                                                    ul: ({node, ...props}) => <ul className="list-disc pl-5 my-1 space-y-1" {...props} />,
-                                                    li: ({node, ...props}) => <li className="pl-1" {...props} />
+                                                    ul: ({node: _node, ...props}) => <ul className="list-disc pl-5 my-1 space-y-1" {...props} />,
+                                                    li: ({node: _node, ...props}) => <li className="pl-1" {...props} />
                                                 }}
                                             >
                                                 {edu.description}
@@ -189,7 +195,7 @@ function AtsCvContent() {
                     <section className="mb-8">
                         <h2 className="text-xl font-bold uppercase border-b border-gray-400 mb-4 pb-1">{t('cvProjects') || 'Projects'}</h2>
                         <div className="space-y-4">
-                            {projects.map((proj: any) => (
+                            {projects.map((proj: Project) => (
                                 <div key={proj.id} className="print-break-inside-avoid">
                                     <div className="flex justify-between items-baseline mb-1">
                                         <h3 className="font-bold text-base">{proj.title}</h3>
@@ -208,7 +214,7 @@ function AtsCvContent() {
                 <section className="mb-8 print-break-inside-avoid">
                     <h2 className="text-xl font-bold uppercase border-b border-gray-400 mb-4 pb-1">{t('cvLanguages') || 'Languages'}</h2>
                     <ul className="list-disc pl-5 text-sm">
-                        {linkedInProfile.languages.map((l: any, i: number) => (
+                        {linkedInProfile.languages.map((l: LanguageLevel, i: number) => (
                             <li key={i} className="mb-1">
                                 <strong>{l.language}</strong>: {l.proficiency}
                             </li>

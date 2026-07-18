@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Rocket, Briefcase, Code, GraduationCap, Users, MapPin, Building, Globe, ExternalLink } from 'lucide-react';
+import { Calendar, Rocket, Briefcase, Code, GraduationCap, Users, MapPin, Building, ExternalLink } from 'lucide-react';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import ReactMarkdown from 'react-markdown';
 import Highlight from '@/components/ui/Highlight';
@@ -53,7 +54,10 @@ import { AnimatePresence } from 'framer-motion';
 
 import { useLanguage } from '@/context/LanguageContext';
 
-const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
+import * as mockDataEn from '@/data/mockData';
+type JobType = typeof mockDataEn.experience[number];
+
+const JobCard = ({ job, isActive }: { job: JobType, isActive: boolean }) => {
   const { t } = useLanguage();
   const [isExpanded, setIsExpanded] = React.useState(false);
   const roleColor = getRoleColor(job.type || '');
@@ -101,21 +105,21 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
               >
                   <Briefcase size={12} className="mr-1 shrink-0 text-ide-text/50"/>
                   <span className="text-ide-keyword">{t('companyLabel')}</span>
-                  <span className="group-hover/link:underline decoration-ide-accent underline-offset-4 truncate">"<Highlight text={job.company} />"</span>
+                  <span className="group-hover/link:underline decoration-ide-accent underline-offset-4 truncate">&quot;<Highlight text={job.company} />&quot;</span>
                   <ExternalLink size={10} className="opacity-0 group-hover/link:opacity-100 transition-opacity ml-1 shrink-0" />
               </a>
 
               {/* 2. Duration */}
               <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Period">
                   <Calendar size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                  <span className="text-ide-keyword">{t('timeLabel')}</span>"<Highlight text={job.period} />"
+                  <span className="text-ide-keyword">{t('timeLabel')}</span>&quot;<Highlight text={job.period} />&quot;
               </span>
               
               {/* 3. Industry */}
               {job.industry && (
                 <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Industry">
                    <Building size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                   <span className="text-ide-keyword">{t('typeLabel')}</span>"<Highlight text={job.industry} />"
+                   <span className="text-ide-keyword">{t('typeLabel')}</span>&quot;<Highlight text={job.industry} />&quot;
                 </span>
               )}
 
@@ -123,7 +127,7 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
                {job.locationType && (
                 <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Location">
                    <MapPin size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                   <span className="text-ide-keyword">{t('locationLabel')}</span>"<Highlight text={job.locationType} />"
+                   <span className="text-ide-keyword">{t('locationLabel')}</span>&quot;<Highlight text={job.locationType} />&quot;
                 </span>
               )}
 
@@ -131,7 +135,7 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
               {job.companySize && (
                 <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Company Size">
                   <Users size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                  <span className="text-ide-keyword">{t('sizeLabel')}</span>"<Highlight text={job.companySize} />"
+                  <span className="text-ide-keyword">{t('sizeLabel')}</span>&quot;<Highlight text={job.companySize} />&quot;
                 </span>
               )}
 
@@ -153,7 +157,7 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
                 >
                   <GraduationCap size={12} className="mr-1 shrink-0 group-hover/edu:scale-110 transition-transform text-ide-text/50"/>
                   <span className="text-ide-keyword group-hover/edu:text-ide-accent">{t('educationLabel')}</span>
-                  <span className="group-hover/edu:underline decoration-ide-accent underline-offset-4">"<Highlight text={job.dualStudy} />"</span>
+                  <span className="group-hover/edu:underline decoration-ide-accent underline-offset-4">&quot;<Highlight text={job.dualStudy} />&quot;</span>
                   <ExternalLink size={10} className="opacity-0 group-hover/edu:opacity-100 transition-opacity ml-1 shrink-0" />
                 </button>
               )}
@@ -182,22 +186,22 @@ const JobCard = ({ job, isActive }: { job: any, isActive: boolean }) => {
                      {/* Markdown Description */}
                      <ReactMarkdown
                         components={{
-                          p: ({node, children, ...props}: any) => (
+                          p: ({children, node: _node, ...props}) => (
                             <p className="mb-4 last:mb-0" {...props}>
                               {React.Children.map(children, child => 
                                 typeof child === 'string' ? <Highlight text={child} /> : child
                               )}
                             </p>
                           ),
-                          ul: ({node, children, ...props}: any) => <ul className="list-disc list-outside ml-4 mb-4 space-y-1" {...props}>{children}</ul>,
-                          li: ({node, children, ...props}: any) => (
+                          ul: ({children, node: _node, ...props}) => <ul className="list-disc list-outside ml-4 mb-4 space-y-1" {...props}>{children}</ul>,
+                          li: ({children, node: _node, ...props}) => (
                             <li className="pl-1" {...props}>
                                {React.Children.map(children, child => 
                                 typeof child === 'string' ? <Highlight text={child} /> : child
                               )}
                             </li>
                           ),
-                          strong: ({node, children, ...props}: any) => (
+                          strong: ({children, node: _node, ...props}) => (
                             <strong className="text-ide-text-active font-semibold" {...props}>
                                {React.Children.map(children, child => 
                                 typeof child === 'string' ? <Highlight text={child} /> : child
@@ -266,7 +270,7 @@ export default function Experience() {
       </div>
 
       <div className="relative md:border-l-2 md:border-ide-border ml-0 md:ml-6 space-y-8 md:space-y-16">
-        {experience.map((job, index) => {
+        {experience.map((job) => {
           const isActive = activeMatch?.id === `experience-${job.id}`;
           return <JobCard key={job.id} job={job} isActive={isActive} />;
         })}

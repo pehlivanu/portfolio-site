@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, Award, BookOpen, School, Calendar, MapPin, Code } from 'lucide-react';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
@@ -49,7 +49,10 @@ const getRoleColor = (type: string) => {
 
 import { useLanguage } from '@/context/LanguageContext';
 
-const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
+import * as mockDataEn from '@/data/mockData';
+type EducationType = typeof mockDataEn.education[number];
+
+const EducationCard = ({ edu, isActive }: { edu: EducationType, isActive: boolean }) => {
   const { t } = useLanguage();
   const roleColor = getRoleColor(edu.type || '');
   // Use full name without stripping spaces
@@ -100,10 +103,10 @@ const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
                       rel="noopener noreferrer"
                       className="truncate hover:text-ide-accent hover:underline decoration-ide-accent/50 underline-offset-2 transition-all cursor-pointer"
                     >
-                      "<Highlight text={edu.school} />"
+                      &quot;<Highlight text={edu.school} />&quot;
                     </a>
                   ) : (
-                    <span className="truncate">"<Highlight text={edu.school} />"</span>
+                    <span className="truncate">&quot;<Highlight text={edu.school} />&quot;</span>
                   )}
               </div>
 
@@ -111,20 +114,20 @@ const EducationCard = ({ edu, isActive }: { edu: any, isActive: boolean }) => {
                 <div className="flex items-center gap-1 text-ide-text transition-colors w-full truncate">
                    <Award size={12} className="mr-1 shrink-0 text-ide-text/50"/>
                    <span className="text-ide-keyword">{t('degreeLabel')}</span>
-                   <span className="truncate">"{edu.degree}"</span>
+                   <span className="truncate">&quot;{edu.degree}&quot;</span>
               </div>
 
                {/* 3. Duration */}
                 <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Period">
                    <Calendar size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                   <span className="text-ide-keyword">{t('yearLabel')}</span>"<Highlight text={edu.year} />"
+                   <span className="text-ide-keyword">{t('yearLabel')}</span>&quot;<Highlight text={edu.year} />&quot;
               </span>
 
               {/* 4. Location */}
                {edu.location && (
                  <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Location">
                     <MapPin size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                    <span className="text-ide-keyword">{t('locationLabel')}</span>"<Highlight text={edu.location} />"
+                    <span className="text-ide-keyword">{t('locationLabel')}</span>&quot;<Highlight text={edu.location} />&quot;
                 </span>
               )}
           </div>
@@ -158,7 +161,7 @@ export default function Education() {
       </div>
 
       <div className="relative md:border-l-2 md:border-ide-border ml-0 md:ml-6 space-y-8 md:space-y-16">
-        {education.map((edu, index) => {
+        {education.map((edu) => {
           const isActive = activeMatch?.id === `education-${edu.id}`;
           return <EducationCard key={edu.id} edu={edu} isActive={isActive} />;
         })}

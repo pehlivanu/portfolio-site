@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { Search as SearchIcon, ChevronRight, ChevronDown, X } from 'lucide-react';
+import { ChevronDown, X } from 'lucide-react';
 import { useSearch } from '@/context/SearchContext';
 import { useLanguage } from '@/context/LanguageContext';
 import { useNavigation } from '@/context/NavigationContext';
 
 export default function Search({ onClose, isMobile }: { onClose?: () => void, isMobile?: boolean }) {
-  const { searchTerm, setSearchTerm, activeMatch, setActiveMatch } = useSearch();
+  const { searchTerm, setSearchTerm, setActiveMatch } = useSearch();
   const { scrollToSection } = useNavigation();
   const { data, t } = useLanguage();
   const { experience, education, projects, about } = data;
@@ -23,6 +23,7 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
 
   useEffect(() => {
     if (!searchTerm) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setResults([]);
       setActiveMatch(null); // Clear active match when search is cleared
       return;
@@ -36,7 +37,7 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
       if (job.role.toLowerCase().includes(term) || 
           job.company.toLowerCase().includes(term) || 
           job.description.toLowerCase().includes(term) ||
-          job.tech.some((tGroup: any) => 
+          job.tech.some((tGroup: { category: string; skills: string[] }) => 
             tGroup.category.toLowerCase().includes(term) || 
             tGroup.skills.some((skill: string) => skill.toLowerCase().includes(term))
           )) {
@@ -116,7 +117,7 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
 
   const handleResultClick = (result: SearchResult) => {
     setActiveMatch({ section: result.section, id: result.id });
-    scrollToSection(result.section as any, result.id);
+    scrollToSection(result.section as 'experience' | 'projects' | 'education' | 'contact' | 'about', result.id);
     if (isMobile && onClose) {
       onClose();
     }

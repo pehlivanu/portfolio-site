@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import { Files, Search, LayoutGrid, Settings, Github, Linkedin, Sun, Moon, Globe, FileText, LogIn, LogOut, Lock, Printer } from 'lucide-react';
+import { Files, Search, LayoutGrid, Settings, Github, Linkedin, Sun, Moon, Globe, LogIn, LogOut, Printer } from 'lucide-react';
 import { useSession, signIn, signOut } from "next-auth/react";
 
 import { useTheme } from '@/context/ThemeContext';

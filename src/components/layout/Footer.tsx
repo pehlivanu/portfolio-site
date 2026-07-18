@@ -22,7 +22,7 @@ export default function Footer() {
     }, 20000); // Change every 20 seconds
 
     return () => clearInterval(interval);
-  }, []);
+  }, [technologies.length]);
 
   return (
     <footer className="py-8 text-center text-ide-text opacity-50 text-sm font-mono">

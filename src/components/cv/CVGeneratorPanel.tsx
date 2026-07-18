@@ -12,7 +12,7 @@ export default function CVGeneratorPanel() {
             <h2 className="text-2xl font-bold">{t('cvGenerator') || "CV Generator"}</h2>
             <p className="text-gray-400">
                 Generate a PDF version of the portfolio by printing this page.
-                For best results, enable "Background graphics" in your print settings.
+                For best results, enable &quot;Background graphics&quot; in your print settings.
             </p>
             
             <button

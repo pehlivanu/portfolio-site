@@ -5,7 +5,7 @@ const DATA_DIR = path.join(process.cwd(), 'src/data/linkedin_export');
 const OUTPUT_FILE = path.join(process.cwd(), 'src/data/linkedin_profile.json');
 
 // Simple CSV parser that handles quoted fields with newlines
-function parseCSV(content: string): any[] {
+function parseCSV(content: string): Record<string, string>[] {
   const lines: string[] = [];
   let currentLine = '';
   let inQuotes = false;
@@ -34,7 +34,7 @@ function parseCSV(content: string): any[] {
     if (!line) continue;
     
     const values = parseLine(line);
-    const obj: any = {};
+    const obj: Record<string, string> = {};
     
     headers.forEach((header, index) => {
       // Clean header name (remove spaces, lowercase)
@@ -79,7 +79,7 @@ function parseLine(line: string): string[] {
 async function main() {
   try {
     const files = fs.readdirSync(DATA_DIR);
-    const finalData: any = {};
+    const finalData: Record<string, unknown> = {};
 
     for (const file of files) {
       if (!file.endsWith('.csv')) continue;

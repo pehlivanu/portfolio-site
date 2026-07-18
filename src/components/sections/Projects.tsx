@@ -117,7 +117,7 @@ export default function Projects() {
                           {project.tech.map((t: string, i: number) => (
                               <span key={t}>
                                   <span className="hover:text-ide-text-active transition-colors">
-                                      "<Highlight text={t} />"
+                                      &quot;<Highlight text={t} />&quot;
                                   </span>
                                   {i < project.tech.length - 1 && <span className="text-ide-text-active">, </span>}
                               </span>

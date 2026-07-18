@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Send, AlertCircle, Check, X, MapPin, Globe, Car, Train } from 'lucide-react';
 import { useNavigation } from '@/context/NavigationContext';
 import Highlight from '@/components/ui/Highlight';
@@ -36,6 +36,7 @@ export default function ContactForm() {
     if (cooldownUntil) {
       const remaining = Math.ceil((parseInt(cooldownUntil) - Date.now()) / 1000);
       if (remaining > 0) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setSubmitted(true);
         setCooldown(remaining);
       } else {
@@ -151,7 +152,7 @@ export default function ContactForm() {
       } else {
         setAddressError(t('addressNotFound'));
       }
-    } catch (error) {
+    } catch {
       setAddressError(t('addressError'));
     } finally {
       setIsCheckingLocation(false);

@@ -18,7 +18,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     // Check local storage or system preference on mount
     const savedTheme = localStorage.getItem('theme') as Theme;
     if (savedTheme) {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setTheme(savedTheme);
       document.documentElement.classList.toggle('light-theme', savedTheme === 'light');
     }

@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
+/* eslint-disable @next/next/no-img-element */
 
 import React, { useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -7,9 +9,13 @@ import * as mockDataRo from '@/data/mockDataRo';
 import * as mockDataDe from '@/data/mockDataDe';
 import * as mockDataFr from '@/data/mockDataFr';
 import { translations, Language } from '@/context/LanguageContext';
-import { Terminal, Code, MapPin, Phone, Mail, Linkedin, Globe, Calendar, Award, BookOpen, Layers, Github, ExternalLink, FileText } from 'lucide-react';
+import { Terminal, Code, MapPin, Phone, Mail, Linkedin, Github, ExternalLink, BookOpen, Layers } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import clsx from 'clsx';
+
+type Job = typeof mockDataEn.experience[number];
+type Education = typeof mockDataEn.education[number];
+type Project = typeof mockDataEn.projects[number];
 
 function CVContent() {
     const searchParams = useSearchParams();
@@ -195,7 +201,7 @@ function CVContent() {
                     </div>
                     
                     <div className="space-y-6">
-                        {experience.map((job: any) => (
+                        {experience.map((job: Job) => (
                             <div key={job.id} className={clsx(
                                 "relative pl-4 border-l-2",
                                 theme === 'ide' ? "border-ide-border" : "border-gray-200"
@@ -227,8 +233,8 @@ function CVContent() {
                                             <p className="mb-2">{job.summary}</p>
                                             <ReactMarkdown 
                                                 components={{
-                                                    ul: ({node, ...props}) => <ul className="list-disc pl-5 my-2 space-y-1" {...props} />,
-                                                    li: ({node, ...props}) => <li className="pl-1" {...props} />
+                                                    ul: ({node: _node, ...props}) => <ul className="list-disc pl-5 my-2 space-y-1" {...props} />,
+                                                    li: ({node: _node, ...props}) => <li className="pl-1" {...props} />
                                                 }}
                                             >
                                                 {job.description}
@@ -236,7 +242,7 @@ function CVContent() {
                                             
                                             {job.tech && job.tech.length > 0 && (
                                                 <div className="mt-3 flex flex-wrap gap-1">
-                                                    {job.tech.flatMap((t: any) => t.skills).map((skill: string, i: number) => (
+                                                    {job.tech.flatMap((t: { skills: string[] }) => t.skills).map((skill: string, i: number) => (
                                                         <span key={i} className={clsx(
                                                             "px-2 py-0.5 text-[10px] rounded-full border",
                                                             theme === 'ide' ? "bg-ide-bg border-ide-line text-ide-text opacity-80" : "bg-gray-50 border-gray-200 text-gray-600"
@@ -289,7 +295,7 @@ function CVContent() {
                             <h2 className={clsx("text-lg font-bold uppercase tracking-wide", theme === 'ide' ? "text-ide-text" : "text-gray-900")}>{t('education')}</h2>
                         </div>
                         <div className="space-y-4">
-                            {education.map((edu: any) => (
+                            {education.map((edu: Education) => (
                                 <div key={edu.id} className={clsx(
                                     "print-break-inside-avoid relative pl-4 border-l-2",
                                     theme === 'ide' ? "border-ide-border" : "border-gray-200"
@@ -332,8 +338,8 @@ function CVContent() {
                                                 {edu.description && (
                                                     <ReactMarkdown 
                                                         components={{
-                                                            ul: ({node, ...props}) => <ul className="list-disc pl-5 my-2 space-y-1" {...props} />,
-                                                            li: ({node, ...props}) => <li className="pl-1" {...props} />
+                                                            ul: ({node: _node, ...props}) => <ul className="list-disc pl-5 my-2 space-y-1" {...props} />,
+                                                            li: ({node: _node, ...props}) => <li className="pl-1" {...props} />
                                                         }}
                                                     >
                                                         {edu.description}
@@ -367,7 +373,7 @@ function CVContent() {
                     </div>
                     
                     <div className="grid grid-cols-1 gap-4">
-                        {projects.map((proj: any) => (
+                        {projects.map((proj: Project) => (
                             <div key={proj.id} className={clsx(
                                 "print-break-inside-avoid p-4 rounded-lg border",
                                 theme === 'ide' ? "bg-ide-activity-bar border-ide-border" : "bg-gray-50 border-gray-200"

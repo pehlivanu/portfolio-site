@@ -1,8 +1,8 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
 
 import React from 'react';
-import { Linkedin, MapPin, Users, Briefcase, Award, ExternalLink } from 'lucide-react';
-import { linkedInProfile } from '@/data/mockData';
+import { Linkedin, Users, Briefcase, Award, ExternalLink } from 'lucide-react';
 import { useNavigation } from '@/context/NavigationContext';
 import { useLanguage } from '@/context/LanguageContext';
 
