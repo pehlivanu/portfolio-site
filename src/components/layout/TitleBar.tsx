@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { Menu, X, Minus, Maximize2, Terminal } from 'lucide-react';
+import { LuMenu, LuX, LuMinus, LuMaximize2, LuTerminal } from 'react-icons/lu';
 import MatrixRain from '@/components/ui/MatrixRain';
 
 interface TitleBarProps {
@@ -42,9 +42,9 @@ export default function TitleBar({ onMenuClick }: TitleBarProps) {
           <button
             onClick={onMenuClick}
             className="text-ide-text hover:text-ide-text-active mr-2 md:hidden"
-            aria-label="Toggle Menu"
+            aria-label="Toggle LuMenu"
           >
-            <Menu size={18} />
+            <LuMenu size={18} />
           </button>
           <div className="group flex items-center gap-2">
             <button
@@ -52,7 +52,7 @@ export default function TitleBar({ onMenuClick }: TitleBarProps) {
               title={t('exit')}
               onClick={handleExit}
             >
-              <X size={8} strokeWidth={3} className="text-[#4c0000] opacity-80" />
+              <LuX size={8} strokeWidth={3} className="text-[#4c0000] opacity-80" />
             </button>
             <button
               className="relative flex h-3 w-3 cursor-pointer items-center justify-center rounded-full bg-[#ffbd2e] hover:bg-[#ffbd2e]"
@@ -63,7 +63,7 @@ export default function TitleBar({ onMenuClick }: TitleBarProps) {
                 }
               }}
             >
-              <Minus size={8} strokeWidth={3} className="text-[#5c3e00] opacity-80" />
+              <LuMinus size={8} strokeWidth={3} className="text-[#5c3e00] opacity-80" />
             </button>
             <button
               className="relative flex h-3 w-3 cursor-pointer items-center justify-center rounded-full bg-[#27c93f] hover:bg-[#27c93f]"
@@ -74,7 +74,7 @@ export default function TitleBar({ onMenuClick }: TitleBarProps) {
                 }
               }}
             >
-              <Maximize2 size={8} strokeWidth={3} className="text-[#004d00] opacity-80" />
+              <LuMaximize2 size={8} strokeWidth={3} className="text-[#004d00] opacity-80" />
             </button>
           </div>
         </div>
@@ -95,7 +95,7 @@ export default function TitleBar({ onMenuClick }: TitleBarProps) {
             <div
               className={`mb-8 flex items-center gap-4 font-mono text-xl text-red-500 transition-opacity duration-500 md:text-3xl ${showShutdownText ? 'opacity-100' : 'opacity-0'} ${showShutdownText ? 'animate-pulse' : ''}`}
             >
-              <Terminal size={32} />
+              <LuTerminal size={32} />
               <span className="rounded bg-black/50 p-2">{t('systemShutdown')}</span>
             </div>
 

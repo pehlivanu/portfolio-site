@@ -1,6 +1,7 @@
 'use client';
 
-import { Github, Clock, Book, GitCommit } from 'lucide-react';
+import { FaGithub } from 'react-icons/fa';
+import { LuClock, LuBook, LuGitCommitVertical } from 'react-icons/lu';
 
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
@@ -67,7 +68,7 @@ export default function GitHubStats({
             className="border-ide-bg rounded-full border-4 object-cover shadow-lg"
           />
           <div className="bg-ide-bg absolute right-1 bottom-1 rounded-full p-1">
-            <Github size={20} className="text-ide-text-active" />
+            <FaGithub size={20} className="text-ide-text-active" />
           </div>
         </div>
 
@@ -85,7 +86,7 @@ export default function GitHubStats({
 
         <div className="w-full space-y-4">
           <div className="text-ide-text flex items-center gap-3 text-sm">
-            <Clock size={16} className="text-ide-accent" />
+            <LuClock size={16} className="text-ide-accent" />
             <span>
               {t('joined')} {new Date(profile.created_at).getFullYear()}
             </span>
@@ -93,7 +94,7 @@ export default function GitHubStats({
 
           <div className="mt-6 grid grid-cols-2 gap-3">
             <div className="bg-ide-bg border-ide-border rounded-lg border p-3 text-center">
-              <Book
+              <LuBook
                 size={20}
                 className="mx-auto mb-2 text-blue-400 [.light-theme_&]:text-blue-700"
               />
@@ -104,7 +105,7 @@ export default function GitHubStats({
             </div>
 
             <div className="bg-ide-bg border-ide-border rounded-lg border p-3 text-center">
-              <GitCommit
+              <LuGitCommitVertical
                 size={20}
                 className="mx-auto mb-2 text-green-400 [.light-theme_&]:text-green-700"
               />

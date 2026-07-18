@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Linkedin, Users, Briefcase, Award, ExternalLink } from 'lucide-react';
+import { LuLinkedin, LuUsers, LuBriefcase, LuAward, LuExternalLink } from 'react-icons/lu';
 import { useNavigation } from '@/context/NavigationContext';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -43,7 +43,7 @@ export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
             className="border-ide-bg rounded-full border-4 object-cover shadow-lg"
           />
           <div className="bg-ide-bg absolute right-1 bottom-1 rounded-full p-1">
-            <Linkedin size={20} className="text-ide-text-active" />
+            <LuLinkedin size={20} className="text-ide-text-active" />
           </div>
         </div>
 
@@ -57,12 +57,12 @@ export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
           className="mb-6 flex items-center gap-2 rounded-md bg-[#0077b5] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#006396]"
         >
           <span>{t('viewProfile')}</span>
-          <ExternalLink size={14} />
+          <LuExternalLink size={14} />
         </a>
 
         <div className="w-full space-y-4">
           <div className="text-ide-text flex items-center gap-3 text-sm">
-            <Users size={16} className="text-ide-accent" />
+            <LuUsers size={16} className="text-ide-accent" />
             <span>
               {profile.connections} {t('connections')}
             </span>
@@ -70,7 +70,7 @@ export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
 
           <div className="bg-ide-bg border-ide-border mt-4 rounded-lg border p-4 text-left">
             <h3 className="text-ide-text mb-2 flex items-center gap-2 text-xs font-bold uppercase">
-              <Briefcase size={14} /> {t('about')}
+              <LuBriefcase size={14} /> {t('about')}
             </h3>
             <p className="text-ide-text line-clamp-4 text-sm leading-relaxed">{profile.about}</p>
             <button
@@ -120,7 +120,7 @@ export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
 
                 return (
                   <Wrapper key={index} {...wrapperProps}>
-                    <Award
+                    <LuAward
                       size={20}
                       className="shrink-0 text-yellow-500 transition-transform group-hover:scale-110 [.light-theme_&]:text-yellow-700"
                     />
@@ -136,7 +136,7 @@ export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
                       </div>
                     </div>
                     {isClickable && (
-                      <ExternalLink
+                      <LuExternalLink
                         size={14}
                         className="text-ide-text shrink-0 opacity-0 transition-opacity group-hover:opacity-100"
                       />

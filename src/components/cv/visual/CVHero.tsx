@@ -1,9 +1,10 @@
 'use client';
 
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import React from 'react';
 import clsx from 'clsx';
 import Image from 'next/image';
-import { Terminal, MapPin, Phone, Mail, Linkedin, Github } from 'lucide-react';
+import { LuTerminal, LuMapPin, LuPhone, LuMail } from 'react-icons/lu';
 import ReactMarkdown from 'react-markdown';
 import { LinkedInProfile, AboutData } from '@/types/data';
 
@@ -28,7 +29,7 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel, t }
       <div className="flex items-start justify-between gap-8">
         <div className="flex-1 space-y-4">
           <div className="mb-2 flex items-center gap-2 text-blue-600">
-            <Terminal size={18} />
+            <LuTerminal size={18} />
             <span className="font-mono text-sm font-semibold">
               {(() => {
                 const rawTitle = t('portfolioTitle');
@@ -86,13 +87,13 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel, t }
           <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-600">
             {(linkedInProfile.address || linkedInProfile.location) && (
               <div className="col-span-2 flex items-center gap-2">
-                <MapPin size={14} className="text-blue-500" />
+                <LuMapPin size={14} className="text-blue-500" />
                 <span>{linkedInProfile.address || linkedInProfile.location}</span>
               </div>
             )}
             {linkedInProfile.phone && (
               <div className="flex items-center gap-2">
-                <Phone size={14} className="text-blue-500" />
+                <LuPhone size={14} className="text-blue-500" />
                 <a
                   href={`tel:${linkedInProfile.phone.replace(/\\s+/g, '')}`}
                   className="text-gray-600 hover:text-blue-600 hover:underline"
@@ -102,7 +103,7 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel, t }
               </div>
             )}
             <div className="flex items-center gap-2">
-              <Mail size={14} className="text-blue-500" />
+              <LuMail size={14} className="text-blue-500" />
               <a
                 href={`mailto:${linkedInProfile.email || 'ionesiliviu@yahoo.com'}`}
                 className="text-gray-600 hover:text-blue-600 hover:underline"
@@ -111,7 +112,7 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel, t }
               </a>
             </div>
             <div className="flex items-center gap-2">
-              <Linkedin size={14} className="text-blue-500" />
+              <FaLinkedin size={14} className="text-blue-500" />
               <a
                 href="https://linkedin.com/in/liviu-ionesi"
                 target="_blank"
@@ -122,7 +123,7 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel, t }
               </a>
             </div>
             <div className="flex items-center gap-2">
-              <Github size={14} className="text-blue-500" />
+              <FaGithub size={14} className="text-blue-500" />
               <a
                 href="https://github.com/pehlivanu"
                 target="_blank"

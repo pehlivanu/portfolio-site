@@ -1,7 +1,8 @@
-"use client";
+'use client';
 
 import React from 'react';
-import { GitBranch, RefreshCw, XCircle, AlertTriangle, Bell, Check, Mail } from 'lucide-react';
+import { LuGitBranch, LuRefreshCw, LuBell, LuCheck, LuMail } from 'react-icons/lu';
+import { FaTimesCircle, FaExclamationTriangle } from 'react-icons/fa';
 import { useNavigation } from '@/context/NavigationContext';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -27,56 +28,56 @@ export default function StatusBar() {
   };
 
   return (
-    <div className="h-8 bg-ide-status-bar hidden md:flex items-center justify-between px-3 text-xs text-ide-status-bar-foreground select-none z-30 border-t border-ide-border">
+    <div className="bg-ide-status-bar text-ide-status-bar-foreground border-ide-border z-30 hidden h-8 items-center justify-between border-t px-3 text-xs select-none md:flex">
       <div className="flex items-center gap-4">
-        <div className="flex items-center gap-1 hover:bg-ide-status-bar-hover px-1 rounded cursor-pointer transition-colors">
-          <GitBranch size={12} />
+        <div className="hover:bg-ide-status-bar-hover flex cursor-pointer items-center gap-1 rounded px-1 transition-colors">
+          <LuGitBranch size={12} />
           <span>{t('mainBranch')}</span>
         </div>
-        <div className="flex items-center gap-1 hover:bg-ide-status-bar-hover px-1 rounded cursor-pointer transition-colors">
-          <RefreshCw size={12} />
+        <div className="hover:bg-ide-status-bar-hover flex cursor-pointer items-center gap-1 rounded px-1 transition-colors">
+          <LuRefreshCw size={12} />
         </div>
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-1 hover:bg-ide-status-bar-hover px-1 rounded cursor-pointer transition-colors">
-            <XCircle size={12} />
+          <div className="hover:bg-ide-status-bar-hover flex cursor-pointer items-center gap-1 rounded px-1 transition-colors">
+            <FaTimesCircle size={12} />
             <span>0</span>
           </div>
-          <div className="flex items-center gap-1 hover:bg-ide-status-bar-hover px-1 rounded cursor-pointer transition-colors">
-            <AlertTriangle size={12} />
+          <div className="hover:bg-ide-status-bar-hover flex cursor-pointer items-center gap-1 rounded px-1 transition-colors">
+            <FaExclamationTriangle size={12} />
             <span>0</span>
           </div>
         </div>
       </div>
-      
+
       <div className="flex items-center gap-4">
-        <div className="flex items-center gap-1 hover:bg-ide-status-bar-hover px-1 rounded cursor-pointer transition-colors">
-            {contactStatus === 'sent' ? (
-                <>
-                    <Check size={12} />
-                    <span>{t('emailSent')}</span>
-                </>
-            ) : (
-                <>
-                    <Mail size={12} />
-                    <span>{t('notContacted')}</span>
-                </>
-            )}
+        <div className="hover:bg-ide-status-bar-hover flex cursor-pointer items-center gap-1 rounded px-1 transition-colors">
+          {contactStatus === 'sent' ? (
+            <>
+              <LuCheck size={12} />
+              <span>{t('emailSent')}</span>
+            </>
+          ) : (
+            <>
+              <LuMail size={12} />
+              <span>{t('notContacted')}</span>
+            </>
+          )}
         </div>
-        
-        <div className="flex items-center gap-1 hover:bg-ide-status-bar-hover px-1 rounded cursor-pointer transition-colors">
-           <span>{t('lnCol')}</span>
+
+        <div className="hover:bg-ide-status-bar-hover flex cursor-pointer items-center gap-1 rounded px-1 transition-colors">
+          <span>{t('lnCol')}</span>
         </div>
-        <div className="flex items-center gap-1 hover:bg-ide-status-bar-hover px-1 rounded cursor-pointer transition-colors">
-           <span>{t('utf8')}</span>
+        <div className="hover:bg-ide-status-bar-hover flex cursor-pointer items-center gap-1 rounded px-1 transition-colors">
+          <span>{t('utf8')}</span>
         </div>
-        <div className="flex items-center gap-1 hover:bg-ide-status-bar-hover px-1 rounded cursor-pointer transition-colors min-w-[80px] justify-center">
-           <span>{getLanguageForSection(activeSection)}</span>
+        <div className="hover:bg-ide-status-bar-hover flex min-w-[80px] cursor-pointer items-center justify-center gap-1 rounded px-1 transition-colors">
+          <span>{getLanguageForSection(activeSection)}</span>
         </div>
-        <div className="flex items-center gap-1 hover:bg-ide-status-bar-hover px-1 rounded cursor-pointer transition-colors">
-           <span>{zoomLevel}%</span>
+        <div className="hover:bg-ide-status-bar-hover flex cursor-pointer items-center gap-1 rounded px-1 transition-colors">
+          <span>{zoomLevel}%</span>
         </div>
-        <div className="flex items-center gap-1 hover:bg-ide-status-bar-hover px-1 rounded cursor-pointer transition-colors">
-            <Bell size={12} />
+        <div className="hover:bg-ide-status-bar-hover flex cursor-pointer items-center gap-1 rounded px-1 transition-colors">
+          <LuBell size={12} />
         </div>
       </div>
     </div>

@@ -1,8 +1,16 @@
-"use client";
+'use client';
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, Award, BookOpen, School, Calendar, MapPin, Code } from 'lucide-react';
+import {
+  LuGraduationCap,
+  LuAward,
+  LuBookOpen,
+  LuSchool,
+  LuCalendar,
+  LuMapPin,
+  LuCode,
+} from 'react-icons/lu';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useSearch } from '@/context/SearchContext';
 import Highlight from '@/components/ui/Highlight';
@@ -10,15 +18,15 @@ import Highlight from '@/components/ui/Highlight';
 const getIconByType = (type: string) => {
   switch (type) {
     case 'dual-study':
-      return <Code size={20} className="text-ide-text-active" />;
+      return <LuCode size={20} className="text-ide-text-active" />;
     case 'master':
-      return <Award size={20} className="text-ide-text-active" />;
+      return <LuAward size={20} className="text-ide-text-active" />;
     case 'bachelor':
-      return <GraduationCap size={20} className="text-ide-text-active" />;
+      return <LuGraduationCap size={20} className="text-ide-text-active" />;
     case 'high-school':
-      return <School size={20} className="text-ide-text-active" />;
+      return <LuSchool size={20} className="text-ide-text-active" />;
     default:
-      return <BookOpen size={20} className="text-ide-text-active" />;
+      return <LuBookOpen size={20} className="text-ide-text-active" />;
   }
 };
 
@@ -39,20 +47,25 @@ const getIconBackground = (type: string) => {
 
 const getRoleColor = (type: string) => {
   switch (type) {
-    case 'dual-study': return 'text-blue-400 [.light-theme_&]:text-blue-700';
-    case 'master': return 'text-purple-400 [.light-theme_&]:text-purple-700';
-    case 'bachelor': return 'text-green-400 [.light-theme_&]:text-green-700';
-    case 'high-school': return 'text-orange-400 [.light-theme_&]:text-orange-700';
-    default: return 'text-blue-400 [.light-theme_&]:text-blue-700';
+    case 'dual-study':
+      return 'text-blue-400 [.light-theme_&]:text-blue-700';
+    case 'master':
+      return 'text-purple-400 [.light-theme_&]:text-purple-700';
+    case 'bachelor':
+      return 'text-green-400 [.light-theme_&]:text-green-700';
+    case 'high-school':
+      return 'text-orange-400 [.light-theme_&]:text-orange-700';
+    default:
+      return 'text-blue-400 [.light-theme_&]:text-blue-700';
   }
 };
 
 import { useLanguage } from '@/context/LanguageContext';
 
 import * as mockDataEn from '@/data/mockData';
-type EducationType = typeof mockDataEn.education[number];
+type EducationType = (typeof mockDataEn.education)[number];
 
-const EducationCard = ({ edu, isActive }: { edu: EducationType, isActive: boolean }) => {
+const EducationCard = ({ edu, isActive }: { edu: EducationType; isActive: boolean }) => {
   const { t } = useLanguage();
   const roleColor = getRoleColor(edu.type || '');
   // Use full name without stripping spaces
@@ -65,81 +78,107 @@ const EducationCard = ({ edu, isActive }: { edu: EducationType, isActive: boolea
       initial={{ opacity: 0, x: -20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
-      className={`relative pl-0 md:pl-16 transition-all duration-500 ${isActive ? 'bg-orange-500/10 -mx-4 px-4 py-4 rounded-lg border-l-4 border-orange-500' : ''}`}
+      className={`relative pl-0 transition-all duration-500 md:pl-16 ${isActive ? '-mx-4 rounded-lg border-l-4 border-orange-500 bg-orange-500/10 px-4 py-4' : ''}`}
     >
       {/* Timeline Icon */}
-      <div className={`hidden md:flex absolute -left-[19px] top-0 w-10 h-10 rounded-full items-center justify-center border-4 border-ide-bg z-10 ${getIconBackground(edu.type || '')}`}>
+      <div
+        className={`border-ide-bg absolute top-0 -left-[19px] z-10 hidden h-10 w-10 items-center justify-center rounded-full border-4 md:flex ${getIconBackground(edu.type || '')}`}
+      >
         {getIconByType(edu.type || '')}
       </div>
 
-      <div className="bg-ide-card-bg p-6 rounded-lg border border-ide-border hover:border-ide-accent/50 transition-colors group relative overflow-hidden">
-         {/* Subtle gradient overlay based on role type */}
-         <div className={`absolute top-0 left-0 w-1 h-full opacity-50 ${
-            edu.type === 'master' ? 'bg-purple-500' : 
-            edu.type === 'dual-study' ? 'bg-blue-500' : 
-            edu.type === 'bachelor' ? 'bg-green-500' : 'bg-orange-500'
-        }`} />
+      <div className="bg-ide-card-bg border-ide-border hover:border-ide-accent/50 group relative overflow-hidden rounded-lg border p-6 transition-colors">
+        {/* Subtle gradient overlay based on role type */}
+        <div
+          className={`absolute top-0 left-0 h-full w-1 opacity-50 ${
+            edu.type === 'master'
+              ? 'bg-purple-500'
+              : edu.type === 'dual-study'
+                ? 'bg-blue-500'
+                : edu.type === 'bachelor'
+                  ? 'bg-green-500'
+                  : 'bg-orange-500'
+          }`}
+        />
 
-        <div className="flex flex-col mb-4">
-           {/* Row 1: Study Field (Tag Style) */}
-           <div className="flex flex-col mb-2">
-              <h3 className="text-lg md:text-2xl font-mono font-bold text-ide-text-active transition-colors flex flex-wrap items-center gap-1">
-                <span className="text-gray-500 opacity-100 font-bold">&lt;</span>
-                <span className={`${roleColor}`}><Highlight text={tagContent} /></span>
-                <span className="text-gray-500 opacity-100 font-bold">/&gt;</span>
-              </h3>
+        <div className="mb-4 flex flex-col">
+          {/* Row 1: Study Field (Tag Style) */}
+          <div className="mb-2 flex flex-col">
+            <h3 className="text-ide-text-active flex flex-wrap items-center gap-1 font-mono text-lg font-bold transition-colors md:text-2xl">
+              <span className="font-bold text-gray-500 opacity-100">&lt;</span>
+              <span className={`${roleColor}`}>
+                <Highlight text={tagContent} />
+              </span>
+              <span className="font-bold text-gray-500 opacity-100">/&gt;</span>
+            </h3>
           </div>
 
           {/* Row 2: Metadata Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm pl-4 font-mono">
-              {/* 1. Institution */}
-              <div className="flex items-center gap-1 text-ide-text transition-colors w-full truncate">
-                  <School size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                  <span className="text-ide-keyword">{t('institutionLabel')}</span>
-                  {edu.url ? (
-                    <a 
-                      href={edu.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="truncate hover:text-ide-accent hover:underline decoration-ide-accent/50 underline-offset-2 transition-all cursor-pointer"
-                    >
-                      &quot;<Highlight text={edu.school} />&quot;
-                    </a>
-                  ) : (
-                    <span className="truncate">&quot;<Highlight text={edu.school} />&quot;</span>
-                  )}
-              </div>
-
-               {/* 2. Degree Name */}
-                <div className="flex items-center gap-1 text-ide-text transition-colors w-full truncate">
-                   <Award size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                   <span className="text-ide-keyword">{t('degreeLabel')}</span>
-                   <span className="truncate">&quot;{edu.degree}&quot;</span>
-              </div>
-
-               {/* 3. Duration */}
-                <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Period">
-                   <Calendar size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                   <span className="text-ide-keyword">{t('yearLabel')}</span>&quot;<Highlight text={edu.year} />&quot;
-              </span>
-
-              {/* 4. Location */}
-               {edu.location && (
-                 <span className="flex items-center gap-1 text-ide-text/90 hover:text-ide-text transition-colors cursor-default" title="Location">
-                    <MapPin size={12} className="mr-1 shrink-0 text-ide-text/50"/>
-                    <span className="text-ide-keyword">{t('locationLabel')}</span>&quot;<Highlight text={edu.location} />&quot;
+          <div className="grid grid-cols-1 gap-x-8 gap-y-2 pl-4 font-mono text-sm md:grid-cols-2">
+            {/* 1. Institution */}
+            <div className="text-ide-text flex w-full items-center gap-1 truncate transition-colors">
+              <LuSchool size={12} className="text-ide-text/50 mr-1 shrink-0" />
+              <span className="text-ide-keyword">{t('institutionLabel')}</span>
+              {edu.url ? (
+                <a
+                  href={edu.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-ide-accent decoration-ide-accent/50 cursor-pointer truncate underline-offset-2 transition-all hover:underline"
+                >
+                  &quot;
+                  <Highlight text={edu.school} />
+                  &quot;
+                </a>
+              ) : (
+                <span className="truncate">
+                  &quot;
+                  <Highlight text={edu.school} />
+                  &quot;
                 </span>
               )}
+            </div>
+
+            {/* 2. Degree Name */}
+            <div className="text-ide-text flex w-full items-center gap-1 truncate transition-colors">
+              <LuAward size={12} className="text-ide-text/50 mr-1 shrink-0" />
+              <span className="text-ide-keyword">{t('degreeLabel')}</span>
+              <span className="truncate">&quot;{edu.degree}&quot;</span>
+            </div>
+
+            {/* 3. Duration */}
+            <span
+              className="text-ide-text/90 hover:text-ide-text flex cursor-default items-center gap-1 transition-colors"
+              title="Period"
+            >
+              <LuCalendar size={12} className="text-ide-text/50 mr-1 shrink-0" />
+              <span className="text-ide-keyword">{t('yearLabel')}</span>&quot;
+              <Highlight text={edu.year} />
+              &quot;
+            </span>
+
+            {/* 4. Location */}
+            {edu.location && (
+              <span
+                className="text-ide-text/90 hover:text-ide-text flex cursor-default items-center gap-1 transition-colors"
+                title="Location"
+              >
+                <LuMapPin size={12} className="text-ide-text/50 mr-1 shrink-0" />
+                <span className="text-ide-keyword">{t('locationLabel')}</span>&quot;
+                <Highlight text={edu.location} />
+                &quot;
+              </span>
+            )}
           </div>
         </div>
 
-        <div className="text-ide-text mb-0 leading-relaxed text-sm">
-             {/* Summary Section - Always Visible */}
-             {edu.summary && (
-                <div className="mb-4 text-base md:text-lg italic font-normal px-4 py-3 bg-ide-bg rounded-lg border-l-2 border-ide-accent/20">
-                  <Highlight text={edu.summary} />
-                </div>
-              )}
+        <div className="text-ide-text mb-0 text-sm leading-relaxed">
+          {/* Summary Section - Always Visible */}
+          {edu.summary && (
+            <div className="bg-ide-bg border-ide-accent/20 mb-4 rounded-lg border-l-2 px-4 py-3 text-base font-normal italic md:text-lg">
+              <Highlight text={edu.summary} />
+            </div>
+          )}
         </div>
       </div>
     </motion.div>
@@ -153,14 +192,14 @@ export default function Education() {
   const { education } = data;
 
   return (
-    <section id="education" className="py-20 px-8 max-w-7xl mx-auto w-full">
-      <div className="flex items-center gap-2 mb-12">
+    <section id="education" className="mx-auto w-full max-w-7xl px-8 py-20">
+      <div className="mb-12 flex items-center gap-2">
         <span className="text-ide-accent font-mono text-xl">03.</span>
-        <h2 className="text-3xl font-bold text-ide-text-active">{t('education')}</h2>
-        <div className="h-[1px] bg-ide-border flex-1 ml-4"></div>
+        <h2 className="text-ide-text-active text-3xl font-bold">{t('education')}</h2>
+        <div className="bg-ide-border ml-4 h-[1px] flex-1"></div>
       </div>
 
-      <div className="relative md:border-l-2 md:border-ide-border ml-0 md:ml-6 space-y-8 md:space-y-16">
+      <div className="md:border-ide-border relative ml-0 space-y-8 md:ml-6 md:space-y-16 md:border-l-2">
         {education.map((edu) => {
           const isActive = activeMatch?.id === `education-${edu.id}`;
           return <EducationCard key={edu.id} edu={edu} isActive={isActive} />;

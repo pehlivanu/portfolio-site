@@ -1,19 +1,18 @@
 'use client';
 
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import React from 'react';
 import {
-  Files,
-  Search,
-  LayoutGrid,
-  Github,
-  Linkedin,
-  Sun,
-  Moon,
-  Globe,
-  LogIn,
-  LogOut,
-  Printer,
-} from 'lucide-react';
+  LuFiles,
+  LuSearch,
+  LuLayoutGrid,
+  LuSun,
+  LuMoon,
+  LuGlobe,
+  LuLogIn,
+  LuLogOut,
+  LuPrinter,
+} from 'react-icons/lu';
 import { useSession, signIn, signOut } from 'next-auth/react';
 
 import { useTheme } from '@/context/ThemeContext';
@@ -90,7 +89,7 @@ export default function Sidebar({
             aria-label={t('explorer')}
             onClick={() => handleViewClick('explorer')}
           >
-            <Files size={24} strokeWidth={1.5} />
+            <LuFiles size={24} strokeWidth={1.5} />
           </button>
           <button
             className={`cursor-pointer p-2 ${activeView === 'search' ? 'border-ide-accent text-ide-text-active border-l-2' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
@@ -98,7 +97,7 @@ export default function Sidebar({
             aria-label={t('search')}
             onClick={() => handleViewClick('search')}
           >
-            <Search size={24} strokeWidth={1.5} />
+            <LuSearch size={24} strokeWidth={1.5} />
           </button>
           <button
             className={`cursor-pointer p-2 ${activeView === 'github' ? 'border-ide-accent text-ide-text-active border-l-2' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
@@ -106,7 +105,7 @@ export default function Sidebar({
             aria-label={t('githubStats')}
             onClick={() => handleViewClick('github')}
           >
-            <Github size={24} strokeWidth={1.5} />
+            <FaGithub size={24} strokeWidth={1.5} />
           </button>
           <button
             className={`cursor-pointer p-2 ${activeView === 'linkedin' ? 'border-ide-accent text-ide-text-active border-l-2' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
@@ -114,7 +113,7 @@ export default function Sidebar({
             aria-label={t('linkedinProfile')}
             onClick={() => handleViewClick('linkedin')}
           >
-            <Linkedin size={24} strokeWidth={1.5} />
+            <FaLinkedin size={24} strokeWidth={1.5} />
           </button>
           <button
             className={`cursor-pointer p-2 ${activeRightPanel === 'contact' ? 'border-ide-accent text-ide-text-active border-l-2' : 'text-ide-text hover:text-ide-text-active opacity-90 hover:opacity-100'}`}
@@ -122,7 +121,7 @@ export default function Sidebar({
             aria-label={t('contactMe')}
             onClick={handleContactClick}
           >
-            <LayoutGrid size={24} strokeWidth={1.5} />
+            <LuLayoutGrid size={24} strokeWidth={1.5} />
           </button>
 
           {/* Protected CV Generator Button */}
@@ -133,7 +132,7 @@ export default function Sidebar({
               aria-label="CV Configuration"
               onClick={() => handleViewClick('cv-config')}
             >
-              <Printer size={24} strokeWidth={1.5} />
+              <LuPrinter size={24} strokeWidth={1.5} />
             </button>
           )}
         </div>
@@ -144,7 +143,7 @@ export default function Sidebar({
             title={`${t('switchLanguage')} (${language.toUpperCase()})`}
             aria-label={t('switchLanguage')}
           >
-            <Globe size={24} strokeWidth={1.5} />
+            <LuGlobe size={24} strokeWidth={1.5} />
             <span className="bg-ide-bg absolute right-0 bottom-0 rounded px-0.5 text-[10px] leading-none font-bold shadow-sm">
               {language.toUpperCase()}
             </span>
@@ -156,9 +155,9 @@ export default function Sidebar({
             aria-label={t('switchTheme')}
           >
             {theme === 'dark' ? (
-              <Sun size={24} strokeWidth={1.5} />
+              <LuSun size={24} strokeWidth={1.5} />
             ) : (
-              <Moon size={24} strokeWidth={1.5} />
+              <LuMoon size={24} strokeWidth={1.5} />
             )}
           </button>
 
@@ -170,9 +169,9 @@ export default function Sidebar({
             aria-label={status === 'authenticated' ? 'Sign Out' : 'Sign In'}
           >
             {status === 'authenticated' ? (
-              <LogOut size={24} strokeWidth={1.5} />
+              <LuLogOut size={24} strokeWidth={1.5} />
             ) : (
-              <LogIn size={24} strokeWidth={1.5} />
+              <LuLogIn size={24} strokeWidth={1.5} />
             )}
           </button>
         </div>
