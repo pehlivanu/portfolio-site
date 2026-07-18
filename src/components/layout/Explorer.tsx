@@ -10,7 +10,7 @@ export default function Explorer({ onClose, isMobile }: { onClose?: () => void, 
   const { activeSection, scrollToSection } = useNavigation();
   const { t } = useLanguage();
 
-  const handleItemClick = (section: { id: string, name: string, type: string }) => {
+  const handleItemClick = (section: 'about' | 'experience' | 'education' | 'projects' | 'contact') => {
     scrollToSection(section);
     if (isMobile && onClose) {
       onClose();

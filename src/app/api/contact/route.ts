@@ -2,17 +2,17 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { rateLimit } from '@/lib/rateLimit';
 
+const escapeMap: Record<string, string> = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  "'": '&#39;',
+  '"': '&quot;'
+};
+
 function escapeHTML(str: string) {
   if (!str) return str;
-  return str.replace(/[&<>'"]/g, 
-    tag => ({
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      "'": '&#39;',
-      '"': '&quot;'
-    }[tag as keyof typeof Object.prototype] || tag)
-  );
+  return str.replace(/[&<>'"]/g, tag => escapeMap[tag] || tag);
 }
 
 export async function POST(request: Request) {
