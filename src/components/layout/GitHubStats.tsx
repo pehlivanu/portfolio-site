@@ -1,12 +1,11 @@
-"use client";
-/* eslint-disable @next/next/no-img-element */
+'use client';
 
-import React, { useEffect, useState } from 'react';
 import { Github, Clock, Book, GitCommit } from 'lucide-react';
 
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 
-interface GitHubProfile {
+export interface GitHubProfile {
   login: string;
   avatar_url: string;
   html_url: string;
@@ -19,105 +18,129 @@ interface GitHubProfile {
   created_at: string;
 }
 
-export default function GitHubStats({ onClose }: { onClose?: () => void }) {
-  const [profile, setProfile] = useState<GitHubProfile | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
+export default function GitHubStats({
+  onClose,
+  initialProfile,
+}: {
+  onClose?: () => void;
+  initialProfile?: GitHubProfile | null;
+}) {
   const { t } = useLanguage();
 
-  useEffect(() => {
-    const fetchGitHubData = async () => {
-      try {
-        const response = await fetch('https://api.github.com/users/pehlivanu');
-        if (!response.ok) throw new Error('Failed to fetch GitHub data');
-        const data = await response.json();
-        setProfile(data);
-      } catch {
-        setError('Could not load GitHub profile');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchGitHubData();
-  }, []);
-
-  if (loading) return <div className="p-8 text-ide-text text-center">{t('loadingGithub')}</div>;
-  if (error) return <div className="p-8 text-red-400 [.light-theme_&]:text-red-600 text-center">{t('errorGithub')}</div>;
-  if (!profile) return null;
+  if (!initialProfile)
+    return (
+      <div className="p-8 text-center text-red-400 [.light-theme_&]:text-red-600">
+        {t('errorGithub')}
+      </div>
+    );
+  const profile = initialProfile;
 
   return (
-    <div className="w-full md:w-80 bg-ide-sidebar flex flex-col h-full border-r border-ide-border/30 flex overflow-y-auto">
-      <div className="p-3 text-xs font-bold text-ide-text tracking-wider uppercase border-b border-ide-border/30 flex justify-between items-center">
+    <div className="bg-ide-sidebar border-ide-border/30 flex h-full w-full flex-col overflow-y-auto border-r md:w-80">
+      <div className="text-ide-text border-ide-border/30 flex items-center justify-between border-b p-3 text-xs font-bold tracking-wider uppercase">
         <span>{t('githubStats')}</span>
-        <button onClick={onClose} className="md:hidden text-ide-text hover:text-ide-text-active">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+        <button onClick={onClose} className="text-ide-text hover:text-ide-text-active md:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <line x1="18" x2="6" y1="6" y2="18" />
+            <line x1="6" x2="18" y1="6" y2="18" />
+          </svg>
         </button>
       </div>
-      
-      <div className="p-6 flex flex-col items-center text-center">
-        <div className="relative mb-4">
-          <img 
-            src={profile.avatar_url} 
-            alt={profile.name} 
-            className="w-24 h-24 rounded-full border-4 border-ide-bg shadow-lg"
+
+      <div className="flex flex-col items-center p-6 text-center">
+        <div className="relative mb-4 h-24 w-24">
+          <Image
+            src={profile.avatar_url}
+            alt={profile.name}
+            fill
+            sizes="96px"
+            className="border-ide-bg rounded-full border-4 object-cover shadow-lg"
           />
-          <div className="absolute bottom-1 right-1 bg-ide-bg p-1 rounded-full">
+          <div className="bg-ide-bg absolute right-1 bottom-1 rounded-full p-1">
             <Github size={20} className="text-ide-text-active" />
           </div>
         </div>
-        
-        <h2 className="text-xl font-bold text-ide-text-active mb-1">{profile.name}</h2>
-        <a 
-          href={profile.html_url} 
-          target="_blank" 
+
+        <h2 className="text-ide-text-active mb-1 text-xl font-bold">{profile.name}</h2>
+        <a
+          href={profile.html_url}
+          target="_blank"
           rel="noopener noreferrer"
-          className="text-ide-accent hover:underline text-sm mb-4"
+          className="text-ide-accent mb-4 text-sm hover:underline"
         >
           @{profile.login}
         </a>
-        
-        <p className="text-ide-text text-sm mb-6 leading-relaxed">
-          {profile.bio}
-        </p>
-        
-        <div className="w-full space-y-4">
 
-          
-          <div className="flex items-center gap-3 text-sm text-ide-text">
+        <p className="text-ide-text mb-6 text-sm leading-relaxed">{profile.bio}</p>
+
+        <div className="w-full space-y-4">
+          <div className="text-ide-text flex items-center gap-3 text-sm">
             <Clock size={16} className="text-ide-accent" />
-            <span>{t('joined')} {new Date(profile.created_at).getFullYear()}</span>
+            <span>
+              {t('joined')} {new Date(profile.created_at).getFullYear()}
+            </span>
           </div>
-          
-          <div className="grid grid-cols-2 gap-3 mt-6">
-            <div className="bg-ide-bg p-3 rounded-lg border border-ide-border text-center">
-              <Book size={20} className="mx-auto mb-2 text-blue-400 [.light-theme_&]:text-blue-700" />
-              <div className="text-xl font-bold text-ide-text-active">{profile.public_repos}</div>
-              <div className="text-xs text-gray-500 [.light-theme_&]:text-gray-600">{t('repositories')}</div>
+
+          <div className="mt-6 grid grid-cols-2 gap-3">
+            <div className="bg-ide-bg border-ide-border rounded-lg border p-3 text-center">
+              <Book
+                size={20}
+                className="mx-auto mb-2 text-blue-400 [.light-theme_&]:text-blue-700"
+              />
+              <div className="text-ide-text-active text-xl font-bold">{profile.public_repos}</div>
+              <div className="text-xs text-gray-500 [.light-theme_&]:text-gray-600">
+                {t('repositories')}
+              </div>
             </div>
-            
-            <div className="bg-ide-bg p-3 rounded-lg border border-ide-border text-center">
-              <GitCommit size={20} className="mx-auto mb-2 text-green-400 [.light-theme_&]:text-green-700" />
-              <div className="text-xl font-bold text-ide-text-active">235</div>
-              <div className="text-xs text-gray-500 [.light-theme_&]:text-gray-600">{t('contributions')}</div>
+
+            <div className="bg-ide-bg border-ide-border rounded-lg border p-3 text-center">
+              <GitCommit
+                size={20}
+                className="mx-auto mb-2 text-green-400 [.light-theme_&]:text-green-700"
+              />
+              <div className="text-ide-text-active text-xl font-bold">235</div>
+              <div className="text-xs text-gray-500 [.light-theme_&]:text-gray-600">
+                {t('contributions')}
+              </div>
             </div>
           </div>
         </div>
-        
+
         <div className="mt-8 w-full">
-          <h3 className="text-xs font-bold text-ide-text uppercase mb-3 text-left">{t('achievements')}</h3>
+          <h3 className="text-ide-text mb-3 text-left text-xs font-bold uppercase">
+            {t('achievements')}
+          </h3>
           <div className="grid grid-cols-2 gap-3">
-            <div className="bg-ide-bg p-2 rounded border border-ide-border flex flex-col items-center text-center gap-2" title={t('quickDraw')}>
-              <img src="/images/quick-draw.png" alt="Quick Draw" className="w-12 h-12" />
-              <span className="text-xs text-ide-text font-medium">{t('quickDraw')}</span>
+            <div
+              className="bg-ide-bg border-ide-border flex flex-col items-center gap-2 rounded border p-2 text-center"
+              title={t('quickDraw')}
+            >
+              <Image src="/images/quick-draw.png" alt="Quick Draw" width={48} height={48} />
+              <span className="text-ide-text text-xs font-medium">{t('quickDraw')}</span>
             </div>
-            <div className="bg-ide-bg p-2 rounded border border-ide-border flex flex-col items-center text-center gap-2" title={t('pullShark')}>
-              <img src="/images/pull-shark.png" alt="Pull Shark" className="w-12 h-12" />
-              <span className="text-xs text-ide-text font-medium">{t('pullShark')}</span>
+            <div
+              className="bg-ide-bg border-ide-border flex flex-col items-center gap-2 rounded border p-2 text-center"
+              title={t('pullShark')}
+            >
+              <Image src="/images/pull-shark.png" alt="Pull Shark" width={48} height={48} />
+              <span className="text-ide-text text-xs font-medium">{t('pullShark')}</span>
             </div>
-            <div className="bg-ide-bg p-2 rounded border border-ide-border flex flex-col items-center text-center gap-2" title={t('yolo')}>
-              <img src="/images/yolo.png" alt="YOLO" className="w-12 h-12" />
-              <span className="text-xs text-ide-text font-medium">{t('yolo')}</span>
+            <div
+              className="bg-ide-bg border-ide-border flex flex-col items-center gap-2 rounded border p-2 text-center"
+              title={t('yolo')}
+            >
+              <Image src="/images/yolo.png" alt="YOLO" width={48} height={48} />
+              <span className="text-ide-text text-xs font-medium">{t('yolo')}</span>
             </div>
           </div>
         </div>
