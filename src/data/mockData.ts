@@ -1,5 +1,6 @@
+import { Experience, Education, Project, LinkedInProfile, AboutData } from '@/types/data';
 
-export const experience = [
+export const experience: Experience[] = [
   {
     id: 1,
     type: "senior",
@@ -104,7 +105,7 @@ description: `*   Extended, maintained, and tested legacy Java EE services (SOA/
   },
 ];
 
-export const education = [
+export const education: Education[] = [
   {
     id: 1,
     type: "dual-study",
@@ -159,7 +160,7 @@ export const education = [
   },
 ];
 
-export const projects = [
+export const projects: Project[] = [
   {
     id: 1,
     title: "Filmpire Microservices Platform",
@@ -258,7 +259,7 @@ export const projects = [
 ];
 
 
-export const linkedInProfile = {
+export const linkedInProfile: LinkedInProfile = {
   name: "Liviu Ionesi",
   headline: "Tech Lead | Senior Full-Stack Engineer | Java, Spring Boot, React, Next.js",
   location: "Freiwaldaustr. 39, 73230 Kirchheim unter Teck, Germany",
@@ -299,7 +300,7 @@ I bridge the gap between complex backend logic, intuitive frontend experiences, 
   ]
 };
 
-export const about = {
+export const about: AboutData = {
   greeting: "~/developer/portfolio",
   name: "Liviu",
   suffix: ".io",

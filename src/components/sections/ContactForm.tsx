@@ -6,7 +6,7 @@ import { Send, AlertCircle, Check, X, MapPin, Globe, Car, Train } from 'lucide-r
 import { useNavigation } from '@/context/NavigationContext';
 import { useLanguage } from '@/context/LanguageContext';
 import Highlight from '@/components/ui/Highlight';
-import { useForm } from 'react-hook-form';
+import { useForm, useWatch } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 
@@ -26,7 +26,7 @@ export default function ContactForm() {
   const { setContactStatus } = useNavigation();
   const { t } = useLanguage();
   
-  const { register, handleSubmit: hookFormSubmit, watch, setValue, formState: { errors } } = useForm<ContactFormData>({
+  const { register, handleSubmit: hookFormSubmit, control, formState: { errors } } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
       purpose: 'recruiting_company',
@@ -39,8 +39,8 @@ export default function ContactForm() {
     }
   });
 
-  const purposeWatch = watch('purpose');
-  const locationWatch = watch('location');
+  const purposeWatch = useWatch({ control, name: 'purpose' });
+  const locationWatch = useWatch({ control, name: 'location' });
 
   const [techInput, setTechInput] = useState('');
   const [technologies, setTechnologies] = useState<string[]>([]);
@@ -216,6 +216,7 @@ export default function ContactForm() {
         throw new Error('Failed to send message');
       }
 
+      // eslint-disable-next-line
       const cooldownTime = Date.now() + 10 * 60 * 1000; // 10 minutes
       localStorage.setItem('contactCooldown', cooldownTime.toString());
       setCooldown(600);

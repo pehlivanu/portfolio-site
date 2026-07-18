@@ -21,7 +21,7 @@ Object.defineProperty(global, 'IntersectionObserver', {
 
 // Mock react-markdown since it's an ESM module
 jest.mock('react-markdown', () => {
-  return function MockReactMarkdown(props: any) {
+  return function MockReactMarkdown(props: Record<string, unknown> & { children?: unknown }) {
     return props.children;
   };
 });
