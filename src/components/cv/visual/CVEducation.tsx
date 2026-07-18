@@ -4,11 +4,10 @@ import React from 'react';
 import clsx from 'clsx';
 import { BookOpen, ExternalLink } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import { Education } from '@/types/data';
 
-// We import Education directly or define interface
-// In page.tsx it was: type Education = typeof mockDataEn.education[number];
 interface CVEducationProps {
-    education: any[];
+    education: Education[];
     theme: string;
     detailLevel: string;
     t: (key: string) => string;

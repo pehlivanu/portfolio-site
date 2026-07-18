@@ -2,9 +2,10 @@
 
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import { Experience } from '@/types/data';
 
 interface ATSExperienceProps {
-    experience: any[];
+    experience: Experience[];
     detailLevel: string;
     t: (key: string) => string;
 }

@@ -2,9 +2,10 @@
 
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import { Education } from '@/types/data';
 
 interface ATSEducationProps {
-    education: any[];
+    education: Education[];
     detailLevel: string;
     t: (key: string) => string;
 }

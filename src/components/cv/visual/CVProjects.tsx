@@ -3,9 +3,10 @@
 import React from 'react';
 import clsx from 'clsx';
 import { Code, Github, ExternalLink } from 'lucide-react';
+import { Project } from '@/types/data';
 
 interface CVProjectsProps {
-    projects: any[];
+    projects: Project[];
     theme: string;
     t: (key: string) => string;
 }

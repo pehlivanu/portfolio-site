@@ -5,10 +5,11 @@ import React from 'react';
 import clsx from 'clsx';
 import { Terminal, MapPin, Phone, Mail, Linkedin, Github } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import { LinkedInProfile, AboutData } from '@/types/data';
 
 interface CVHeroProps {
-    linkedInProfile: any;
-    about: any;
+    linkedInProfile: LinkedInProfile;
+    about: AboutData;
     theme: string;
     detailLevel: string;
     t: (key: string) => string;

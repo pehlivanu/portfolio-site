@@ -2,10 +2,11 @@
 
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import { LinkedInProfile, AboutData } from '@/types/data';
 
 interface ATSHeaderProps {
-    linkedInProfile: any;
-    about: any;
+    linkedInProfile: LinkedInProfile;
+    about: AboutData;
     detailLevel: string;
     t: (key: string) => string;
 }

@@ -55,11 +55,12 @@ export default function ContactForm() {
   useEffect(() => {
     const cooldownUntil = localStorage.getItem('contactCooldown');
     if (cooldownUntil) {
-      const remaining = Math.ceil((parseInt(cooldownUntil) - Date.now()) / 1000);
+      const remaining = Math.ceil((parseInt(cooldownUntil) - new Date().getTime()) / 1000);
       if (remaining > 0) {
-
-        setSubmitted(true);
-        setCooldown(remaining);
+        requestAnimationFrame(() => {
+          setSubmitted(true);
+          setCooldown(remaining);
+        });
       } else {
         localStorage.removeItem('contactCooldown');
       }
@@ -217,10 +218,14 @@ export default function ContactForm() {
       }
 
 
-      const cooldownTime = Date.now() + 10 * 60 * 1000; // 10 minutes
+      const currentTime = new Date().getTime();
+      const cooldownTime = currentTime + 10 * 60 * 1000; // 10 minutes
       localStorage.setItem('contactCooldown', cooldownTime.toString());
-      setCooldown(600);
-      setSubmitted(true);
+      requestAnimationFrame(() => {
+        setCooldown(600);
+        setSubmitted(true);
+        setContactStatus('sent');
+      });
       setContactStatus('sent');
     } catch (error) {
       console.error('Error submitting form:', error);

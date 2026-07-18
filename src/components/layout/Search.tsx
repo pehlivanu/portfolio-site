@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { ChevronDown, X } from 'lucide-react';
 import { useSearch } from '@/context/SearchContext';
 import { useLanguage } from '@/context/LanguageContext';
@@ -19,14 +19,9 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
     id: string;
   }
 
-  const [results, setResults] = useState<SearchResult[]>([]);
-
-  useEffect(() => {
+  const results = React.useMemo(() => {
     if (!searchTerm) {
-
-      setResults([]);
-      setActiveMatch(null); // Clear active match when search is cleared
-      return;
+      return [];
     }
 
     const term = searchTerm.toLowerCase();
@@ -55,7 +50,7 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
     projects.forEach(project => {
       if (project.title.toLowerCase().includes(term) || 
           project.description.toLowerCase().includes(term) ||
-          project.tech.some(t => t.toLowerCase().includes(term))) {
+          project.tech.some((t: string) => t.toLowerCase().includes(term))) {
         newResults.push({ 
           type: 'project', 
           title: project.title, 
@@ -107,8 +102,14 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
       });
     }
 
-    setResults(newResults);
-  }, [searchTerm, setActiveMatch, experience, education, projects, about, t]);
+    return newResults;
+  }, [searchTerm, experience, education, projects, about, t]);
+
+  useEffect(() => {
+    if (!searchTerm) {
+      setActiveMatch(null);
+    }
+  }, [searchTerm, setActiveMatch]);
 
   const handleClose = () => {
     setActiveMatch(null);
