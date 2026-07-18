@@ -9,7 +9,11 @@
     "**/.svn": true,
     "**/CVS": true,
     "**/next-env.d.ts": true,
-    "**/node_modules": false
+    "**/node_modules": true,
+    "**/.next": true,
+    "**/.vercel": true,
+    "**/package-lock.json": true,
+    "src/data/linkedin_profile.json": true
   },
   "css.lint.unknownAtRules": "ignore",
   "editor.formatOnSave": true,
