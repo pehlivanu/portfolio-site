@@ -23,15 +23,27 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://liviuionesi.com'),
-  title: "Liviu Ionesi",
-  description: "From Java EE & JSP to Spring Boot Next.js Transition - Developer Portfolio",
+  title: {
+    default: "Liviu Ionesi — Technical Lead & Senior Full-Stack Engineer",
+    template: "%s | Liviu Ionesi",
+  },
+  description:
+    "Liviu Ionesi — Technical Lead & Senior Full-Stack Engineer building the digital backbone of the Automotive and Fintech industries with Spring Boot & React.",
+  alternates: { canonical: "https://liviuionesi.com" },
   openGraph: {
-    title: "Liviu Ionesi",
-    description: "Senior Fullstack Architect & Engineer Portfolio",
-    url: 'https://liviuionesi.com',
-    siteName: 'Liviu Ionesi Portfolio',
-    locale: 'en_US',
-    type: 'website',
+    title: "Liviu Ionesi — Technical Lead & Senior Full-Stack Engineer",
+    description:
+      "Building the digital backbone of the Automotive and Fintech industries. Spring Boot microservices, React frontends, and AI-augmented software delivery.",
+    url: "https://liviuionesi.com",
+    siteName: "Liviu Ionesi Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Liviu Ionesi — Technical Lead & Senior Full-Stack Engineer",
+    description:
+      "Building the digital backbone of the Automotive and Fintech industries with Spring Boot microservices and React.",
   },
 };
 
