@@ -38,6 +38,7 @@
   background-color: white;
   color: black;
   -webkit-font-smoothing: antialiased;
+  page: ats;
 }
 
 /* --- PRINT OVERRIDES --- */
@@ -49,6 +50,12 @@
 
 @page :first {
   margin-top: 0mm;
+}
+
+/* Specific margins for the ATS CV */
+@page ats {
+  margin: 15mm;
+  size: A4 portrait;
 }
 
 @media print {
