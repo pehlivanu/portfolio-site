@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { LuTerminal, LuCode, LuCoffee, LuZap } from 'react-icons/lu';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useNavigation } from '@/context/NavigationContext';
@@ -28,7 +28,7 @@ export default function About() {
       className="mx-auto flex min-h-[80vh] w-full max-w-7xl flex-wrap items-center justify-center gap-12 p-8"
     >
       <div className="min-w-[340px] flex-1 space-y-6 md:min-w-[600px]">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -57,7 +57,7 @@ export default function About() {
               {t('readMore')}
             </button>
           </div>
-        </motion.div>
+        </m.div>
 
         <div className="flex gap-4">
           <button
@@ -86,7 +86,7 @@ export default function About() {
                 <div className="h-3 w-3 rounded-full bg-green-500" />
               </div>
               <span className="text-ide-text ml-3 font-mono text-xs opacity-70">
-                {isJava ? 'LegacyBackendApplication.java' : 'api/vibe-coding.ts'}
+                {isJava ? 'LegacyBackendApplication.java' : 'api/mcp-server.ts'}
               </span>
             </div>
             <div className="flex items-center gap-2">
@@ -101,7 +101,7 @@ export default function About() {
           <div className="relative h-[300px] overflow-x-auto p-6 font-mono text-sm">
             <AnimatePresence mode="wait">
               {isJava ? (
-                <motion.pre
+                <m.pre
                   key="java"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -152,9 +152,9 @@ export default function About() {
                     {'\n'}
                     {'}'}
                   </code>
-                </motion.pre>
+                </m.pre>
               ) : (
-                <motion.pre
+                <m.pre
                   key="next"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -181,7 +181,7 @@ export default function About() {
                     ).json({'{'} {'\n'}
                     {'    '}message:{' '}
                     <span className="text-green-300 [.light-theme_&]:text-green-700">
-                      &apos;Vibe Coding Initialized 🚀&apos;
+                      &apos;MCP Server Connected 🚀&apos;
                     </span>
                     , {'\n'}
                     {'    '}stack:{' '}
@@ -193,7 +193,7 @@ export default function About() {
                     {'}'});{'\n'}
                     {'}'}
                   </code>
-                </motion.pre>
+                </m.pre>
               )}
             </AnimatePresence>
 

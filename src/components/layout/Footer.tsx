@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect } from 'react';
 
 export default function Footer() {
   const [techIndex, setTechIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
-  
+
   const technologies = [
-    "Built with Next.js 16 & Tailwind CSS",
-    "Built with React 19 & TypeScript",
-    "Built with Framer Motion & Lucide"
+    'Built with Next.js 16 & Tailwind CSS',
+    'Built with React 19 & TypeScript',
+    'Built with Framer Motion & React Icons',
   ];
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function Footer() {
   }, [technologies.length]);
 
   return (
-    <footer className="py-8 text-center text-ide-text opacity-50 text-sm font-mono">
+    <footer className="text-ide-text py-8 text-center font-mono text-sm opacity-50">
       <p className={`transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         {technologies[techIndex]}
       </p>

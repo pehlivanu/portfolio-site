@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { LuSend, LuCheck, LuX, LuMapPin, LuGlobe, LuCar } from 'react-icons/lu';
 import { FaTrain, FaExclamationCircle } from 'react-icons/fa';
 import { useNavigation } from '@/context/NavigationContext';
@@ -464,7 +464,7 @@ export default function ContactForm() {
         </div>
 
         {submitted ? (
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             className="bg-ide-bg/50 rounded-lg border border-green-500/30 p-8 text-center"
@@ -487,7 +487,7 @@ export default function ContactForm() {
                 {t('sendAnother')}
               </button>
             )}
-          </motion.div>
+          </m.div>
         ) : (
           <button
             type="submit"

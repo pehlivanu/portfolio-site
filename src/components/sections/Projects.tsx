@@ -2,7 +2,7 @@
 import { FaGithub, FaJava } from 'react-icons/fa';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { LuFolder, LuExternalLink, LuCode } from 'react-icons/lu';
 import { SiSpringboot, SiPython, SiNextdotjs, SiReact, SiJenkins } from 'react-icons/si';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
@@ -44,7 +44,7 @@ export default function Projects() {
         {projects.map((project, index) => {
           const isActive = activeMatch?.id === `projects-${project.id}`;
           return (
-            <motion.div
+            <m.div
               key={project.id}
               id={`projects-${project.id}`}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -139,7 +139,7 @@ export default function Projects() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           );
         })}
       </div>

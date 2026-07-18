@@ -17,6 +17,11 @@ updates:
           - "minor"
           - "patch"
 
+    ignore:
+      # Ignore typescript v7 until eslint parser is fixed
+      - dependency-name: "typescript"
+        versions: [">= 7.0.0"]
+
     # Auto-merge settings can be enabled in repository settings,
     # but grouping them like this means you only have to click "Merge" once a week.
     commit-message:

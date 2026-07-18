@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { LuMail } from 'react-icons/lu';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useNavigation } from '@/context/NavigationContext';
@@ -51,7 +51,7 @@ export default function Contact() {
   return (
     <AnimatePresence>
       {activeRightPanel === 'contact' && (
-        <motion.section
+        <m.section
           id="contact"
           ref={sectionRef}
           initial={{ opacity: 0, height: 0, overflow: 'hidden' }}
@@ -67,7 +67,7 @@ export default function Contact() {
           </div>
 
           <div className="md:border-ide-border relative ml-0 md:ml-6 md:border-l-2">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -84,9 +84,9 @@ export default function Contact() {
 
                 <ContactForm />
               </div>
-            </motion.div>
+            </m.div>
           </div>
-        </motion.section>
+        </m.section>
       )}
     </AnimatePresence>
   );

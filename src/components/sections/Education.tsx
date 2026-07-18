@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import {
   LuGraduationCap,
   LuAward,
@@ -72,7 +72,7 @@ const EducationCard = ({ edu, isActive }: { edu: EducationType; isActive: boolea
   const tagContent = edu.studyField ? edu.studyField : edu.degree;
 
   return (
-    <motion.div
+    <m.div
       key={edu.id}
       id={`education-${edu.id}`}
       initial={{ opacity: 0, x: -20 }}
@@ -181,7 +181,7 @@ const EducationCard = ({ edu, isActive }: { edu: EducationType; isActive: boolea
           )}
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 

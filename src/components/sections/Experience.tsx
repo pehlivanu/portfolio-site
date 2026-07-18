@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import {
   LuCalendar,
   LuRocket,
@@ -77,7 +77,7 @@ const JobCard = ({ job, isActive }: { job: JobType; isActive: boolean }) => {
   const roleColor = getRoleColor(job.type || '');
 
   return (
-    <motion.div
+    <m.div
       key={job.id}
       id={`experience-${job.id}`}
       initial={{ opacity: 0, x: -20 }}
@@ -240,7 +240,7 @@ const JobCard = ({ job, isActive }: { job: JobType; isActive: boolean }) => {
           {/* Expandable Content: Detailed Description & Tech Stack */}
           <AnimatePresence initial={false}>
             {isExpanded && (
-              <motion.div
+              <m.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
@@ -301,7 +301,7 @@ const JobCard = ({ job, isActive }: { job: JobType; isActive: boolean }) => {
                     ))}
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
         </div>
@@ -324,7 +324,7 @@ const JobCard = ({ job, isActive }: { job: JobType; isActive: boolean }) => {
           )}
         </button>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 
