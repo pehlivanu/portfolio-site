@@ -186,7 +186,7 @@ export const projects = [
       "A highly interactive developer portfolio that meticulously recreates the aesthetic of Google's Antigravity IDE — activity bar, file-tree explorer, editor area, live status bar and a working command palette — built on the Next.js 15 App Router with immersive Framer Motion micro-animations. Features automated CV generation to PDF in multiple templates and languages, plus a dynamic contact form that uses the Geolocation API to compute and display the physical distance between visitor and developer.",
     tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Geolocation API", "PDF Generation", "Framer Motion"],
     githubUrl: "https://github.com/pehlivanu/portfolio-site",
-    deployUrl: "https://liviuionesi.vercel.app",
+    deployUrl: "https://www.liviuionesi.comliviuionesi.com",
   },
   {
     id: 4,

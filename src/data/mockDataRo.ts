@@ -186,7 +186,7 @@ export const projects = [
       "Portofoliu de dezvoltator complet interactiv care aduce nativ pe un site web experiența unui editor tip IDE, reconstituind cu detalii meticuloase interfața estetică regăsită sub editorul Google Antigravity IDE — deținând o bară funcțională pentru activități, explorator nativ complet, editor interactiv pe ferestre, bară inferioară dinamică de stare și o paletă activă de comenzi pe ecran. Este clădit complet folosind ecosistemul Next.js 15 (App Router) având multiple straturi imersive de micro-animații gestionate curat cu Framer Motion. Automatizează procesul generării PDF a propriului CV din varii tipare ori variante lingvistice specifice și înglobează și un modul complex de formulare dinamice al cărui efect unic calculează și afișează automat fix distanța de pe hartă direct via unui API Geolocation între server și un potențial recruiter.",
     tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "Geolocation API", "Generare PDF", "Framer Motion"],
     githubUrl: "https://github.com/pehlivanu/portfolio-site",
-    deployUrl: "https://liviuionesi.vercel.app",
+    deployUrl: "https://www.liviuionesi.com",
   },
   {
     id: 4,

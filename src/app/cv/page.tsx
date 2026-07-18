@@ -95,7 +95,7 @@ function CVContent() {
                                             <>
                                                 {textPart}
                                                 <a 
-                                                    href="https://liviuionesi.vercel.app" 
+                                                    href="https://www.liviuionesi.com" 
                                                     target="_blank" 
                                                     rel="noopener noreferrer" 
                                                     className="font-bold hover:underline"

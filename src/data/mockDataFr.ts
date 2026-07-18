@@ -186,7 +186,7 @@ export const projects = [
       "Un portfolio de développeur très interactif reproduisant dans les moindres détails l'esthétique de l'IDE Antigravity de Google — doté d'une Activity Bar, d'un explorateur de fichiers, d'une zone d'édition, d'une barre d'état et d'une Command Palette opérationnelle. Basé sur le App Router de Next.js 15, il inclut des micro-animations immersives avec Framer Motion. Il propose une génération automatisée du CV au format PDF en divers modèles et langues, ainsi qu'un formulaire de contact dynamique qui s'appuie sur l'API Geolocation pour calculer la distance physique entre le visiteur et le développeur.",
     tech: ["Next.js 15", "TypeScript", "Tailwind CSS", "API Geolocation", "Génération de PDF", "Framer Motion"],
     githubUrl: "https://github.com/pehlivanu/portfolio-site",
-    deployUrl: "https://liviuionesi.vercel.app",
+    deployUrl: "https://www.liviuionesi.com",
   },
   {
     id: 4,

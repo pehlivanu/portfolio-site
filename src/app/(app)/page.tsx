@@ -27,6 +27,7 @@ export default function Home() {
     sameAs: [
       "https://github.com/pehlivanu",
       "https://linkedin.com/in/liviu-ionesi",
+      "https://www.xing.com/profile/Liviu_Ionesi/web_profile",
     ],
   };
 
