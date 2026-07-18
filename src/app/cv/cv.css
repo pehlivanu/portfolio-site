@@ -2,92 +2,102 @@
 
 /* --- VISUAL CV STYLES --- */
 .cv-page-container {
-    -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
 }
 
 .cv-page-container.theme-ide {
-    font-family: 'JetBrains Mono', 'Fira Code', monospace;
-    background: #1e1e2e;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  background: #1e1e2e;
 }
 
 .cv-page-container.theme-print {
-    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-    background: #ffffff;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  background: #ffffff;
 }
 
 /* Allow items to break across pages to prevent large gaps */
 .cv-item {
-    margin-bottom: 1.5rem; /* Better breathing room between jobs */
+  margin-bottom: 1.5rem; /* Better breathing room between jobs */
 }
 
 /* Prevent breaking right after headers */
 .cv-item > div:first-child,
 .cv-item > div:nth-child(2) {
-    break-after: avoid;
-    page-break-after: avoid;
+  break-after: avoid;
+  page-break-after: avoid;
 }
 
 /* The section container should allow breaks */
 .cv-section {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 /* --- ATS CV STYLES --- */
 .ats-page-container {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: white;
-    color: black;
-    -webkit-font-smoothing: antialiased;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  color: black;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* --- PRINT OVERRIDES --- */
+@page {
+  /* Elegant, generous margins for a premium look */
+  margin: 15mm 0mm 15mm 0mm;
+  size: A4 portrait;
+}
+
+@page :first {
+  margin-top: 0mm;
+}
+
 @media print {
-    @page {
-        /* Elegant, generous margins for a premium look */
-        margin: 15mm 20mm;
-        size: A4 portrait;
-    }
-    
-    html, body, .cv-page-container, .ats-page-container, article, header, section {
-        /* Force pure white background everywhere to kill the slate tint */
-        background: #ffffff !important;
-        background-color: #ffffff !important;
-    }
+  html,
+  body,
+  .cv-page-container,
+  .ats-page-container,
+  article,
+  header,
+  section {
+    /* Force pure white background everywhere to kill the slate tint */
+    background: #ffffff !important;
+    background-color: #ffffff !important;
+  }
 
-    body {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-        font-size: 10pt;
-        line-height: 1.5; /* More elegant line height */
-    }
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    font-size: 10pt;
+    line-height: 1.5; /* More elegant line height */
+  }
 
-    /* Keep IDE dark mode specific colors if they really want to print dark, 
+  /* Keep IDE dark mode specific colors if they really want to print dark, 
        otherwise it's overridden by backgrounds above. Usually users print the 'print' theme. */
-    .cv-page-container.theme-ide {
-        background: #1e1e2e !important;
-        color: #cdd6f4 !important;
-        font-size: 9pt;
-    }
+  .cv-page-container.theme-ide {
+    background: #1e1e2e !important;
+    color: #cdd6f4 !important;
+    font-size: 9pt;
+  }
 
-    .theme-print a {
-        text-decoration: none !important;
-    }
+  .theme-print a {
+    text-decoration: none !important;
+  }
 
-    .print-hidden {
-        display: none !important;
-    }
-    
-    .cv-item {
-        /* Maintain good spacing in print, but slightly tighter than screen */
-        margin-bottom: 1.25rem;
-    }
-    
-    .cv-section {
-        margin-bottom: 1.75rem;
-    }
+  .print-hidden {
+    display: none !important;
+  }
 
-    .print-break-inside-avoid { 
-        break-inside: avoid; 
-        page-break-inside: avoid;
-    }
+  .cv-item {
+    /* Maintain good spacing in print, but slightly tighter than screen */
+    margin-bottom: 1.25rem;
+  }
+
+  .cv-section {
+    margin-bottom: 1.75rem;
+  }
+
+  .print-break-inside-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
 }
