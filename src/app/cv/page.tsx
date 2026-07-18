@@ -13,7 +13,8 @@ import { Terminal, Code, MapPin, Phone, Mail, Linkedin, Github, ExternalLink, Bo
 import ReactMarkdown from 'react-markdown';
 import clsx from 'clsx';
 
-type Job = typeof mockDataEn.experience[number];
+import { Experience } from '@/types/data';
+
 type Education = typeof mockDataEn.education[number];
 type Project = typeof mockDataEn.projects[number];
 
@@ -201,7 +202,7 @@ function CVContent() {
                     </div>
                     
                     <div className="space-y-6">
-                        {experience.map((job: Job) => (
+                        {experience.map((job: Experience) => (
                             <div key={job.id} className={clsx(
                                 "relative pl-4 border-l-2",
                                 theme === 'ide' ? "border-ide-border" : "border-gray-200"

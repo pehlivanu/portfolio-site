@@ -10,7 +10,8 @@ import * as mockDataFr from '@/data/mockDataFr';
 import { translations, Language } from '@/context/LanguageContext';
 import ReactMarkdown from 'react-markdown';
 
-type Job = typeof mockDataEn.experience[number];
+import { Experience } from '@/types/data';
+
 type Education = typeof mockDataEn.education[number];
 type Project = typeof mockDataEn.projects[number];
 type LanguageLevel = typeof mockDataEn.linkedInProfile.languages[number];
@@ -117,7 +118,7 @@ function AtsCvContent() {
                 <section className="mb-8">
                     <h2 className="text-xl font-bold uppercase border-b border-gray-400 mb-4 pb-1">{t('cvProfessionalExperience') || 'Experience'}</h2>
                     <div className="space-y-6">
-                        {experience.map((job: Job) => (
+                        {experience.map((job: Experience) => (
                             <div key={job.id}>
                                 <div className="flex justify-between items-baseline mb-1">
                                     <h3 className="font-bold text-base">{job.role}</h3>

@@ -4,22 +4,43 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Send, AlertCircle, Check, X, MapPin, Globe, Car, Train } from 'lucide-react';
 import { useNavigation } from '@/context/NavigationContext';
-import Highlight from '@/components/ui/Highlight';
 import { useLanguage } from '@/context/LanguageContext';
+import Highlight from '@/components/ui/Highlight';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+
+const contactSchema = z.object({
+  name: z.string().min(2, "Name is too short"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().optional(),
+  purpose: z.enum(['recruiting_company', 'recruiting_client', 'personal_project', 'buy_template']),
+  location: z.enum(['remote', 'hybrid', 'onsite']).optional(),
+  address: z.string().optional(),
+  message: z.string().min(10, "Message must be at least 10 characters")
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 export default function ContactForm() {
   const { setContactStatus } = useNavigation();
   const { t } = useLanguage();
   
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    purpose: 'recruiting_company',
-    location: 'remote',
-    address: '',
-    message: ''
+  const { register, handleSubmit: hookFormSubmit, watch, setValue, formState: { errors } } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      purpose: 'recruiting_company',
+      location: 'remote',
+      name: '',
+      email: '',
+      phone: '',
+      address: '',
+      message: ''
+    }
   });
+
+  const purposeWatch = watch('purpose');
+  const locationWatch = watch('location');
 
   const [techInput, setTechInput] = useState('');
   const [technologies, setTechnologies] = useState<string[]>([]);
@@ -159,12 +180,11 @@ export default function ContactForm() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: ContactFormData) => {
     if (submitted) return;
 
-    if ((formData.location === 'onsite' || formData.location === 'hybrid') && (addressError || !formData.address)) {
-      if (!formData.address) setAddressError(t('addressRequired'));
+    if ((data.location === 'onsite' || data.location === 'hybrid') && (addressError || !data.address)) {
+      if (!data.address) setAddressError(t('addressRequired'));
       return;
     }
 
@@ -181,14 +201,14 @@ export default function ContactForm() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          purpose: formData.purpose,
-          location: formData.location,
-          address: (formData.location === 'onsite' || formData.location === 'hybrid') ? formData.address : 'N/A',
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          purpose: data.purpose,
+          location: data.location,
+          address: (data.location === 'onsite' || data.location === 'hybrid') ? data.address : 'N/A',
           technologies: technologies,
-          message: formData.message
+          message: data.message
         }),
       });
 
@@ -218,50 +238,46 @@ export default function ContactForm() {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={hookFormSubmit(onSubmit)} className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-1">
             <label className="text-xs text-ide-text uppercase font-bold">{t('name')}</label>
             <input 
               type="text" 
-              required
-              className="w-full bg-ide-bg border border-ide-border rounded p-2 text-ide-text focus:border-ide-accent outline-none transition-colors"
-              value={formData.name}
-              onChange={e => setFormData({...formData, name: e.target.value})}
+              className={`w-full bg-ide-bg border ${errors.name ? 'border-red-500' : 'border-ide-border'} rounded p-2 text-ide-text focus:border-ide-accent outline-none transition-colors`}
+              {...register('name')}
               disabled={submitted}
             />
+            {errors.name && <span className="text-red-400 text-xs mt-1 block"><AlertCircle size={10} className="inline mr-1" />{errors.name.message}</span>}
           </div>
           <div className="space-y-1">
             <label className="text-xs text-ide-text uppercase font-bold">{t('email')}</label>
             <input 
               type="email" 
-              required
-              className="w-full bg-ide-bg border border-ide-border rounded p-2 text-ide-text focus:border-ide-accent outline-none transition-colors"
-              value={formData.email}
-              onChange={e => setFormData({...formData, email: e.target.value})}
+              className={`w-full bg-ide-bg border ${errors.email ? 'border-red-500' : 'border-ide-border'} rounded p-2 text-ide-text focus:border-ide-accent outline-none transition-colors`}
+              {...register('email')}
               disabled={submitted}
             />
+            {errors.email && <span className="text-red-400 text-xs mt-1 block"><AlertCircle size={10} className="inline mr-1" />{errors.email.message}</span>}
           </div>
         </div>
 
         <div className="space-y-1">
           <label className="text-xs text-ide-text uppercase font-bold">{t('phoneOptional')}</label>
-          <input 
+            <input 
             type="tel" 
             placeholder="+49..."
-            className="w-full bg-ide-bg border border-ide-border rounded p-2 text-ide-text focus:border-ide-accent outline-none transition-colors"
-            value={formData.phone}
-            onChange={e => setFormData({...formData, phone: e.target.value})}
+            className={`w-full bg-ide-bg border ${errors.phone ? 'border-red-500' : 'border-ide-border'} rounded p-2 text-ide-text focus:border-ide-accent outline-none transition-colors`}
+            {...register('phone')}
             disabled={submitted}
           />
         </div>
 
         <div className="space-y-1">
           <label className="text-xs text-ide-text uppercase font-bold">{t('purpose')}</label>
-          <select 
-            className="w-full bg-ide-bg border border-ide-border rounded p-2 text-ide-text focus:border-ide-accent outline-none transition-colors"
-            value={formData.purpose}
-            onChange={e => setFormData({...formData, purpose: e.target.value})}
+            <select 
+            className={`w-full bg-ide-bg border ${errors.purpose ? 'border-red-500' : 'border-ide-border'} rounded p-2 text-ide-text focus:border-ide-accent outline-none transition-colors`}
+            {...register('purpose')}
             disabled={submitted}
           >
             <option value="recruiting_company">{t('recruitingCompany')}</option>
@@ -271,7 +287,7 @@ export default function ContactForm() {
           </select>
         </div>
 
-        {formData.purpose !== 'buy_template' && (
+        {purposeWatch !== 'buy_template' && (
           <>
             <div className="space-y-1">
               <label className="text-xs text-ide-text uppercase font-bold">{t('locationPreference')}</label>
@@ -279,10 +295,8 @@ export default function ContactForm() {
                 <label className="flex items-center gap-2 text-sm text-ide-text cursor-pointer">
                   <input 
                     type="radio" 
-                    name="location" 
                     value="remote"
-                    checked={formData.location === 'remote'}
-                    onChange={e => setFormData({...formData, location: e.target.value})}
+                    {...register('location')}
                     className="accent-ide-accent"
                     disabled={submitted}
                   />
@@ -291,10 +305,8 @@ export default function ContactForm() {
                 <label className="flex items-center gap-2 text-sm text-ide-text cursor-pointer">
                   <input 
                     type="radio" 
-                    name="location" 
                     value="hybrid"
-                    checked={formData.location === 'hybrid'}
-                    onChange={e => setFormData({...formData, location: e.target.value})}
+                    {...register('location')}
                     className="accent-ide-accent"
                     disabled={submitted}
                   />
@@ -303,10 +315,8 @@ export default function ContactForm() {
                 <label className="flex items-center gap-2 text-sm text-ide-text cursor-pointer">
                   <input 
                     type="radio" 
-                    name="location" 
                     value="onsite"
-                    checked={formData.location === 'onsite'}
-                    onChange={e => setFormData({...formData, location: e.target.value})}
+                    {...register('location')}
                     className="accent-ide-accent"
                     disabled={submitted}
                   />
@@ -314,7 +324,7 @@ export default function ContactForm() {
                 </label>
               </div>
               
-              {(formData.location === 'onsite' || formData.location === 'hybrid') && (
+              {(locationWatch === 'onsite' || locationWatch === 'hybrid') && (
                 <div className="mt-2">
                    <div className="flex justify-between items-end mb-1 px-1 flex-wrap gap-2">
                        <span className="text-xs text-ide-text/50">{t('addressLabel')}</span>
@@ -335,10 +345,10 @@ export default function ContactForm() {
                    <input 
                       type="text" 
                       placeholder={t('officeAddressPlaceholder')}
-                      className={`w-full bg-ide-bg border ${addressError ? 'border-red-500' : 'border-ide-border'} rounded p-2 text-ide-text focus:border-ide-accent outline-none transition-colors text-sm`}
-                      value={formData.address}
-                      onChange={e => setFormData({...formData, address: e.target.value})}
-                      onBlur={(e) => checkLocation(e.target.value)}
+                      className={`w-full bg-ide-bg border ${addressError || errors.address ? 'border-red-500' : 'border-ide-border'} rounded p-2 text-ide-text focus:border-ide-accent outline-none transition-colors text-sm`}
+                      {...register('address', {
+                         onBlur: (e) => checkLocation(e.target.value)
+                      })}
                       disabled={submitted}
                     />
                     {isCheckingLocation && <div className="text-xs text-ide-text mt-1">{t('checkingDistance')}</div>}
@@ -384,7 +394,7 @@ export default function ContactForm() {
           </>
         )}
 
-        {formData.purpose === 'buy_template' && (
+        {purposeWatch === 'buy_template' && (
           <div className="bg-blue-500/10 border border-blue-500/30 p-3 rounded text-sm text-blue-200 [.light-theme_&]:text-blue-800">
             {t('buyTemplateMessage')}
           </div>
@@ -393,13 +403,12 @@ export default function ContactForm() {
         <div className="space-y-1">
           <label className="text-xs text-ide-text uppercase font-bold">{t('message')}</label>
           <textarea 
-            required
             rows={4}
-            className="w-full bg-ide-bg border border-ide-border rounded p-2 text-ide-text focus:border-ide-accent outline-none transition-colors resize-none"
-            value={formData.message}
-            onChange={e => setFormData({...formData, message: e.target.value})}
+            className={`w-full bg-ide-bg border ${errors.message ? 'border-red-500' : 'border-ide-border'} rounded p-2 text-ide-text focus:border-ide-accent outline-none transition-colors resize-none`}
+            {...register('message')}
             disabled={submitted}
           />
+          {errors.message && <span className="text-red-400 text-xs mt-1 block"><AlertCircle size={10} className="inline mr-1" />{errors.message.message}</span>}
         </div>
 
         {submitted ? (
