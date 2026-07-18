@@ -1,4 +1,4 @@
-import IDELayout from '@/components/layout/IDELayout';
+import { IDELayout } from '@/components/ide';
 
 async function getGitHubProfile() {
   try {

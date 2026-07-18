@@ -4,17 +4,16 @@ import TitleBar from './TitleBar';
 import Sidebar from './Sidebar';
 import Explorer from './Explorer';
 import Search from './Search';
-import GitHubStats from './GitHubStats';
-import LinkedInStats from './LinkedInStats';
-import ContactPanel from './ContactPanel';
+import { GitHubStats, LinkedInStats } from '@/components/features';
+import { ContactPanel } from '@/components/sections';
 import Tabs from './Tabs';
 import StatusBar from './StatusBar';
 import { useNavigation } from '@/context/NavigationContext';
 import { useLanguage } from '@/context/LanguageContext';
 import ReactMarkdown from 'react-markdown';
 import Highlight from '@/components/ui/Highlight';
-import CVConfigPanel from '@/components/layout/CVConfigPanel';
-import { GitHubProfile } from './GitHubStats';
+import CVConfigPanel from '@/components/cv/CVConfigPanel';
+import { GitHubProfile } from '@/components/features/GitHubStats';
 
 export default function IDELayout({
   children,
