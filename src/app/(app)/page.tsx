@@ -1,9 +1,9 @@
-import dynamic from "next/dynamic";
+
 import About from "@/components/sections/About";
 
-const Experience = dynamic(() => import("@/components/sections/Experience"), { ssr: true });
-const Education = dynamic(() => import("@/components/sections/Education"), { ssr: true });
-const Projects = dynamic(() => import("@/components/sections/Projects"), { ssr: true });
+import Experience from "@/components/sections/Experience";
+import Education from "@/components/sections/Education";
+import Projects from "@/components/sections/Projects";
 
 import Footer from "@/components/layout/Footer";
 

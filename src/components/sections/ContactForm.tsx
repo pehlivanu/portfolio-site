@@ -57,7 +57,7 @@ export default function ContactForm() {
     if (cooldownUntil) {
       const remaining = Math.ceil((parseInt(cooldownUntil) - Date.now()) / 1000);
       if (remaining > 0) {
-        // eslint-disable-next-line react-hooks/set-state-in-effect
+
         setSubmitted(true);
         setCooldown(remaining);
       } else {
@@ -216,7 +216,7 @@ export default function ContactForm() {
         throw new Error('Failed to send message');
       }
 
-      // eslint-disable-next-line
+
       const cooldownTime = Date.now() + 10 * 60 * 1000; // 10 minutes
       localStorage.setItem('contactCooldown', cooldownTime.toString());
       setCooldown(600);

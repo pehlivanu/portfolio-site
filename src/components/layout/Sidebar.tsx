@@ -51,7 +51,7 @@ export default function Sidebar({ activeView, setActiveView, isOpen = false, onC
     }
   };
 
-  const isAuthorized = session?.user?.email === 'pehlivanu@gmail.com';
+  const isAuthorized = session?.user?.email === process.env.NEXT_PUBLIC_ADMIN_EMAIL;
 
   return (
     <>

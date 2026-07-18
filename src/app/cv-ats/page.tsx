@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
 
 import React, { useMemo, Suspense } from 'react';
@@ -134,8 +134,8 @@ function AtsCvContent() {
                                             <p className="mb-2 italic">{job.summary}</p>
                                             <ReactMarkdown
                                                 components={{
-                                                    ul: ({node: _node, ...props}) => <ul className="list-disc pl-5 my-2 space-y-1" {...props} />,
-                                                    li: ({node: _node, ...props}) => <li className="pl-1" {...props} />
+                                                    ul: ({...props}) => <ul className="list-disc pl-5 my-2 space-y-1" {...props} />,
+                                                    li: ({...props}) => <li className="pl-1" {...props} />
                                                 }}
                                             >
                                                 {job.description}
@@ -174,8 +174,8 @@ function AtsCvContent() {
                                         <div className="prose prose-sm max-w-none text-black">
                                             <ReactMarkdown
                                                 components={{
-                                                    ul: ({node: _node, ...props}) => <ul className="list-disc pl-5 my-1 space-y-1" {...props} />,
-                                                    li: ({node: _node, ...props}) => <li className="pl-1" {...props} />
+                                                    ul: ({...props}) => <ul className="list-disc pl-5 my-1 space-y-1" {...props} />,
+                                                    li: ({...props}) => <li className="pl-1" {...props} />
                                                 }}
                                             >
                                                 {edu.description}

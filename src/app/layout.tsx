@@ -51,6 +51,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'light') {
+                  document.documentElement.classList.add('light-theme');
+                } else {
+                  document.documentElement.classList.remove('light-theme');
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased bg-ide-bg text-ide-text`}
       >

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
 
 import React from 'react';
@@ -186,22 +186,22 @@ const JobCard = ({ job, isActive }: { job: JobType, isActive: boolean }) => {
                      {/* Markdown Description */}
                      <ReactMarkdown
                         components={{
-                          p: ({children, node: _node, ...props}) => (
+                          p: ({children, ...props}) => (
                             <p className="mb-4 last:mb-0" {...props}>
                               {React.Children.map(children, child => 
                                 typeof child === 'string' ? <Highlight text={child} /> : child
                               )}
                             </p>
                           ),
-                          ul: ({children, node: _node, ...props}) => <ul className="list-disc list-outside ml-4 mb-4 space-y-1" {...props}>{children}</ul>,
-                          li: ({children, node: _node, ...props}) => (
+                          ul: ({children, ...props}) => <ul className="list-disc list-outside ml-4 mb-4 space-y-1" {...props}>{children}</ul>,
+                          li: ({children, ...props}) => (
                             <li className="pl-1" {...props}>
                                {React.Children.map(children, child => 
                                 typeof child === 'string' ? <Highlight text={child} /> : child
                               )}
                             </li>
                           ),
-                          strong: ({children, node: _node, ...props}) => (
+                          strong: ({children, ...props}) => (
                             <strong className="text-ide-text-active font-semibold" {...props}>
                                {React.Children.map(children, child => 
                                 typeof child === 'string' ? <Highlight text={child} /> : child

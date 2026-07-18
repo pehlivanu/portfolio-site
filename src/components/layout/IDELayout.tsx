@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
 import React, { useState, useEffect } from 'react';
 import TitleBar from './TitleBar';
@@ -160,29 +160,29 @@ function BioPanel() {
   return (
     <ReactMarkdown
         components={{
-            h3: ({children, node: _node, ...props}) => (
+            h3: ({children, ...props}) => (
                 <h3 className="text-lg font-bold text-ide-text-active mt-8 mb-6 leading-relaxed" {...props}>
                     {React.Children.map(children, child => typeof child === 'string' ? <Highlight text={child} /> : child)}
                 </h3>
             ),
-            p: ({children, node: _node, ...props}) => (
+            p: ({children, ...props}) => (
                 <p className="text-ide-text mb-4 leading-relaxed" {...props}>
                     {React.Children.map(children, child => typeof child === 'string' ? <Highlight text={child} /> : child)}
                 </p>
             ),
-            ul: ({node: _node, ...props}) => <ul className="list-disc pl-5 mb-4 text-ide-text space-y-2" {...props} />,
-            li: ({children, node: _node, ...props}) => (
+            ul: ({...props}) => <ul className="list-disc pl-5 mb-4 text-ide-text space-y-2" {...props} />,
+            li: ({children, ...props}) => (
                 <li className="pl-1 leading-relaxed" {...props}>
                     {React.Children.map(children, child => typeof child === 'string' ? <Highlight text={child} /> : child)}
                 </li>
             ),
-            strong: ({children, node: _node, ...props}) => (
+            strong: ({children, ...props}) => (
                 <strong className="text-ide-text-active font-semibold" {...props}>
                     {React.Children.map(children, child => typeof child === 'string' ? <Highlight text={child} /> : child)}
                 </strong>
             ),
-            hr: ({node: _node, ...props}) => <hr className="border-ide-border my-8" {...props} />,
-            em: ({children, node: _node, ...props}) => (
+            hr: ({...props}) => <hr className="border-ide-border my-8" {...props} />,
+            em: ({children, ...props}) => (
                 <em className="text-ide-text opacity-90 italic block mt-4" {...props}>
                     {React.Children.map(children, child => typeof child === 'string' ? <Highlight text={child} /> : child)}
                 </em>

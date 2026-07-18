@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
 /* eslint-disable @next/next/no-img-element */
 
@@ -234,8 +234,8 @@ function CVContent() {
                                             <p className="mb-2">{job.summary}</p>
                                             <ReactMarkdown 
                                                 components={{
-                                                    ul: ({node: _node, ...props}) => <ul className="list-disc pl-5 my-2 space-y-1" {...props} />,
-                                                    li: ({node: _node, ...props}) => <li className="pl-1" {...props} />
+                                                    ul: ({...props}) => <ul className="list-disc pl-5 my-2 space-y-1" {...props} />,
+                                                    li: ({...props}) => <li className="pl-1" {...props} />
                                                 }}
                                             >
                                                 {job.description}
@@ -339,8 +339,8 @@ function CVContent() {
                                                 {edu.description && (
                                                     <ReactMarkdown 
                                                         components={{
-                                                            ul: ({node: _node, ...props}) => <ul className="list-disc pl-5 my-2 space-y-1" {...props} />,
-                                                            li: ({node: _node, ...props}) => <li className="pl-1" {...props} />
+                                                            ul: ({...props}) => <ul className="list-disc pl-5 my-2 space-y-1" {...props} />,
+                                                            li: ({...props}) => <li className="pl-1" {...props} />
                                                         }}
                                                     >
                                                         {edu.description}

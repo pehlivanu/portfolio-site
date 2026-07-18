@@ -23,7 +23,7 @@ export default function Search({ onClose, isMobile }: { onClose?: () => void, is
 
   useEffect(() => {
     if (!searchTerm) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
+
       setResults([]);
       setActiveMatch(null); // Clear active match when search is cleared
       return;
