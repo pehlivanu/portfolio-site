@@ -44,3 +44,7 @@ next-env.d.ts
 *.log
 *.txt
 arbeitszeugnis_anfragen.md
+
+# lighthouse reports
+lighthouse-report*.json
+metrics.json

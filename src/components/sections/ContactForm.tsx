@@ -429,7 +429,7 @@ export default function ContactForm() {
         ) : (
           <button 
             type="submit"
-            className="w-full bg-ide-accent hover:bg-blue-600 text-white font-medium py-2 rounded transition-colors flex items-center justify-center gap-2"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded transition-colors flex items-center justify-center gap-2"
           >
             <Send size={18} /> {t('sendMessage')}
           </button>

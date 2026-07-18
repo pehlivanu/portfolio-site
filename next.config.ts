@@ -11,8 +11,6 @@ const securityHeaders = [
 ]
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  reactCompiler: true,
   async headers() {
     return [
       {

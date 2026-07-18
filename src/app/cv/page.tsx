@@ -422,7 +422,7 @@ function CVContent() {
              <div className="fixed top-8 right-8 print:hidden z-50">
                 <button 
                     onClick={() => window.print()}
-                    className="flex items-center gap-2 bg-ide-accent text-white px-6 py-3 rounded-md shadow-xl hover:bg-blue-600 font-bold transition-all transform hover:-translate-y-0.5"
+                    className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-md shadow-xl hover:bg-blue-700 font-bold transition-all transform hover:-translate-y-0.5"
                 >
                     <span className="text-lg">🖨️</span> {t('downloadResume') || "Print CV"}
                 </button>
