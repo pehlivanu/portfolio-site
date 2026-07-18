@@ -4,7 +4,7 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import React from 'react';
 import clsx from 'clsx';
 import Image from 'next/image';
-import { LuTerminal, LuMapPin, LuPhone, LuMail } from 'react-icons/lu';
+import { LuGlobe, LuMapPin, LuPhone, LuMail } from 'react-icons/lu';
 import ReactMarkdown from 'react-markdown';
 import { LinkedInProfile, AboutData } from '@/types/data';
 
@@ -13,10 +13,9 @@ interface CVHeroProps {
   about: AboutData;
   theme: string;
   detailLevel: string;
-  t: (key: string) => string;
 }
 
-export default function CVHero({ linkedInProfile, about, theme, detailLevel, t }: CVHeroProps) {
+export default function CVHero({ linkedInProfile, about, theme, detailLevel }: CVHeroProps) {
   return (
     <div
       className={clsx(
@@ -28,35 +27,6 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel, t }
     >
       <div className="flex items-start justify-between gap-8">
         <div className="flex-1 space-y-4">
-          <div className="mb-2 flex items-center gap-2 text-blue-600">
-            <LuTerminal size={18} />
-            <span className="font-mono text-sm font-semibold">
-              {(() => {
-                const rawTitle = t('portfolioTitle');
-                const cleanTitle = rawTitle.replace(/^(portfolio|portofoliu)\s*-\s*/i, '');
-                const urlPart = 'liviuionesi.com';
-
-                if (cleanTitle.toLowerCase().includes(urlPart)) {
-                  const textPart = cleanTitle.replace(new RegExp(urlPart, 'i'), '');
-                  return (
-                    <>
-                      {textPart}
-                      <a
-                        href="https://www.liviuionesi.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-bold hover:underline"
-                      >
-                        {urlPart}
-                      </a>
-                    </>
-                  );
-                }
-                return cleanTitle;
-              })()}
-            </span>
-          </div>
-
           <div>
             <h1
               className={clsx(
@@ -66,7 +36,11 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel, t }
             >
               {linkedInProfile.name}
             </h1>
-            <p className="text-xl font-medium text-blue-600">{linkedInProfile.headline}</p>
+            <p className="text-xl font-medium text-blue-600">
+              {linkedInProfile.headline.split(' | ').slice(0, -1).join(' | ')}
+              <br />
+              {linkedInProfile.headline.split(' | ').slice(-1)}
+            </p>
           </div>
 
           <div
@@ -84,11 +58,29 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel, t }
             )}
           </div>
 
-          <div className="mt-4 grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-600">
+          <div className="mt-4 grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-sm text-gray-600">
+            <div className="flex items-center gap-2">
+              <LuGlobe size={14} className="text-blue-500" />
+              <a
+                href="https://www.liviuionesi.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-blue-600 hover:underline"
+              >
+                www.liviuionesi.com
+              </a>
+            </div>
             {(linkedInProfile.address || linkedInProfile.location) && (
-              <div className="col-span-2 flex items-center gap-2">
-                <LuMapPin size={14} className="text-blue-500" />
-                <span>{linkedInProfile.address || linkedInProfile.location}</span>
+              <div className="flex items-center gap-2">
+                <LuMapPin size={14} className="min-w-max text-blue-500" />
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(linkedInProfile.address || linkedInProfile.location)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="whitespace-nowrap text-gray-600 hover:text-blue-600 hover:underline"
+                >
+                  {linkedInProfile.address || linkedInProfile.location}
+                </a>
               </div>
             )}
             {linkedInProfile.phone && (

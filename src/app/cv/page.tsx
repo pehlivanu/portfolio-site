@@ -14,12 +14,16 @@ import CVHero from '@/components/cv/visual/CVHero';
 import CVExperience from '@/components/cv/visual/CVExperience';
 import CVEducation from '@/components/cv/visual/CVEducation';
 import CVProjects from '@/components/cv/visual/CVProjects';
+import CVLanguages from '@/components/cv/visual/CVLanguages';
+import CVCertifications from '@/components/cv/visual/CVCertifications';
 
 function CVContent() {
   const searchParams = useSearchParams();
   const langParam = searchParams.get('lang');
   const detailLevel = searchParams.get('detail') || 'brief'; // 'brief' | 'detailed'
   const showProjects = searchParams.get('projects') !== 'false'; // Default to true
+  const showLanguages = searchParams.get('languages') !== 'false';
+  const showCertifications = searchParams.get('certifications') !== 'false';
   const theme = searchParams.get('theme') || 'print'; // 'print' | 'ide'
 
   // Determine language from URL param or default to 'en'
@@ -52,7 +56,7 @@ function CVContent() {
   return (
     <div
       className={clsx(
-        'cv-page-container mx-auto min-h-screen max-w-[210mm] print:mx-0 print:max-w-none',
+        'cv-page-container mx-auto min-h-screen max-w-[210mm] print:mx-0 print:min-h-0 print:max-w-none',
         `theme-${theme}`
       )}
     >
@@ -62,7 +66,6 @@ function CVContent() {
         about={about}
         theme={theme}
         detailLevel={detailLevel}
-        t={t}
       />
 
       <div className="space-y-8 p-8 print:px-[15mm] print:py-4">
@@ -73,6 +76,12 @@ function CVContent() {
           {/* EDUCATION SECTION */}
           <CVEducation education={education} theme={theme} detailLevel={detailLevel} t={t} />
         </div>
+
+        {showLanguages && <CVLanguages linkedInProfile={linkedInProfile} theme={theme} t={t} />}
+
+        {showCertifications && (
+          <CVCertifications linkedInProfile={linkedInProfile} theme={theme} t={t} />
+        )}
 
         {/* PROJECTS SECTION */}
         {showProjects && <CVProjects projects={projects} theme={theme} t={t} />}

@@ -11,7 +11,10 @@ import '../cv/cv.css';
 
 import ATSHeader from '@/components/cv/ats/ATSHeader';
 import ATSExperience from '@/components/cv/ats/ATSExperience';
+import ATSProjects from '@/components/cv/ats/ATSProjects';
 import ATSEducation from '@/components/cv/ats/ATSEducation';
+import ATSLanguages from '@/components/cv/ats/ATSLanguages';
+import ATSCertifications from '@/components/cv/ats/ATSCertifications';
 
 function ATSContent() {
   const searchParams = useSearchParams();
@@ -36,15 +39,21 @@ function ATSContent() {
     }
   }, [language]);
 
+  const showProjects = searchParams.get('projects') !== 'false';
+  const showLanguages = searchParams.get('languages') !== 'false';
+  const showCertifications = searchParams.get('certifications') !== 'false';
+
   const t = (key: string) => translations[language]?.[key] || key;
 
-  const { linkedInProfile, experience, education, about } = data;
+  const { linkedInProfile, experience, education, projects, about } = data;
 
   return (
-    <div className="ats-page-container mx-auto min-h-screen max-w-[210mm] bg-white p-12 text-black print:mx-0 print:max-w-none print:p-0">
+    <div className="ats-page-container mx-auto min-h-screen max-w-[210mm] bg-white p-12 text-black print:mx-0 print:min-h-0 print:max-w-none print:p-0">
       {/* ATS FORMAT INSTRUCTIONS FOR USER (Hidden in print) */}
       <div className="print-hidden mb-8 rounded border border-yellow-200 bg-yellow-50 p-4 text-sm text-yellow-800">
-        <strong>{t('atsFriendlyVersion')}</strong> {t('atsFriendlyDesc')}
+        <strong>{t('atsFriendlyVersion') || 'ATS-Friendly CV.'}</strong>{' '}
+        {t('atsFriendlyDesc') ||
+          'This version is stripped of complex styling and icons to ensure perfect machine readability by Applicant Tracking Systems. It will still render perfectly as a standard PDF.'}
       </div>
 
       <ATSHeader linkedInProfile={linkedInProfile} about={about} detailLevel={detailLevel} t={t} />
@@ -52,6 +61,12 @@ function ATSContent() {
       <ATSExperience experience={experience} detailLevel={detailLevel} t={t} />
 
       <ATSEducation education={education} detailLevel={detailLevel} t={t} />
+
+      {showLanguages && <ATSLanguages linkedInProfile={linkedInProfile} t={t} />}
+
+      {showCertifications && <ATSCertifications linkedInProfile={linkedInProfile} t={t} />}
+
+      {showProjects && <ATSProjects projects={projects} t={t} />}
 
       {/* Print Button Overlay */}
       <div className="print-hidden fixed top-8 right-8 z-50">
