@@ -1,6 +1,4 @@
-
 "use client";
-/* eslint-disable @next/next/no-img-element */
 
 import React, { useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
@@ -9,14 +7,13 @@ import * as mockDataRo from '@/data/mockDataRo';
 import * as mockDataDe from '@/data/mockDataDe';
 import * as mockDataFr from '@/data/mockDataFr';
 import { translations, Language } from '@/context/LanguageContext';
-import { Terminal, Code, MapPin, Phone, Mail, Linkedin, Github, ExternalLink, BookOpen, Layers } from 'lucide-react';
-import ReactMarkdown from 'react-markdown';
 import clsx from 'clsx';
+import './cv.css';
 
-import { Experience } from '@/types/data';
-
-type Education = typeof mockDataEn.education[number];
-type Project = typeof mockDataEn.projects[number];
+import CVHero from '@/components/cv/visual/CVHero';
+import CVExperience from '@/components/cv/visual/CVExperience';
+import CVEducation from '@/components/cv/visual/CVEducation';
+import CVProjects from '@/components/cv/visual/CVProjects';
 
 function CVContent() {
     const searchParams = useSearchParams();
@@ -48,384 +45,52 @@ function CVContent() {
     const { linkedInProfile, experience, education, projects, about } = data;
 
     return (
-        <div className="bg-white text-black min-h-screen max-w-[210mm] mx-auto print:max-w-none print:mx-0">
-            <style jsx global>{`
-                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
-                
-                body { 
-                    font-family: 'Inter', sans-serif;
-                }
-                .font-mono {
-                    font-family: 'JetBrains Mono', monospace;
-                }
-                
-                @media print {
-                    @page { 
-                        margin-top: 15mm; 
-                        margin-bottom: 15mm; 
-                        margin-left: 0; 
-                        margin-right: 0; 
-                    }
-                    @page :first { 
-                        margin-top: 0; 
-                    }
-                    body { background: white; color: black; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-                    .print-break-inside-avoid { break-inside: avoid; }
-                }
-            `}</style>
-            
-            <div className={clsx(
-                "min-h-screen transition-colors p-0",
-                theme === 'ide' ? "bg-ide-bg text-ide-text" : "bg-white text-black"
-            )}>
-            
-            {/* HERO SECTION - Matching Site Design */}
-            <div className={clsx(
-                "border-b p-8 print:px-[15mm] print:pt-[15mm] print:pb-0",
-                theme === 'ide' 
-                    ? "bg-ide-bg border-ide-border" 
-                    : "bg-[#f8f9fa] border-gray-200 print:bg-[#f8f9fa]"
-            )}>
-                <div className="flex justify-between items-start gap-8">
-                    <div className="flex-1 space-y-4">
-                        <div className="flex items-center gap-2 text-blue-600 mb-2">
-                            <Terminal size={18} />
-                            <span className="font-mono text-sm font-semibold">
-                                {(() => {
-                                    const rawTitle = t('portfolioTitle');
-                                    const cleanTitle = rawTitle.replace(/^(portfolio|portofoliu)\s*-\s*/i, '');
-                                    const urlPart = 'liviuionesi.com';
-                                    
-                                    if (cleanTitle.toLowerCase().includes(urlPart)) {
-                                        const textPart = cleanTitle.replace(new RegExp(urlPart, 'i'), '');
-                                        return (
-                                            <>
-                                                {textPart}
-                                                <a 
-                                                    href="https://www.liviuionesi.com" 
-                                                    target="_blank" 
-                                                    rel="noopener noreferrer" 
-                                                    className="font-bold hover:underline"
-                                                >
-                                                    {urlPart}
-                                                </a>
-                                            </>
-                                        );
-                                    }
-                                    return cleanTitle;
-                                })()}
-                            </span>
-                        </div>
-                        
-                        <div>
-                            <h1 className={clsx(
-                                "text-4xl font-bold tracking-tight mb-1",
-                                theme === 'ide' ? "text-ide-text" : "text-gray-900"
-                            )}>
-                                {linkedInProfile.name}
-                            </h1>
-                            <p className="text-xl text-blue-600 font-medium">{linkedInProfile.headline}</p>
-                        </div>
-
-                        <div className={clsx(
-                            "leading-relaxed max-w-2xl text-sm",
-                             theme === 'ide' ? "text-ide-text opacity-90" : "text-gray-700"
-                        )}>
-                            {detailLevel === 'detailed' ? (
-                                <div className="prose prose-sm prose-blue max-w-none dark:prose-invert">
-                                    <ReactMarkdown>{about.description}</ReactMarkdown>
-                                </div>
-                            ) : (
-                                linkedInProfile.about
-                            )}
-                        </div>
-
-                        {/* Contact Grid */}
-                        <div className="grid grid-cols-2 gap-y-2 gap-x-6 text-sm mt-4 text-gray-600">
-                            {(linkedInProfile.address || linkedInProfile.location) && (
-                                <div className="flex items-center gap-2 col-span-2">
-                                    <MapPin size={14} className="text-blue-500" />
-                                    <span>{linkedInProfile.address || linkedInProfile.location}</span>
-                                </div>
-                            )}
-                             {linkedInProfile.phone && (
-                                <div className="flex items-center gap-2">
-                                    <Phone size={14} className="text-blue-500" />
-                                    <a href={`tel:${linkedInProfile.phone.replace(/\s+/g, '')}`} className="text-gray-600 hover:text-blue-600 hover:underline">
-                                        {linkedInProfile.phone}
-                                    </a>
-                                </div>
-                            )}
-                            <div className="flex items-center gap-2">
-                                <Mail size={14} className="text-blue-500" />
-                                <a href={`mailto:${linkedInProfile.email || "ionesiliviu@yahoo.com"}`} className="text-gray-600 hover:text-blue-600 hover:underline">
-                                    {linkedInProfile.email || "ionesiliviu@yahoo.com"}
-                                </a>
-                            </div>
-                             <div className="flex items-center gap-2">
-                                <Linkedin size={14} className="text-blue-500" />
-                                <a href="https://linkedin.com/in/liviu-ionesi" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 hover:underline">
-                                    linkedin.com/in/liviu-ionesi
-                                </a>
-                            </div>
-                             <div className="flex items-center gap-2">
-                                <Github size={14} className="text-blue-500" />
-                                <a href="https://github.com/pehlivanu" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600 hover:underline">
-                                    github.com/pehlivanu
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Profile Image (Replaces Animation) */}
-                    <div className="flex-shrink-0">
-                        <div className="w-32 h-32 rounded-lg overflow-hidden border-2 border-white shadow-lg">
-                            <img 
-                                src={linkedInProfile.avatarUrl} 
-                                alt={linkedInProfile.name} 
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div className={clsx("cv-page-container min-h-screen max-w-[210mm] mx-auto print:max-w-none print:mx-0", `theme-${theme}`)}>
+            {/* HERO SECTION */}
+            <CVHero 
+                linkedInProfile={linkedInProfile} 
+                about={about} 
+                theme={theme} 
+                detailLevel={detailLevel} 
+                t={t} 
+            />
 
             <div className="p-8 print:px-[15mm] print:py-4 space-y-8">
                 {/* EXPERIENCE SECTION */}
-                <section>
-                    <div className={clsx(
-                        "flex items-center gap-2 mb-4 border-b pb-2",
-                         theme === 'ide' ? "border-ide-border" : "border-gray-200"
-                    )}>
-                        <Layers className="text-blue-600" size={20} />
-                        <h2 className={clsx("text-lg font-bold uppercase tracking-wide", theme === 'ide' ? "text-ide-text" : "text-gray-900")}>{t('experience')}</h2>
-                    </div>
-                    
-                    <div className="space-y-6">
-                        {experience.map((job: Experience) => (
-                            <div key={job.id} className={clsx(
-                                "relative pl-4 border-l-2",
-                                theme === 'ide' ? "border-ide-border" : "border-gray-200"
-                            )}>
-                                <div className={clsx(
-                                    "absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full border-2",
-                                    theme === 'ide' ? "bg-blue-600 border-ide-bg" : "bg-blue-600 border-white"
-                                )}></div>
-                                <div className="flex justify-between items-baseline mb-1">
-                                    <h3 className={clsx("font-bold text-base", theme === 'ide' ? "text-ide-text" : "text-gray-900")}>{job.role}</h3>
-                                    <span className={clsx("font-mono text-xs px-2 py-0.5 rounded", theme === 'ide' ? "bg-ide-activity-bar text-gray-400" : "bg-gray-100 text-gray-500")}>{job.period}</span>
-                                </div>
-                                <div className="text-sm font-semibold text-blue-700 mb-2">
-                                    {job.websiteUrl ? (
-                                        <a href={job.websiteUrl} target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-1 w-fit">
-                                            {job.company}
-                                            <ExternalLink size={10} className="inline opacity-50" />
-                                        </a>
-                                    ) : (
-                                        job.company
-                                    )}
-                                </div>
-                                <div className={clsx(
-                                    "text-sm leading-relaxed text-justify",
-                                    theme === 'ide' ? "text-gray-300" : "text-gray-700"
-                                )}>
-                                    {detailLevel === 'detailed' ? (
-                                        <div className="prose prose-sm prose-blue max-w-none dark:prose-invert">
-                                            <p className="mb-2">{job.summary}</p>
-                                            <ReactMarkdown 
-                                                components={{
-                                                    ul: ({...props}) => <ul className="list-disc pl-5 my-2 space-y-1" {...props} />,
-                                                    li: ({...props}) => <li className="pl-1" {...props} />
-                                                }}
-                                            >
-                                                {job.description}
-                                            </ReactMarkdown>
-                                            
-                                            {job.tech && job.tech.length > 0 && (
-                                                <div className="mt-3 flex flex-wrap gap-1">
-                                                    {job.tech.flatMap((t: { skills: string[] }) => t.skills).map((skill: string, i: number) => (
-                                                        <span key={i} className={clsx(
-                                                            "px-2 py-0.5 text-[10px] rounded-full border",
-                                                            theme === 'ide' ? "bg-ide-bg border-ide-line text-ide-text opacity-80" : "bg-gray-50 border-gray-200 text-gray-600"
-                                                        )}>
-                                                            {skill}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                    ) : (
-                                        job.summary
-                                    )}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
+                <CVExperience 
+                    experience={experience} 
+                    theme={theme} 
+                    detailLevel={detailLevel} 
+                    t={t} 
+                />
 
                 <div className="space-y-8">
-                     {/* SKILLS (Redundant, skills are in jobs/projects)
-                    <section className="print-break-inside-avoid">
-                        <div className={clsx(
-                            "flex items-center gap-2 mb-4 border-b pb-2",
-                            theme === 'ide' ? "border-ide-border" : "border-gray-200"
-                        )}>
-                            <Terminal className="text-blue-600" size={20} />
-                            <h2 className={clsx("text-lg font-bold uppercase tracking-wide", theme === 'ide' ? "text-ide-text" : "text-gray-900")}>{t('skills')}</h2>
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                            {linkedInProfile.skills.map((skill: string, index: number) => (
-                                <span key={index} className={clsx(
-                                    "text-sm px-2 py-1 rounded border font-medium",
-                                    theme === 'ide' ? "bg-ide-activity-bar text-gray-300 border-ide-border" : "bg-gray-100 text-gray-800 border-gray-200"
-                                )}>
-                                    {skill}
-                                </span>
-                            ))}
-                        </div>
-                    </section>
-                    */}
-
-                    {/* EDUCATION */}
-                    <section>
-                        <div className={clsx(
-                            "flex items-center gap-2 mb-4 border-b pb-2",
-                            theme === 'ide' ? "border-ide-border" : "border-gray-200"
-                        )}>
-                            <BookOpen className="text-blue-600" size={20} />
-                            <h2 className={clsx("text-lg font-bold uppercase tracking-wide", theme === 'ide' ? "text-ide-text" : "text-gray-900")}>{t('education')}</h2>
-                        </div>
-                        <div className="space-y-4">
-                            {education.map((edu: Education) => (
-                                <div key={edu.id} className={clsx(
-                                    "print-break-inside-avoid relative pl-4 border-l-2",
-                                    theme === 'ide' ? "border-ide-border" : "border-gray-200"
-                                )}>
-                                    <div className={clsx(
-                                        "absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full border-2",
-                                        theme === 'ide' ? "bg-blue-600 border-ide-bg" : "bg-blue-600 border-white"
-                                    )}></div>
-                                    <div className="flex justify-between items-baseline mb-1">
-                                        <h3 className={clsx("font-bold text-base", theme === 'ide' ? "text-ide-text" : "text-gray-900")}>
-                                            {edu.degree}
-                                        </h3>
-                                        <span className={clsx("font-mono text-xs px-2 py-0.5 rounded", theme === 'ide' ? "bg-ide-activity-bar text-gray-400" : "bg-gray-100 text-gray-500")}>
-                                            {edu.year}
-                                        </span>
-                                    </div>
-                                    <div className="flex justify-between items-baseline mb-2">
-                                        <div className="text-sm font-semibold text-blue-700">
-                                            {edu.url ? (
-                                                <a href={edu.url} target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-1 w-fit">
-                                                    {edu.school}
-                                                    <ExternalLink size={10} className="inline opacity-50" />
-                                                </a>
-                                            ) : (
-                                                edu.school
-                                            )}
-                                        </div>
-                                        {edu.location && (
-                                            <span className={clsx("text-sm font-normal", theme === 'ide' ? "text-gray-400" : "text-gray-500")}>
-                                                {edu.location}
-                                            </span>
-                                        )}
-                                    </div>
-                                    <div className={clsx(
-                                        "text-sm leading-relaxed text-justify",
-                                        theme === 'ide' ? "text-gray-300" : "text-gray-700"
-                                    )}>
-                                        {detailLevel === 'detailed' ? (
-                                            <div className="prose prose-sm prose-blue max-w-none dark:prose-invert">
-                                                {edu.description && (
-                                                    <ReactMarkdown 
-                                                        components={{
-                                                            ul: ({...props}) => <ul className="list-disc pl-5 my-2 space-y-1" {...props} />,
-                                                            li: ({...props}) => <li className="pl-1" {...props} />
-                                                        }}
-                                                    >
-                                                        {edu.description}
-                                                    </ReactMarkdown>
-                                                )}
-                                                {edu.grade && (
-                                                    <div className={clsx("mt-2 font-semibold", theme === 'ide' ? "text-ide-text" : "text-gray-800")}>
-                                                        {t('grade') || 'Grade'}: {edu.grade}
-                                                    </div>
-                                                )}
-                                            </div>
-                                        ) : (
-                                            <p>{edu.summary}</p>
-                                        )}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
+                    {/* EDUCATION SECTION */}
+                    <CVEducation 
+                        education={education} 
+                        theme={theme} 
+                        detailLevel={detailLevel} 
+                        t={t} 
+                    />
                 </div>
 
                 {/* PROJECTS SECTION */}
                 {showProjects && (
-                <section>
-                    <div className={clsx(
-                        "flex items-center gap-2 mb-4 border-b pb-2",
-                        theme === 'ide' ? "border-ide-border" : "border-gray-200"
-                    )}>
-                        <Code className="text-blue-600" size={20} />
-                        <h2 className={clsx("text-lg font-bold uppercase tracking-wide", theme === 'ide' ? "text-ide-text" : "text-gray-900")}>{t('projects')}</h2>
-                    </div>
-                    
-                    <div className="grid grid-cols-1 gap-4">
-                        {projects.map((proj: Project) => (
-                            <div key={proj.id} className={clsx(
-                                "print-break-inside-avoid p-4 rounded-lg border",
-                                theme === 'ide' ? "bg-ide-activity-bar border-ide-border" : "bg-gray-50 border-gray-200"
-                            )}>
-                                <div className="flex justify-between items-start mb-1">
-                                    <h3 className={clsx("font-bold text-base", theme === 'ide' ? "text-ide-text" : "text-gray-900")}>{proj.title}</h3>
-                                    <div className="flex gap-2">
-                                        {proj.githubUrl && (
-                                            <a href={proj.githubUrl} target="_blank" rel="noopener noreferrer" className={clsx("hover:text-blue-600", theme === 'ide' ? "text-gray-400" : "text-gray-500")} title="View Source">
-                                                <Github size={16} />
-                                            </a>
-                                        )}
-                                        {proj.deployUrl && (
-                                            <a href={proj.deployUrl} target="_blank" rel="noopener noreferrer" className={clsx("hover:text-blue-600", theme === 'ide' ? "text-gray-400" : "text-gray-500")} title="View Live">
-                                                <ExternalLink size={16} />
-                                            </a>
-                                        )}
-                                    </div>
-                                </div>
-                                <p className={clsx(
-                                    "text-sm leading-relaxed mb-3 text-justify",
-                                    theme === 'ide' ? "text-gray-300" : "text-gray-700"
-                                )}>
-                                    {proj.description}
-                                </p>
-                                <div className="flex flex-wrap gap-2">
-                                    {proj.tech.map((tech: string, i: number) => (
-                                        <span key={i} className={clsx(
-                                            "text-xs px-2 py-0.5 rounded border font-medium",
-                                            theme === 'ide' ? "bg-ide-bg text-blue-400 border-ide-border" : "bg-white text-blue-700 border-blue-100"
-                                        )}>
-                                            {tech}
-                                        </span>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </section>
+                    <CVProjects 
+                        projects={projects} 
+                        theme={theme} 
+                        t={t} 
+                    />
                 )}
-            </div>
-            
             </div>
 
              {/* Print Button Overlay */}
-             <div className="fixed top-8 right-8 print:hidden z-50">
+             <div className="fixed top-8 right-8 print-hidden z-50">
                 <button 
                     onClick={() => window.print()}
                     className="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-md shadow-xl hover:bg-blue-700 font-bold transition-all transform hover:-translate-y-0.5"
                 >
-                    <span className="text-lg">🖨️</span> {t('downloadResume') || "Print CV"}
+                    <span className="text-lg">🖨️</span> {t('downloadResume')}
                 </button>
             </div>
         </div>

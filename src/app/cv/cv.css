@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
+/* --- VISUAL CV STYLES --- */
 .cv-page-container {
     -webkit-font-smoothing: antialiased;
 }
@@ -31,15 +32,23 @@
     margin-bottom: 2rem;
 }
 
-/* Print Overrides */
+/* --- ATS CV STYLES --- */
+.ats-page-container {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: white;
+    color: black;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- PRINT OVERRIDES --- */
 @media print {
     @page {
         /* Elegant, generous margins for a premium look */
         margin: 15mm 20mm;
-        size: A4;
+        size: A4 portrait;
     }
     
-    html, body, .cv-page-container, article, header, section {
+    html, body, .cv-page-container, .ats-page-container, article, header, section {
         /* Force pure white background everywhere to kill the slate tint */
         background: #ffffff !important;
         background-color: #ffffff !important;
@@ -52,6 +61,8 @@
         line-height: 1.5; /* More elegant line height */
     }
 
+    /* Keep IDE dark mode specific colors if they really want to print dark, 
+       otherwise it's overridden by backgrounds above. Usually users print the 'print' theme. */
     .cv-page-container.theme-ide {
         background: #1e1e2e !important;
         color: #cdd6f4 !important;
@@ -73,5 +84,10 @@
     
     .cv-section {
         margin-bottom: 1.75rem;
+    }
+
+    .print-break-inside-avoid { 
+        break-inside: avoid; 
+        page-break-inside: avoid;
     }
 }
