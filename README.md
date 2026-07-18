@@ -23,6 +23,9 @@ A highly interactive, professional portfolio website designed to mimic the [**An
 - **📱 Fully Responsive**: Optimized for all devices. Mobile users get a native-app-like experience with specialized drawers and touch interactions.
 - **⚡ High Performance**: Built on Next.js 15 App Router for server-side rendering and blazing fast load times.
 - **🎭 Immersive Animations**: Powered by Framer Motion for smooth transitions, scroll-linked animations, and interactive hover effects.
+- **🌍 Internationalization**: Built-in multi-language support (English, Romanian, German, French) managed cleanly via React Context.
+- **📄 Printable CVs**: Dedicated `/cv` and `/cv-ats` routes specifically designed to be printed into beautiful visual or ATS-friendly PDF formats.
+- **🔒 Secure Contact & Admin Portal**: Working contact form with Google Auth (via NextAuth), Nodemailer integration, and admin-protected features.
 - **🛠️ Best Practices**:
     - **Type Safety**: Strict TypeScript implementation.
     - **Modern Styling**: Tailwind CSS v4 for utility-first, maintainable styling.
@@ -34,6 +37,9 @@ A highly interactive, professional portfolio website designed to mimic the [**An
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
 - **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Authentication**: [NextAuth.js v5](https://next-auth.js.org/)
+- **Forms & Validation**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
+- **Email**: Nodemailer
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Deployment**: [Vercel](https://vercel.com/)
 
@@ -49,8 +55,8 @@ src/
 │   ├── layout/           # Structural components (Sidebar, TitleBar, Footer, etc.)
 │   ├── sections/         # Page sections (Hero, Experience, Projects, Contact)
 │   └── ui/               # Generic UI elements (Buttons, Inputs, Cards)
-├── context/              # React Context providers (Navigation, Theme)
-├── data/                 # Static data files (Projects, Experience)
+├── context/              # React Context providers (Navigation, Theme, Language)
+├── data/                 # Static data files (Projects, Experience, multi-language support)
 └── hooks/                # Custom React hooks (useScrollSpy, etc.)
 ```
 
@@ -59,7 +65,7 @@ src/
 ### Prerequisites
 
 - Node.js 18+ installed.
-- npm or yarn or pnpm.
+- npm, yarn, or pnpm.
 
 ### Installation
 
@@ -78,12 +84,19 @@ src/
     pnpm install
     ```
 
-3.  **Run the development server:**
+3.  **Environment Variables:**
+    Copy the sample environment file and configure it:
+    ```bash
+    cp .env.example .env.local
+    ```
+    *Update `.env.local` with your Google OAuth credentials, SMTP settings, and the Admin email.*
+
+4.  **Run the development server:**
     ```bash
     npm run dev
     ```
 
-4.  **Open your browser:**
+5.  **Open your browser:**
     Navigate to [http://localhost:3000](http://localhost:3000) to see the application running.
 
 ## 💎 Commercial Use
@@ -98,5 +111,4 @@ This project is a premium template intended for sale.
 This template is designed to be easily customizable for your portfolio needs.
 
 -   **Theme Colors**: Edit `src/app/globals.css` to modify the CSS variables.
--   **Content**: Update `src/data/` files to change the portfolio content.
-
+-   **Content**: Update `src/data/` files to change the portfolio content and translations.
