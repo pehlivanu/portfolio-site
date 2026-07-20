@@ -19,7 +19,7 @@ import StatusBar from './StatusBar';
 export default function IDELayout({ children }: { children: React.ReactNode }) {
   const [activeSidebarView, setActiveSidebarView] = useState<
     'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | 'cv-config' | null
-  >(null);
+  >('explorer');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { activeRightPanel, closeRightPanel } = useNavigation();
   const [isMobile, setIsMobile] = useState(false);

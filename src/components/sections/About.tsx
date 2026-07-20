@@ -138,7 +138,7 @@ export default function About() {
                 </code>
               </pre>
             ) : (
-              <pre key="node" className="text-ide-text">
+              <pre key="node" className="text-ide-text animate-fade-in-up">
                 <code>
                   <span className="text-purple-400 [.light-theme_&]:text-purple-700">import</span>{' '}
                   {'{'} NextApiRequest, NextApiResponse {'}'}{' '}
