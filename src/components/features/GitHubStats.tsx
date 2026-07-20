@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { LuClock, LuBook, LuGitCommitVertical } from 'react-icons/lu';
 
@@ -8,22 +9,33 @@ import { useLanguage } from '@/context/LanguageContext';
 
 import { GitHubProfile } from '@/types/api';
 
-export default function GitHubStats({
-  onClose,
-  initialProfile,
-}: {
-  onClose?: () => void;
-  initialProfile?: GitHubProfile | null;
-}) {
+export default function GitHubStats({ onClose }: { onClose?: () => void }) {
   const { t } = useLanguage();
+  const [profile, setProfile] = useState<GitHubProfile | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  if (!initialProfile)
+  useEffect(() => {
+    fetch('https://api.github.com/users/pehlivanu')
+      .then((res) => res.json())
+      .then((data) => {
+        setProfile(data);
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <div className="text-ide-text p-8 text-center">{t('loading') || 'Loading...'}</div>;
+  }
+
+  if (!profile)
     return (
       <div className="p-8 text-center text-red-400 [.light-theme_&]:text-red-600">
         {t('errorGithub')}
       </div>
     );
-  const profile = initialProfile;
 
   return (
     <div className="bg-ide-sidebar border-ide-border/30 flex h-full w-full flex-col overflow-y-auto border-r md:w-80">

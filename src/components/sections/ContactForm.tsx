@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { m } from 'framer-motion';
+
 import { LuSend, LuCheck, LuX, LuMapPin, LuGlobe, LuCar } from 'react-icons/lu';
 import { FaTrain, FaExclamationCircle } from 'react-icons/fa';
 import { useNavigation } from '@/context/NavigationContext';
@@ -464,11 +464,7 @@ export default function ContactForm() {
         </div>
 
         {submitted ? (
-          <m.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-ide-bg/50 rounded-lg border border-green-500/30 p-8 text-center"
-          >
+          <div className="bg-ide-bg/50 rounded-lg border border-green-500/30 p-8 text-center transition-all duration-500">
             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-500/20">
               <LuCheck size={32} className="text-green-400 [.light-theme_&]:text-green-600" />
             </div>
@@ -487,7 +483,7 @@ export default function ContactForm() {
                 {t('sendAnother')}
               </button>
             )}
-          </m.div>
+          </div>
         ) : (
           <button
             type="submit"

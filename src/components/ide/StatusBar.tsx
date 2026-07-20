@@ -7,7 +7,26 @@ import { useNavigation } from '@/context/NavigationContext';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function StatusBar() {
-  const { contactStatus, zoomLevel, activeSection } = useNavigation();
+  const { contactStatus, activeSection } = useNavigation();
+  const [zoomLevel, setZoomLevel] = React.useState(100);
+
+  React.useEffect(() => {
+    const updateZoomLevel = () => {
+      const level = Math.round(window.devicePixelRatio * 100);
+      setZoomLevel(level);
+    };
+    updateZoomLevel();
+    window.addEventListener('resize', updateZoomLevel);
+    const mqString = `(resolution: ${window.devicePixelRatio}dppx)`;
+    const mediaQueryList = window.matchMedia(mqString);
+    const handleChange = () => updateZoomLevel();
+    if (mediaQueryList.addEventListener) mediaQueryList.addEventListener('change', handleChange);
+    return () => {
+      window.removeEventListener('resize', updateZoomLevel);
+      if (mediaQueryList.removeEventListener)
+        mediaQueryList.removeEventListener('change', handleChange);
+    };
+  }, []);
   const { t } = useLanguage();
 
   const getLanguageForSection = (section: string) => {

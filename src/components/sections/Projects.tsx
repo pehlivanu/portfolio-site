@@ -2,7 +2,6 @@
 import { FaGithub, FaJava } from 'react-icons/fa';
 
 import React from 'react';
-import { m } from 'framer-motion';
 import { LuFolder, LuExternalLink, LuCode } from 'react-icons/lu';
 import { SiSpringboot, SiPython, SiNextdotjs, SiReact, SiJenkins } from 'react-icons/si';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
@@ -46,13 +45,9 @@ export default function Projects() {
         {projects.map((project, index) => {
           const isActive = activeMatch?.id === `projects-${project.id}`;
           return (
-            <m.div
+            <div
               key={project.id}
               id={`projects-${project.id}`}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
               className={`group bg-ide-card-bg border-ide-border hover:border-ide-accent/50 relative flex flex-col rounded-lg border transition-all hover:-translate-y-1 ${isActive ? 'border-orange-500 bg-orange-500/10 shadow-[0_0_15px_rgba(249,115,22,0.2)]' : ''}`}
             >
               {/* Top Gradient Line to match Experience card colorfulness */}
@@ -141,7 +136,7 @@ export default function Projects() {
                   </div>
                 </div>
               </div>
-            </m.div>
+            </div>
           );
         })}
       </div>

@@ -27,7 +27,7 @@ export default function About() {
       className="mx-auto flex min-h-[80vh] w-full max-w-7xl flex-wrap items-center justify-center gap-12 p-8"
     >
       <div className="min-w-[340px] flex-1 space-y-6 md:min-w-[600px]">
-        <div className="animate-fade-in-up">
+        <div className="">
           <div className="text-ide-accent mb-2 flex items-center gap-2">
             <LuTerminal size={20} />
             <span className="font-mono text-sm">
@@ -94,7 +94,7 @@ export default function About() {
 
           <div className="relative h-[300px] overflow-x-auto p-6 font-mono text-sm">
             {isJava ? (
-              <pre key="java" className="text-ide-text animate-fade-in-up">
+              <pre key="java" className="text-ide-text">
                 <code>
                   <span className="text-orange-400 [.light-theme_&]:text-orange-700">package</span>{' '}
                   dev.portfolio;{'\n\n'}
@@ -138,7 +138,7 @@ export default function About() {
                 </code>
               </pre>
             ) : (
-              <pre key="node" className="text-ide-text animate-fade-in-up">
+              <pre key="node" className="text-ide-text">
                 <code>
                   <span className="text-purple-400 [.light-theme_&]:text-purple-700">import</span>{' '}
                   {'{'} NextApiRequest, NextApiResponse {'}'}{' '}

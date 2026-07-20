@@ -80,14 +80,6 @@
       background-color 0.5s ease-in-out,
       color 0.5s ease-in-out;
   }
-
-  *,
-  *::before,
-  *::after {
-    transition-property: background-color, border-color, color, fill, stroke;
-    transition-duration: 0.5s;
-    transition-timing-function: ease-in-out;
-  }
 }
 
 @layer utilities {

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { m } from 'framer-motion';
+
 import {
   LuCalendar,
   LuRocket,
@@ -64,7 +64,6 @@ const getRoleColor = (type: string) => {
 };
 
 import { LuChevronDown, LuChevronUp } from 'react-icons/lu';
-import { AnimatePresence } from 'framer-motion';
 
 import { useLanguage } from '@/context/LanguageContext';
 import { Experience as JobType } from '@/types/data';
@@ -75,12 +74,9 @@ const JobCard = ({ job, isActive }: { job: JobType; isActive: boolean }) => {
   const roleColor = getRoleColor(job.type || '');
 
   return (
-    <m.div
+    <div
       key={job.id}
       id={`experience-${job.id}`}
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
       className={`relative pl-0 transition-all duration-500 md:pl-16 ${isActive ? '-mx-4 rounded-lg border-l-4 border-orange-500 bg-orange-500/10 px-4 py-4' : ''}`}
     >
       {/* Timeline Icon */}
@@ -236,72 +232,64 @@ const JobCard = ({ job, isActive }: { job: JobType; isActive: boolean }) => {
           )}
 
           {/* Expandable Content: Detailed Description & Tech Stack */}
-          <AnimatePresence initial={false}>
-            {isExpanded && (
-              <m.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
-                className="overflow-hidden"
-              >
-                <div className="pt-2 pb-4">
-                  {/* Markdown Description */}
-                  <ReactMarkdown
-                    components={{
-                      p: ({ children, ...props }) => (
-                        <p className="mb-4 last:mb-0" {...props}>
-                          {React.Children.map(children, (child) =>
-                            typeof child === 'string' ? <Highlight text={child} /> : child
-                          )}
-                        </p>
-                      ),
-                      ul: ({ children, ...props }) => (
-                        <ul className="mb-4 ml-4 list-outside list-disc space-y-1" {...props}>
-                          {children}
-                        </ul>
-                      ),
-                      li: ({ children, ...props }) => (
-                        <li className="pl-1" {...props}>
-                          {React.Children.map(children, (child) =>
-                            typeof child === 'string' ? <Highlight text={child} /> : child
-                          )}
-                        </li>
-                      ),
-                      strong: ({ children, ...props }) => (
-                        <strong className="text-ide-text-active font-semibold" {...props}>
-                          {React.Children.map(children, (child) =>
-                            typeof child === 'string' ? <Highlight text={child} /> : child
-                          )}
-                        </strong>
-                      ),
-                    }}
-                  >
-                    {job.description}
-                  </ReactMarkdown>
+          {isExpanded && (
+            <div className="overflow-hidden transition-all duration-300">
+              <div className="pt-2 pb-4">
+                {/* Markdown Description */}
+                <ReactMarkdown
+                  components={{
+                    p: ({ children, ...props }) => (
+                      <p className="mb-4 last:mb-0" {...props}>
+                        {React.Children.map(children, (child) =>
+                          typeof child === 'string' ? <Highlight text={child} /> : child
+                        )}
+                      </p>
+                    ),
+                    ul: ({ children, ...props }) => (
+                      <ul className="mb-4 ml-4 list-outside list-disc space-y-1" {...props}>
+                        {children}
+                      </ul>
+                    ),
+                    li: ({ children, ...props }) => (
+                      <li className="pl-1" {...props}>
+                        {React.Children.map(children, (child) =>
+                          typeof child === 'string' ? <Highlight text={child} /> : child
+                        )}
+                      </li>
+                    ),
+                    strong: ({ children, ...props }) => (
+                      <strong className="text-ide-text-active font-semibold" {...props}>
+                        {React.Children.map(children, (child) =>
+                          typeof child === 'string' ? <Highlight text={child} /> : child
+                        )}
+                      </strong>
+                    ),
+                  }}
+                >
+                  {job.description}
+                </ReactMarkdown>
 
-                  {/* Tech Stack */}
-                  <div className="border-ide-border/30 mt-5 flex flex-col gap-2.5 border-t pt-4">
-                    {job.tech.map((techGroup: { category: string; skills: string[] }) => (
-                      <div key={techGroup.category} className="flex flex-wrap items-baseline gap-2">
-                        <h4 className="text-ide-text-active mr-1 text-sm font-semibold">
-                          {techGroup.category}:
-                        </h4>
-                        {techGroup.skills.map((tech: string) => (
-                          <span
-                            key={tech}
-                            className="bg-ide-bg text-ide-accent border-ide-border hover:bg-ide-accent/10 cursor-default rounded-full border px-2 py-0.5 text-xs font-medium transition-colors"
-                          >
-                            <Highlight text={tech} />
-                          </span>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
+                {/* Tech Stack */}
+                <div className="border-ide-border/30 mt-5 flex flex-col gap-2.5 border-t pt-4">
+                  {job.tech.map((techGroup: { category: string; skills: string[] }) => (
+                    <div key={techGroup.category} className="flex flex-wrap items-baseline gap-2">
+                      <h4 className="text-ide-text-active mr-1 text-sm font-semibold">
+                        {techGroup.category}:
+                      </h4>
+                      {techGroup.skills.map((tech: string) => (
+                        <span
+                          key={tech}
+                          className="bg-ide-bg text-ide-accent border-ide-border hover:bg-ide-accent/10 cursor-default rounded-full border px-2 py-0.5 text-xs font-medium transition-colors"
+                        >
+                          <Highlight text={tech} />
+                        </span>
+                      ))}
+                    </div>
+                  ))}
                 </div>
-              </m.div>
-            )}
-          </AnimatePresence>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Toggle Button */}
@@ -322,7 +310,7 @@ const JobCard = ({ job, isActive }: { job: JobType; isActive: boolean }) => {
           )}
         </button>
       </div>
-    </m.div>
+    </div>
   );
 };
 

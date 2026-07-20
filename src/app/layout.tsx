@@ -8,8 +8,6 @@ import { ThemeProvider } from '@/context/ThemeContext';
 import { SearchProvider } from '@/context/SearchContext';
 import { SessionProvider } from '@/components/providers/SessionProvider';
 
-import { AnimationProvider } from '@/components/providers/AnimationProvider';
-
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
@@ -76,9 +74,7 @@ export default function RootLayout({
           <SessionProvider>
             <LanguageProvider>
               <SearchProvider>
-                <NavigationProvider>
-                  <AnimationProvider>{children}</AnimationProvider>
-                </NavigationProvider>
+                <NavigationProvider>{children}</NavigationProvider>
               </SearchProvider>
             </LanguageProvider>
           </SessionProvider>

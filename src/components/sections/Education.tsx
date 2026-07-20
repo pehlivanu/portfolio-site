@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { m } from 'framer-motion';
+
 import {
   LuGraduationCap,
   LuAward,
@@ -70,12 +70,9 @@ const EducationCard = ({ edu, isActive }: { edu: EducationType; isActive: boolea
   const tagContent = edu.type ? edu.type.replace(/-/g, ' ') : edu.degree;
 
   return (
-    <m.div
+    <div
       key={edu.id}
       id={`education-${edu.id}`}
-      initial={{ opacity: 0, x: -20 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
       className={`relative pl-0 transition-all duration-500 md:pl-16 ${isActive ? '-mx-4 rounded-lg border-l-4 border-orange-500 bg-orange-500/10 px-4 py-4' : ''}`}
     >
       {/* Timeline Icon */}
@@ -178,7 +175,7 @@ const EducationCard = ({ edu, isActive }: { edu: EducationType; isActive: boolea
           )}
         </div>
       </div>
-    </m.div>
+    </div>
   );
 };
 

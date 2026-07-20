@@ -5,7 +5,6 @@ import Sidebar from './Sidebar';
 import dynamic from 'next/dynamic';
 import { useNavigation } from '@/context/NavigationContext';
 import { useLanguage } from '@/context/LanguageContext';
-import { GitHubProfile } from '@/types/api';
 
 const Explorer = dynamic(() => import('./Explorer'));
 const Search = dynamic(() => import('./Search'));
@@ -17,18 +16,12 @@ const BioPanel = dynamic(() => import('@/components/sections/BioPanel'));
 import Tabs from './Tabs';
 import StatusBar from './StatusBar';
 
-export default function IDELayout({
-  children,
-  initialGitHubProfile,
-}: {
-  children: React.ReactNode;
-  initialGitHubProfile?: GitHubProfile | null;
-}) {
+export default function IDELayout({ children }: { children: React.ReactNode }) {
   const [activeSidebarView, setActiveSidebarView] = useState<
     'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | 'cv-config' | null
-  >('explorer');
+  >(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { setZoomLevel, activeRightPanel, closeRightPanel } = useNavigation();
+  const { activeRightPanel, closeRightPanel } = useNavigation();
   const [isMobile, setIsMobile] = useState(false);
   const { t } = useLanguage();
 
@@ -44,24 +37,6 @@ export default function IDELayout({
     window.addEventListener('resize', checkMobile);
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
-
-  useEffect(() => {
-    const updateZoomLevel = () => {
-      const level = Math.round(window.devicePixelRatio * 100);
-      setZoomLevel(level);
-    };
-    updateZoomLevel();
-    window.addEventListener('resize', updateZoomLevel);
-    const mqString = `(resolution: ${window.devicePixelRatio}dppx)`;
-    const mediaQueryList = window.matchMedia(mqString);
-    const handleChange = () => updateZoomLevel();
-    if (mediaQueryList.addEventListener) mediaQueryList.addEventListener('change', handleChange);
-    return () => {
-      window.removeEventListener('resize', updateZoomLevel);
-      if (mediaQueryList.removeEventListener)
-        mediaQueryList.removeEventListener('change', handleChange);
-    };
-  }, [setZoomLevel]);
 
   return (
     <div className="bg-ide-bg h-screen w-screen overflow-hidden">
@@ -117,10 +92,7 @@ export default function IDELayout({
                 <Search onClose={() => setActiveSidebarView(null)} isMobile={isMobile} />
               )}
               {activeSidebarView === 'github' && (
-                <GitHubStats
-                  onClose={() => setActiveSidebarView(null)}
-                  initialProfile={initialGitHubProfile}
-                />
+                <GitHubStats onClose={() => setActiveSidebarView(null)} />
               )}
               {activeSidebarView === 'linkedin' && (
                 <LinkedInStats onClose={() => setActiveSidebarView(null)} />
