@@ -204,15 +204,13 @@ export const experience: Experience[] = [
 export const education: Education[] = [
   {
     id: 1,
-    type: 'dual-study',
-    studyField: 'Ausbildung',
+    type: 'ausbildung',
+    studyField: 'Technische Systeme',
     degree: 'Staatlich geprüfter Informatiker',
     school: 'Gottlieb-Daimler-Schule 2 - Akademie für Datenverarbeitung (ADV)',
     url: 'https://gds2.de',
     location: 'Böblingen, Deutschland',
     year: '2011 - 2014',
-    summary:
-      'Intensives duales Studium mit den Schwerpunkten Software Engineering, Datenbanksysteme und Projektmanagement.',
     description:
       '3-jähriges Berufskolleg. Beinhaltete ein einjähriges Betriebspraktikum bei der Alpine Electronics R&D Europe GmbH mit der Abschlussarbeit: "Alpine Voltage Curve Editor" (Note: sehr gut / 1,0).',
     grade: 'Abgeschlossen mit Belobigung',
@@ -220,13 +218,12 @@ export const education: Education[] = [
   {
     id: 2,
     type: 'master',
-    studyField: 'Master',
+    studyField: 'Lehramt Mathematik',
     degree: 'Master',
     school: 'West-Universität Temeswar (Universitatea de Vest din Timișoara)',
     url: 'https://info.uvt.ro/en/',
     location: 'Temeswar, Rumänien',
     year: '2009 - 2011',
-    summary: 'Spezialisierte Ausbildung in Pädagogik und Didaktik der Mathematik.',
     description:
       'Weiterführendes akademisches Programm mit Fokus auf komplexe mathematische Modelle und Bildungsmethodik. Das erste Jahr des Masters wurde im Rahmen des Erasmus-Programms im Ausland an der Universität Stuttgart absolviert. Zu den Kernfächern gehörten: Vektoranalysis, Höhere Algebra und Geometrie, Iterative Methoden, statistische und probabilistische Methoden sowie Software für Bildungsmanagement.',
     grade: '7,70 / 10 (Jahr 1) & 7,66 / 10 (Jahr 2)',
@@ -234,28 +231,25 @@ export const education: Education[] = [
   {
     id: 3,
     type: 'bachelor',
-    studyField: 'Bachelor',
+    studyField: 'Mathematik und Informatik',
     degree: 'Bachelor',
     school: 'West-Universität Temeswar (Universitatea de Vest din Timișoara)',
     url: 'https://info.uvt.ro/en/',
     location: 'Temeswar, Rumänien',
     year: '2006 - 2009',
-    summary:
-      'Doppelstudium mit starken Grundlagen sowohl in abstrakter Mathematik als auch in angewandter Informatik.',
     description:
       'Curriculum mit doppeltem Schwerpunkt, das theoretische Mathematik mit angewandter Informatik und Software Engineering verbindet. Die Hauptfächer umfassten: Datenstrukturen, Künstliche Intelligenz, Datenbanksysteme, Computernetzwerke, algorithmische Geometrie, logische und funktionale Programmierung sowie mathematische Modellierung/Simulation.',
     grade: '10 / 10 (Abschlussprüfung) | 9,02 / 10 (Gesamtdurchschnitt)',
   },
   {
     id: 4,
-    type: 'high-school',
-    studyField: 'Gymnasium',
+    type: 'gymnasium',
+    studyField: 'Mathematik und Informatik',
     degree: 'Abitur (Bacalaureat)',
     school: 'Nationalkolleg für Informatik „Spiru Haret“ Suceava',
     url: 'https://www.cni-sv.ro/',
     location: 'Suceava, Rumänien',
     year: '2002 - 2006',
-    summary: 'Intensiver Informatik- und Mathematik-Lehrplan.',
     description: 'Profil: Mathematik & Informatik (Intensiv).',
     grade: '9,81 / 10',
   },

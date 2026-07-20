@@ -65,7 +65,7 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel }: C
                 href="https://www.liviuionesi.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-blue-600 hover:underline"
+                className="whitespace-nowrap text-gray-600 hover:text-blue-600 hover:underline"
               >
                 www.liviuionesi.com
               </a>
@@ -88,7 +88,7 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel }: C
                 <LuPhone size={14} className="text-blue-500" />
                 <a
                   href={`tel:${linkedInProfile.phone.replace(/\\s+/g, '')}`}
-                  className="text-gray-600 hover:text-blue-600 hover:underline"
+                  className="whitespace-nowrap text-gray-600 hover:text-blue-600 hover:underline"
                 >
                   {linkedInProfile.phone}
                 </a>
@@ -98,7 +98,7 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel }: C
               <LuMail size={14} className="text-blue-500" />
               <a
                 href={`mailto:${linkedInProfile.email || 'ionesiliviu@yahoo.com'}`}
-                className="text-gray-600 hover:text-blue-600 hover:underline"
+                className="whitespace-nowrap text-gray-600 hover:text-blue-600 hover:underline"
               >
                 {linkedInProfile.email || 'ionesiliviu@yahoo.com'}
               </a>
@@ -109,7 +109,7 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel }: C
                 href="https://linkedin.com/in/liviu-ionesi"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-blue-600 hover:underline"
+                className="whitespace-nowrap text-gray-600 hover:text-blue-600 hover:underline"
               >
                 linkedin.com/in/liviu-ionesi
               </a>
@@ -120,7 +120,7 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel }: C
                 href="https://github.com/pehlivanu"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-600 hover:text-blue-600 hover:underline"
+                className="whitespace-nowrap text-gray-600 hover:text-blue-600 hover:underline"
               >
                 github.com/pehlivanu
               </a>

@@ -15,45 +15,45 @@ import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useSearch } from '@/context/SearchContext';
 import Highlight from '@/components/ui/Highlight';
 
-const getIconByType = (type: string) => {
-  switch (type) {
-    case 'dual-study':
+const getIconById = (id: number) => {
+  switch (id) {
+    case 1:
       return <LuCode size={20} className="text-ide-text-active" />;
-    case 'master':
+    case 2:
       return <LuAward size={20} className="text-ide-text-active" />;
-    case 'bachelor':
+    case 3:
       return <LuGraduationCap size={20} className="text-ide-text-active" />;
-    case 'high-school':
+    case 4:
       return <LuSchool size={20} className="text-ide-text-active" />;
     default:
       return <LuBookOpen size={20} className="text-ide-text-active" />;
   }
 };
 
-const getIconBackground = (type: string) => {
-  switch (type) {
-    case 'dual-study':
+const getIconBackground = (id: number) => {
+  switch (id) {
+    case 1:
       return 'bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.5)]';
-    case 'master':
+    case 2:
       return 'bg-purple-500 shadow-[0_0_15px_rgba(168,85,247,0.5)]';
-    case 'bachelor':
+    case 3:
       return 'bg-green-500 shadow-[0_0_15px_rgba(34,197,94,0.5)]';
-    case 'high-school':
+    case 4:
       return 'bg-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.5)]';
     default:
       return 'bg-gray-500';
   }
 };
 
-const getRoleColor = (type: string) => {
-  switch (type) {
-    case 'dual-study':
+const getRoleColor = (id: number) => {
+  switch (id) {
+    case 1:
       return 'text-blue-400 [.light-theme_&]:text-blue-700';
-    case 'master':
+    case 2:
       return 'text-purple-400 [.light-theme_&]:text-purple-700';
-    case 'bachelor':
+    case 3:
       return 'text-green-400 [.light-theme_&]:text-green-700';
-    case 'high-school':
+    case 4:
       return 'text-orange-400 [.light-theme_&]:text-orange-700';
     default:
       return 'text-blue-400 [.light-theme_&]:text-blue-700';
@@ -67,9 +67,9 @@ type EducationType = (typeof mockDataEn.education)[number];
 
 const EducationCard = ({ edu, isActive }: { edu: EducationType; isActive: boolean }) => {
   const { t } = useLanguage();
-  const roleColor = getRoleColor(edu.type || '');
-  // Use full name without stripping spaces
-  const tagContent = edu.studyField ? edu.studyField : edu.degree;
+  const roleColor = getRoleColor(edu.id);
+  // Use localized type without hyphens
+  const tagContent = edu.type ? edu.type.replace(/-/g, ' ') : edu.degree;
 
   return (
     <m.div
@@ -82,20 +82,20 @@ const EducationCard = ({ edu, isActive }: { edu: EducationType; isActive: boolea
     >
       {/* Timeline Icon */}
       <div
-        className={`border-ide-bg absolute top-0 -left-[19px] z-10 hidden h-10 w-10 items-center justify-center rounded-full border-4 md:flex ${getIconBackground(edu.type || '')}`}
+        className={`border-ide-bg absolute top-0 -left-[19px] z-10 hidden h-10 w-10 items-center justify-center rounded-full border-4 md:flex ${getIconBackground(edu.id)}`}
       >
-        {getIconByType(edu.type || '')}
+        {getIconById(edu.id)}
       </div>
 
       <div className="bg-ide-card-bg border-ide-border hover:border-ide-accent/50 group relative overflow-hidden rounded-lg border p-6 transition-colors">
         {/* Subtle gradient overlay based on role type */}
         <div
           className={`absolute top-0 left-0 h-full w-1 opacity-50 ${
-            edu.type === 'master'
+            edu.id === 2
               ? 'bg-purple-500'
-              : edu.type === 'dual-study'
+              : edu.id === 1
                 ? 'bg-blue-500'
-                : edu.type === 'bachelor'
+                : edu.id === 3
                   ? 'bg-green-500'
                   : 'bg-orange-500'
           }`}
@@ -106,7 +106,7 @@ const EducationCard = ({ edu, isActive }: { edu: EducationType; isActive: boolea
           <div className="mb-2 flex flex-col">
             <h3 className="text-ide-text-active flex flex-wrap items-center gap-1 font-mono text-lg font-bold transition-colors md:text-2xl">
               <span className="font-bold text-gray-500 opacity-100">&lt;</span>
-              <span className={`${roleColor}`}>
+              <span className={`${roleColor} capitalize`}>
                 <Highlight text={tagContent} />
               </span>
               <span className="font-bold text-gray-500 opacity-100">/&gt;</span>
@@ -172,11 +172,10 @@ const EducationCard = ({ edu, isActive }: { edu: EducationType; isActive: boolea
           </div>
         </div>
 
-        <div className="text-ide-text mb-0 text-sm leading-relaxed">
-          {/* Summary Section - Always Visible */}
-          {edu.summary && (
+        <div className="text-ide-text mb-2 text-justify text-sm leading-relaxed">
+          {edu.description && (
             <div className="bg-ide-bg border-ide-accent/20 mb-4 rounded-lg border-l-2 px-4 py-3 text-base font-normal italic md:text-lg">
-              <Highlight text={edu.summary} />
+              <Highlight text={edu.description} />
             </div>
           )}
         </div>

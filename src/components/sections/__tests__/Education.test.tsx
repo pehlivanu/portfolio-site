@@ -39,7 +39,6 @@ describe('Education Component', () => {
             url: 'http://univ.edu',
             location: 'City',
             year: '2010 - 2014',
-            summary: 'Good summary',
             description: 'Good description',
             grade: 'A',
           },
@@ -56,8 +55,7 @@ describe('Education Component', () => {
     render(<Education />);
 
     expect(screen.getByText('education')).toBeInTheDocument();
-    expect(screen.getByText('Computer Science')).toBeInTheDocument();
+    expect(screen.getByText('bachelor')).toBeInTheDocument();
     expect(screen.getByText('University')).toBeInTheDocument();
-    expect(screen.getByText('Good summary')).toBeInTheDocument();
   });
 });

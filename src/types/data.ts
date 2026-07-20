@@ -28,7 +28,6 @@ export interface Education {
   url: string;
   location: string;
   year: string;
-  summary: string;
   description: string;
   grade: string;
   dualStudy?: string;
