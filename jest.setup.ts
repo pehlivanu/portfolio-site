@@ -25,3 +25,9 @@ jest.mock('react-markdown', () => {
     return props.children;
   };
 });
+
+// Mock Canvas getContext to avoid JSDOM warnings
+if (typeof window !== 'undefined') {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  HTMLCanvasElement.prototype.getContext = jest.fn() as any;
+}
