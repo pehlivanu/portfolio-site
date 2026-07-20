@@ -46,7 +46,7 @@ export default function TitleBar({ onMenuClick }: TitleBarProps) {
           >
             <LuMenu size={18} />
           </button>
-          <div className="group flex items-center gap-2">
+          <div className="group flex items-center gap-4 px-1">
             <button
               className="relative flex h-3 w-3 cursor-pointer items-center justify-center rounded-full bg-[#ff5f56] hover:bg-[#ff5f56]"
               title={t('exit')}
