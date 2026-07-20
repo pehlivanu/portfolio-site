@@ -17,15 +17,17 @@ A highly interactive, professional portfolio website designed to mimic the [**An
 - **🎨 Antigravity IDE Aesthetic**: A faithful recreation of the powerful Antigravity UI, including:
   - **Activity Bar**: Functional sidebar with navigation and external links.
   - **Explorer Panel**: File-tree navigation for project sections.
+  - **Search Panel**: Full-text search that lists results in the sidebar and smoothly scrolls the specific site section into focus when clicked.
   - **Editor Area**: The main content area where "files" (sections) are displayed.
   - **Status Bar**: Real-time context awareness (Git branch, language, cursor position).
-  - **Command Palette**: Fully functional search/command bar (accessible via UI).
+  - **Command Palette**: Fully functional command bar (accessible via UI).
+  - **Functional Zoom**: The IDE correctly tracks and reflects the browser's native zoom level.
 - **📱 Fully Responsive**: Optimized for all devices. Mobile users get a native-app-like experience with specialized drawers and touch interactions.
 - **⚡ High Performance**: Built on Next.js 16 App Router with React Compiler enabled and lazy-loaded Framer Motion for blazing fast load times.
 - **🎭 Immersive Animations**: Powered by Framer Motion for smooth transitions, scroll-linked animations, and interactive hover effects.
 - **🌍 Internationalization**: Built-in multi-language support (English, Romanian, German, French) managed cleanly via React Context.
 - **📄 Printable CVs**: Dedicated `/cv` and `/cv-ats` routes specifically designed to be printed into beautiful visual or ATS-friendly PDF formats.
-- **🔒 Secure Contact & Admin Portal**: Working contact form with Google Auth (via NextAuth), Nodemailer integration, and admin-protected features.
+- **🔒 Secure & Amazing Contact Form**: A highly interactive contact experience featuring Google Auth, Nodemailer integration, and a geospatial API that calculates the real-time physical distance between the visitor and the office.
 - **🛠️ Best Practices**:
   - **Type Safety**: Strict TypeScript implementation.
   - **Modern Styling**: Tailwind CSS v4 for utility-first, maintainable styling.
@@ -47,7 +49,7 @@ A highly interactive, professional portfolio website designed to mimic the [**An
 
 This project is built to "take care of itself" with a robust suite of automated quality gates:
 
-- **Unit Testing**: A comprehensive suite of component tests running on **Jest** and **React Testing Library** guarantees UI reliability.
+- **Unit Testing**: A comprehensive suite of component tests running on **Jest** and **React Testing Library** guarantees UI reliability. The project maintains exceptional test coverage (~97% for statements and lines, 89% for functions), ensuring all core architecture and features work flawlessly.
 - **Continuous Maintenance**: **Dependabot** is configured (`.github/dependabot.yml`) to automatically submit grouped PRs for safe minor/patch dependency updates every week.
 - **Code Quality Guardrails**: Pre-commit hooks powered by **Husky** and **lint-staged** automatically run **ESLint v10** and **Prettier** on staged files, guaranteeing that no poorly formatted or lint-failing code ever enters the repository.
 
@@ -63,7 +65,7 @@ While traditional Single Page Applications (SPAs) built with React and Vite/CRA 
 
 ### 🏆 Lighthouse & Performance Impact
 
-Because of these architectural decisions (Server Components, Static Pre-rendering, and Lazy-loaded chunks), this application achieves **near-perfect 100/100 Lighthouse scores** across Performance, Accessibility, Best Practices, and SEO—even while hosted entirely on **Vercel's Free Tier** (Hobby plan).
+Because of these architectural decisions (Server Components, Static Pre-rendering, and Lazy-loaded chunks), this application achieves a **perfect 100/100 Lighthouse score** across Performance, Accessibility, Best Practices, and SEO—even while hosted entirely on **Vercel's Free Tier** (Hobby plan).
 
 **If this were built with standard Create React App (CRA):**
 

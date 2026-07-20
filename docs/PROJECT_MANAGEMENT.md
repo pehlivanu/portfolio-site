@@ -39,24 +39,24 @@ This document outlines the development roadmap, organized by **Epics** and **Use
 
 **Goal**: Ensure the application achieves top-tier performance scores and is accessible to all users.
 
-- **Story 4.1**: **Lighthouse Audit**: Analyze and fix issues to achieve 90+ scores in Performance, Accessibility, Best Practices, and SEO. `[TODO]`
-- **Story 4.2**: **SEO Implementation**: Add dynamic metadata, Open Graph tags, and a Sitemap for better search engine visibility. `[TODO]`
-- **Story 4.3**: **Asset Optimization**: Optimize images and fonts to minimize First Contentful Paint (FCP). `[TODO]`
-- **Story 4.4**: **Accessibility (a11y)**: Ensure full keyboard navigation support and proper ARIA labels for all interactive elements. `[TODO]`
+- **Story 4.1**: **Lighthouse Audit**: Analyze and fix issues to achieve 90+ scores in Performance, Accessibility, Best Practices, and SEO. `[DONE]`
+- **Story 4.2**: **SEO Implementation**: Add dynamic metadata, Open Graph tags, and a Sitemap for better search engine visibility. `[DONE]`
+- **Story 4.3**: **Asset Optimization**: Optimize images and fonts to minimize First Contentful Paint (FCP). `[DONE]`
+- **Story 4.4**: **Accessibility (a11y)**: Ensure full keyboard navigation support and proper ARIA labels for all interactive elements. `[DONE]`
 
 ## 📌 Epic 5: Testing & Quality Assurance
 
 **Goal**: Guarantee code reliability and prevent regressions with a comprehensive testing suite.
 
-- **Story 5.1**: **Unit Testing Setup**: Configure Jest and React Testing Library. `[TODO]`
-- **Story 5.2**: **Component Tests**: Write unit tests for critical UI components (Hero, Experience, Projects). `[TODO]`
-- **Story 5.3**: **E2E Testing Setup**: Configure Playwright for end-to-end testing. `[TODO]`
-- **Story 5.4**: **Critical Flow Tests**: Write E2E tests for the Navigation flow and Contact Form submission. `[TODO]`
+- **Story 5.1**: **Unit Testing Setup**: Configure Jest and React Testing Library. `[DONE]`
+- **Story 5.2**: **Component Tests**: Write unit tests for critical UI components (Hero, Experience, Projects). `[DONE]`
+- **Story 5.3**: **E2E Testing Setup**: Configure Playwright for end-to-end testing. `[DONE]`
+- **Story 5.4**: **Critical Flow Tests**: Write E2E tests for the Navigation flow and Contact Form submission. `[DONE]`
 
 ## 📌 Epic 6: Documentation & Maintainability
 
 **Goal**: Ensure the project is easy to understand, contribute to, and maintain.
 
-- **Story 6.1**: **Project Documentation**: Create a comprehensive `README.md` and `PROJECT_MANAGEMENT.md`. `[IN PROGRESS]`
-- **Story 6.2**: **Code Documentation**: Add JSDoc comments to all exported components and hooks. `[TODO]`
-- **Story 6.3**: **Code Quality**: Enforce strict TypeScript rules (no `any`) and configure Prettier/ESLint for consistent formatting. `[TODO]`
+- **Story 6.1**: **Project Documentation**: Create a comprehensive `README.md` and `PROJECT_MANAGEMENT.md`. `[DONE]`
+- **Story 6.2**: **Code Documentation**: Add JSDoc comments to all exported components and hooks. `[DONE]`
+- **Story 6.3**: **Code Quality**: Enforce strict TypeScript rules (no `any`) and configure Prettier/ESLint for consistent formatting. `[DONE]`
