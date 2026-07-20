@@ -186,7 +186,7 @@ export default function Education() {
   const { education } = data;
 
   return (
-    <section id="education" className="mx-auto w-full max-w-7xl px-8 py-20">
+    <section id="education" className="content-vis-auto mx-auto w-full max-w-7xl px-8 py-20">
       <div className="mb-12 flex items-center gap-2">
         <span className="text-ide-accent font-mono text-xl">03.</span>
         <h2 className="text-ide-text-active text-3xl font-bold">{t('education')}</h2>

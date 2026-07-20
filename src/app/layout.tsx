@@ -11,11 +11,13 @@ import { SessionProvider } from '@/components/providers/SessionProvider';
 const inter = Inter({
   variable: '--font-inter',
   subsets: ['latin'],
+  display: 'optional',
 });
 
 const jetbrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
   subsets: ['latin'],
+  display: 'optional',
 });
 
 export const metadata: Metadata = {

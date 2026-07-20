@@ -321,7 +321,7 @@ export default function Experience() {
   const { experience } = data;
 
   return (
-    <section id="experience" className="mx-auto w-full max-w-7xl px-8 py-20">
+    <section id="experience" className="content-vis-auto mx-auto w-full max-w-7xl px-8 py-20">
       <div className="mb-12 flex items-center gap-2">
         <span className="text-ide-accent font-mono text-xl">02.</span>
         <h2 className="text-ide-text-active text-3xl font-bold">{t('experience')}</h2>
