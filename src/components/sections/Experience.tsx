@@ -67,9 +67,7 @@ import { LuChevronDown, LuChevronUp } from 'react-icons/lu';
 import { AnimatePresence } from 'framer-motion';
 
 import { useLanguage } from '@/context/LanguageContext';
-
-import * as mockDataEn from '@/data/locales/en';
-type JobType = (typeof mockDataEn.experience)[number];
+import { Experience as JobType } from '@/types/data';
 
 const JobCard = ({ job, isActive }: { job: JobType; isActive: boolean }) => {
   const { t } = useLanguage();

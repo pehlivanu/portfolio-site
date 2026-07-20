@@ -6,14 +6,7 @@ import * as deData from '@/data/locales/de';
 import * as roData from '@/data/locales/ro';
 import * as frData from '@/data/locales/fr';
 
-export type Language = 'en' | 'de' | 'ro' | 'fr';
-
-interface LanguageContextType {
-  language: Language;
-  setLanguage: (lang: Language) => void;
-  data: typeof enData;
-  t: (key: string) => string;
-}
+import { Language, LanguageContextType } from '@/types/context';
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 

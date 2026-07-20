@@ -1,21 +1,8 @@
-"use client";
+'use client';
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-type Section = 'about' | 'experience' | 'education' | 'projects' | 'contact';
-
-interface NavigationContextType {
-  activeSection: Section;
-  setActiveSection: (section: Section) => void;
-  scrollToSection: (section: Section, itemId?: string) => void;
-  activeRightPanel: 'contact' | 'bio' | null;
-  openRightPanel: (view: 'contact' | 'bio') => void;
-  closeRightPanel: () => void;
-  contactStatus: 'pending' | 'sent';
-  setContactStatus: (status: 'pending' | 'sent') => void;
-  zoomLevel: number;
-  setZoomLevel: (level: number) => void;
-}
+import { Section, NavigationContextType } from '@/types/context';
 
 const NavigationContext = createContext<NavigationContextType | undefined>(undefined);
 
@@ -49,7 +36,7 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
             return;
           }
         }
-        
+
         const element = document.getElementById(section);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
@@ -59,18 +46,20 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <NavigationContext.Provider value={{ 
-      activeSection, 
-      setActiveSection, 
-      scrollToSection, 
-      activeRightPanel, 
-      openRightPanel, 
-      closeRightPanel,
-      contactStatus, 
-      setContactStatus, 
-      zoomLevel, 
-      setZoomLevel 
-    }}>
+    <NavigationContext.Provider
+      value={{
+        activeSection,
+        setActiveSection,
+        scrollToSection,
+        activeRightPanel,
+        openRightPanel,
+        closeRightPanel,
+        contactStatus,
+        setContactStatus,
+        zoomLevel,
+        setZoomLevel,
+      }}
+    >
       {children}
     </NavigationContext.Provider>
   );

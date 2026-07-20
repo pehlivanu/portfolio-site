@@ -17,7 +17,8 @@ import { useSession, signIn, signOut } from 'next-auth/react';
 
 import { useTheme } from '@/context/ThemeContext';
 import { useNavigation } from '@/context/NavigationContext';
-import { useLanguage, Language } from '@/context/LanguageContext';
+import { useLanguage } from '@/context/LanguageContext';
+import { Language } from '@/types/context';
 
 interface SidebarProps {
   activeView: 'explorer' | 'search' | 'github' | 'linkedin' | 'contact' | 'cv-config' | null;

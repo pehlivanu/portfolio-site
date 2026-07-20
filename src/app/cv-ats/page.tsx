@@ -6,7 +6,8 @@ import * as mockDataEn from '@/data/locales/en';
 import * as mockDataRo from '@/data/locales/ro';
 import * as mockDataDe from '@/data/locales/de';
 import * as mockDataFr from '@/data/locales/fr';
-import { translations, Language } from '@/context/LanguageContext';
+import { translations } from '@/context/LanguageContext';
+import { Language } from '@/types/context';
 import '../cv/cv.css';
 
 import ATSHeader from '@/components/cv/ats/ATSHeader';

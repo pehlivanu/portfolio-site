@@ -5,7 +5,7 @@ import Sidebar from './Sidebar';
 import dynamic from 'next/dynamic';
 import { useNavigation } from '@/context/NavigationContext';
 import { useLanguage } from '@/context/LanguageContext';
-import { GitHubProfile } from '@/components/features/GitHubStats';
+import { GitHubProfile } from '@/types/api';
 
 const Explorer = dynamic(() => import('./Explorer'));
 const Search = dynamic(() => import('./Search'));

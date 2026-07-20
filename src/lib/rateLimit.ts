@@ -1,7 +1,4 @@
-type RateLimitRecord = {
-  count: number;
-  resetTime: number;
-};
+import { RateLimitRecord } from '@/types/api';
 
 const rateLimitMap = new Map<string, RateLimitRecord>();
 

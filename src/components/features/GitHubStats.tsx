@@ -6,18 +6,7 @@ import { LuClock, LuBook, LuGitCommitVertical } from 'react-icons/lu';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 
-export interface GitHubProfile {
-  login: string;
-  avatar_url: string;
-  html_url: string;
-  name: string;
-  location: string;
-  public_repos: number;
-  followers: number;
-  following: number;
-  bio: string;
-  created_at: string;
-}
+import { GitHubProfile } from '@/types/api';
 
 export default function GitHubStats({
   onClose,
