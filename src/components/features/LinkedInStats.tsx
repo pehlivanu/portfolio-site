@@ -17,6 +17,8 @@ export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
         <span>{t('linkedinProfile')}</span>
         <button onClick={onClose} className="text-ide-text hover:text-ide-text-active md:hidden">
           <svg
+            role="img"
+            aria-label="Close LinkedIn"
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
@@ -27,6 +29,7 @@ export default function LinkedInStats({ onClose }: { onClose?: () => void }) {
             strokeLinecap="round"
             strokeLinejoin="round"
           >
+            <title>Close LinkedIn</title>
             <line x1="18" x2="6" y1="6" y2="18" />
             <line x1="6" x2="18" y1="6" y2="18" />
           </svg>

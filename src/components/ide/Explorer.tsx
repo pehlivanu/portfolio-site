@@ -39,6 +39,8 @@ export default function Explorer({
         <span>{t('explorer')}</span>
         <button onClick={onClose} className="text-ide-text hover:text-ide-text-active md:hidden">
           <svg
+            role="img"
+            aria-label="Close Explorer"
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
@@ -49,6 +51,7 @@ export default function Explorer({
             strokeLinecap="round"
             strokeLinejoin="round"
           >
+            <title>Close Explorer</title>
             <line x1="18" x2="6" y1="6" y2="18" />
             <line x1="6" x2="18" y1="6" y2="18" />
           </svg>
@@ -84,7 +87,7 @@ export default function Explorer({
               </span>
             </div>
             <div className={getFileClass('education')} onClick={() => handleItemClick('education')}>
-              <LuFileType size={14} className="text-blue-400" />
+              <LuFileType size={14} className="text-blue-400" title="Education File" />
               <span className="group-hover:text-ide-text-active ml-2 text-sm">
                 {t('educationFile')}
               </span>

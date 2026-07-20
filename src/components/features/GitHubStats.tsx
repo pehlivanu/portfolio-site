@@ -42,6 +42,8 @@ export default function GitHubStats({
         <span>{t('githubStats')}</span>
         <button onClick={onClose} className="text-ide-text hover:text-ide-text-active md:hidden">
           <svg
+            role="img"
+            aria-label="Close GitHub"
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
@@ -52,6 +54,7 @@ export default function GitHubStats({
             strokeLinecap="round"
             strokeLinejoin="round"
           >
+            <title>Close GitHub</title>
             <line x1="18" x2="6" y1="6" y2="18" />
             <line x1="6" x2="18" y1="6" y2="18" />
           </svg>
@@ -97,6 +100,7 @@ export default function GitHubStats({
               <LuBook
                 size={20}
                 className="mx-auto mb-2 text-blue-400 [.light-theme_&]:text-blue-700"
+                title="Repositories"
               />
               <div className="text-ide-text-active text-xl font-bold">{profile.public_repos}</div>
               <div className="text-xs text-gray-500 [.light-theme_&]:text-gray-600">

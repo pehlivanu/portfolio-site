@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { m, AnimatePresence } from 'framer-motion';
 import { LuTerminal, LuCode, LuCoffee, LuZap } from 'react-icons/lu';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import { useNavigation } from '@/context/NavigationContext';
@@ -28,11 +27,7 @@ export default function About() {
       className="mx-auto flex min-h-[80vh] w-full max-w-7xl flex-wrap items-center justify-center gap-12 p-8"
     >
       <div className="min-w-[340px] flex-1 space-y-6 md:min-w-[600px]">
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <div className="animate-fade-in-up">
           <div className="text-ide-accent mb-2 flex items-center gap-2">
             <LuTerminal size={20} />
             <span className="font-mono text-sm">
@@ -57,7 +52,7 @@ export default function About() {
               {t('readMore')}
             </button>
           </div>
-        </m.div>
+        </div>
 
         <div className="flex gap-4">
           <button
@@ -76,7 +71,6 @@ export default function About() {
       </div>
 
       <div className="w-full max-w-xl min-w-[340px] flex-1 md:min-w-[500px]">
-        {/* ... (keep Right Side content same) */}
         <div className="border-ide-border bg-ide-bg overflow-hidden rounded-lg border shadow-2xl">
           <div className="bg-ide-sidebar border-ide-border flex items-center justify-between border-b px-4 py-2">
             <div className="flex items-center gap-2">
@@ -99,103 +93,85 @@ export default function About() {
           </div>
 
           <div className="relative h-[300px] overflow-x-auto p-6 font-mono text-sm">
-            <AnimatePresence mode="wait">
-              {isJava ? (
-                <m.pre
-                  key="java"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
-                  transition={{ duration: 0.3 }}
-                  className="text-ide-text"
-                >
-                  <code>
-                    <span className="text-orange-400 [.light-theme_&]:text-orange-700">
-                      package
-                    </span>{' '}
-                    dev.portfolio;{'\n\n'}
-                    <span className="text-orange-400 [.light-theme_&]:text-orange-700">
-                      import
-                    </span>{' '}
-                    org.springframework.boot.SpringApplication;{'\n'}
-                    <span className="text-orange-400 [.light-theme_&]:text-orange-700">
-                      import
-                    </span>{' '}
-                    org.springframework.boot.autoconfigure.SpringBootApplication;{'\n\n'}
-                    <span className="text-yellow-400 [.light-theme_&]:text-yellow-700">
-                      @SpringBootApplication
-                    </span>
-                    {'\n'}
-                    <span className="text-orange-400 [.light-theme_&]:text-orange-700">
-                      public class
-                    </span>{' '}
-                    <span className="text-yellow-300 [.light-theme_&]:text-yellow-700">
-                      LegacyBackendApplication
-                    </span>{' '}
-                    {'{'}
-                    {'\n\n'}
-                    {'    '}
-                    <span className="text-orange-400 [.light-theme_&]:text-orange-700">
-                      public static void
-                    </span>{' '}
-                    <span className="text-blue-300 [.light-theme_&]:text-blue-700">main</span>
-                    (String[] args) {'{'}
-                    {'\n'}
-                    {'        '}SpringApplication.run(LegacyBackendApplication.class, args);{'\n'}
-                    {'        '}System.out.println(
-                    <span className="text-green-300 [.light-theme_&]:text-green-700">
-                      &quot;Java EE Enterprise Logic Initialized...&quot;
-                    </span>
-                    );{'\n'}
-                    {'    '}
-                    {'}'}
-                    {'\n'}
-                    {'}'}
-                  </code>
-                </m.pre>
-              ) : (
-                <m.pre
-                  key="next"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 20 }}
-                  transition={{ duration: 0.3 }}
-                  className="text-ide-text"
-                >
-                  <code>
-                    <span className="text-purple-400 [.light-theme_&]:text-purple-700">import</span>{' '}
-                    {'{'} NextApiRequest, NextApiResponse {'}'}{' '}
-                    <span className="text-purple-400 [.light-theme_&]:text-purple-700">from</span>{' '}
-                    <span className="text-green-300 [.light-theme_&]:text-green-700">
-                      &apos;next&apos;
-                    </span>
-                    ;{'\n\n'}
-                    <span className="text-purple-400 [.light-theme_&]:text-purple-700">
-                      export default function
-                    </span>{' '}
-                    <span className="text-blue-300 [.light-theme_&]:text-blue-700">handler</span>
-                    (req: NextApiRequest, res: NextApiResponse) {'{'}
-                    {'\n'}
-                    {'  '}res.status(
-                    <span className="text-orange-300 [.light-theme_&]:text-orange-700">200</span>
-                    ).json({'{'} {'\n'}
-                    {'    '}message:{' '}
-                    <span className="text-green-300 [.light-theme_&]:text-green-700">
-                      &apos;MCP Server Connected 🚀&apos;
-                    </span>
-                    , {'\n'}
-                    {'    '}stack:{' '}
-                    <span className="text-green-300 [.light-theme_&]:text-green-700">
-                      &apos;Next.js 16 + Tailwind&apos;
-                    </span>{' '}
-                    {'\n'}
-                    {'  '}
-                    {'}'});{'\n'}
-                    {'}'}
-                  </code>
-                </m.pre>
-              )}
-            </AnimatePresence>
+            {isJava ? (
+              <pre key="java" className="text-ide-text animate-fade-in-up">
+                <code>
+                  <span className="text-orange-400 [.light-theme_&]:text-orange-700">package</span>{' '}
+                  dev.portfolio;{'\n\n'}
+                  <span className="text-orange-400 [.light-theme_&]:text-orange-700">
+                    import
+                  </span>{' '}
+                  org.springframework.boot.SpringApplication;{'\n'}
+                  <span className="text-orange-400 [.light-theme_&]:text-orange-700">
+                    import
+                  </span>{' '}
+                  org.springframework.boot.autoconfigure.SpringBootApplication;{'\n\n'}
+                  <span className="text-yellow-400 [.light-theme_&]:text-yellow-700">
+                    @SpringBootApplication
+                  </span>
+                  {'\n'}
+                  <span className="text-orange-400 [.light-theme_&]:text-orange-700">
+                    public class
+                  </span>{' '}
+                  <span className="text-yellow-300 [.light-theme_&]:text-yellow-700">
+                    LegacyBackendApplication
+                  </span>{' '}
+                  {'{'}
+                  {'\n\n'}
+                  {'    '}
+                  <span className="text-orange-400 [.light-theme_&]:text-orange-700">
+                    public static void
+                  </span>{' '}
+                  <span className="text-blue-300 [.light-theme_&]:text-blue-700">main</span>
+                  (String[] args) {'{'}
+                  {'\n'}
+                  {'        '}SpringApplication.run(LegacyBackendApplication.class, args);{'\n'}
+                  {'        '}System.out.println(
+                  <span className="text-green-300 [.light-theme_&]:text-green-700">
+                    &quot;Java EE Enterprise Logic Initialized...&quot;
+                  </span>
+                  );{'\n'}
+                  {'    '}
+                  {'}'}
+                  {'\n'}
+                  {'}'}
+                </code>
+              </pre>
+            ) : (
+              <pre key="node" className="text-ide-text animate-fade-in-up">
+                <code>
+                  <span className="text-purple-400 [.light-theme_&]:text-purple-700">import</span>{' '}
+                  {'{'} NextApiRequest, NextApiResponse {'}'}{' '}
+                  <span className="text-purple-400 [.light-theme_&]:text-purple-700">from</span>{' '}
+                  <span className="text-green-300 [.light-theme_&]:text-green-700">
+                    &apos;next&apos;
+                  </span>
+                  ;{'\n\n'}
+                  <span className="text-purple-400 [.light-theme_&]:text-purple-700">
+                    export default function
+                  </span>{' '}
+                  <span className="text-blue-300 [.light-theme_&]:text-blue-700">handler</span>
+                  (req: NextApiRequest, res: NextApiResponse) {'{'}
+                  {'\n'}
+                  {'  '}res.status(
+                  <span className="text-orange-300 [.light-theme_&]:text-orange-700">200</span>
+                  ).json({'{'} {'\n'}
+                  {'    '}message:{' '}
+                  <span className="text-green-300 [.light-theme_&]:text-green-700">
+                    &apos;MCP Server Connected 🚀&apos;
+                  </span>
+                  , {'\n'}
+                  {'    '}stack:{' '}
+                  <span className="text-green-300 [.light-theme_&]:text-green-700">
+                    &apos;Next.js 16 + Tailwind&apos;
+                  </span>{' '}
+                  {'\n'}
+                  {'  '}
+                  {'}'});{'\n'}
+                  {'}'}
+                </code>
+              </pre>
+            )}
 
             <div className="absolute right-4 bottom-4">
               <div className="bg-ide-activity-bar border-ide-border flex items-center gap-2 rounded-full border px-3 py-1 text-xs">

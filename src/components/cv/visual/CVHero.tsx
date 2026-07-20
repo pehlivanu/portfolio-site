@@ -60,7 +60,7 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel }: C
 
           <div className="mt-4 grid grid-cols-[auto_1fr] gap-x-6 gap-y-2 text-sm text-gray-600">
             <div className="flex items-center gap-2">
-              <LuGlobe size={14} className="text-blue-500" />
+              <LuGlobe size={14} className="text-blue-500" title="Website" />
               <a
                 href="https://www.liviuionesi.com"
                 target="_blank"
@@ -72,7 +72,7 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel }: C
             </div>
             {(linkedInProfile.address || linkedInProfile.location) && (
               <div className="flex items-center gap-2">
-                <LuMapPin size={14} className="min-w-max text-blue-500" />
+                <LuMapPin size={14} className="min-w-max text-blue-500" title="Location" />
                 <a
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(linkedInProfile.address || linkedInProfile.location)}`}
                   target="_blank"
@@ -85,7 +85,7 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel }: C
             )}
             {linkedInProfile.phone && (
               <div className="flex items-center gap-2">
-                <LuPhone size={14} className="text-blue-500" />
+                <LuPhone size={14} className="text-blue-500" title="Phone" />
                 <a
                   href={`tel:${linkedInProfile.phone.replace(/\\s+/g, '')}`}
                   className="whitespace-nowrap text-gray-600 hover:text-blue-600 hover:underline"
@@ -95,7 +95,7 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel }: C
               </div>
             )}
             <div className="flex items-center gap-2">
-              <LuMail size={14} className="text-blue-500" />
+              <LuMail size={14} className="text-blue-500" title="Email" />
               <a
                 href={`mailto:${linkedInProfile.email || 'ionesiliviu@yahoo.com'}`}
                 className="whitespace-nowrap text-gray-600 hover:text-blue-600 hover:underline"
@@ -104,7 +104,7 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel }: C
               </a>
             </div>
             <div className="flex items-center gap-2">
-              <FaLinkedin size={14} className="text-blue-500" />
+              <FaLinkedin size={14} className="text-blue-500" title="LinkedIn" />
               <a
                 href="https://linkedin.com/in/liviu-ionesi"
                 target="_blank"
@@ -115,7 +115,7 @@ export default function CVHero({ linkedInProfile, about, theme, detailLevel }: C
               </a>
             </div>
             <div className="flex items-center gap-2">
-              <FaGithub size={14} className="text-blue-500" />
+              <FaGithub size={14} className="text-blue-500" title="GitHub" />
               <a
                 href="https://github.com/pehlivanu"
                 target="_blank"

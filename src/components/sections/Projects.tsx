@@ -12,18 +12,20 @@ import Highlight from '@/components/ui/Highlight';
 
 const getProjectIcon = (tech: string[], size = 40) => {
   if (tech.some((t) => t.includes('Spring Boot')))
-    return <SiSpringboot size={size} className="text-green-500" />;
+    return <SiSpringboot size={size} className="text-green-500" title="Spring Boot" />;
   if (tech.some((t) => t.includes('Java')))
-    return <FaJava size={size} className="text-orange-500" />;
+    return <FaJava size={size} className="text-orange-500" title="Java" />;
   if (tech.some((t) => t.includes('Python')))
-    return <SiPython size={size} className="text-blue-500" />;
+    return <SiPython size={size} className="text-blue-500" title="Python" />;
   if (tech.some((t) => t.includes('Next.js')))
-    return <SiNextdotjs size={size} className="text-white [.light-theme_&]:text-black" />;
+    return (
+      <SiNextdotjs size={size} className="text-white [.light-theme_&]:text-black" title="Next.js" />
+    );
   if (tech.some((t) => t.includes('React')))
-    return <SiReact size={size} className="text-blue-400" />;
+    return <SiReact size={size} className="text-blue-400" title="React" />;
   if (tech.some((t) => t.includes('Jenkins')))
-    return <SiJenkins size={size} className="text-red-500" />;
-  return <LuFolder size={size} className="text-ide-accent" />;
+    return <SiJenkins size={size} className="text-red-500" title="Jenkins" />;
+  return <LuFolder size={size} className="text-ide-accent" title="Folder" />;
 };
 
 export default function Projects() {

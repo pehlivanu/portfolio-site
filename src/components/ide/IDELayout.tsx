@@ -2,18 +2,20 @@
 import React, { useState, useEffect } from 'react';
 import TitleBar from './TitleBar';
 import Sidebar from './Sidebar';
-import Explorer from './Explorer';
-import Search from './Search';
-import { GitHubStats, LinkedInStats } from '@/components/features';
-import { ContactPanel } from '@/components/sections';
-import Tabs from './Tabs';
-import StatusBar from './StatusBar';
+import dynamic from 'next/dynamic';
 import { useNavigation } from '@/context/NavigationContext';
 import { useLanguage } from '@/context/LanguageContext';
-import ReactMarkdown from 'react-markdown';
-import Highlight from '@/components/ui/Highlight';
-import CVConfigPanel from '@/components/cv/CVConfigPanel';
 import { GitHubProfile } from '@/components/features/GitHubStats';
+
+const Explorer = dynamic(() => import('./Explorer'));
+const Search = dynamic(() => import('./Search'));
+const GitHubStats = dynamic(() => import('@/components/features').then((m) => m.GitHubStats));
+const LinkedInStats = dynamic(() => import('@/components/features').then((m) => m.LinkedInStats));
+const ContactPanel = dynamic(() => import('@/components/sections').then((m) => m.ContactPanel));
+const CVConfigPanel = dynamic(() => import('@/components/cv/CVConfigPanel'));
+const BioPanel = dynamic(() => import('@/components/sections/BioPanel'));
+import Tabs from './Tabs';
+import StatusBar from './StatusBar';
 
 export default function IDELayout({
   children,
@@ -72,6 +74,8 @@ export default function IDELayout({
             aria-label="Toggle Menu"
           >
             <svg
+              role="img"
+              aria-label="Toggle Menu"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -82,6 +86,7 @@ export default function IDELayout({
               strokeLinecap="round"
               strokeLinejoin="round"
             >
+              <title>Toggle Menu</title>
               <line x1="4" x2="20" y1="12" y2="12" />
               <line x1="4" x2="20" y1="6" y2="6" />
               <line x1="4" x2="20" y1="18" y2="18" />
@@ -153,6 +158,8 @@ export default function IDELayout({
                           className="text-ide-text hover:text-ide-text-active hover:bg-ide-activity-bar rounded p-1"
                         >
                           <svg
+                            role="img"
+                            aria-label="Close Panel"
                             xmlns="http://www.w3.org/2000/svg"
                             width="14"
                             height="14"
@@ -163,6 +170,7 @@ export default function IDELayout({
                             strokeLinecap="round"
                             strokeLinejoin="round"
                           >
+                            <title>Close Panel</title>
                             <line x1="18" x2="6" y1="6" y2="18" />
                             <line x1="6" x2="18" y1="6" y2="18" />
                           </svg>
@@ -170,13 +178,7 @@ export default function IDELayout({
                       </div>
 
                       <div className="bg-ide-sidebar flex-1 overflow-y-auto">
-                        {activeRightPanel === 'contact' ? (
-                          <ContactPanel />
-                        ) : (
-                          <div className="prose prose-invert max-w-none p-6 text-sm">
-                            <BioPanel />
-                          </div>
-                        )}
+                        {activeRightPanel === 'contact' ? <ContactPanel /> : <BioPanel />}
                       </div>
                     </>
                   )}
@@ -188,61 +190,5 @@ export default function IDELayout({
         </div>
       </div>
     </div>
-  );
-}
-
-function BioPanel() {
-  const { data } = useLanguage();
-  const { linkedInProfile } = data;
-
-  return (
-    <ReactMarkdown
-      components={{
-        h3: ({ children, ...props }) => (
-          <h3
-            className="text-ide-text-active mt-8 mb-6 text-lg leading-relaxed font-bold"
-            {...props}
-          >
-            {React.Children.map(children, (child) =>
-              typeof child === 'string' ? <Highlight text={child} /> : child
-            )}
-          </h3>
-        ),
-        p: ({ children, ...props }) => (
-          <p className="text-ide-text mb-4 leading-relaxed" {...props}>
-            {React.Children.map(children, (child) =>
-              typeof child === 'string' ? <Highlight text={child} /> : child
-            )}
-          </p>
-        ),
-        ul: ({ ...props }) => (
-          <ul className="text-ide-text mb-4 list-disc space-y-2 pl-5" {...props} />
-        ),
-        li: ({ children, ...props }) => (
-          <li className="pl-1 leading-relaxed" {...props}>
-            {React.Children.map(children, (child) =>
-              typeof child === 'string' ? <Highlight text={child} /> : child
-            )}
-          </li>
-        ),
-        strong: ({ children, ...props }) => (
-          <strong className="text-ide-text-active font-semibold" {...props}>
-            {React.Children.map(children, (child) =>
-              typeof child === 'string' ? <Highlight text={child} /> : child
-            )}
-          </strong>
-        ),
-        hr: ({ ...props }) => <hr className="border-ide-border my-8" {...props} />,
-        em: ({ children, ...props }) => (
-          <em className="text-ide-text mt-4 block italic opacity-90" {...props}>
-            {React.Children.map(children, (child) =>
-              typeof child === 'string' ? <Highlight text={child} /> : child
-            )}
-          </em>
-        ),
-      }}
-    >
-      {linkedInProfile.fullBio}
-    </ReactMarkdown>
   );
 }
